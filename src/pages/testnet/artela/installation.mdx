@@ -3,13 +3,13 @@ layout: '~/layouts/TestnetLayout.astro'
 icon: artela
 ---
 
-### Install dependencies 
+ Install dependencies 
 
 ```
 sudo apt update && sudo apt upgrade -y && sudo apt install curl tar wget clang pkg-config libssl-dev jq build-essential bsdmainutils git make ncdu gcc git jq chrony liblz4-tool -y
 ```
 
-### Install go
+ Install go
 ```
 ver="1.21.1"
 wget "https://golang.org/dl/go$ver.linux-amd64.tar.gz"
@@ -21,7 +21,7 @@ source ~/.bash_profile
 go version
 ```
 
-### Install binary
+ Install binary
 
 ```
 cd $HOME
@@ -30,18 +30,18 @@ cd artela
 git checkout v0.4.7-rc4
 make install
 ```
-### Initialize the node
+ Initialize the node
 ```
 artelad init $MONIKER --chain-id artela_11822-1
 artelad config chain-id artela_11822-1
 artelad config keyring-backend test
 ```
 
-### Genesis
+ Genesis
 ```
 wget -O $HOME/.artelad/config/genesis.json https://docs.artela.network/assets/files/genesis-314f4b0294712c1bc6c3f4213fa76465.json
 ```
-### Addrbook 
+ Addrbook 
 ```
 curl -Ls https://ss-t.artela.nodestake.org/addrbook.json > $HOME/.artelad/config/addrbook.json
 ```
@@ -54,7 +54,7 @@ sed -i.bak -e "s/^persistent_peers *=.*/persistent_peers = \"$peers\"/" ~/.artel
 sed -i -e "s/^minimum-gas-prices *=.*/minimum-gas-prices = \"0uart\"/" $HOME/.artelad/config/app.toml
 ```
 
-### Prunning
+ Prunning
 ```
 pruning="custom" && \
 pruning_keep_recent="100" && \
@@ -66,7 +66,7 @@ sed -i -e "s/^pruning-keep-every *=.*/pruning-keep-every = \"$pruning_keep_every
 sed -i -e "s/^pruning-interval *=.*/pruning-interval = \"$pruning_interval\"/" ~/.artelad/config/app.toml
 ```
 
-### Service
+ Service
 ```
 sudo tee /etc/systemd/system/artelad.service > /dev/null <<EOF
 [Unit]
@@ -85,7 +85,7 @@ WantedBy=multi-user.target
 EOF
 ```
 
-#### Start
+# Start
 ```
 sudo systemctl daemon-reload
 sudo systemctl enable artelad
@@ -93,7 +93,7 @@ sudo systemctl restart artelad
 sudo journalctl -u artelad -f -o cat
 ```
 
-### Create Validator
+ Create Validator
 
 Heads up to the Cheat Sheets to create validator
 

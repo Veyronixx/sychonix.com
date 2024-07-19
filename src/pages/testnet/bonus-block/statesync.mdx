@@ -6,13 +6,13 @@ icon: bonus
 chain: blocktopia-01
 version: 
 ---
-### Setup
+ Setup
 This is the settings we use , you dont have to change anything
 
 - snapshot-interval= 1000
 - snapshot-keep-recent = 5
 
-### Intruction
+ Intruction
 
 Bonus Block is not supporting statsync because the tendermint version they use is not the newest
 
@@ -47,7 +47,7 @@ curl -L https://ss-t.bonusblock.nodestake.top/wasm.tar.lz4 | lz4 -dc - | tar -xf
 systemctl restart bonus-blockd && journalctl -fu bonus-blockd -o cat
 ```
 
-### Turn Off State-sync
+ Turn Off State-sync
 ```
 sed -i.bak -e "s|^enable *=.*|enable = false|" $HOME/.bonusblock/config/config.toml
 systemctl restart bonus-blockd && journalctl -fu bonus-blockd -o cat

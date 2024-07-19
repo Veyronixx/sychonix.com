@@ -3,7 +3,7 @@ layout: '~/layouts/TestnetLayout.astro'
 icon: airchains
 ---
 
-### Hardware requirements
+ Hardware requirements
 The following requirements are recommended for running Airchains:
 
 | **Component**                      | **Minimum** | **Recommended**      |
@@ -12,15 +12,15 @@ The following requirements are recommended for running Airchains:
 | **CPU (amd64/x86 architecture)**   | 2 cores     | 4 cores              |
 | **Storage (SSD)**                  | 50-100 GB   | 200-300 GB           |
 
-### Creating an EVM ZK Rollup using DA Eigen
+ Creating an EVM ZK Rollup using DA Eigen
 
-### Install dependencies
+ Install dependencies
 ```
 sudo apt update && sudo apt upgrade -y
 sudo apt install -y curl git jq lz4 build-essential cmake perl automake autoconf libtool wget libssl-dev
 ```
 
-### Install Go
+ Install Go
 ```
 ver="1.22.3" && \
 wget "https://golang.org/dl/go$ver.linux-amd64.tar.gz" && \
@@ -32,7 +32,7 @@ source $HOME/.bash_profile && \
 go version
 ```
 
-### Install Packages
+ Install Packages
 ```
 git clone https://github.com/airchains-network/evm-station.git
 ```
@@ -41,19 +41,19 @@ git clone https://github.com/airchains-network/tracks.git
 ```
 
 
-### Setting Up and Running the EVM Station
+ Setting Up and Running the EVM Station
 ```
 cd evm-station
 ```
 ```
 go mod tidy
 ```
-### Running the Project and save privatekey
+ Running the Project and save privatekey
 ```
 /bin/bash ./scripts/local-setup.sh
 ```
 ![photo_6298630648834933141_y](https://github.com/sychonix/sychonixx/assets/110755590/f57bd88a-21f7-4889-bfee-d2e5f81dbfac)
-#### Create env file
+# Create env file
 ```
 nano ~/.rollup-env
 ```
@@ -71,7 +71,7 @@ GENESIS=$HOMEDIR/config/genesis.json
 TMP_GENESIS=$HOMEDIR/config/tmp_genesis.json
 VAL_KEY="mykey"
 ```
-### Create a service file Evmos 
+ Create a service file Evmos 
 ```
 sudo tee /etc/systemd/system/rolld.service > /dev/null << EOF
 [Unit]
@@ -90,24 +90,24 @@ WantedBy=multi-user.target
 EOF
 ```
 
-### Change the Port in app.toml to 0.0.0.0
+ Change the Port in app.toml to 0.0.0.0
 ```
 nano $HOME/.evmosd/config/app.toml
 ```
 ![1](https://github.com/sychonix/sychonixx/assets/110755590/ac098248-4970-4eb8-bf69-59835426cb46)
 
-### Enable Service and Start Evmos
+ Enable Service and Start Evmos
 ```
 sudo systemctl daemon-reload
 sudo systemctl enable rolld
 sudo systemctl start rolld
 sudo journalctl -u rolld -f --no-hostname -o cat
 ```
-### Get the Evmos Private Key and Keep it Safe
+ Get the Evmos Private Key and Keep it Safe
 ```
 /bin/bash ./scripts/local-keys.sh
 ```
-### Install Eigen DA
+ Install Eigen DA
 ```
 cd $HOME
 wget https://github.com/airchains-network/tracks/releases/download/v0.0.2/eigenlayer
@@ -115,7 +115,7 @@ mkdir -p $HOME/go/bin
 chmod +x $HOME/eigenlayer
 mv $HOME/eigenlayer $HOME/go/bin
 ```
-### Generate operator keys with ECDSA type
+ Generate operator keys with ECDSA type
 ```
 eigenlayer operator keys create --key-type ecdsa <yor_wallet_name>
 ```
@@ -127,7 +127,7 @@ eigenlayer operator keys create --key-type ecdsa <yor_wallet_name>
 ![3](https://github.com/sychonix/sychonixx/assets/110755590/c684c31b-691a-4424-8f6a-96b84236c04f)
 
 
-### Setting Up and Running Tracks
+ Setting Up and Running Tracks
 ```
 cd tracks
 ```
@@ -135,7 +135,7 @@ cd tracks
 go mod tidy
 ```
 
-### Initiate Sequencer
+ Initiate Sequencer
 ```
 go run cmd/main.go init --daRpc "disperser-holesky.eigenda.xyz" --daKey "PUBLICHEX" --daType "eigen" --moniker "MONIKER" --stationRpc "http://127.0.0.1:8545" --stationAPI "http://127.0.0.1:8545" --stationType "evm"
 ```
@@ -144,7 +144,7 @@ go run cmd/main.go init --daRpc "disperser-holesky.eigenda.xyz" --daKey "PUBLICH
 
 
 
-### Create Keys for Junction
+ Create Keys for Junction
 ```
 go run cmd/main.go keys junction --accountName <your-wallet-name> --accountPath $HOME/.tracks/junction-accounts/keys
 ```
@@ -155,7 +155,7 @@ go run cmd/main.go keys junction --accountName <your-wallet-name> --accountPath 
 
 > Fund Keys for Junction Testnet
 Navigate to the Switchyard faucet in the [Airchains Discord](https://discord.gg/KCmxXXnM) and follow the provided steps to obtain Switchyard tokens for funding the keys.
-### Initiate Prover
+ Initiate Prover
 ```
 go run cmd/main.go prover v1EVM
 ```
@@ -164,7 +164,7 @@ go run cmd/main.go prover v1EVM
 
 
 
-### Create Station on Junction
+ Create Station on Junction
 Locate the node ID in the `~/.track/config/sequencer.toml` configuration file.
 ```
 nano ~/.tracks/config/sequencer.toml
@@ -177,7 +177,7 @@ go run cmd/main.go create-station --accountName <your-wallet-name> --accountPath
 ```
 ***replace <your-wallet-name> with your wallet name, replace <node_id> with the node id you got in `~/.track/config/sequencer.toml`, replace <wallet-address> with the address you generated earlier, and replace <your-ip-vps> with your VPS ip.***
 
-### Create and run node with systemd
+ Create and run node with systemd
 ```
 sudo tee /etc/systemd/system/stationd.service > /dev/null << EOF
 [Unit]
@@ -201,7 +201,7 @@ sudo systemctl restart stationd
 sudo journalctl -u stationd -f --no-hostname -o cat
 ```
 
-### All done, now just tx using your RPC.
+ All done, now just tx using your RPC.
 
 ![8](https://github.com/sychonix/sychonixx/assets/110755590/d79b02b4-e05c-4b33-8e6b-7341d8a2e02f)
 

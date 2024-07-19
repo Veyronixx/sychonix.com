@@ -7,13 +7,13 @@ chain: arkh
 version: v2.0.0 
 ---
 
-### Setup
+ Setup
 This is the settings we use , you dont have to change anything
 
 - snapshot-interval= 1000
 - snapshot-keep-recent = 5
 
-### Intruction
+ Intruction
 
 ```
 SNAP_RPC="https://rpc.arkh.nodestake.top:443"
@@ -60,7 +60,7 @@ journalctl -u arkhd -f -o cat
 ```
 Credit to Nodestake
 
-### Turn Off State-sync
+ Turn Off State-sync
 ```
 sed -i.bak -e "s|^enable *=.*|enable = false|" $HOME/.arkh/config/config.toml
 systemctl restart arkhd && journalctl -fu arkhd -o cat

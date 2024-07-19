@@ -7,7 +7,7 @@ chain: nibiru-itn-1
 version: v0.19.2
 ---
 
-### Hardware requirements
+ Hardware requirements
 
 The following requirements are recommended for running Defund:
 
@@ -17,13 +17,13 @@ The following requirements are recommended for running Defund:
 - At least 100mbps network bandwidth
 
 
-### Install dependencies Required
+ Install dependencies Required
 
 ```
 sudo apt update && sudo apt upgrade -y && sudo apt install curl tar wget clang pkg-config libssl-dev jq build-essential bsdmainutils git make ncdu gcc git jq chrony liblz4-tool -y
 ```
 
-### Install go
+ Install go
 
 We are gonna use GO Version 1.19.5
 If you already have GO installed you can skip this 
@@ -40,7 +40,7 @@ source ~/.bash_profile
 go version
 ```
 
-### Install binary
+ Install binary
 
 ```
 cd $HOME
@@ -57,7 +57,7 @@ Verify that you've installed nibid successfully
 nibid version
 ```
 
-### Prepare Cosmovisor
+ Prepare Cosmovisor
 ```
 mkdir -p $HOME/.nibid/cosmovisor/genesis/bin
 mv build/nibid $HOME/.nibid/cosmovisor/genesis/bin/
@@ -68,20 +68,20 @@ sudo ln -s $HOME/.nibid/cosmovisor/genesis $HOME/.nibid/cosmovisor/current
 sudo ln -s $HOME/.nibid/cosmovisor/current/bin/nibid /usr/local/bin/nibid
 ```
 
-### Install Cosmovisor
+ Install Cosmovisor
 ```
 
 go install cosmossdk.io/tools/cosmovisor/cmd/cosmovisor@v1.4.0
 ```
 
-### Config app
+ Config app
 
 ```
 nibid config chain-id nibiru-itn-1
 nibid config keyring-backend test
 ```
 
-### Initialize Node
+ Initialize Node
 
 Please change `<YOUR_MONIKER>` To your own Moniker.
 
@@ -89,7 +89,7 @@ Please change `<YOUR_MONIKER>` To your own Moniker.
 nibid init <YOUR_MONIKER> --chain-id nibiru-itn-1
 ```
 
-### Download Genesis file and addrbook
+ Download Genesis file and addrbook
 
 - Genesis
 
@@ -98,7 +98,7 @@ wget https://snapshot.yeksin.net/nibiru/genesis.json -O $HOME/.nibid/config/gene
 ```
 
 
-### Configure Seeds and Peers
+ Configure Seeds and Peers
 
 ```
 SEEDS="a431d3d1b451629a21799963d9eb10d83e261d2c@seed-1.itn-1.nibiru.fi:26656,6a78a2a5f19c93661a493ecbe69afc72b5c54117@seed-2.itn-1.nibiru.fi:26656"
@@ -106,7 +106,7 @@ PEERS="e2b8b9f3106d669fe6f3b49e0eee0c5de818917e@213.239.217.52:32656,930b1eb3f0e
 sed -i -e "s/^seeds *=.*/seeds = \"$SEEDS\"/; s/^persistent_peers *=.*/persistent_peers = \"$PEERS\"/" $HOME/.nibid/config/config.toml
 ```
 
-### config pruning
+ config pruning
 
 ```
 PRUNING="custom"
@@ -121,7 +121,7 @@ sed -i -e "s/^pruning-interval *=.*/pruning-interval = \
 ```
 
 
-### create service file and start node
+ create service file and start node
 
 Create service file
 Create a `nibid.service` file in the `/etc/systemd/system` folder with the following code. 
@@ -149,7 +149,7 @@ WantedBy=multi-user.target
 EOF
 ```
 
-### Download Latest Snapshot 
+ Download Latest Snapshot 
 ```
 curl -L https://nibiru-t.service.indonode.net/nibiru-snapshot.tar.lz4 | lz4 -dc - | tar -xf - -C $HOME/.nibid
 ```
@@ -163,7 +163,7 @@ sudo systemctl restart nibid
 sudo journalctl -fu nibid -o cat
 ```
 
-### Create Validator
+ Create Validator
 
 Heads up to the Cheat Sheets to create validator
 

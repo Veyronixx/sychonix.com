@@ -7,13 +7,13 @@ chain: empowerchain-1
 version: v1.0.0
 ---
 
-### Install dependencies Required
+ Install dependencies Required
 
 ```
 sudo apt update && sudo apt upgrade -y && sudo apt install curl tar wget clang pkg-config libssl-dev jq build-essential bsdmainutils git make ncdu gcc git jq chrony liblz4-tool -y
 ```
 
-### Install go
+ Install go
 ```
 ver="1.20.4"
 cd $HOME
@@ -26,7 +26,7 @@ source ~/.bash_profile
 go version
 ```
 
-### Build binary
+ Build binary
 
 ```
 cd $HOME
@@ -37,7 +37,7 @@ cd chain
 make install
 ```
 
-### Initialize the node
+ Initialize the node
 
 ```
 empowerd init $MONIKER --chain-id empowerchain-1
@@ -45,7 +45,7 @@ empowerd config chain-id empowerchain-1
 empowerd config keyring-backend file
 ```
 
-### Genesis 
+ Genesis 
 
 - Genesis
 
@@ -54,13 +54,13 @@ URL=https://github.com/EmpowerPlastic/empowerchain/raw/main/mainnet/empowerchain
 curl -L $URL | tar -xz -C $HOME/.empowerchain/config/
 ```
 
-### Addrbook
+ Addrbook
 
 ```
 wget -O $HOME/. empowerchain/config/addrbook.json "https://raw.githubusercontent.com/sychonix/chain/main/empower-mainnet/addrbook.json"
 ```
 
-### Configure Seeds and Peers
+ Configure Seeds and Peers
 
 ```
 seeds="a1427b456513ab70967a2a5c618d347bc89e8848@seed.empowerchain.io:26656,6740fa259552a628266a85de8c2a3dee7702b8f9@empower-mainnet-seed.itrocket.net:14656,e16668ddd526f4e114ebb6c4714f0c18c0add8f8@empower-seed.zenscape.one:26656,f2ed98cf518b501b6d1c10c4a16d0dfbc4a9cc98@tenderseed.ccvalidators.com:27001,258f523c96efde50d5fe0a9faeea8a3e83be22ca@seed.empowerchain-1.empower.aviaone.com:10274"
@@ -68,7 +68,7 @@ sed -i -e 's|^seeds *=.*|seeds = "'$seeds'"|' $HOME/.empowerchain/config/config.
 sed -i -e "s|^minimum-gas-prices *=.*|minimum-gas-prices = \"0umpwr\"|" $HOME/.empowerchain/config/app.toml
 ```
 
-### config pruning
+ config pruning
 
 ```
 pruning="custom" && \
@@ -82,7 +82,7 @@ sed -i -e "s/^pruning-interval *=.*/pruning-interval = \"$pruning_interval\"/" $
 ```
 
 
-### create service file and start node
+ create service file and start node
 ```
 sudo tee /etc/systemd/system/empowerd.service << EOF
 [Unit]
@@ -109,7 +109,7 @@ sudo systemctl restart empowerd
 sudo journalctl -u empowerd -f -o cat
 ```
 
-### Create Validator
+ Create Validator
 
 Heads up to the Cheat Sheets to create validator
 

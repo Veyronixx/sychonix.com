@@ -7,13 +7,13 @@ chain: circulus-1
 version: v1.0.0-rc1
 ---
 
-### Install dependencies
+ Install dependencies
 ```
 sudo apt update && sudo apt upgrade -y && \
 sudo apt install curl tar wget clang pkg-config libssl-dev jq build-essential bsdmainutils git make ncdu gcc git jq chrony liblz4-tool -y
 ```
 
-### Install GO
+ Install GO
 ```
 ver="1.20.4"
 cd $HOME
@@ -26,7 +26,7 @@ source ~/.bash_profile
 go version
 ```
 
-### Build Binary
+ Build Binary
 ```
 cd $HOME
 git clone https://github.com/EmpowerPlastic/empowerchain.git
@@ -36,14 +36,14 @@ cd chain
 make install
 ```
 
-### Initialize the node
+ Initialize the node
 ```
 empowerd init $MONIKER --chain-id circulus-1
 empowerd config chain-id circulus-1
 empowerd config keyring-backend test
 ```
 
-### Custom Port
+ Custom Port
 ```
 PORT=
 empowerd config node tcp://localhost:${PORT}657
@@ -53,17 +53,17 @@ sed -i -e "s%^proxy_app = \"tcp://127.0.0.1:26658\"%proxy_app = \"tcp://127.0.0.
 sed -i -e "s%^address = \"tcp://localhost:1317\"%address = \"tcp://localhost:${PORT}317\"%; s%^address = \":8080\"%address = \":${PORT}080\"%; s%^address = \"localhost:9090\"%address = \"localhost:${PORT}090\"%; s%^address = \"localhost:9091\"%address = \"localhost:${PORT}091\"%; s%^address = \"0.0.0.0:8545\"%address = \"0.0.0.0:${PORT}545\"%; s%^ws-address = \"0.0.0.0:8546\"%ws-address = \"0.0.0.0:${PORT}546\"%" $HOME/.empowerchain/config/app.toml
 ```
 
-### Genesis
+ Genesis
 ```
 wget -O $HOME/.empowerchain/config/genesis.json "https://raw.githubusercontent.com/EmpowerPlastic/empowerchain/main/testnets/circulus-1/genesis.json"
 ```
 
-### Addrbook
+ Addrbook
 ```
 wget -O $HOME/.empowerchain/config/addrbook.json https://raw.githubusercontent.com/sychonix/website/main/src/pages/testnet/empower/addrbook.json
 ```
 
-### Seed & Peer & Gas
+ Seed & Peer & Gas
 ```
 peers=""
 sed -i.bak -e "s/^persistent_peers *=.*/persistent_peers = \"$peers\"/" $HOME/.empowerchain/config/config.toml
@@ -76,7 +76,7 @@ external_address=$(wget -qO- eth0.me)
 sed -i.bak -e "s/^external_address *=.*/external_address = \"$external_address:26656\"/" $HOME/.empowerchain/config/config.toml
 ```
 
-### Prunning
+ Prunning
 ```
 pruning="custom" && \
 pruning_keep_recent="100" && \
@@ -88,13 +88,13 @@ sed -i -e "s/^pruning-keep-every *=.*/pruning-keep-every = \"$pruning_keep_every
 sed -i -e "s/^pruning-interval *=.*/pruning-interval = \"$pruning_interval\"/" $HOME/.empowerchain/config/app.toml
 ```
 
-### Indexer Off
+ Indexer Off
 ```
 indexer="null" && \
 sed -i -e "s/^indexer *=.*/indexer = \"$indexer\"/" $HOME/.empowerchain/config/config.toml
 ```
 
-### Create Service
+ Create Service
 ```
 sudo tee /etc/systemd/system/empowerd.service << EOF
 [Unit]
@@ -113,14 +113,14 @@ WantedBy=multi-user.target
 EOF
 ```
 
-### Start
+ Start
 ```
 sudo systemctl daemon-reload
 sudo systemctl enable empowerd
 sudo systemctl restart empowerd
 sudo journalctl -u empowerd -f -o cat
 ```
-### Create Validator
+ Create Validator
 
 Heads up to the Cheat Sheets to create validator
 

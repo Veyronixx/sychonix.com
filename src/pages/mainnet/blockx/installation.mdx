@@ -3,13 +3,13 @@ layout: '~/layouts/TestnetLayout.astro'
 icon: artela
 ---
 
-### Install dependencies 
+ Install dependencies 
 
 ```
 sudo apt update && sudo apt upgrade -y && sudo apt install curl tar wget clang pkg-config libssl-dev jq build-essential bsdmainutils git make ncdu gcc git jq chrony liblz4-tool -y
 ```
 
-### Install go
+ Install go
 ```
 ver="1.21.1"
 wget "https://golang.org/dl/go$ver.linux-amd64.tar.gz"
@@ -21,7 +21,7 @@ source ~/.bash_profile
 go version
 ```
 
-### Install binary
+ Install binary
 
 ```
 cd $HOME
@@ -29,14 +29,14 @@ git clone https://github.com/BlockXLabs/BlockX-Genesis-Mainnet1.git
 cd BlockX-Genesis-Mainnet1
 make install
 ```
-### Initialize the node
+ Initialize the node
 ```
 blockxd init $MONIKER --chain-id blockx_100-1
 blockxd config chain-id blockx_100-1
 blockxd config keyring-backend file
 ```
 
-### Genesis
+ Genesis
 ```
 wget -O $HOME/.blockxd/config/genesis.json "https://raw.githubusercontent.com/BlockXLabs/networks/master/chains/blockx_100-1/genesis.json"
 ```
@@ -46,7 +46,7 @@ seeds="cd462b62d54296ab4550d7c1ed5baafe5653faa6@137.184.7.64:26656,fbaf65d8f2732
 sed -i.bak -e "s/^seed *=.*/seed = \"$seed\"/" ~/.blockxd/config/config.toml
 ```
 
-### Prunning
+ Prunning
 ```
 sed -i 's|^pruning *=.*|pruning = "custom"|g' $HOME/.blockxd/config/app.toml
 sed -i 's|^pruning-keep-recent  *=.*|pruning-keep-recent = "100"|g' $HOME/.blockxd/config/app.toml
@@ -55,7 +55,7 @@ sed -i 's|^snapshot-interval *=.*|snapshot-interval = 2000|g' $HOME/.blockxd/con
 sed -i 's|^prometheus *=.*|prometheus = true|' $HOME/.blockxd/config/config.toml
 ```
 
-### Service
+ Service
 ```
 sudo tee /etc/systemd/system/blockxd.service > /dev/null << EOF
 [Unit]
@@ -74,7 +74,7 @@ WantedBy=multi-user.target
 EOF
 ```
 
-#### Start
+# Start
 ```
 systemctl daemon-reload
 systemctl enable blockxd
@@ -82,7 +82,7 @@ systemctl restart blockxd
 journalctl -fu blockxd -ocat
 ```
 
-### Create Validator
+ Create Validator
 
 Heads up to the Cheat Sheets to create validator
 

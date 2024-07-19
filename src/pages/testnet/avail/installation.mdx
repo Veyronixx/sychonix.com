@@ -6,33 +6,33 @@ chain id : goldberg
 icon: avail
 ---
 
-### Update and install packages
+ Update and install packages
 ```
 sudo apt update
 sudo apt install make clang pkg-config libssl-dev build-essential
 ```
 
-### Create directory
+ Create directory
 ```
 mkdir -p ${HOME}/avail-node
 mkdir -p ${HOME}/avail-node/data
 mkdir -p ${HOME}/avail-node/systemd
 ```
 
-### Extract binary
+ Extract binary
 - go to dir ~/avail-node for the setup validator
 ```
 cd avail-node
 wget https://github.com/availproject/avail/releases/download/v1.8.0.0/amd64-ubuntu-2204-data-avail.tar.gz
 ```
 
-### Extract File
+ Extract File
 ```
 tar -xvzf amd64-ubuntu-2204-data-avail.tar.gz
 cp amd64-ubuntu-2204-data-avail data-avail
 ```
 
-### Create a service file
+ Create a service file
 - change "YOUR_NAME" to your validator name
 ```
 export USERNAME=$(whoami)
@@ -60,16 +60,16 @@ sudo systemctl daemon-reload
 sudo systemctl enable availd
 ```
 
-### Start node
+ Start node
 ```
 sudo systemctl start availd
 ```
-### Check node logs
+ Check node logs
 ```
 sudo journalctl -fu availd
 ```
 
-### The node will ouput the following when started:
+ The node will ouput the following when started:
 ```
 2023-06-03 20:36:29 Avail Node
 2023-06-03 20:36:29 ✌️  version 1.6.0-99b85257d6b

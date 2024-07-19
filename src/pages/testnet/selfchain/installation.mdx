@@ -7,7 +7,7 @@ chain: self-dev-1
 version: v
 ---
 
-### Hardware requirements
+ Hardware requirements
 
 The following requirements are recommended for running Defund:
 
@@ -17,13 +17,13 @@ The following requirements are recommended for running Defund:
 - At least 100mbps network bandwidth
 
 
-### Install dependencies Required
+ Install dependencies Required
 
 ```
 sudo apt update && sudo apt upgrade -y && sudo apt install curl tar wget clang pkg-config libssl-dev jq build-essential bsdmainutils git make ncdu gcc git jq chrony liblz4-tool -y
 ```
 
-### Install go
+ Install go
 
 We are gonna use GO Version 1.20.4
 If you already have GO installed you can skip this 
@@ -40,7 +40,7 @@ source ~/.bash_profile
 go version
 ```
 
-### Install binary
+ Install binary
 
 ```
 cd $HOME
@@ -50,7 +50,7 @@ chmod +x selfchaind
 mv selfchaind /root/go/bin/
 ```
 
-### Initialize Node
+ Initialize Node
 
 Please change `<MONIKER>` To your own Moniker.
 
@@ -60,7 +60,7 @@ selfchaind config chain-id self-dev-1
 selfchaind config keyring-backend test
 ```
 
-### Download Genesis file and addrbook
+ Download Genesis file and addrbook
 
 - Genesis
 
@@ -68,7 +68,7 @@ selfchaind config keyring-backend test
 wget -O $HOME/.selfchain/config/genesis.json https://raw.githubusercontent.com/hotcrosscom/selfchain-genesis/main/networks/devnet/genesis.json
 ```
 
-### Configure Seeds and Peers
+ Configure Seeds and Peers
 
 ```
 SEEDS=""
@@ -78,7 +78,7 @@ sed -i.bak -e "s/^persistent_peers *=.*/persistent_peers = \"$peers\"/" $HOME/.s
 sed -i -e "s|^minimum-gas-prices *=.*|minimum-gas-prices = \"0.005uself\"|" $HOME/.selfchain/config/app.toml
 ```
 
-### config pruning
+ config pruning
 
 ```
 pruning="custom"
@@ -92,7 +92,7 @@ sed -i -e "s/^pruning-interval *=.*/pruning-interval = \"$pruning_interval\"/" $
 ```
 
 
-### create service file and start node
+ create service file and start node
 
 Create service file
 Create a `selfchaind.service` file in the `/etc/systemd/system` folder with the following code. 
@@ -124,7 +124,7 @@ sudo systemctl enable selfchaind
 sudo systemctl restart selfchaind
 sudo journalctl -u selfchaind -f -o cat
 ```
-### Create Validator
+ Create Validator
 
 Heads up to the Cheat Sheets to create validator
 

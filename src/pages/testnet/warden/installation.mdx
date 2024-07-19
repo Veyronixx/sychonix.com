@@ -3,13 +3,13 @@ layout: '~/layouts/TestnetLayout.astro'
 icon: warden
 ---
 
-### Install dependencies 
+ Install dependencies 
 ```
 sudo apt update && sudo apt upgrade -y
 apt install curl iptables build-essential git wget jq make gcc nano tmux htop nvme-cli pkg-config libssl-dev libleveldb-dev tar clang bsdmainutils ncdu unzip libleveldb-dev -y
 ```
 
-### Install go
+ Install go
 ```
 ver="1.21.1"
 wget "https://golang.org/dl/go$ver.linux-amd64.tar.gz"
@@ -21,7 +21,7 @@ source ~/.bash_profile
 go version
 ```
 
-### Install and Build binary
+ Install and Build binary
 
 ```
 git clone https://github.com/warden-protocol/wardenprotocol
@@ -29,18 +29,18 @@ cd  wardenprotocol
 git checkout v0.2.0
 make install-wardend
 ```
-### Initialize the node
+ Initialize the node
 ```
 wardend config set client chain-id alfama
 wardend config set client keyring-backend test
 wardend config set client node tcp://localhost:26657
 ```
 
-### Genesis
+ Genesis
 ```
 wget -O $HOME/.warden/config/genesis.json "https://raw.githubusercontent.com/warden-protocol/networks/main/testnet-alfama/genesis.json"
 ```
-### Addrbook 
+ Addrbook 
 ```
 curl -L https://snapshots-testnet.nodejumper.io/wardenprotocol-testnet/addrbook.json > $HOME/.warden/config/addrbook.json
 ```
@@ -50,7 +50,7 @@ sed -i -e 's|^seeds *=.*|seeds = "6a8de92a3bb422c10f764fe8b0ab32e1e334d0bd@sentr
 sed -i -e 's|^minimum-gas-prices *=.*|minimum-gas-prices = "0.01uward"|' $HOME/.warden/config/app.toml
 ```
 
-### Prunning
+ Prunning
 ```
 sed -i \
   -e 's|^pruning *=.*|pruning = "custom"|' \
@@ -59,12 +59,12 @@ sed -i \
   $HOME/.warden/config/app.toml
 ```
 
-### Custom Port (optional)
+ Custom Port (optional)
 ```
 sed -i.bak -e "s%:26658%:35658%; s%:26657%:35657%; s%:6060%:6960%; s%:26656%:35656%; s%:26660%:35660%" $HOME/.warden/config/config.toml && sed -i.bak -e "s%:9090%:9990%; s%:9091%:9991%; s%:1317%:2217%; s%:8545%:9445%; s%:8546%:9446%; s%:6065%:6965%" $HOME/.warden/config/app.toml && sed -i.bak -e "s%:26657%:35657%" $HOME/.warden/config/client.toml 
 ```
 
-### Create Service File
+ Create Service File
 ```
 sudo tee /etc/systemd/system/wardend.service > /dev/null << EOF
 [Unit]
@@ -81,7 +81,7 @@ WantedBy=multi-user.target
 EOF
 ```
 
-#### Start
+# Start
 ```
 sudo systemctl daemon-reload
 sudo systemctl enable wardend.service
@@ -89,7 +89,7 @@ sudo systemctl start wardend.service
 sudo journalctl -u wardend.service -f --no-hostname -o cat
 ```
 
-### Create Validator
+ Create Validator
 
 Heads up to the Cheat Sheets to create validator
 

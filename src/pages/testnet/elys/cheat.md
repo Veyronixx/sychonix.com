@@ -122,7 +122,7 @@ version: v1.1.1
   grid-template-columns: repeat(2, 1fr);
   grid-gap: 20px;
 }
-  ############################## INI ANU NAH WALLET MANAGEMENT #######################
+   INI ANU NAH WALLET MANAGEMENT ##
 </style>
  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
 <h3 for="iwallet">Wallet Management</h3>

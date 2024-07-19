@@ -52,7 +52,7 @@ const openNewTabLinks = ['Stake with me', 'PolkadotJS Explorer', 'Telemetry'];
             Stake with me
           </a>
         </div>
-        <section class="bg-primary-100 dark:bg-slate-800 items-center">
+        <section class="bg-primary-100 dark:bg-slate-300 items-center">
           <div class=" bg-transparent px-4 sm:px-6 py-4 text-md text-center font-medium">
             <li>
               <span class="font-bold">Network Type:</span> {network}
@@ -70,7 +70,7 @@ const openNewTabLinks = ['Stake with me', 'PolkadotJS Explorer', 'Telemetry'];
         <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3 items-start my-10 dark:text-white">
           {items.map(({ title, Link }) => (
             <a href={Link} target={title === 'Explorer' || title === 'Stake with me' ? '_blank' : '_self'}>
-              <div class="relative flex flex-col p-6 bg-red dark:bg-slate-900 rounded shadow-xl hover:shadow-lg transition dark:border dark:border-slate-800">
+              <div class="relative flex flex-col p-6 bg-dark dark:bg-slate-900 rounded shadow-xl hover:shadow-lg transition dark:border dark:border-slate-800">
                 <div class="flex items-center mb-4 text-center">
                   <div class="ml-4 text-xl font-bold text-center">{title}</div>
                 </div>

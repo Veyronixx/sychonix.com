@@ -7,7 +7,7 @@ chain: morocco-1
 version: v1.0.0-stable
 ---
 
-### Hardware requirements
+ Hardware requirements
 
 The following requirements are recommended for running Defund:
 
@@ -17,13 +17,13 @@ The following requirements are recommended for running Defund:
 - At least 100mbps network bandwidth
 
 
-### Install dependencies Required
+ Install dependencies Required
 
 ```
 sudo apt update && sudo apt upgrade -y && sudo apt install curl tar wget clang pkg-config libssl-dev jq build-essential bsdmainutils git make ncdu gcc git jq chrony liblz4-tool -y
 ```
 
-### Install go
+ Install go
 
 We are gonna use GO Version 1.20.2
 If you already have GO installed you can skip this 
@@ -40,7 +40,7 @@ source ~/.bash_profile
 go version
 ```
 
-### Install binary
+ Install binary
 
 ```
 cd $HOME
@@ -51,7 +51,7 @@ git checkout v1.0.0-stable
 make build
 ```
 
-### Prepare Cosmovisor
+ Prepare Cosmovisor
 ```
 mkdir -p $HOME/.terp/cosmovisor/genesis/bin
 mv build/terpd $HOME/.terp/cosmovisor/genesis/bin/
@@ -69,20 +69,20 @@ Verify that you've installed terpd successfully
 terpd version
 ```
 
-### Install Cosmovisor
+ Install Cosmovisor
 ```
 
 go install cosmossdk.io/tools/cosmovisor/cmd/cosmovisor@v1.4.0
 ```
 
-### Config app
+ Config app
 
 ```
 terpd config chain-id morocco-1
 terpd config keyring-backend file
 ```
 
-### Initialize Node
+ Initialize Node
 
 Please change `<YOUR_MONIKER>` To your own Moniker.
 
@@ -90,7 +90,7 @@ Please change `<YOUR_MONIKER>` To your own Moniker.
 terpd init <YOUR_MONIKER> --chain-id morocco-1
 ```
 
-### Download Genesis file and addrbook
+ Download Genesis file and addrbook
 
 - Genesis
 
@@ -104,7 +104,7 @@ curl -Ls https://snapshots.indonode.net/terp/genesis.json > $HOME/.terp/config/g
 curl -Ls https://snapshots.indonode.net/terp/addrbook.json > $HOME/.terp/config/addrbook.json
 ```
 
-### Configure Seeds and Peers
+ Configure Seeds and Peers
 
 ```
 SEEDS="c71e63b5da517984d55d36d00dc0dc2413d0ce03@seed.terp.network:26656"
@@ -112,7 +112,7 @@ PEERS=""
 sed -i 's|^seeds *=.*|seeds = "'$SEEDS'"|; s|^persistent_peers *=.*|persistent_peers = "'$PEERS'"|' $HOME/.terp/config/config.toml
 ```
 
-### config pruning
+ config pruning
 
 ```
 PRUNING="custom"
@@ -127,7 +127,7 @@ sed -i -e "s/^pruning-interval *=.*/pruning-interval = \
 ```
 
 
-### create service file and start node
+ create service file and start node
 
 Create service file
 Create a `terpd.service` file in the `/etc/systemd/system` folder with the following code. 
@@ -162,7 +162,7 @@ sudo systemctl enable terpd
 sudo systemctl restart terpd
 sudo journalctl -fu terpd -o cat
 ```
-### Create Validator
+ Create Validator
 
 Heads up to the Cheat Sheets to create validator
 

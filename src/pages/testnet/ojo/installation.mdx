@@ -7,7 +7,7 @@ chain: ojo-devnet
 version: v0.1.2
 ---
 
-### Hardware requirements
+ Hardware requirements
 
 The following requirements are recommended for running Defund:
 
@@ -17,13 +17,13 @@ The following requirements are recommended for running Defund:
 - At least 100mbps network bandwidth
 
 
-### Install dependencies Required
+ Install dependencies Required
 
 ```
 sudo apt update && sudo apt upgrade -y && sudo apt install curl tar wget clang pkg-config libssl-dev jq build-essential bsdmainutils git make ncdu gcc git jq chrony liblz4-tool -y
 ```
 
-### Install go
+ Install go
 
 We are gonna use GO Version 1.19.5
 If you already have GO installed you can skip this 
@@ -40,7 +40,7 @@ source ~/.bash_profile
 go version
 ```
 
-### Install binary
+ Install binary
 
 ```
 cd $HOME
@@ -57,7 +57,7 @@ Verify that you've installed ojod successfully
 ojod version
 ```
 
-### Prepare Cosmovisor
+ Prepare Cosmovisor
 ```
 mkdir -p $HOME/.ojo/cosmovisor/genesis/bin
 mv build/ojod $HOME/.ojo/cosmovisor/genesis/bin/
@@ -68,20 +68,20 @@ sudo ln -s $HOME/.ojo/cosmovisor/genesis $HOME/.ojo/cosmovisor/current
 sudo ln -s $HOME/.ojo/cosmovisor/current/bin/ojod /usr/local/bin/ojod
 ```
 
-### Install Cosmovisor
+ Install Cosmovisor
 ```
 
 go install cosmossdk.io/tools/cosmovisor/cmd/cosmovisor@v1.4.0
 ```
 
-### Config app
+ Config app
 
 ```
 ojod config chain-id ojo-devnet
 ojod config keyring-backend test
 ```
 
-### Initialize Node
+ Initialize Node
 
 Please change `<YOUR_MONIKER>` To your own Moniker.
 
@@ -89,7 +89,7 @@ Please change `<YOUR_MONIKER>` To your own Moniker.
 ojod init <YOUR_MONIKER> --chain-id ojo-devnet
 ```
 
-### Download Genesis file and addrbook
+ Download Genesis file and addrbook
 
 - Genesis
 
@@ -99,19 +99,19 @@ mv genesis.json ~/.ojo/config
 ```
 
 
-### Configure Seeds and Peers
+ Configure Seeds and Peers
 
 ```
 sed -i 's/seeds = ""/seeds = "ade4d8bc8cbe014af6ebdf3cb7b1e9ad36f412c0@testnet-seeds.polkachu.com:21656"/' ~/.ojo/config/config.toml
 ```
 
-### Set minimum-gas-prices
+ Set minimum-gas-prices
 
 ```
 sed -i -e "s|^minimum-gas-prices *=.*|minimum-gas-prices = \"0uojo\"|" $HOME/.ojo/config/app.toml
 ```
 
-### config pruning
+ config pruning
 
 ```
 PRUNING="custom"
@@ -126,7 +126,7 @@ sed -i -e "s/^pruning-interval *=.*/pruning-interval = \
 ```
 
 
-### create service file and start node
+ create service file and start node
 
 Create service file
 Create a `ojod.service` file in the `/etc/systemd/system` folder with the following code. 
@@ -153,7 +153,7 @@ WantedBy=multi-user.target
 EOF
 ```
 
-### Download Latest Snapshot
+ Download Latest Snapshot
 ```
 curl -L https://ojo-t.service.indonode.net/ojo-snapshot.tar.lz4 | lz4 -dc - | tar -xf - -C $HOME/.ojo
 [[ -f $HOME/.ojo/data/upgrade-info.json ]] && cp $HOME/.ojo/data/upgrade-info.json $HOME/.ojo/cosmovisor/genesis/upgrade-info.json
@@ -167,7 +167,7 @@ sudo systemctl enable ojod
 sudo systemctl restart ojod
 sudo journalctl -fu ojod -o cat
 ```
-### Create Validator
+ Create Validator
 
 Heads up to the Cheat Sheets to create validator
 

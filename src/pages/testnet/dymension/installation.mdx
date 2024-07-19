@@ -7,13 +7,13 @@ chain: 35-C
 version: v0.2.2-beta
 ---
 
-### Install dependencies Required
+ Install dependencies Required
 
 ```
 sudo apt update && sudo apt upgrade -y && sudo apt install curl tar wget clang pkg-config libssl-dev jq build-essential bsdmainutils git make ncdu gcc git jq chrony liblz4-tool -y
 ```
 
-### Install go
+ Install go
 
 We are gonna use GO Version 1.19.5
 If you already have GO installed you can skip this 
@@ -30,7 +30,7 @@ source ~/.bash_profile
 go version
 ```
 
-### Install binary
+ Install binary
 
 ```
 cd $HOME
@@ -41,7 +41,7 @@ git checkout v0.2.0-beta
 make build
 ```
 
-### Prepare Cosmovisor
+ Prepare Cosmovisor
 ```
 mkdir -p $HOME/.dymension/cosmovisor/genesis/bin
 mv bin/dymd $HOME/.dymension/cosmovisor/genesis/bin/
@@ -58,19 +58,19 @@ Verify that you've installed dymd successfully
 dymd version
 ```
 
-### Install Cosmovisor
+ Install Cosmovisor
 ```
 go install cosmossdk.io/tools/cosmovisor/cmd/cosmovisor@v1.4.0
 ```
 
-### Config app
+ Config app
 
 ```
 dymd config chain-id 35-C
 dymd config keyring-backend test
 ```
 
-### Initialize Node
+ Initialize Node
 
 Please change `<YOUR_MONIKER>` To your own Moniker.
 
@@ -78,7 +78,7 @@ Please change `<YOUR_MONIKER>` To your own Moniker.
 dymd init <YOUR_MONIKER> --chain-id 35-C
 ```
 
-### Download Genesis file and addrbook
+ Download Genesis file and addrbook
 
 - Genesis
 
@@ -87,13 +87,13 @@ curl -Ls https://raw.githubusercontent.com/dymensionxyz/testnets/main/dymension-
 ```
 
 
-### Configure Seeds and Peers
+ Configure Seeds and Peers
 
 ```
 sed -i -e "s|^seeds *=.*|seeds = \"c6cdcc7f8e1a33f864956a8201c304741411f219@3.214.163.125:26656 \"|" $HOME/.dymension/config/config.toml
 ```
 
-### config pruning
+ config pruning
 
 ```
 PRUNING="custom"
@@ -108,7 +108,7 @@ sed -i -e "s/^pruning-interval *=.*/pruning-interval = \
 ```
 
 
-### create service file and start node
+ create service file and start node
 
 Create service file
 Create a `dymd.service` file in the `/etc/systemd/system` folder with the following code. 
@@ -144,7 +144,7 @@ sudo systemctl restart dymd
 sudo journalctl -fu dymd -o cat
 ```
 
-### Create Validator
+ Create Validator
 
 Heads up to the Cheat Sheets to create validator
 

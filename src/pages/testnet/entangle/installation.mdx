@@ -7,7 +7,7 @@ chain: entangle_33133-1
 version: v1.0.1
 ---
 
-### Hardware requirements
+ Hardware requirements
 
 The following requirements are recommended for running :
 
@@ -17,13 +17,13 @@ The following requirements are recommended for running :
 - At least 100mbps network bandwidth
 
 
-### Install dependencies Required
+ Install dependencies Required
 
 ```
 sudo apt update && sudo apt upgrade -y && sudo apt install curl tar wget clang pkg-config libssl-dev jq build-essential bsdmainutils git make ncdu gcc git jq chrony liblz4-tool -y
 ```
 
-### Install go
+ Install go
 
 ```
 ver="1.20.4"
@@ -37,7 +37,7 @@ source ~/.bash_profile
 go version
 ```
 
-### Install binary
+ Install binary
 
 ```
 git clone https://github.com/Entangle-Protocol/entangle-blockchain
@@ -45,7 +45,7 @@ cd entangle-blockchain
 make install
 ```
 
-### Initialize Node
+ Initialize Node
 
 Please change `<MONIKER>` To your own Moniker.
 
@@ -55,7 +55,7 @@ entangled config chain-id entangle_33133-1
 entangled config keyring-backend test
 ```
 
-### Download Genesis file and addrbook
+ Download Genesis file and addrbook
 
 - Genesis
 
@@ -63,7 +63,7 @@ entangled config keyring-backend test
 wget -O $HOME/.entangled/config/genesis.json https://raw.githubusercontent.com/Entangle-Protocol/entangle-blockchain/main/config/genesis.json
 ```
 
-### Configure Seeds and Peers
+ Configure Seeds and Peers
 
 ```
 SEEDS="76492a1356c14304bdd7ec946a6df0b57ba51fe2@json-rpc.testnet.entangle.fi:26656"
@@ -73,7 +73,7 @@ sed -i.bak -e "s/^persistent_peers *=.*/persistent_peers = \"$peers\"/" $HOME/.e
 sed -i -e "s|^minimum-gas-prices *=.*|minimum-gas-prices = \"0.00aNGL\"|" $HOME/.entangled/config/app.toml
 ```
 
-### config pruning
+ config pruning
 
 ```
 pruning="custom"
@@ -87,7 +87,7 @@ sed -i -e "s/^pruning-interval *=.*/pruning-interval = \"$pruning_interval\"/" $
 ```
 
 
-### create service file and start node
+ create service file and start node
 
 Create service file
 
@@ -123,7 +123,7 @@ sudo systemctl restart entangled
 journalctl -fu entangled -o cat
 ```
 
-### Create Validator
+ Create Validator
 
 Heads up to the Cheat Sheets to create validator
 

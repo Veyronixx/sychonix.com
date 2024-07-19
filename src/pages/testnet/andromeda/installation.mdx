@@ -7,7 +7,7 @@ chain: galileo-3
 version: galileo-3-v1.1.0-beta1
 ---
 
-### Hardware requirements
+ Hardware requirements
 
 The following requirements are recommended for running Andromeda:
 
@@ -17,13 +17,13 @@ The following requirements are recommended for running Andromeda:
 - At least 100mbps network bandwidth
 
 
-### Install dependencies Required
+ Install dependencies Required
 
 ```
 sudo apt update && sudo apt upgrade -y && sudo apt install curl tar wget clang pkg-config libssl-dev jq build-essential bsdmainutils git make ncdu gcc git jq chrony liblz4-tool -y
 ```
 
-### Install go
+ Install go
 
 We are gonna use GO Version 1.19.5
 If you already have GO installed you can skip this 
@@ -40,7 +40,7 @@ source ~/.bash_profile
 go version
 ```
 
-### Install binary
+ Install binary
 
 ```
 cd $HOME
@@ -51,7 +51,7 @@ git checkout galileo-3-v1.1.0-beta1
 make build
 ```
 
-### Prepare Cosmovisor
+ Prepare Cosmovisor
 ```
 mkdir -p $HOME/.andromedad/cosmovisor/genesis/bin
 mv build/andromedad $HOME/.andromedad/cosmovisor/genesis/bin/
@@ -68,19 +68,19 @@ Verify that you've installed andromedad successfully
 andromedad version
 ```
 
-### Install Cosmovisor
+ Install Cosmovisor
 ```
 go install cosmossdk.io/tools/cosmovisor/cmd/cosmovisor@v1.4.0
 ```
 
-### Config app
+ Config app
 
 ```
 andromedad config chain-id galileo-3
 andromedad config keyring-backend test
 ```
 
-### Initialize Node
+ Initialize Node
 
 Please change `<YOUR_MONIKER>` To your own Moniker.
 
@@ -88,7 +88,7 @@ Please change `<YOUR_MONIKER>` To your own Moniker.
 andromedad init <YOUR_MONIKER> --chain-id galileo-3
 ```
 
-### Download Genesis file and addrbook
+ Download Genesis file and addrbook
 
 - Genesis
 
@@ -103,13 +103,13 @@ curl -Ls https://snapshots.indonode.net/andromeda-t/addrbook.json > $HOME/.andro
 ```
 
 
-### Configure Seeds and Peers
+ Configure Seeds and Peers
 
 ```
 sed -i -e "s|^seeds *=.*|seeds = \"3f472746f46493309650e5a033076689996c8881@andromeda-testnet.rpc.kjnodes.com:47659\"|" $HOME/.andromedad/config/config.toml
 ```
 
-### config pruning
+ config pruning
 
 ```
 PRUNING="custom"
@@ -124,7 +124,7 @@ sed -i -e "s/^pruning-interval *=.*/pruning-interval = \
 ```
 
 
-### create service file and start node
+ create service file and start node
 
 Create service file
 Create a `andromedad.service` file in the `/etc/systemd/system` folder with the following code. 
@@ -160,7 +160,7 @@ sudo systemctl restart andromedad
 sudo journalctl -fu andromedad -o cat
 ```
 
-### Create Validator
+ Create Validator
 
 Heads up to the Cheat Sheets to create validator
 

@@ -6,24 +6,24 @@ chain id : dancebox
 icon: tanssi
 ---
 
-### Update and install packages
+ Update and install packages
 ```
 apt update && apt upgrade -y
 apt install curl iptables build-essential git wget jq make gcc nano tmux htop nvme-cli pkg-config libssl-dev libleveldb-dev libgmp3-dev tar clang bsdmainutils ncdu unzip llvm libudev-dev make protobuf-compiler -y
 ```
-### Download Binary
+ Download Binary
 ```
 wget https://github.com/moondance-labs/tanssi/releases/download/v0.5.1/tanssi-node && \
 chmod +x ./tanssi-node
 ```
-### Create tanssi-data
+ Create tanssi-data
 ```
 adduser tanssi_service --system --no-create-home
 mkdir /var/lib/tanssi-data
 sudo chown -R tanssi_service /var/lib/tanssi-data
 mv ./tanssi-node /var/lib/tanssi-data
 ```
-### Create a Systemd Service
+ Create a Systemd Service
 ```
 sudo tee /etc/systemd/system/tanssi.service > /dev/null << EOF
 [Unit]
@@ -67,13 +67,13 @@ ExecStart=/var/lib/tanssi-data/tanssi-node \
 WantedBy=multi-user.target
 ```
 
-### Enable service and Start the Node
+ Enable service and Start the Node
 ```
 systemctl enable tanssi.service
 systemctl daemon-reload
 systemctl restart tanssi.service && journalctl -f -u tanssi.service
 ```
-### Create new wallet
+ Create new wallet
 ```
 ./tanssi-node key generate -w24
 ```

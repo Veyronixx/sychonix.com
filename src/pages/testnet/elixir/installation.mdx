@@ -5,19 +5,19 @@ network: Testnet
 icon: elixir
 ---
 
-### Install docker compose
+ Install docker compose
 ```
 sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
 ```
 ```
 sudo chmod +x /usr/local/bin/docker-compose
 ```
-### Setup your elixir node
+ Setup your elixir node
 Download the Dockerfile for the Elixir
 ```
 wget https://files.elixir.finance/Dockerfile
 ```
-### Setup the Dockerfile with your wallet info:
+ Setup the Dockerfile with your wallet info:
 ```
 nano Dockerfile
 ```
@@ -30,7 +30,7 @@ ENV PRIVATE_KEY=<your_private_key>
 ENV VALIDATOR_NAME=<your_name>
 ```
 Then press `ctrl + x`, then `y`, then `enter`
-### Build the Docker image
+ Build the Docker image
 ```
 docker build . -f Dockerfile -t elixir-validator
 ```
@@ -38,7 +38,7 @@ It will take some time to build but once its done you can run the validator by e
 ```
 docker run -it --name ev elixir-validator
 ```
-### Enrol your Wallet as a validator
+ Enrol your Wallet as a validator
 - Navigate to the [Elixir Network Dashboard](https://dashboard.elixir.finance/) with your wallet-connected browser. Connect with Metamask and switch to the Goerli network.
 
 - Claim your ELXR (If you were part of testnet V1 you would be eligible to receive ELXR). If you need Goerli ETH, you can ask in the [Discord server](https://discord.gg/puzc28Xq).

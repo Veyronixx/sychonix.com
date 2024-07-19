@@ -6,13 +6,13 @@ icon: cascadia
 chain: cascadia_6102-1
 version: v0.1.1
 ---
-### Setup
+ Setup
 This is the settings we use , you dont have to change anything
 
 - snapshot-interval= 1000
 - snapshot-keep-recent = 5
 
-### Intruction
+ Intruction
 
 ```
 systemctl stop cascadiad
@@ -38,7 +38,7 @@ sed -i.bak -e "s|^trust_hash *=.*|trust_hash = \"$SYNC_BLOCK_HASH\"|" \
 systemctl restart cascadiad && journalctl -fu cascadiad -o cat
 ```
 
-### Turn Off State-sync
+ Turn Off State-sync
 ```
 sed -i.bak -e "s|^enable *=.*|enable = false|" $HOME/.cascadiad/config/config.toml
 systemctl restart cascadiad && journalctl -fu cascadiad -o cat

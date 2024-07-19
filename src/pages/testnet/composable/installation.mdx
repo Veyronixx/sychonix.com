@@ -7,13 +7,13 @@ chain: banksy-testnet-2
 version: v2.3.2
 ---
 
-### Install Dependencies
+ Install Dependencies
 ```
 sudo apt update && sudo apt upgrade -y
 sudo apt install curl tar wget clang pkg-config libssl-dev jq build-essential bsdmainutils git make ncdu gcc git jq chrony liblz4-tool -y
 ```
 
-### Install Go
+ Install Go
 ```
 ver="1.19" && \
 wget "https://golang.org/dl/go$ver.linux-amd64.tar.gz" && \
@@ -25,7 +25,7 @@ source $HOME/.bash_profile && \
 go version
 ```
 
-### Download and build binaries
+ Download and build binaries
 ```
 cd $HOME
 git clone https://github.com/notional-labs/composable-testnet.git
@@ -35,14 +35,14 @@ make install
 banksyd version --long
 ```
 
-### Initialize the node
+ Initialize the node
 ```
 banksyd init <your_moniker> --chain-id banksy-testnet-2
 banksyd config chain-id banksy-testnet-2
 banksyd config keyring-backend test
 ```
 
-### Custom Port
+ Custom Port
 ```
 PORT=36
 banksyd config node tcp://localhost:${PORT}657
@@ -51,11 +51,11 @@ banksyd config node tcp://localhost:${PORT}657
 sed -i -e "s%^proxy_app = \"tcp://127.0.0.1:26658\"%proxy_app = \"tcp://127.0.0.1:${PORT}658\"%; s%^laddr = \"tcp://127.0.0.1:26657\"%laddr = \"tcp://127.0.0.1:${PORT}657\"%; s%^pprof_laddr = \"localhost:6060\"%pprof_laddr = \"localhost:${PORT}060\"%; s%^laddr = \"tcp://0.0.0.0:26656\"%laddr = \"tcp://0.0.0.0:${PORT}656\"%; s%^prometheus_listen_addr = \":26660\"%prometheus_listen_addr = \":${PORT}660\"%" $HOME/.banksy/config/config.toml
 sed -i -e "s%^address = \"tcp://0.0.0.0:1317\"%address = \"tcp://0.0.0.0:${PORT}317\"%; s%^address = \":8080\"%address = \":${PORT}080\"%; s%^address = \"0.0.0.0:9090\"%address = \"0.0.0.0:${PORT}090\"%; s%^address = \"0.0.0.0:9091\"%address = \"0.0.0.0:${PORT}091\"%; s%^address = \"0.0.0.0:8545\"%address = \"0.0.0.0:${PORT}545\"%; s%^ws-address = \"0.0.0.0:8546\"%ws-address = \"0.0.0.0:${PORT}546\"%" $HOME/.banksy/config/app.toml
 ```
-### Genesis
+ Genesis
 ```
 wget -O ~/.banksy/config/genesis.json https://raw.githubusercontent.com/notional-labs/composable-networks/main/testnet-2/genesis.json
 ```
-### Addrbook 
+ Addrbook 
 ```
 wget -O ~/.banksy/config/genesis.json https://raw.githubusercontent.com/sychonix/website/main/src/pages/testnet/composable/addrbook.json
 ```
@@ -68,7 +68,7 @@ SEEDS="20cda42604058d2ad0b21ef2b3cbad3feae81786@95.214.53.218:10656"
 sed -i -e "s|^seeds *=.*|seeds = \"$SEEDS\"|" $HOME/.banksy/config/config.toml
 ```
 
-### Prunning
+ Prunning
 ```
 sed -i \
 -e 's|^pruning *=.*|pruning = "custom"|' \
@@ -78,7 +78,7 @@ sed -i \
 $HOME/.banksy/config/app.toml
 ```
 
-### Service
+ Service
 ```
 sudo tee /etc/systemd/system/banksyd.service > /dev/null << EOF
 [Unit]
@@ -97,7 +97,7 @@ WantedBy=multi-user.target
 EOF
 ```
 
-#### Start
+# Start
 ```
 sudo systemctl daemon-reload
 sudo systemctl enable banksyd
@@ -105,7 +105,7 @@ sudo systemctl restart banksyd
 sudo journalctl -u banksyd -f -o cat
 ```
 
-### Create Validator
+ Create Validator
 
 Heads up to the Cheat Sheets to create validator
 

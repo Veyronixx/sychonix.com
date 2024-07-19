@@ -3,14 +3,14 @@ layout: '~/layouts/TestnetLayout.astro'
 icon: initia
 ---
 
-### Install dependencies 
+ Install dependencies 
 
 ```
 sudo apt update && sudo apt upgrade -y
 apt install curl iptables build-essential git wget jq make gcc nano tmux htop nvme-cli pkg-config libssl-dev libleveldb-dev tar clang bsdmainutils ncdu unzip libleveldb-dev -y
 ```
 
-### Install go
+ Install go
 ```
 ver="1.21.1"
 wget "https://golang.org/dl/go$ver.linux-amd64.tar.gz"
@@ -22,7 +22,7 @@ source ~/.bash_profile
 go version
 ```
 
-### Install binary
+ Install binary
 
 ```
 git clone https://github.com/initia-labs/initia
@@ -31,12 +31,12 @@ git checkout v0.2.12
 make install
 initiad version --long
 ```
-### Initialize the node
+ Initialize the node
 ```
 initiad init [moniker] --chain-id initiation-1
 ```
 
-### Genesis
+ Genesis
 ```
 wget https://initia.s3.ap-southeast-1.amazonaws.com/initiation-1/genesis.json
 cp genesis.json ~/.initia/config/genesis.json
@@ -49,14 +49,14 @@ sed -i -e "s/^seeds *=.*/seeds = \"$SEEDS\"/; s/^persistent_peers *=.*/persisten
 
 ```
 
-### Prunning
+ Prunning
 ```
 sed -i -e "s/^pruning *=.*/pruning = \"custom\"/" $HOME/.initia/config/app.toml
 sed -i -e "s/^pruning-keep-recent *=.*/pruning-keep-recent = \"100\"/" $HOME/.initia/config/app.toml
 sed -i -e "s/^pruning-interval *=.*/pruning-interval = \"50\"/" $HOME/.initia/config/app.toml
 ```
 
-### Service
+ Service
 ```
 sudo tee /etc/systemd/system/initiad.service > /dev/null << EOF
 [Unit]
@@ -73,14 +73,14 @@ WantedBy=multi-user.target
 EOF
 ```
 
-#### Start
+# Start
 ```
 sudo systemctl daemon-reload && \
 sudo systemctl enable initiad && \
 sudo systemctl start initiad && sudo journalctl -fu initiad -o cat
 ```
 
-### Create Validator
+ Create Validator
 
 Heads up to the Cheat Sheets to create validator
 

@@ -7,7 +7,7 @@ chain: arkh
 version: v2.0.0  
 ---
 
-### Hardware requirements
+ Hardware requirements
 
 The following requirements are recommended for running Defund:
 
@@ -17,13 +17,13 @@ The following requirements are recommended for running Defund:
 - At least 100mbps network bandwidth
 
 
-### Install dependencies Required
+ Install dependencies Required
 
 ```
 sudo apt update && sudo apt upgrade -y && sudo apt install curl tar wget clang pkg-config libssl-dev jq build-essential bsdmainutils git make ncdu gcc git jq chrony liblz4-tool -y
 ```
 
-### Install go
+ Install go
 ```
 ver="1.19.5"
 cd $HOME
@@ -36,7 +36,7 @@ source ~/.bash_profile
 go version
 ```
 
-### Install binary
+ Install binary
 
 ```
 cd $HOME
@@ -47,28 +47,28 @@ git checkout v2.0.0
 go install ./...
 ```
 
-### Initialize Node
+ Initialize Node
 ```
 arkhd init <MONIKER> --chain-id arkh
 arkhd config chain-id arkh
 arkhd config keyring-backend file
 ```
-### Genesis
+ Genesis
 ```
 curl -Ls https://raw.githubusercontent.com/vincadian/arkh-blockchain/master/genesis/genesis.json > $HOME/.arkh/config/genesis.json
 ```
-### Addrbook
+ Addrbook
 ```
 wget -O $HOME/.arkh/config/addrbook.json "https://raw.githubusercontent.com/sychonix/Mainnet/main/Arkh/addrbook.json"
 ```
 
-### Configure Seeds and Peers
+ Configure Seeds and Peers
 
 ```
 sed -i -e "s|^seeds *=.*|seeds = \"808f01d4a7507bf7478027a08d95c575e1b5fa3c@asc-dataseed.arkhadian.com:26656 \"|" $HOME/.arkh/config/config.toml
 ```
 
-### Config pruning
+ Config pruning
 
 ```
 PRUNING="custom"
@@ -83,7 +83,7 @@ sed -i -e "s/^pruning-interval *=.*/pruning-interval = \
 ```
 
 
-### create service file and start node
+ create service file and start node
 
 ```
 sudo tee /etc/systemd/system/arkhd.service > /dev/null << EOF
@@ -115,7 +115,7 @@ sudo systemctl restart arkhd
 sudo journalctl -fu arkhd -o cat
 ```
 
-### Create Validator
+ Create Validator
 
 Heads up to the Cheat Sheets to create validator
 

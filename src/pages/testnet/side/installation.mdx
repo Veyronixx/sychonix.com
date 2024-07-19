@@ -3,14 +3,14 @@ layout: '~/layouts/TestnetLayout.astro'
 icon: side
 ---
 
-### Install dependencies 
+ Install dependencies 
 
 ```
 sudo apt update && sudo apt upgrade -y
 apt install curl iptables build-essential git wget jq make gcc nano tmux htop nvme-cli pkg-config libssl-dev libleveldb-dev tar clang bsdmainutils ncdu unzip libleveldb-dev -y
 ```
 
-### Install go
+ Install go
 ```
 ver="1.21.1"
 wget "https://golang.org/dl/go$ver.linux-amd64.tar.gz"
@@ -22,7 +22,7 @@ source ~/.bash_profile
 go version
 ```
 
-### Install binary
+ Install binary
 
 ```
 cd $HOME
@@ -31,17 +31,17 @@ cd sidechain
 git checkout 0.0.1-75-gbd63479
 make install
 ```
-### Initialize the node
+ Initialize the node
 ```
 sided init your_moniker --chain-id side-testnet-1
 sided config chain-id side-testnet-1
 ```
 
-### Genesis
+ Genesis
 ```
 wget https://raw.githubusercontent.com/sideprotocol/testnet/main/shambhala/genesis.json -O $HOME/.sidechain/config/genesis.json
 ```
-### Addrbook 
+ Addrbook 
 ```
 wget -O $HOME/.sidechain/config/addrbook.json "https://raw.githubusercontent.com/obajay/nodes-Guides/main/Projects/Side_Protocol/addrbook.json"
 ```
@@ -58,7 +58,7 @@ sed -i 's/max_num_inbound_peers =.*/max_num_inbound_peers = 50/g' $HOME/.sidecha
 sed -i 's/max_num_outbound_peers =.*/max_num_outbound_peers = 50/g' $HOME/.sidechain/config/config.toml
 ```
 
-### Prunning
+ Prunning
 ```
 pruning="custom"
 pruning_keep_recent="1000"
@@ -70,7 +70,7 @@ sed -i -e "s/^pruning-keep-every *=.*/pruning-keep-every = \"$pruning_keep_every
 sed -i -e "s/^pruning-interval *=.*/pruning-interval = \"$pruning_interval\"/" $HOME/.sidechain/config/app.toml
 ```
 
-### Service
+ Service
 ```
 sudo tee /etc/systemd/system/sided.service > /dev/null <<EOF
 [Unit]
@@ -89,7 +89,7 @@ WantedBy=multi-user.target
 EOF
 ```
 
-#### Start
+# Start
 ```
 sudo systemctl daemon-reload
 sudo systemctl enable sided
@@ -97,7 +97,7 @@ sudo systemctl restart sided
 sudo journalctl -u sided -f -o cat
 ```
 
-### Create Validator
+ Create Validator
 
 Heads up to the Cheat Sheets to create validator
 

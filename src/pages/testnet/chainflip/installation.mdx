@@ -5,7 +5,7 @@ network: Testnet
 icon: chainflip
 ---
 
-### Adding Chainflip APT Repo
+ Adding Chainflip APT Repo
 ```
 sudo mkdir -p /etc/apt/keyrings
 curl -fsSL repo.chainflip.io/keys/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/chainflip.gpg
@@ -28,20 +28,20 @@ After that, add Chainflip's Repo to apt sources list:
 echo "deb [arch=amd64 signed-by=/etc/apt/keyrings/chainflip.gpg] https://repo.chainflip.io/perseverance/$(lsb_release -c -s) $(lsb_release -c -s) main" | sudo tee /etc/apt/sources.list.d/chainflip.list
 ```
 
-### Installing The Packages
+ Installing The Packages
 ```
 sudo apt update
 sudo apt install -y chainflip-cli chainflip-node chainflip-engine1.1
 ```
 
-### Generating Validator Keys
+ Generating Validator Keys
 ```
 chainflip-cli generate-keys --path /etc/chainflip/keys
 ```
 **Make sure to back up your Seed Phrase and make a note of the public keys and account ID. You will need the Seed Phrase if you ever need to restore your node or recover your funds if you lose access to the node. DO NOT LOSE THIS.**
 And you must ensure that the public Ethereum address generated above has at least 0.1 gETH. Make sure you send 0.1 gETH to this account's address before trying to add funds to your validator node
 
-### Create the engine config file
+ Create the engine config file
 Replace IP_ADDRESS_OF_YOUR_NODE with your server's public IP Address. To find it, use: `curl -w "\n" ifconfig.me`
 Additionally, provide the ws_endpoint and http_endpoint specific to your chosen Ethereum client. The format varies based on the client you're using.
 ```
@@ -93,7 +93,7 @@ http_endpoint = "http://a108a82b574a640359e360cf66afd45d-424380952.eu-central-1.
 # command_server_port = 36079
 ```
 
-### Starting the Node
+ Starting the Node
 ```
 sudo systemctl start chainflip-node
 ```
@@ -158,7 +158,7 @@ In the next section, you'll learn how to fund your node. After you do so the war
 {"tag":"","msg":"Processing SC block 3591 with block hash: 0xe3ba3f20dc6d6d5956a88e5fcae06cdbb5c9cbf486a8db50cc5a1403bb4f0446","level":"debug","ts":"2022-11-08T15:56:13.652392888+00:00","component":"SCObserver"} {"tag":"","msg":"Processing SC block 3592 with block hash: 0x34155ced75831f45b17af9a792e057eabe148428b450ece4408f546342343669","level":"debug","ts":"2022-11-08T15:56:19.052722257+00:00","component":"SCObserver"} {"tag":"","msg":"Processing SC block 3593 with block hash: 0x50fdbb6ad0657f0d818e783330d697186d649e793046c7f67f8120559243b5d6","level":"debug","ts":"2022-11-08T15:56:25.782233200+00:00","component":"SCObserver"} {"tag":"","msg":"Processing SC block 3594 with block hash: 0xb878309015b27f7b8bc19c67ff5774841d44d9ed4ce189ebd5df32d0a90e5ae5","level":"debug","ts":"2022-11-08T15:56:31.181866542+00:00","component":"SCObserver"} {"tag":"","msg":"Processing SC block 3595 with block hash: 0xa047c1f10f595cd73148aa4866a40edb3da87ddd13ae03351c19a8d677cb99ec","level":"debug","ts":"2022-11-08T15:56:37.890330488+00:00","component":"SCObserver"} {"tag":"","msg":"Processing SC block 3596 with block hash: 0xaecccf0842c7253bbbc736baa86cebc07d5e6dc6b5b95e73d1ace73e5552fcfd","level":"debug","ts":"2022-11-08T15:56:43.274036666+00:00","component":"SCObserver"} {"tag":"","msg":"Processing SC block 3597 with block hash: 0xc4218c16ed3f6745433ec4b50dde94cb3b1a917ee8ddc35f17dc4e956380a787","level":"debug","ts":"2022-11-08T15:56:50.015185019+00:00","component":"SCObserver"} {"tag":"","msg":"Processing SC block 3598 with block hash: 0x3a79dc208b48276e7b734da0c8702f817d1a435476d09cbd972f09d3e5786851","level":"debug","ts":"2022-11-08T15:56:55.406457068+00:00","component":"SCObserver"} {"tag":"","msg":"Processing SC block 3599 with block hash: 0x49a53aa5f42190e5dc38d2e44d96235c656eec4101edd7fb26869466635216c3","level":"debug","ts":"2022-11-08T15:57:00.797006133+00:00","component":"SCObserver"}
 ```
 
-### Enable systemd Services
+ Enable systemd Services
 Tell both the services to start again after a reboot:
 ```
 sudo systemctl enable chainflip-node
