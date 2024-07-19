@@ -6,8 +6,8 @@
     --bg-dark-slate-900: #0000ff;
     --text-primary: #ffffff; /* Teks putih */
     --text-muted: #ff0000;
-    --hover-bg-primary-400: #357ab7;
-    --card-bg: rgb(255, 0, 0); /* Transparansi card */
+    --hover-bg-primary-400: #ff0000;
+    --card-bg: rgb(31, 23, 23); /* Transparansi card */
   }
   
   /* Mode Gelap */
