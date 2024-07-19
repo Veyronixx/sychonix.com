@@ -15,10 +15,10 @@
     :root {
       --bg-primary-400: #000000;
       --bg-primary-100: #2a2a2e;
-      --bg-dark-slate-900: #121212;
-      --text-primary: #D1D5DB      ; /* Teks putih */
-      --text-muted: #888888;
-      --card-bg: rgba(0, 0, 0, 0.5); /* Transparansi card untuk mode gelap */
+      --bg-dark-slate-50: #121212;
+      --text-primary: #ff0000      ; /* Teks putih */
+      --text-muted: #ff0000;
+      --card-bg: rgb(153, 48, 48); /* Transparansi card untuk mode gelap */
     }
   }
   
