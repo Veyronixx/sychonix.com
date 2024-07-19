@@ -1,0 +1,24 @@
+/* src/styles/variables.css */
+
+:root {
+    --bg-primary-400: #000000;
+    --bg-primary-100: #e5f3ff;
+    --bg-dark-slate-900: #0000ff;
+    --text-primary: #ffffff; /* Teks putih */
+    --text-muted: #ff0000;
+    --hover-bg-primary-400: #357ab7;
+    --card-bg: rgb(255, 0, 0); /* Transparansi card */
+  }
+  
+  /* Mode Gelap */
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg-primary-400: #000000;
+      --bg-primary-100: #2a2a2e;
+      --bg-dark-slate-900: #121212;
+      --text-primary: #D1D5DB      ; /* Teks putih */
+      --text-muted: #888888;
+      --card-bg: rgba(0, 0, 0, 0.5); /* Transparansi card untuk mode gelap */
+    }
+  }
+  
