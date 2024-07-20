@@ -3,14 +3,14 @@ layout: '~/layouts/TestnetLayout.astro'
 icon: airchains
 ---
 
-### Install dependencies 
+ Install dependencies 
 
 ```
 sudo apt update && sudo apt upgrade -y
 apt install curl iptables build-essential git wget jq make gcc nano tmux htop nvme-cli pkg-config libssl-dev libleveldb-dev tar clang bsdmainutils ncdu unzip libleveldb-dev -y
 ```
 
-### Install go
+ Install go
 ```
 ver="1.21.1"
 wget "https://golang.org/dl/go$ver.linux-amd64.tar.gz"
@@ -22,7 +22,7 @@ source ~/.bash_profile
 go version
 ```
 
-### Install binary
+ Install binary
 
 ```
 cd $HOME
@@ -32,13 +32,13 @@ sudo mv junctiond /usr/local/bin/
 cd $HOME
 junctiond version
 ```
-### Initialize the node
+ Initialize the node
 ```
 junctiond config chain-id junction
 junctiond init "MyNode" --chain-id junction
 ```
 
-### Genesis
+ Genesis
 ```
 wget https://github.com/airchains-network/junction/releases/download/v0.1.0/genesis.json
 cp genesis.json ~/.junction/config/genesis.json
@@ -50,7 +50,7 @@ sed -i.bak -e "s/^minimum-gas-prices *=.*/minimum-gas-prices = \"0.025amf\"/;" ~
 sed -i 's|^persistent_peers *=.*|persistent_peers = "'$PEERS'"|' $HOME/.junction/config/config.toml
 ```
 
-### Prunning
+ Prunning
 ```
 pruning="custom" && \
 pruning_keep_recent="100" && \
@@ -62,7 +62,7 @@ sed -i -e "s/^pruning-keep-every *=.*/pruning-keep-every = \"$pruning_keep_every
 sed -i -e "s/^pruning-interval *=.*/pruning-interval = \"$pruning_interval\"/" $HOME/.junction/config/app.toml
 ```
 
-### Service
+ Service
 ```
 sudo tee /etc/systemd/system/junctiond.service > /dev/null <<EOF
 [Unit]
@@ -79,7 +79,7 @@ WantedBy=multi-user.target
 EOF
 ```
 
-#### Start
+# Start
 ```
 sudo systemctl daemon-reload
 sudo systemctl enable junctiond
@@ -87,7 +87,7 @@ sudo systemctl restart junctiond
 sudo journalctl -u junctiond -f --no-hostname -o cat
 ```
 
-### Create Validator
+ Create Validator
 
 Heads up to the Cheat Sheets to create validator
 
