@@ -1,5 +1,5 @@
 ---
-layout: '~/layouts/MarkdownLayout.astro'
+layout: '~/layouts/MainnetLayout.astro'
 title: Installation Node
 icon: arkhadian
 network: Mainnet
@@ -7,23 +7,14 @@ chain: arkh
 version: v2.0.0  
 ---
 
- Hardware requirements
-
-The following requirements are recommended for running Defund:
-
-- 4 or more physical CPU cores
-- At least 200GB of SSD disk storage
-- At least 8GB of memory (RAM)
-- At least 100mbps network bandwidth
-
-
- Install dependencies Required
+Install dependencies Required
 
 ```
 sudo apt update && sudo apt upgrade -y && sudo apt install curl tar wget clang pkg-config libssl-dev jq build-essential bsdmainutils git make ncdu gcc git jq chrony liblz4-tool -y
 ```
 
- Install go
+Install go
+
 ```
 ver="1.19.5"
 cd $HOME

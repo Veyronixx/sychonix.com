@@ -1,5 +1,5 @@
 ---
-layout: '~/layouts/MarkdownLayout.astro'
+layout: '~/layouts/TestnetLayout.astro'
 title: Node CLI Cheatsheet
 network: Testnet
 icon: nibiru
