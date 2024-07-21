@@ -7,7 +7,7 @@ const CONFIG = {
   basePathname: '/',
   trailingSlash: false,
 
-  title: 'sychonix - Highly Secured Staking Provider',
+  title: 'Sychonix - Service',
   description:
     'Validator & Node Operator Cosmos Networks',
   defaultImage: defaultImage,
