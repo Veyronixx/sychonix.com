@@ -1,5 +1,5 @@
 ---
-layout: '~/layouts/TestnetLayout.astro'
+layout: '~/layouts/MainnetLayout.astro'
 title: Node CLI Cheatsheet
 icon: arkhadian
 network: Mainnet
@@ -27,7 +27,7 @@ version: v2.0.0
       transform: translateY(-50%);
     }
     .my-pre .copy-btn:hover {
-      color: #c9d1d9;
+      color: #020617;
     }
     .my-pre .copy-btn::before {
       content: "\f0ea";
@@ -49,7 +49,6 @@ version: v2.0.0
 .input-group {
   margin-bottom: 20px;
 }
-#ff03a9f4
 .input-group label {
   display: block;
   margin-bottom: 5px;
@@ -57,6 +56,8 @@ version: v2.0.0
 }
 
 .input-group input {
+  color: rgb(0 0 0);
+  font-style: bold;
   width: 100%;
   padding: 10px;
   border: 1px solid #ccc;
@@ -66,7 +67,7 @@ version: v2.0.0
 
 .input-group input:focus {
   outline: none;
-  border-color: #0000FF;
+  	border-color: rgb(0 0 0);
 }
 
 .popup {
@@ -75,7 +76,7 @@ version: v2.0.0
 		  left: 0;
 		  width: 100%;
 		  height: 100%;
-		  background-color: rgba(0, 0, 0, 0.5);
+      border-color: rgb(45 212 191);
 		  display: flex;
 		  justify-content: center;
 		  align-items: center;
@@ -83,7 +84,7 @@ version: v2.0.0
 		}
 
 		.popup-content {
-		  background-color: white;
+		  background-color: black;
 		  padding: 20px;
 		  border-radius: 10px;
 		  text-align: center;
@@ -91,7 +92,7 @@ version: v2.0.0
 		  max-width: 80%;
 		  max-height: 80%;
 		  overflow: auto;
-		  color: red;
+		  color: black;
 		}
 
 		.closebtn {

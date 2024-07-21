@@ -57,6 +57,8 @@ version: galileo-3-v1.1.0-beta1
 }
 
 .input-group input {
+  color: rgb(0 0 0);
+  font-style: bold;
   width: 100%;
   padding: 10px;
   border: 1px solid #ccc;

@@ -57,6 +57,8 @@ version: 0.1.1-test
 }
 
 .input-group input {
+  color: rgb(0 0 0);
+  font-style: bold;
   width: 100%;
   padding: 10px;
   border: 1px solid #ccc;
