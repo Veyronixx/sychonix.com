@@ -16,115 +16,98 @@ version: v1.6.2
     padding: 10px;
     position: relative;
   }
-.my-pre .copy-btn {
-      background-color: transparent;
-      border: none;
-      cursor: pointer;
-      font-size: 16px;
-      position: absolute;
-      top: 50%;
-      right: 10px;
-      transform: translateY(-50%);
-    }
-    .my-pre .copy-btn:hover {
-      color: #c9d1d9;
-    }
-    .my-pre .copy-btn::before {
-      content: "\f0ea";
-      font-family: "Font Awesome 5 Free";
-      font-weight: 900;
-    }
 
+  .input-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
 
-   .input-row {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-}
+  .input-col {
+    width: 48%;
+  }
 
-.input-col {
-  width: 48%;
-}
+  .input-group {
+    margin-bottom: 20px;
+  }
 
-.input-group {
-  margin-bottom: 20px;
-}
-#ff03a9f4
-.input-group label {
-  display: block;
-  margin-bottom: 5px;
-  font-weight: bold;
-}
+  .input-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
 
-.input-group input {
-  color: rgb(0 0 0);
-  font-style: bold;
-  width: 100%;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  font-size: 16px;
-}
+  .input-group input {
+    color: rgb(0 0 0);
+    font-style: bold;
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+  }
 
-.input-group input:focus {
-  outline: none;
-  border-color: #0000FF;
-}
+  .input-group input:focus {
+    outline: none;
+    border-color: rgb(0 0 0);
+  }
 
-.popup {
-		  position: fixed;
-		  top: 0;
-		  left: 0;
-		  width: 100%;
-		  height: 100%;
-		  background-color: rgba(0, 0, 0, 0.5);
-		  display: flex;
-		  justify-content: center;
-		  align-items: center;
-		  z-index: 9999;
-		}
+  .popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-color: rgb(45 212 191);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+  }
 
-		.popup-content {
-		  background-color: white;
-		  padding: 20px;
-		  border-radius: 10px;
-		  text-align: center;
-		  font-size: 18px;
-		  max-width: 80%;
-		  max-height: 80%;
-		  overflow: auto;
-		  color: red;
-		}
+  .popup-content {
+    background-color: black;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    font-size: 18px;
+    max-width: 80%;
+    max-height: 80%;
+    overflow: auto;
+    color: black;
+  }
 
-		.closebtn {
-		  position: absolute;
-		  top: 10px;
-		  right: 10px;
-		  font-size: 20px;
-		  font-weight: bold;
-		  cursor: pointer;
-		}
-    .input-moci {
-  width: calc(50% - 20px);
-  margin-bottom: 20px;
-}
+  .closebtn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+  }
 
-.input-moci label {
-  display: block;
-  margin-bottom: 5px;
-}
+  .input-moci {
+    width: calc(50% - 20px);
+    margin-bottom: 20px;
+  }
 
-.input-moci input {
-  width: 100%;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
-.container {
- display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-gap: 20px;
-}
+  .input-moci label {
+    display: block;
+    margin-bottom: 5px;
+  }
+
+  .input-moci input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+
+  .container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 20px;
+  }
    INI ANU NAH WALLET MANAGEMENT ##
 </style>
  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
