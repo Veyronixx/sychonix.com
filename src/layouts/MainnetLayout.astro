@@ -1,17 +1,18 @@
 ---
 import Layout from '~/layouts/PageLayout.astro';
+import { getImagePath } from '~/utils/imageUtils.js';
 
 import type { MetaSEO } from '~/types';
 
 export interface Props {}
-
-import { Icon } from 'astro-icon';
 
 const { frontmatter } = Astro.props;
 
 const meta: MetaSEO = {
   title: frontmatter?.title,
 };
+
+const iconPath = getImagePath(frontmatter.icon);
 ---
 
 <style>
@@ -21,7 +22,7 @@ const meta: MetaSEO = {
     border-radius: 50%;
     overflow: hidden;
     display: inline-block;
-    background-color: white; /* Optional: background color for the icon */
+    background-color: rgba(255, 255, 255, 0); /* Optional: background color for the icon */
   }
   .circular-icon img {
     width: 100%;
@@ -34,7 +35,7 @@ const meta: MetaSEO = {
   <section class="px-4 py-16 sm:px-6 mx-auto lg:px-8 lg:py-20 max-w-4xl text-white">
     <div class="text-center pb-5 md:pb-5 max-w-5xl mx-auto">
       <div class="circular-icon">
-        <Icon name={frontmatter.icon} class="w-full h-full" />
+        {iconPath ? <img src={iconPath} alt="Icon" class="w-full h-full" /> : null}
       </div>
       <h1 class="text-1xl md:text-[2.50rem] font-bold leading-tighter tracking-tighter mb-4 font-heading text-white">
         {frontmatter.title}
