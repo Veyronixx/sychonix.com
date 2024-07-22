@@ -4,43 +4,31 @@ import { getCanonical, getHomePermalink } from '~/utils/permalinks';
 import Layout from '~/layouts/PageLayout.astro';
 import { Icon } from 'astro-icon';
 
-const name= 'Composable'; 
- const icon= 'composable'; 
- const network= 'Testnet'; 
- const chain= 'banksy-testnet-2'; 
- const version= 'v2.3.3-testnet2fork'; 
- const stake= 'https://explorer.sychonix.com/composable-2/staking/banksyvaloper1z80je45vp9d3cn2j6k5cp2axfxfejxwlwp8dy2'; 
- const social = [
-  { label: 'Twitter', icon: 'tabler:brand-twitter', href: 'https://twitter.com/ComposableFin' },
-  { label: 'Discord', icon: 'tabler:brand-discord', href: 'http://discord.gg/composable' },
-  { label: 'Chrome',  icon: 'tabler:brand-chrome', href: 'https://y.at/%F0%9F%8E%A8%F0%9F%9A%A2%E2%9B%93%F0%9F%8E%A8' },
+const name= 'Andromeda';
+const icon= 'dill';
+const network= 'Testnet';
+const chain= 'galileo-';
+const version= '';
+const stake= '#';
+const social = [
+  { label: 'Twitter', icon: 'tabler:brand-twitter', href: 'https://x.com/dill_xyz_' },
+  { label: 'Discord', icon: 'tabler:brand-discord', href: 'https://discord.gg/dill' },
+  { label: 'Chrome',  icon: 'tabler:brand-chrome', href: 'https://www.dill.xyz/' },
 ];
- const meta = { 
-         title: SITE.title, 
-         description: SITE.description, 
-         canonical: getCanonical(getHomePermalink()),
- };
+const meta = {
+	title: SITE.title,
+	description: SITE.description,
+	canonical: getCanonical(getHomePermalink()),
+};
 
 const items = [
 	{
 		title: 'Explorer',
-		Link: 'https://explorer.sychonix.com/composable-2',
+		Link: 'https://andes.dill.xyz',
 	},
 	{
 		title: 'Node installation',
-		Link: 'https://service.sychonix.com/testnet/composable/installation',
-	},
-  {
-		title: 'Genesis file',
-		Link: 'https://service.sychonix.com/testnet/composable/genesis',
-	},
-  {
-		title: 'Addrbook',
-		Link: 'https://service.sychonix.com/testnet/composable/addrbook',
-	},
-	{
-		title: 'CLI Cheatsheet',
-		Link: 'https://service.sychonix.com/testnet/composable/cheat',
+		Link: 'https://service.sychonix.com/testnet/dill/installation',
 	},
 ]	
 ---
@@ -117,4 +105,3 @@ const items = [
     </div>
   </section>
 </Layout>
-
