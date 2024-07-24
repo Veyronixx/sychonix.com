@@ -1,5 +1,5 @@
 ---
-layout: '~/layouts/archiveLayout.astro'
+layout: '~/layouts/ArchiveLayout.astro'
 title: Node CLI Cheatsheet
 network: archive
 icon: cascadia
