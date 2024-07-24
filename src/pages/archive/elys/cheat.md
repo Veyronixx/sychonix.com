@@ -1,9 +1,9 @@
 ---
-layout: '~/layouts/TestnetLayout.astro'
+layout: '~/layouts/archiveLayout.astro'
 title: Node CLI Cheatsheet
 icon : elys
-network: Testnet
-chain: elystestnet-1
+network: archive
+chain: elysarchive-1
 version: v1.1.1
 ---
 
@@ -184,7 +184,7 @@ version: v1.1.1
 --details="<span class="rdetails1"></span>" \
 --website="<span class="rwebsite1"></span>" \
 --security-contact=<span class="rcontact1"></span> \
---chain-id=elystestnet-1 \
+--chain-id=elysarchive-1 \
 --commission-rate=<span class="rcommission1"></span> \
 --commission-max-rate=0.20\
 --commission-max-change-rate=0.01 \
@@ -221,7 +221,7 @@ elysd tx staking edit-validator \
 --identity="<span class="reditidentity1"></span>" \
 --details="<span class="reditdetails1"></span>" \
 --website="<span class="reditweb1"></span>" \
---chain-id=elystestnet-1 \
+--chain-id=elysarchive-1 \
 --commission-rate=0.07 \
 --from=<span class="rwallet9"> \
 --gas="1000000" \
@@ -229,7 +229,7 @@ elysd tx staking edit-validator \
 
 
 <label for="iwallet" style="vertical-align: top;">3. Unjail Validator</label>
-<pre class="my-pre"> elysd tx slashing unjail --broadcast-mode=block --from <span class="rwallet10">  </span> --chain-id elystestnet-1 --gas="1000000" --gas-prices="0uelys"
+<pre class="my-pre"> elysd tx slashing unjail --broadcast-mode=block --from <span class="rwallet10">  </span> --chain-id elysarchive-1 --gas="1000000" --gas-prices="0uelys"
 </pre>
 
 <label for="iwallet" style="vertical-align: top;">4. Jail Reason</label>
@@ -242,32 +242,32 @@ elysd tx staking edit-validator \
 
 <h3 for="imoniker">Token Management</h3>
 <label for="ivalidator" style="vertical-align: top;">1. Withdraw rewards from all validators</label>
-<pre class="my-pre"> elysd tx distribution withdraw-all-rewards --from <span class="rwallet12"></span> --chain-id elystestnet-1 --gas="1000000" --gas-prices="0uelys"</pre>
+<pre class="my-pre"> elysd tx distribution withdraw-all-rewards --from <span class="rwallet12"></span> --chain-id elysarchive-1 --gas="1000000" --gas-prices="0uelys"</pre>
 
 <label for="ivalidator" style="vertical-align: top;">2. Withdraw commission and rewards from your validator</label>
-<pre class="my-pre"> elysd tx distribution withdraw-rewards $(elysd keys show <span class="rwallet13"></span> --bech val -a) --commission --from <span class="rwallet14"></span> --chain-id elystestnet-1 --gas="1000000" --gas-prices="0uelys" --gas-prices="0uelys"</pre>
+<pre class="my-pre"> elysd tx distribution withdraw-rewards $(elysd keys show <span class="rwallet13"></span> --bech val -a) --commission --from <span class="rwallet14"></span> --chain-id elysarchive-1 --gas="1000000" --gas-prices="0uelys" --gas-prices="0uelys"</pre>
 
 <div class="input-group">
 
 <label for="idelegetet" style="vertical-align: top;">3. Delegate tokens to yourself</label>
   <input id="idelegete" type="text" placeholder="Enter Amount" oninput="updatePre()" />
 </div>
- <pre class="my-pre" id="pre1" style="margin-top: 5px;">elysd tx staking delegate $(elysd keys show <span class="rwallet15"></span> --bech val -a) <span class="rdelegete1"></span>00000000uelys --from <span class="rwallet16"></span> --chain-id elystestnet-1 --gas="1000000" --gas-prices="0uelys"  </pre>
+ <pre class="my-pre" id="pre1" style="margin-top: 5px;">elysd tx staking delegate $(elysd keys show <span class="rwallet15"></span> --bech val -a) <span class="rdelegete1"></span>00000000uelys --from <span class="rwallet16"></span> --chain-id elysarchive-1 --gas="1000000" --gas-prices="0uelys"  </pre>
 
  <div class="input-group">
 
 <label for="iredelegetet" style="vertical-align: top;">4. Redelegate tokens to another validator</label>
   <input id="iredelegete" type="text" placeholder="Enter <TO_VALOPER_ADDRESS>" oninput="updatePre()" />
 </div>
- <pre class="my-pre" id="pre1" style="margin-top: 5px;"> elysd tx staking redelegate $(elysd keys show <span class="rwallet17"></span> --bech val -a) <span class="rredelegete1"></span> <span class="rdelegete2"></span>00000000uelys --from <span class="rwallet18"></span> --chain-id elystestnet-1 --gas="1000000" --gas-prices="0uelys"
+ <pre class="my-pre" id="pre1" style="margin-top: 5px;"> elysd tx staking redelegate $(elysd keys show <span class="rwallet17"></span> --bech val -a) <span class="rredelegete1"></span> <span class="rdelegete2"></span>00000000uelys --from <span class="rwallet18"></span> --chain-id elysarchive-1 --gas="1000000" --gas-prices="0uelys"
 </pre>
 
 <label for="iredelegetet" style="vertical-align: top;">5. Delegate tokens to validator</label>
- <pre class="my-pre" id="pre1" style="margin-top: 5px;"> elysd tx staking delegate <span class="rredelegete2"></span> <span class="rdelegete3"></span>00000000uelys --from <span class="rwallet19"></span> --chain-id elystestnet-1 --gas="1000000" --gas-prices="0uelys"
+ <pre class="my-pre" id="pre1" style="margin-top: 5px;"> elysd tx staking delegate <span class="rredelegete2"></span> <span class="rdelegete3"></span>00000000uelys --from <span class="rwallet19"></span> --chain-id elysarchive-1 --gas="1000000" --gas-prices="0uelys"
  </pre>
 
 <label for="iredelegetet" style="vertical-align: top;">6. Unbond tokens from your validator</label>
- <pre class="my-pre" id="pre1" style="margin-top: 5px;"> elysd tx staking unbond $(elysd keys show <span class="rwallet20"></span> --bech val -a) <span class="rdelegete4"></span>00000000uelys --from <span class="rwallet21"></span> --chain-id elystestnet-1 --gas="1000000" --gas-prices="0uelys"
+ <pre class="my-pre" id="pre1" style="margin-top: 5px;"> elysd tx staking unbond $(elysd keys show <span class="rwallet20"></span> --bech val -a) <span class="rdelegete4"></span>00000000uelys --from <span class="rwallet21"></span> --chain-id elysarchive-1 --gas="1000000" --gas-prices="0uelys"
 </pre>
 </div>
 
@@ -278,7 +278,7 @@ elysd tx staking edit-validator \
 
 </div>
  <pre class="my-pre" id="pre1" style="margin-top: 5px;">
-elysd tx bank send<span class="rwallet22"></span> <span class="rtoken1"></span> <span class="rdelegete5"></span>000000000uelys --from <span class="rwallet23"></span> --chain-id elystestnet-1 --gas="1000000" --gas-prices="0uelys"
+elysd tx bank send<span class="rwallet22"></span> <span class="rtoken1"></span> <span class="rdelegete5"></span>000000000uelys --from <span class="rwallet23"></span> --chain-id elysarchive-1 --gas="1000000" --gas-prices="0uelys"
 </pre></div>
 
 <h3 for="iwallet">Costum Port</h3>

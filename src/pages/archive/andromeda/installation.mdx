@@ -1,7 +1,7 @@
 ---
-layout: '~/layouts/TestnetLayout.astro'
+layout: '~/layouts/archiveLayout.astro'
 title: Installation Node
-network: Testnet
+network: archive
 icon: andromeda
 chain: galileo-3
 version: galileo-3-v1.1.0-beta1
@@ -106,7 +106,7 @@ curl -Ls https://snapshots.indonode.net/andromeda-t/addrbook.json > $HOME/.andro
  Configure Seeds and Peers
 
 ```
-sed -i -e "s|^seeds *=.*|seeds = \"3f472746f46493309650e5a033076689996c8881@andromeda-testnet.rpc.kjnodes.com:47659\"|" $HOME/.andromedad/config/config.toml
+sed -i -e "s|^seeds *=.*|seeds = \"3f472746f46493309650e5a033076689996c8881@andromeda-archive.rpc.kjnodes.com:47659\"|" $HOME/.andromedad/config/config.toml
 ```
 
  config pruning
@@ -133,7 +133,7 @@ You can change `USER` with your Linux user name. You need sudo previlege to do t
 ```
 sudo tee /etc/systemd/system/andromedad.service > /dev/null << EOF
 [Unit]
-Description=andromeda-testnet node service
+Description=andromeda-archive node service
 After=network-online.target
 
 [Service]
@@ -164,6 +164,6 @@ sudo journalctl -fu andromedad -o cat
 
 Heads up to the Cheat Sheets to create validator
 
-<a href="https://service.sychonix.com/testnet/andromeda/cheat" target="_blank">
+<a href="https://service.sychonix.com/archive/andromeda/cheat" target="_blank">
   <button style="background-color: green; border: none; color: white; padding: 15px 32px; text-align: center; text-decoration: none; display: inline-block; font-size: 16px; margin: 4px 2px; cursor: pointer; border-radius: 10px; box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);" onmouseover="this.style.boxShadow='0 0 0 4px rgba(0,255,0,0.5)'" onmouseout="this.style.boxShadow='0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)'">CLI Cheatsheets</button>
 </a>

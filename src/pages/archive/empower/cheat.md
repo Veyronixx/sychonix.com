@@ -1,7 +1,7 @@
 ---
-layout: '~/layouts/TestnetLayout.astro'
+layout: '~/layouts/archiveLayout.astro'
 title: Node CLI Cheatsheet
-network: Testnet
+network: archive
 icon: empower
 chain: circulus-1
 version: v1.0.0-rc1

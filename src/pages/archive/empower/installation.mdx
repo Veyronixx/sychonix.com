@@ -1,7 +1,7 @@
 ---
-layout: '~/layouts/TestnetLayout.astro'
+layout: '~/layouts/archiveLayout.astro'
 title: Installation Node
-network: Testnet
+network: archive
 icon: empower
 chain: circulus-1
 version: v1.0.0-rc1
@@ -55,19 +55,19 @@ sed -i -e "s%^address = \"tcp://localhost:1317\"%address = \"tcp://localhost:${P
 
  Genesis
 ```
-wget -O $HOME/.empowerchain/config/genesis.json "https://raw.githubusercontent.com/EmpowerPlastic/empowerchain/main/testnets/circulus-1/genesis.json"
+wget -O $HOME/.empowerchain/config/genesis.json "https://raw.githubusercontent.com/EmpowerPlastic/empowerchain/main/archives/circulus-1/genesis.json"
 ```
 
  Addrbook
 ```
-wget -O $HOME/.empowerchain/config/addrbook.json https://raw.githubusercontent.com/sychonix/website/main/src/pages/testnet/empower/addrbook.json
+wget -O $HOME/.empowerchain/config/addrbook.json https://raw.githubusercontent.com/sychonix/website/main/src/pages/archive/empower/addrbook.json
 ```
 
  Seed & Peer & Gas
 ```
 peers=""
 sed -i.bak -e "s/^persistent_peers *=.*/persistent_peers = \"$peers\"/" $HOME/.empowerchain/config/config.toml
-seeds="ade4d8bc8cbe014af6ebdf3cb7b1e9ad36f412c0@testnet-seeds.polkachu.com:17456"
+seeds="ade4d8bc8cbe014af6ebdf3cb7b1e9ad36f412c0@archive-seeds.polkachu.com:17456"
 sed -i.bak -e "s/^seeds =.*/seeds = \"$seeds\"/" $HOME/.empowerchain/config/config.toml
 sed -i 's/max_num_inbound_peers =.*/max_num_inbound_peers = 50/g' $HOME/.empowerchain/config/config.toml
 sed -i 's/max_num_outbound_peers =.*/max_num_outbound_peers = 50/g' $HOME/.empowerchain/config/config.toml
@@ -98,7 +98,7 @@ sed -i -e "s/^indexer *=.*/indexer = \"$indexer\"/" $HOME/.empowerchain/config/c
 ```
 sudo tee /etc/systemd/system/empowerd.service << EOF
 [Unit]
-Description=empower-testnet
+Description=empower-archive
 After=network-online.target
 
 [Service]
@@ -124,6 +124,6 @@ sudo journalctl -u empowerd -f -o cat
 
 Heads up to the Cheat Sheets to create validator
 
-<a href="https://service.sychonix.com/testnet/empower/cheat" target="_blank">
+<a href="https://service.sychonix.com/archive/empower/cheat" target="_blank">
   <button style="background-color: green; border: none; color: white; padding: 15px 32px; text-align: center; text-decoration: none; display: inline-block; font-size: 16px; margin: 4px 2px; cursor: pointer; border-radius: 10px; box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);" onmouseover="this.style.boxShadow='0 0 0 4px rgba(0,255,0,0.5)'" onmouseout="this.style.boxShadow='0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)'">CLI Cheatsheets</button>
 </a>

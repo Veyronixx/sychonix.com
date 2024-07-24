@@ -1,7 +1,7 @@
 ---
-layout: '~/layouts/TestnetLayout.astro'
+layout: '~/layouts/archiveLayout.astro'
 title: Installation Node
-network: Testnet
+network: archive
 icon: ojo
 chain: ojo-devnet
 version: v0.1.2
@@ -94,7 +94,7 @@ ojod init <YOUR_MONIKER> --chain-id ojo-devnet
 - Genesis
 
 ```
-wget -O genesis.json https://snapshots.polkachu.com/testnet-genesis/ojo/genesis.json --inet4-only
+wget -O genesis.json https://snapshots.polkachu.com/archive-genesis/ojo/genesis.json --inet4-only
 mv genesis.json ~/.ojo/config
 ```
 
@@ -102,7 +102,7 @@ mv genesis.json ~/.ojo/config
  Configure Seeds and Peers
 
 ```
-sed -i 's/seeds = ""/seeds = "ade4d8bc8cbe014af6ebdf3cb7b1e9ad36f412c0@testnet-seeds.polkachu.com:21656"/' ~/.ojo/config/config.toml
+sed -i 's/seeds = ""/seeds = "ade4d8bc8cbe014af6ebdf3cb7b1e9ad36f412c0@archive-seeds.polkachu.com:21656"/' ~/.ojo/config/config.toml
 ```
 
  Set minimum-gas-prices
@@ -135,7 +135,7 @@ You can change `USER` with your Linux user name. You need sudo previlege to do t
 ```
 sudo tee /etc/systemd/system/ojod.service > /dev/null << EOF
 [Unit]
-Description=ojo-testnet node service
+Description=ojo-archive node service
 After=network-online.target
 
 [Service]
@@ -171,6 +171,6 @@ sudo journalctl -fu ojod -o cat
 
 Heads up to the Cheat Sheets to create validator
 
-<a href="https://service.sychonix.com/testnet/ojo/cheat" target="_blank">
+<a href="https://service.sychonix.com/archive/ojo/cheat" target="_blank">
   <button style="background-color: green; border: none; color: white; padding: 15px 32px; text-align: center; text-decoration: none; display: inline-block; font-size: 16px; margin: 4px 2px; cursor: pointer; border-radius: 10px; box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);" onmouseover="this.style.boxShadow='0 0 0 4px rgba(0,255,0,0.5)'" onmouseout="this.style.boxShadow='0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)'">CLI Cheatsheets</button>
 </a>

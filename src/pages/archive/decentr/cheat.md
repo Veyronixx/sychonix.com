@@ -1,5 +1,5 @@
 ---
-layout: '~/layouts/TestnetLayout.astro'
+layout: '~/layouts/archiveLayout.astro'
 title: Node CLI Cheatsheet
 icon: decentr
 network: Mainnet

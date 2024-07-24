@@ -1,7 +1,7 @@
 ---
-layout: '~/layouts/TestnetLayout.astro'
+layout: '~/layouts/archiveLayout.astro'
 title: Installation Node
-network: Testnet
+network: archive
 icon: creditcoin
 ---
 
@@ -17,7 +17,7 @@ sudo apt update; sudo apt upgrade
 
  Download Image
 ```
-docker pull gluwa/creditcoin:2.222.2-testnet 
+docker pull gluwa/creditcoin:2.222.2-archive 
 ```
 
  Run node
@@ -26,12 +26,12 @@ docker run -d \
  --name creditcoin-validator \
  -p 30333:30333 \
  -v  creditcoin/creditcoin-node/data  \
- gluwa/creditcoin:2.222.2-testnet \
+ gluwa/creditcoin:2.222.2-archive \
  --name "YOUR_VALIDATOR_NAME" \
  --telemetry-url "wss://telemetry.creditcoin.network/submit/ 0" \
  --public-addr "/dns4/YOUR_VPS_IP/tcp/30333" \
 --chain test \
- --bootnodes "/dns4/testnet-bootnode.creditcoin.network/tcp/30333/p2p/12D3KooWG3eEuYxo37LvU1g6SSESu4i9TQ8FrZmJcjvdys7eA3cH" "/dns4/testnet-bootnode2.creditcoin.network/tcp/30333/p2p/12D3KooWLq7wCMQS3qVMCNJ2Zm6rYuYh74cM99i9Tm8PMdqJPDzb" "/dns4/testnet-bootnode3.creditcoin.network/tcp/30333/p2p/12D3KooWAKUrvmchoLomoouoN1sKfF9kq8dYtCVFvtPuvqp7wFBS" \
+ --bootnodes "/dns4/archive-bootnode.creditcoin.network/tcp/30333/p2p/12D3KooWG3eEuYxo37LvU1g6SSESu4i9TQ8FrZmJcjvdys7eA3cH" "/dns4/archive-bootnode2.creditcoin.network/tcp/30333/p2p/12D3KooWLq7wCMQS3qVMCNJ2Zm6rYuYh74cM99i9Tm8PMdqJPDzb" "/dns4/archive-bootnode3.creditcoin.network/tcp/30333/p2p/12D3KooWAKUrvmchoLomoouoN1sKfF9kq8dYtCVFvtPuvqp7wFBS" \
 --validator \
 --base-path /creditcoin-node/data \
 --port 30333
@@ -47,7 +47,7 @@ create 2 wallets and don't forget to save pharse
 ```
 docker exec -it creditcoin-validator creditcoin-cli new
 ```
-send faucets [via website](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Frpc.testnet.creditcoin.network%2Fws#/accounts) to the first and second accounts then run the validator
+send faucets [via website](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Frpc.archive.creditcoin.network%2Fws#/accounts) to the first and second accounts then run the validator
 ```
 docker exec -it creditcoin-validator creditcoin-cli wizard -a 5000
 ```
@@ -64,4 +64,4 @@ stash is filled using the first pharse wallet and controller is filled using the
 ```
 
  Check your validator
-To check whether the validator is active or not, you can log in to [via the following link](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Frpc.testnet.creditcoin.network%2Fws#/staking) 
+To check whether the validator is active or not, you can log in to [via the following link](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Frpc.archive.creditcoin.network%2Fws#/staking) 

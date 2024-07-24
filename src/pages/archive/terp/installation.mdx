@@ -1,5 +1,5 @@
 ---
-layout: '~/layouts/TestnetLayout.astro'
+layout: '~/layouts/archiveLayout.astro'
 title: Installation Node
 network: Mainnet
 icon: terp
@@ -136,7 +136,7 @@ You can change `USER` with your Linux user name. You need sudo previlege to do t
 ```
 sudo tee /etc/systemd/system/terpd.service > /dev/null << EOF
 [Unit]
-Description=terp-testnet node service
+Description=terp-archive node service
 After=network-online.target
 
 [Service]

@@ -1,7 +1,7 @@
 ---
 title: Installation Node
-layout: '~/layouts/TestnetLayout.astro'
-network: Testnet
+layout: '~/layouts/archiveLayout.astro'
+network: archive
 icon: tangle
 ---
 
@@ -17,7 +17,7 @@ sudo ufw allow ssh; sudo ufw allow 30333
 
  Download Binary & Copy to /usr/bin
 ```
-sudo wget -O /usr/bin/tangle https://github.com/webb-tools/tangle/releases/download/v0.6.1/tangle-testnet-linux-amd64 && sudo chmod +x /usr/bin/tangle
+sudo wget -O /usr/bin/tangle https://github.com/webb-tools/tangle/releases/download/v0.6.1/tangle-archive-linux-amd64 && sudo chmod +x /usr/bin/tangle
 ```
 
  Create a service
@@ -36,7 +36,7 @@ RestartSec=3
 ExecStart=/usr/bin/tangle \
   --base-path $HOME/.tangle/data/validator/YourName \
   --name YourName \
-  --chain tangle-testnet \
+  --chain tangle-archive \
   --auto-insert-keys \
   --port 30333 \
   --telemetry-url "wss://telemetry.polkadot.io/submit/ 0" \
@@ -64,10 +64,10 @@ Example Output:
 2024-01-17 15:48:02 Tangle Node
 2024-01-17 15:48:02 ✌️  version 0.6.1-721ffa6-x86_64-linux-gnu
 2024-01-17 15:48:02 ❤️  by Webb Technologies Inc., 2023-2024
-2024-01-17 15:48:02 📋 Chain specification: Tangle Testnet
+2024-01-17 15:48:02 📋 Chain specification: Tangle archive
 2024-01-17 15:48:02 🏷  Node name: YourName
 2024-01-17 15:48:02 👤 Role: AUTHORITY
-2024-01-17 15:48:02 💾 Database: RocksDb at /root/.tangle/data/validator/YourName/chains/tangle-testnet/db/full
+2024-01-17 15:48:02 💾 Database: RocksDb at /root/.tangle/data/validator/YourName/chains/tangle-archive/db/full
 2024-01-17 15:49:25 💻 Operating system: linux
 2024-01-17 15:49:25 💻 CPU architecture: x86_64
 2024-01-17 15:49:25 💻 Target environment: gnu

@@ -1,7 +1,7 @@
 ---
-layout: '~/layouts/TestnetLayout.astro'
+layout: '~/layouts/archiveLayout.astro'
 title: Node CLI Cheatsheet
-network: Testnet
+network: archive
 icon: blockx
 chain: blockx_12345-2
 version: 0.1.1-test

@@ -1,7 +1,7 @@
 ---
-layout: '~/layouts/TestnetLayout.astro'
+layout: '~/layouts/archiveLayout.astro'
 title: Node CLI Cheatsheet
-network: Testnet
+network: archive
 icon: andromeda
 chain: galileo-3
 version: galileo-3-v1.1.0-beta1

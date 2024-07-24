@@ -1,7 +1,7 @@
 ---
-layout: '~/layouts/TestnetLayout.astro'
+layout: '~/layouts/archiveLayout.astro'
 title: Installation Node
-network: Testnet
+network: archive
 icon: selfchain
 chain: self-dev-1
 version: v

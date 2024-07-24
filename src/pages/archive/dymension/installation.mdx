@@ -1,7 +1,7 @@
 ---
-layout: '~/layouts/TestnetLayout.astro'
+layout: '~/layouts/archiveLayout.astro'
 title: Installation Node
-network: Testnet
+network: archive
 icon: dymension
 chain: 35-C
 version: v0.2.2-beta
@@ -83,7 +83,7 @@ dymd init <YOUR_MONIKER> --chain-id 35-C
 - Genesis
 
 ```
-curl -Ls https://raw.githubusercontent.com/dymensionxyz/testnets/main/dymension-hub/35-C/genesis.json > $HOME/.dymension/config/genesis.json
+curl -Ls https://raw.githubusercontent.com/dymensionxyz/archives/main/dymension-hub/35-C/genesis.json > $HOME/.dymension/config/genesis.json
 ```
 
 
@@ -117,7 +117,7 @@ You can change `USER` with your Linux user name. You need sudo previlege to do t
 ```
 sudo tee /etc/systemd/system/dymd.service > /dev/null << EOF
 [Unit]
-Description=dymension-testnet node service
+Description=dymension-archive node service
 After=network-online.target
 
 [Service]
@@ -148,6 +148,6 @@ sudo journalctl -fu dymd -o cat
 
 Heads up to the Cheat Sheets to create validator
 
-<a href="https://service.sychonix.com/testnet/dymension/cheat" target="_blank">
+<a href="https://service.sychonix.com/archive/dymension/cheat" target="_blank">
   <button style="background-color: green; border: none; color: white; padding: 15px 32px; text-align: center; text-decoration: none; display: inline-block; font-size: 16px; margin: 4px 2px; cursor: pointer; border-radius: 10px; box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);" onmouseover="this.style.boxShadow='0 0 0 4px rgba(0,255,0,0.5)'" onmouseout="this.style.boxShadow='0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)'">CLI Cheatsheets</button>
 </a>

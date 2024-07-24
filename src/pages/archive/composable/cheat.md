@@ -1,9 +1,9 @@
 ---
-layout: '~/layouts/TestnetLayout.astro'
+layout: '~/layouts/archiveLayout.astro'
 title: Node CLI Cheatsheet
-network: Testnet
+network: archive
 icon: composable
-chain: banksy-testnet-2
+chain: banksy-archive-2
 version: v2.3.2
 ---
 
@@ -185,7 +185,7 @@ version: v2.3.2
 --details="<span class="rdetails1"></span>" \
 --website="<span class="rwebsite1"></span>" \
 --security-contact=<span class="rcontact1"></span> \
---chain-id=banksy-testnet-2 \
+--chain-id=banksy-archive-2 \
 --commission-rate=<span class="rcommission1"></span> \
 --commission-max-rate=0.20\
 --commission-max-change-rate=0.01 \
@@ -222,7 +222,7 @@ banksyd tx staking edit-validator \
 --identity="<span class="reditidentity1"></span>" \
 --details="<span class="reditdetails1"></span>" \
 --website="<span class="reditweb1"></span>" \
---chain-id=banksy-testnet-2 \
+--chain-id=banksy-archive-2 \
 --commission-rate=0.07 \
 --from=<span class="rwallet9"> \
 --gas="auto" \
@@ -230,7 +230,7 @@ banksyd tx staking edit-validator \
 
 
 <label for="iwallet" style="vertical-align: top;">3. Unjail Validator</label>
-<pre class="my-pre"> banksyd tx slashing unjail --broadcast-mode=block --from <span class="rwallet10">  </span> --chain-id=banksy-testnet-2 --gas="auto" --gas-prices="0upica"
+<pre class="my-pre"> banksyd tx slashing unjail --broadcast-mode=block --from <span class="rwallet10">  </span> --chain-id=banksy-archive-2 --gas="auto" --gas-prices="0upica"
 </pre>
 
 <label for="iwallet" style="vertical-align: top;">4. Jail Reason</label>
@@ -243,32 +243,32 @@ banksyd tx staking edit-validator \
 
 <h3 for="imoniker">Token Management</h3>
 <label for="ivalidator" style="vertical-align: top;">1. Withdraw rewards from all validators</label>
-<pre class="my-pre"> banksyd tx distribution withdraw-all-rewards --from <span class="rwallet12"></span> --chain-id=banksy-testnet-2 --gas="auto" --gas-prices="0upica"</pre>
+<pre class="my-pre"> banksyd tx distribution withdraw-all-rewards --from <span class="rwallet12"></span> --chain-id=banksy-archive-2 --gas="auto" --gas-prices="0upica"</pre>
 
 <label for="ivalidator" style="vertical-align: top;">2. Withdraw commission and rewards from your validator</label>
-<pre class="my-pre"> banksyd tx distribution withdraw-rewards $(banksyd keys show <span class="rwallet13"></span> --bech val -a) --commission --from <span class="rwallet14"></span> --chain-id=banksy-testnet-2 --gas="auto" --gas-prices="0upica"</pre>
+<pre class="my-pre"> banksyd tx distribution withdraw-rewards $(banksyd keys show <span class="rwallet13"></span> --bech val -a) --commission --from <span class="rwallet14"></span> --chain-id=banksy-archive-2 --gas="auto" --gas-prices="0upica"</pre>
 
 <div class="input-group">
 
 <label for="idelegetet" style="vertical-align: top;">3. Delegate tokens to yourself</label>
   <input id="idelegete" type="text" placeholder="Enter Amount" oninput="updatePre()" />
 </div>
- <pre class="my-pre" id="pre1" style="margin-top: 5px;">banksyd tx staking delegate $(banksyd keys show <span class="rwallet15"></span> --bech val -a) <span class="rdelegete1"></span>1000000000upica --from <span class="rwallet16"></span> --chain-id=banksy-testnet-2 --gas="auto" --gas-prices="0upica"  </pre>
+ <pre class="my-pre" id="pre1" style="margin-top: 5px;">banksyd tx staking delegate $(banksyd keys show <span class="rwallet15"></span> --bech val -a) <span class="rdelegete1"></span>1000000000upica --from <span class="rwallet16"></span> --chain-id=banksy-archive-2 --gas="auto" --gas-prices="0upica"  </pre>
 
  <div class="input-group">
 
 <label for="iredelegetet" style="vertical-align: top;">4. Redelegate tokens to another validator</label>
   <input id="iredelegete" type="text" placeholder="Enter <TO_VALOPER_ADDRESS>" oninput="updatePre()" />
 </div>
- <pre class="my-pre" id="pre1" style="margin-top: 5px;"> banksyd tx staking redelegate $(banksyd keys show <span class="rwallet17"></span> --bech val -a) <span class="rredelegete1"></span> <span class="rdelegete2"></span>10000000upica --from <span class="rwallet18"></span> --chain-id=banksy-testnet-2 --gas="auto" --gas-prices="0upica"
+ <pre class="my-pre" id="pre1" style="margin-top: 5px;"> banksyd tx staking redelegate $(banksyd keys show <span class="rwallet17"></span> --bech val -a) <span class="rredelegete1"></span> <span class="rdelegete2"></span>10000000upica --from <span class="rwallet18"></span> --chain-id=banksy-archive-2 --gas="auto" --gas-prices="0upica"
 </pre>
 
 <label for="iredelegetet" style="vertical-align: top;">5. Delegate tokens to validator</label>
- <pre class="my-pre" id="pre1" style="margin-top: 5px;"> banksyd tx staking delegate <span class="rredelegete2"></span> <span class="rdelegete3"></span>1000000000upica --from <span class="rwallet19"></span> --chain-id=banksy-testnet-2 --gas="auto" --gas-prices="0upica"
+ <pre class="my-pre" id="pre1" style="margin-top: 5px;"> banksyd tx staking delegate <span class="rredelegete2"></span> <span class="rdelegete3"></span>1000000000upica --from <span class="rwallet19"></span> --chain-id=banksy-archive-2 --gas="auto" --gas-prices="0upica"
  </pre>
 
 <label for="iredelegetet" style="vertical-align: top;">6. Unbond tokens from your validator</label>
- <pre class="my-pre" id="pre1" style="margin-top: 5px;"> banksyd tx staking unbond $(banksyd keys show <span class="rwallet20"></span> --bech val -a) <span class="rdelegete4"></span>1000upica --from <span class="rwallet21"></span> --chain-id=banksy-testnet-2 --gas="auto" --gas-prices="0upica"
+ <pre class="my-pre" id="pre1" style="margin-top: 5px;"> banksyd tx staking unbond $(banksyd keys show <span class="rwallet20"></span> --bech val -a) <span class="rdelegete4"></span>1000upica --from <span class="rwallet21"></span> --chain-id=banksy-archive-2 --gas="auto" --gas-prices="0upica"
 </pre>
 </div>
 
@@ -279,7 +279,7 @@ banksyd tx staking edit-validator \
 
 </div>
  <pre class="my-pre" id="pre1" style="margin-top: 5px;">
-banksyd tx bank send<span class="rwallet22"></span> <span class="rtoken1"></span> <span class="rdelegete5"></span>1000000000upica --from <span class="rwallet23"></span> --chain-id banksy-testnet-2 --gas="auto" --gas-prices="0upica"
+banksyd tx bank send<span class="rwallet22"></span> <span class="rtoken1"></span> <span class="rdelegete5"></span>1000000000upica --from <span class="rwallet23"></span> --chain-id banksy-archive-2 --gas="auto" --gas-prices="0upica"
 </pre></div>
 
 <h3 for="iwallet">Costum Port</h3>

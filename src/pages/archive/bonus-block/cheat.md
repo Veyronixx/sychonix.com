@@ -1,7 +1,7 @@
 ---
-layout: '~/layouts/TestnetLayout.astro'
+layout: '~/layouts/archiveLayout.astro'
 title: Node CLI Cheatsheet
-network: Testnet
+network: archive
 icon: bonus
 chain: blocktopia-01
 version: 

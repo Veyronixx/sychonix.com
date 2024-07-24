@@ -108,7 +108,7 @@
                 {
                   "@type": "/cosmos.staking.v1beta1.MsgCreateValidator",
                   "description": {
-                    "moniker": "bonusblock-testnet-1",
+                    "moniker": "bonusblock-archive-1",
                     "identity": "",
                     "website": "",
                     "security_contact": "",

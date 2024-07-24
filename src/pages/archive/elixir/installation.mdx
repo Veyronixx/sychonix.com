@@ -1,7 +1,7 @@
 ---
 title: Installation Node
-layout: '~/layouts/TestnetLayout.astro'
-network: Testnet
+layout: '~/layouts/archiveLayout.astro'
+network: archive
 icon: elixir
 ---
 
@@ -23,7 +23,7 @@ nano Dockerfile
 ```
 and update it from:
 ```
-FROM elixirprotocol/validator:testnet-1
+FROM elixirprotocol/validator:archive-1
 
 ENV ADDRESS=<your_address>
 ENV PRIVATE_KEY=<your_private_key>
@@ -41,7 +41,7 @@ docker run -it --name ev elixir-validator
  Enrol your Wallet as a validator
 - Navigate to the [Elixir Network Dashboard](https://dashboard.elixir.finance/) with your wallet-connected browser. Connect with Metamask and switch to the Goerli network.
 
-- Claim your ELXR (If you were part of testnet V1 you would be eligible to receive ELXR). If you need Goerli ETH, you can ask in the [Discord server](https://discord.gg/puzc28Xq).
+- Claim your ELXR (If you were part of archive V1 you would be eligible to receive ELXR). If you need Goerli ETH, you can ask in the [Discord server](https://discord.gg/puzc28Xq).
 
 - Once you have received ELXR tokens, you will need to stake those tokens. Any amount from 100–1000 ELXR will do.
 

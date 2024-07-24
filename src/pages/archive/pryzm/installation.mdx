@@ -1,7 +1,7 @@
 ---
-layout: '~/layouts/TestnetLayout.astro'
+layout: '~/layouts/archiveLayout.astro'
 title: Installation Node
-network: Testnet
+network: archive
 icon: pryzm
 chain: indigo-1	
 ---
@@ -42,17 +42,17 @@ pryzmd config keyring-backend test
 
  Genesis
 ```
-wget -O genesis.json https://snapshots.polkachu.com/testnet-genesis/pryzm/genesis.json --inet4-only
+wget -O genesis.json https://snapshots.polkachu.com/archive-genesis/pryzm/genesis.json --inet4-only
 mv genesis.json ~/.pryzm/config
 ```
  Addrbook 
 ```
-wget -O addrbook.json https://snapshots.polkachu.com/testnet-addrbook/pryzm/addrbook.json --inet4-only
+wget -O addrbook.json https://snapshots.polkachu.com/archive-addrbook/pryzm/addrbook.json --inet4-only
 mv addrbook.json ~/.pryzm/config
 ```
 Seed, Peer & Gas
 ```
-seeds="ade4d8bc8cbe014af6ebdf3cb7b1e9ad36f412c0@testnet-seeds.polkachu.com:24856,d1d43cc7c7aef715957289fd96a114ecaa7ba756@testnet-seeds.nodex.one:23210"
+seeds="ade4d8bc8cbe014af6ebdf3cb7b1e9ad36f412c0@archive-seeds.polkachu.com:24856,d1d43cc7c7aef715957289fd96a114ecaa7ba756@archive-seeds.nodex.one:23210"
 sed -i.bak -e "s/^seeds =.*/seeds = \"$seeds\"/" $HOME/.pryzm/config/config.toml
 sed -i -e "s|^minimum-gas-prices *=.*|minimum-gas-prices = \"0upryzm\"|" $HOME/.pryzm/config/app.toml
 ```
