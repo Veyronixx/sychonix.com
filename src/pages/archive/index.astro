@@ -1,0 +1,214 @@
+---
+import { SITE } from '~/config.mjs';
+import { getCanonical, getHomePermalink } from '~/utils/permalinks';
+import Layout from '~/layouts/PageLayout.astro';
+import { Icon } from 'astro-icon';
+
+const meta = {
+  title: SITE.title,
+  description: SITE.description,
+  canonical: getCanonical(getHomePermalink()),
+};
+
+const items = [
+{
+		title: 'Artela',
+		description:
+			'archive',
+		icon: 'artela',
+		Link: 'https://service.sychonix.com/archive/artela',
+  },
+	{
+		title: 'Archway',
+		description:
+			'archive',
+		icon: 'archway',
+		Link: 'https://service.sychonix.com/archive/archway',
+	},
+{
+		title: 'Andromeda',
+		description:
+			'archive',
+		icon: 'andromeda',
+		Link: 'https://service.sychonix.com/archive/andromeda',
+	},
+{
+		title: 'Bonus Block',
+		description:
+			'archive',
+		icon: 'bonus',
+		Link: 'https://service.sychonix.com/archive/bonus-block',
+	},
+	{
+		title: 'Blockxnet',
+		description:
+			'archive',
+		icon: 'blockx',
+		Link: 'https://service.sychonix.com/archive/blockxnet',
+	},
+{
+		title: 'Composable',
+		description:
+			'archive',
+		icon: 'composable',
+		Link: 'https://service.sychonix.com/archive/composable',
+	},
+{
+		title: 'Cascadia',
+		description:
+			'archive',
+		icon: 'cascadia',
+		Link: 'https://service.sychonix.com/archive/cascadia',
+	},
+{
+		title: 'Dymension',
+		description:
+			'archive',
+		icon: 'dymension',
+		Link: 'https://service.sychonix.com/archive/dymension',
+	},
+{
+		title: 'Entangle',
+		description:
+			'archive',
+		icon: 'entangle',
+		Link: 'https://service.sychonix.com/archive/entangle',
+	},
+{
+		title: 'Empower',
+		description:
+			'archive',
+		icon: 'empower',
+		Link: 'https://service.sychonix.com/archive/empower',
+	},
+{
+		title: 'Elys',
+		description:
+			'archive',
+		icon: 'elys',
+		Link: 'https://service.sychonix.com/archive/elys',
+	},
+  {
+		title: 'Elixir',
+		description:
+			'archive',
+		icon: 'elixir',
+		Link: 'https://service.sychonix.com/archive/elixir/installation',
+	},
+{
+		title: 'Impact Protocol',
+		description:
+			'archive',
+		icon: 'impact',
+		Link: 'https://service.sychonix.com/archive/impact/installation',
+	},
+	{
+		title: 'Nibiru',
+		description:
+			'archive',
+		icon: 'nibiru',
+		Link: 'https://service.sychonix.com/archive/nibiru',
+  },
+{
+		title: 'Ojo',
+		description:
+			'archive',
+		icon: 'ojo',
+		Link: 'https://service.sychonix.com/archive/ojo',
+	},
+	{
+		title: 'Pryzm',
+		description:
+			'archive',
+		icon: 'pryzm',
+		Link: 'https://service.sychonix.com/archive/pryzm/installation',
+  },
+	{
+		title: 'Tangle',
+		description:
+			'archive',
+		icon: 'tangle',
+		Link: 'https://service.sychonix.com/archive/tangle',
+	},
+{
+		title: 'Side Protocol',
+		description:
+			'archive',
+		icon: 'side',
+		Link: 'https://service.sychonix.com/archive/side',
+	},
+{
+		title: 'Selfchain',
+		description:
+			'archive',
+		icon: 'selfchain',
+		Link: 'https://service.sychonix.com/archive/selfchain',
+	},
+  {
+		title: 'Wormholes',
+		description:
+			'archive',
+		icon: 'wormholes',
+		Link: 'https://service.sychonix.com/archive/wormholes/installation',
+  },
+  {
+    title: 'Arkhadian',
+    description: 'archive',
+    icon: 'arkhadian',
+    Link: 'https://service.sychonix.com/archive/arkhadian',
+  },
+  {
+    title: 'Blockx',
+    description: 'archive',
+    icon: 'blockx',
+    Link: 'https://service.sychonix.com/archive/blockx',
+  },
+  {
+    title: 'Decentr',
+    description: 'archive',
+    icon: 'decentr',
+    Link: 'https://service.sychonix.com/archive/decentr',
+  },
+  {
+    title: 'Empower',
+    description: 'archive',
+    icon: 'empower',
+    Link: 'https://service.sychonix.com/archive/empower',
+  },
+  {
+    title: 'Terp',
+    description: 'archive',
+    icon: 'terp',
+    Link: 'https://service.sychonix.com/archive/terp',
+  },
+];
+---
+
+<Layout {meta}>
+  <section class="scroll-mt-16" id="feature3">
+    <div class="absolute inset-0 bg-primary-50 dark:bg-slate-800 pointer-events-none mb-32" aria-hidden="true"></div>
+    <div class="relative max-w-6xl mx-auto px-4 sm:px-6">
+      <div class="py-4 pt-8 sm:py-6 lg:py-8 lg:pt-12">
+        <div class="mb-8 text-center">
+          <h2 class="text-4xl md:text-5xl font-bold leading-tighter tracking-tighter mb-4 font-heading">
+            Archive
+          </h2>
+          <p class="max-w-3xl mx-auto text-center text-xl text-gray-400 dark:text-slate-400">
+          </p>
+        </div>
+        <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3 items-center my-12 dark:text-white">
+          {
+            items.map(({ title, description, icon, Link }) => (
+              <div class="relative flex flex-col p-6 bg-gray dark:bg-slate-900 rounded shadow-xl hover:shadow-lg transition dark:border dark:border-slate-800">
+                <a href={Link} target="_self">
+                  <Icon name={icon} class="w-12 h-12 mx-auto my-4 cursor-pointer transition duration-200 ease-in-out transform hover:scale-150" />
+                </a>
+                <p class="text-gray-300 dark:text-gray-300 text-md items-center font font-semibold text-center">{title}</p>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </div>
+  </section>
+  </Layout>

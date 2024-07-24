@@ -1,0 +1,229 @@
+---
+import { Icon } from 'astro-icon';
+const items = [
+{
+		title: 'Artela',
+		description:
+			'archive',
+		icon: 'artela',
+		Link: 'https://service.sychonix.com/archive/artela',
+  },
+	{
+		title: 'Archway',
+		description:
+			'archive',
+		icon: 'archway',
+		Link: 'https://service.sychonix.com/archive/archway',
+	},
+{
+		title: 'Andromeda',
+		description:
+			'archive',
+		icon: 'andromeda',
+		Link: 'https://service.sychonix.com/archive/andromeda',
+	},
+{
+		title: 'Bonus Block',
+		description:
+			'archive',
+		icon: 'bonus',
+		Link: 'https://service.sychonix.com/archive/bonus-block',
+	},
+	{
+		title: 'Blockxnet',
+		description:
+			'archive',
+		icon: 'blockx',
+		Link: 'https://service.sychonix.com/archive/blockxnet',
+	},
+{
+		title: 'Composable',
+		description:
+			'archive',
+		icon: 'composable',
+		Link: 'https://service.sychonix.com/archive/composable',
+	},
+{
+		title: 'Cascadia',
+		description:
+			'archive',
+		icon: 'cascadia',
+		Link: 'https://service.sychonix.com/archive/cascadia',
+	},
+{
+		title: 'Dymension',
+		description:
+			'archive',
+		icon: 'dymension',
+		Link: 'https://service.sychonix.com/archive/dymension',
+	},
+{
+		title: 'Entangle',
+		description:
+			'archive',
+		icon: 'entangle',
+		Link: 'https://service.sychonix.com/archive/entangle',
+	},
+{
+		title: 'Empower',
+		description:
+			'archive',
+		icon: 'empower',
+		Link: 'https://service.sychonix.com/archive/empower',
+	},
+{
+		title: 'Elys',
+		description:
+			'archive',
+		icon: 'elys',
+		Link: 'https://service.sychonix.com/archive/elys',
+	},
+  {
+		title: 'Elixir',
+		description:
+			'archive',
+		icon: 'elixir',
+		Link: 'https://service.sychonix.com/archive/elixir/installation',
+	},
+{
+		title: 'Impact Protocol',
+		description:
+			'archive',
+		icon: 'impact',
+		Link: 'https://service.sychonix.com/archive/impact/installation',
+	},
+	{
+		title: 'Nibiru',
+		description:
+			'archive',
+		icon: 'nibiru',
+		Link: 'https://service.sychonix.com/archive/nibiru',
+  },
+{
+		title: 'Ojo',
+		description:
+			'archive',
+		icon: 'ojo',
+		Link: 'https://service.sychonix.com/archive/ojo',
+	},
+	{
+		title: 'Pryzm',
+		description:
+			'archive',
+		icon: 'pryzm',
+		Link: 'https://service.sychonix.com/archive/pryzm/installation',
+  },
+	{
+		title: 'Tangle',
+		description:
+			'archive',
+		icon: 'tangle',
+		Link: 'https://service.sychonix.com/archive/tangle',
+	},
+{
+		title: 'Side Protocol',
+		description:
+			'archive',
+		icon: 'side',
+		Link: 'https://service.sychonix.com/archive/side',
+	},
+{
+		title: 'Selfchain',
+		description:
+			'archive',
+		icon: 'selfchain',
+		Link: 'https://service.sychonix.com/archive/selfchain',
+	},
+  {
+		title: 'Wormholes',
+		description:
+			'archive',
+		icon: 'wormholes',
+		Link: 'https://service.sychonix.com/archive/wormholes/installation',
+  },
+];
+---
+
+<section class="scroll-mt-16" id="features2">
+	<div class="absolute inset-0 bg-primary-50 dark:bg-slate-800 pointer-events-none mb-32" aria-hidden="true"></div>
+	<div class="relative max-w-6xl mx-auto px-4 sm:px-6">
+	  <div class="py-4 pt-8 sm:py-6 lg:py-8 lg:pt-12">
+		<div class="mb-8 text-center">
+		  <h2 class="text-4xl md:text-5xl font-bold leading-tighter tracking-tighter mb-4 font-heading">
+			Archive
+		  </h2>
+		  <p class="max-w-3xl mx-auto text-center text-xl text-gray-400 dark:text-slate-400">
+		  </p>
+		</div>
+		<div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3 items-center my-12 dark:text-white">
+		  {
+			items.map(({ title, icon, Link }) => (
+			  <div class="card relative flex flex-col p-6 bg-gray dark:bg-slate-900 rounded-lg shadow-xl hover:shadow-lg transition border border-red-500 text-center">
+				<a href={Link}>
+				  <div class="icon-container w-20 h-20 mx-auto my-4 rounded-full overflow-hidden">
+					<Icon name={icon} class="w-full h-full object-cover" />
+				  </div>
+				</a>
+				<p class="pill-button text-#9CA3AF dark:text-black text-md font-semibold mt-4 relative">
+				  {title}
+				  <span class="pulse-shockwave inline-block ml-2"></span>
+				</p>
+				<style>
+				  .card:hover {
+					transform: translateY(-10px);
+					box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1);
+				  }
+				</style>
+			  </div>
+			))
+		  }
+		</div>
+	  </div>
+	</div>
+  </section>
+  
+  <style>
+  .card {
+	background-color: #1F2937;
+	border-radius: 1.5rem; /* 24px */
+	box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+	padding: 24px;
+	text-align: center;
+	transition: transform 0.2s ease-in-out;
+	border: 2px solid rgb(255, 255, 255); /* Add a red border */
+  }
+  
+  .icon-container {
+	background-color: #697880;
+	border-radius: 50%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 80px;
+	width: 80px;
+	margin: 0 auto;
+	overflow: hidden;
+  }
+  
+  .icon-container img {
+	object-fit: cover;
+  }
+  
+  .icon i {
+	font-size: 40px;
+	color: #1a202c;
+  }
+  
+  .title {
+	font-size: 20px;
+	font-weight: bold;
+	margin: 20px 0;
+  }
+  
+  .description {
+	font-size: 16px;
+	line-height: 1.5;
+	color: #967171;
+  }
+  </style>
+  

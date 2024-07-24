@@ -1,10 +1,10 @@
 ---
 layout: '~/layouts/TestnetLayout.astro'
-title: Node CLI Cheatsheet
-network: Mainnet
-icon: empower
-chain: empowerchain-1
-version: v1.0.0
+title: Installation Node
+network: Testnet
+icon: selfchain
+chain: self-dev-1
+version: v
 ---
 
 
@@ -117,26 +117,26 @@ version: v1.0.0
 </div>
 
 <label for="iwallet" style="vertical-align: top;">1. Create New Wallet</label>
- <pre class="my-pre" id="pre1" style="margin-top: 5px;">empowerd keys add <span class="rwallet1"></span> <button class="copy-btn" data-clipboard-text="" onclick="copyText(1)"></button></pre>
+ <pre class="my-pre" id="pre1" style="margin-top: 5px;">selfchaind keys add <span class="rwallet1"></span> <button class="copy-btn" data-clipboard-text="" onclick="copyText(1)"></button></pre>
 
 <label for="iwallet" style="vertical-align: top;">2. Recovery New Wallet</label>
-<pre class="my-pre">empowerd keys add <span class="rwallet2"></span> --recover  <button class="copy-btn" data-clipboard-text="" onclick="copyText(2)"></button></pre>
+<pre class="my-pre">selfchaind keys add <span class="rwallet2"></span> --recover  <button class="copy-btn" data-clipboard-text="" onclick="copyText(2)"></button></pre>
 
 <label for="iwallet" style="vertical-align: top;">3. List All Wallet</label>
-<pre class="my-pre">empowerd keys list<span class="rwallet3"></span> <span class="rrecipient3"></span> <span class="ramount3"></span>  <span class="rfrom3"></span> <button class="copy-btn" data-clipboard-text="" onclick="copyText(3)"></button></pre>
+<pre class="my-pre">selfchaind keys list<span class="rwallet3"></span> <span class="rrecipient3"></span> <span class="ramount3"></span>  <span class="rfrom3"></span> <button class="copy-btn" data-clipboard-text="" onclick="copyText(3)"></button></pre>
 
 
 <label for="iwallet" style="vertical-align: top;">4. Delete Wallet</label>
-<pre class="my-pre">empowerd keys delete <span class="rwallet4"></span> <button class="copy-btn" data-clipboard-text="" onclick="copyText(4)"></button></pre>
+<pre class="my-pre">selfchaind keys delete <span class="rwallet4"></span> <button class="copy-btn" data-clipboard-text="" onclick="copyText(4)"></button></pre>
 
 <label for="iwallet" style="vertical-align: top;">5. Export Wallet</label>
-<pre class="my-pre">empowerd keys export <span class="rwallet5"></span> <button class="copy-btn" data-clipboard-text="" onclick="copyText(5)"></button></pre>
+<pre class="my-pre">selfchaind keys export <span class="rwallet5"></span> <button class="copy-btn" data-clipboard-text="" onclick="copyText(5)"></button></pre>
 
 <label for="iwallet" style="vertical-align: top;">6. Import key</label>
-<pre class="my-pre">empowerd keys import <span class="rwallet6"> </span>.backup <button class="copy-btn" data-clipboard-text="" onclick="copyText(6)"></button></pre>
+<pre class="my-pre">selfchaind keys import <span class="rwallet6"> </span>.backup <button class="copy-btn" data-clipboard-text="" onclick="copyText(6)"></button></pre>
 
 <label for="iwallet" style="vertical-align: top;">7. Check balance</label>
-<pre class="my-pre">empowerd q bank balances $(empowerd keys show <span class="rwallet7"></span> -a)<button class="copy-btn" data-clipboard-text="" onclick="copyText(7)"></button></pre>
+<pre class="my-pre">selfchaind q bank balances $(selfchaind keys show <span class="rwallet7"></span> -a)<button class="copy-btn" data-clipboard-text="" onclick="copyText(7)"></button></pre>
 
 
 <h3 for="imoniker">Validator Management</h3>
@@ -177,22 +177,22 @@ version: v1.0.0
 </div>
 
 
-<pre class="my-pre">empowerd tx staking create-validator \
---amount=<span class="ramount1"></span>1000000000umpwr \
+<pre class="my-pre">selfchaind tx staking create-validator \
+--amount=<span class="ramount1"></span>1000000000uself \
 --moniker="<span class="rmoniker1"></span>" \
---pubkey=$(empowerd tendermint show-validator) \
+--pubkey=$(selfchaind tendermint show-validator) \
 --identity="<span class="ridentity1"></span>" \
 --details="<span class="rdetails1"></span>" \
 --website="<span class="rwebsite1"></span>" \
 --security-contact=<span class="rcontact1"></span> \
---chain-id empowerchain-1 \
+--chain-id=self-dev-1 \
 --commission-rate=<span class="rcommission1"></span> \
 --commission-max-rate=0.20\
 --commission-max-change-rate=0.01 \
 --min-self-delegation=1 \
 --from=<span class="rwallet8"> \
 --gas="auto" \
---gas-prices 0umpwr</pre>
+--gas-prices 0uself</pre>
 
  <label for="imoniker">2. Edit Validator</label>
 <div class="container">
@@ -217,58 +217,58 @@ version: v1.0.0
   </div>
 
 <pre class="my-pre">
-empowerd tx staking edit-validator \
+selfchaind tx staking edit-validator \
 --new-moniker="<span class="reditmoniker1"></span>" \
 --identity="<span class="reditidentity1"></span>" \
 --details="<span class="reditdetails1"></span>" \
 --website="<span class="reditweb1"></span>" \
---chain-id empowerchain-1 \
+--chain-id=self-dev-1 \
 --commission-rate=0.07 \
 --from=<span class="rwallet9"> \
 --gas="auto" \
---gas-prices="0umpwr"</pre>
+--gas-prices="0uself"</pre>
 
 
 <label for="iwallet" style="vertical-align: top;">3. Unjail Validator</label>
-<pre class="my-pre"> empowerd tx slashing unjail --broadcast-mode=block --from <span class="rwallet10">  </span> --chain-id empowerchain-1 --gas="auto" --gas-prices="0umpwr"
+<pre class="my-pre"> selfchaind tx slashing unjail --broadcast-mode=block --from <span class="rwallet10">  </span> --chain-id=self-dev-1 --gas="auto" --gas-prices="0uself"
 </pre>
 
 <label for="iwallet" style="vertical-align: top;">4. Jail Reason</label>
-<pre class="my-pre">empowerd query slashing signing-info $(empowerd tendermint show-validator)<span class="rwallet3"></span> <span class="rrecipient3"></span> <span class="ramount3"></span>  <span class="rfrom3"></span> </pre>
+<pre class="my-pre">selfchaind query slashing signing-info $(selfchaind tendermint show-validator)<span class="rwallet3"></span> <span class="rrecipient3"></span> <span class="ramount3"></span>  <span class="rfrom3"></span> </pre>
 
 <label for="iwallet" style="vertical-align: top;">5. View validator details</label>
-<pre class="my-pre"> empowerd q staking validator $(empowerd keys show <span class="rwallet11"></span> --bech val -a)
+<pre class="my-pre"> selfchaind q staking validator $(selfchaind keys show <span class="rwallet11"></span> --bech val -a)
 </pre>
 
 
 <h3 for="imoniker">Token Management</h3>
 <label for="ivalidator" style="vertical-align: top;">1. Withdraw rewards from all validators</label>
-<pre class="my-pre"> empowerd tx distribution withdraw-all-rewards --from <span class="rwallet12"></span> --chain-id empowerchain-1 --gas="auto" --gas-prices="0umpwr"</pre>
+<pre class="my-pre"> selfchaind tx distribution withdraw-all-rewards --from <span class="rwallet12"></span> --chain-id=self-dev-1 --gas="auto" --gas-prices="0uself"</pre>
 
 <label for="ivalidator" style="vertical-align: top;">2. Withdraw commission and rewards from your validator</label>
-<pre class="my-pre"> empowerd tx distribution withdraw-rewards $(empowerd keys show <span class="rwallet13"></span> --bech val -a) --commission --from <span class="rwallet14"></span> --chain-id empowerchain-1 --gas="auto" --gas-prices="0umpwr"</pre>
+<pre class="my-pre"> selfchaind tx distribution withdraw-rewards $(selfchaind keys show <span class="rwallet13"></span> --bech val -a) --commission --from <span class="rwallet14"></span> --chain-id=self-dev-1 --gas="auto" --gas-prices="0uself"</pre>
 
 <div class="input-group">
 
 <label for="idelegetet" style="vertical-align: top;">3. Delegate tokens to yourself</label>
   <input id="idelegete" type="text" placeholder="Enter Amount" oninput="updatePre()" />
 </div>
- <pre class="my-pre" id="pre1" style="margin-top: 5px;">empowerd tx staking delegate $(empowerd keys show <span class="rwallet15"></span> --bech val -a) <span class="rdelegete1"></span>1000000000umpwr --from <span class="rwallet16"></span> --chain-id empowerchain-1 --gas="auto" --gas-prices="0umpwr"  </pre>
+ <pre class="my-pre" id="pre1" style="margin-top: 5px;">selfchaind tx staking delegate $(selfchaind keys show <span class="rwallet15"></span> --bech val -a) <span class="rdelegete1"></span>1000000000uself --from <span class="rwallet16"></span> --chain-id=self-dev-1 --gas="auto" --gas-prices="0uself"  </pre>
 
  <div class="input-group">
 
 <label for="iredelegetet" style="vertical-align: top;">4. Redelegate tokens to another validator</label>
   <input id="iredelegete" type="text" placeholder="Enter <TO_VALOPER_ADDRESS>" oninput="updatePre()" />
 </div>
- <pre class="my-pre" id="pre1" style="margin-top: 5px;"> empowerd tx staking redelegate $(empowerd keys show <span class="rwallet17"></span> --bech val -a) <span class="rredelegete1"></span> <span class="rdelegete2"></span>10000000umpwr --from <span class="rwallet18"></span> --chain-id empowerchain-1 --gas="auto" --gas-prices="0umpwr"
+ <pre class="my-pre" id="pre1" style="margin-top: 5px;"> selfchaind tx staking redelegate $(selfchaind keys show <span class="rwallet17"></span> --bech val -a) <span class="rredelegete1"></span> <span class="rdelegete2"></span>10000000uself --from <span class="rwallet18"></span> --chain-id=self-dev-1 --gas="auto" --gas-prices="0uself"
 </pre>
 
 <label for="iredelegetet" style="vertical-align: top;">5. Delegate tokens to validator</label>
- <pre class="my-pre" id="pre1" style="margin-top: 5px;"> empowerd tx staking delegate <span class="rredelegete2"></span> <span class="rdelegete3"></span>1000000000umpwr --from <span class="rwallet19"></span> --chain-id empowerchain-1 --gas="auto" --gas-prices="0umpwr"
+ <pre class="my-pre" id="pre1" style="margin-top: 5px;"> selfchaind tx staking delegate <span class="rredelegete2"></span> <span class="rdelegete3"></span>1000000000uself --from <span class="rwallet19"></span> --chain-id=self-dev-1 --gas="auto" --gas-prices="0uself"
  </pre>
 
 <label for="iredelegetet" style="vertical-align: top;">6. Unbond tokens from your validator</label>
- <pre class="my-pre" id="pre1" style="margin-top: 5px;"> empowerd tx staking unbond $(empowerd keys show <span class="rwallet20"></span> --bech val -a) <span class="rdelegete4"></span>1000umpwr --from <span class="rwallet21"></span> --chain-id empowerchain-1 --gas="auto" --gas-prices="0umpwr"
+ <pre class="my-pre" id="pre1" style="margin-top: 5px;"> selfchaind tx staking unbond $(selfchaind keys show <span class="rwallet20"></span> --bech val -a) <span class="rdelegete4"></span>1000uself --from <span class="rwallet21"></span> --chain-id=self-dev-1 --gas="auto" --gas-prices="0uself"
 </pre>
 </div>
 
@@ -279,7 +279,7 @@ empowerd tx staking edit-validator \
 
 </div>
  <pre class="my-pre" id="pre1" style="margin-top: 5px;">
-empowerd tx bank send<span class="rwallet22"></span> <span class="rtoken1"></span> <span class="rdelegete5"></span>1000000000umpwr --from <span class="rwallet23"></span> --chain-id empowerchain-1 --gas="auto" --gas-prices="0umpwr"
+selfchaind tx bank send<span class="rwallet22"></span> <span class="rtoken1"></span> <span class="rdelegete5"></span>1000000000uself --from <span class="rwallet23"></span> --chain-id self-dev-1 --gas="auto" --gas-prices="0uself"
 </pre></div>
 
 <h3 for="iwallet">Costum Port</h3>
@@ -287,8 +287,8 @@ empowerd tx bank send<span class="rwallet22"></span> <span class="rtoken1"></spa
   <input id="iport" type="text" placeholder="Enter Costum Port" oninput="updatePre()" />
 </div>
  <pre class="my-pre" id="pre1" style="margin-top: 5px;">CUSTOM_PORT=<span class="rport1"></span>
-sed -i.bak -e "s%^proxy_app = \"tcp://127.0.0.1:26658\"%proxy_app = \"tcp://127.0.0.1:${CUSTOM_PORT}658\"%; s%^laddr = \"tcp://127.0.0.1:26657\"%laddr = \"tcp://127.0.0.1:${CUSTOM_PORT}657\"%; s%^pprof_laddr = \"localhost:6060\"%pprof_laddr = \"localhost:${CUSTOM_PORT}060\"%; s%^laddr = \"tcp://0.0.0.0:26656\"%laddr = \"tcp://0.0.0.0:${CUSTOM_PORT}656\"%; s%^prometheus_listen_addr = \":26660\"%prometheus_listen_addr = \":${CUSTOM_PORT}660\"%" $HOME/.empowerchain/config/config.toml
-sed -i.bak -e "s%^address = \"tcp://0.0.0.0:1317\"%address = \"tcp://0.0.0.0:${CUSTOM_PORT}317\"%; s%^address = \":8080\"%address = \":${CUSTOM_PORT}080\"%; s%^address = \"0.0.0.0:9090\"%address = \"0.0.0.0:${CUSTOM_PORT}090\"%; s%^address = \"0.0.0.0:9091\"%address = \"0.0.0.0:${CUSTOM_PORT}091\"%" $HOME/.empowerchain/config/app.toml  ></pre>  </div>
+sed -i.bak -e "s%^proxy_app = \"tcp://127.0.0.1:26658\"%proxy_app = \"tcp://127.0.0.1:${CUSTOM_PORT}658\"%; s%^laddr = \"tcp://127.0.0.1:26657\"%laddr = \"tcp://127.0.0.1:${CUSTOM_PORT}657\"%; s%^pprof_laddr = \"localhost:6060\"%pprof_laddr = \"localhost:${CUSTOM_PORT}060\"%; s%^laddr = \"tcp://0.0.0.0:26656\"%laddr = \"tcp://0.0.0.0:${CUSTOM_PORT}656\"%; s%^prometheus_listen_addr = \":26660\"%prometheus_listen_addr = \":${CUSTOM_PORT}660\"%" $HOME/.selfchain/config/config.toml
+sed -i.bak -e "s%^address = \"tcp://0.0.0.0:1317\"%address = \"tcp://0.0.0.0:${CUSTOM_PORT}317\"%; s%^address = \":8080\"%address = \":${CUSTOM_PORT}080\"%; s%^address = \"0.0.0.0:9090\"%address = \"0.0.0.0:${CUSTOM_PORT}090\"%; s%^address = \"0.0.0.0:9091\"%address = \"0.0.0.0:${CUSTOM_PORT}091\"%" $HOME/.selfchain/config/app.toml  ></pre>  </div>
  </div>
 
 <script>

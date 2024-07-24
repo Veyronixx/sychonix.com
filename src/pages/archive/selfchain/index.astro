@@ -3,53 +3,42 @@ import { SITE } from '~/config.mjs';
 import { getCanonical, getHomePermalink } from '~/utils/permalinks';
 import Layout from '~/layouts/PageLayout.astro';
 import { Icon } from 'astro-icon';
-import { Twitter, Github } from './data.js';
 
-const name = 'Empower';
-const icon = 'empower';
-const network = 'mainnet';
-const chain = 'empowerchain-1';
-const version = 'v1.0.0';
-const stake = 'https://explorer.sychonix.com/empower-mainnet/staking/empowervaloper1n9yenan0nuxrqfy85pyrg5qatuwcnrawtt0tcw';
-const social = [
-  { label: 'Twitter', icon: 'tabler:brand-twitter', href: 'https://twitter.com/empowerchain_io' },
-  { label: 'Discord', icon: 'tabler:brand-discord', href: 'https://discord.gg/UTxEzFzHVX' },
-  { label: 'Chrome',  icon: 'tabler:brand-chrome', href: 'https://empowerchain.io/' },
+const name= 'Selfchain';
+const icon= 'selfchain';
+const network= 'Testnet';
+const chain= 'self-dev-1';
+const version= 'v';
+const stake= 'https://explorer.sychonix.com/selfchain-testnet/';
+ const social = [
+  { label: 'Twitter', icon: 'tabler:brand-twitter', href: 'https://twitter.com/selfchainxyz' },
+  { label: 'Discord', icon: 'tabler:brand-discord', href: 'https://discord.gg/selfchainxyz' },
+  { label: 'Chrome',  icon: 'tabler:brand-chrome', href: 'https://selfchain.xyz' },
 ];
-const meta = {
-  title: SITE.title,
-  description: SITE.description,
-  canonical: getCanonical(getHomePermalink()),
-  social: social // Menambahkan properti social dengan nilai dari array social
-};
-
+ const meta = { 
+         title: SITE.title, 
+         description: SITE.description, 
+         canonical: getCanonical(getHomePermalink()),
+ };
 
 const items = [
- {
-  title: 'Explorer',
-  Link: 'https://explorer.sychonix.com/empower-mainnet',
- },
- {
-  title: 'Node installation',
-  Link: 'https://service.sychonix.com/mainnet/empower/installation',
- },
-  {
-  title: 'Genesis file',
-  Link: 'https://service.sychonix.com/mainnet/empower/genesis',
- },
-{
-  title: 'Peers',
-  Link: 'https://service.sychonix.com/mainnet/empower/peers',
- },
-  {
-  title: 'Addrbook',
-  Link: 'https://service.sychonix.com/mainnet/empower/addrbook',
- },
- {
-  title: 'CLI Cheatsheet',
-  Link: 'https://service.sychonix.com/mainnet/empower/cheat',
- },
-] 
+	{
+		title: 'Explorer',
+		Link: 'https://explorer.sychonix.com/selfchain-testnet/',
+	},
+	{
+		title: 'Node installation',
+		Link: 'https://service.sychonix.com/testnet/selfchain/installation',
+	},
+	{
+		title: 'Peers',
+		Link: 'https://service.sychonix.com/testnet/selfchain/peers',
+	},
+	{
+		title: 'CLI Cheatsheet',
+		Link: 'https://service.sychonix.com/testnet/selfchain/cheat',
+	},		
+]	
 ---
 
 <style>
