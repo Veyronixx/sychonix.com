@@ -4,16 +4,16 @@ import { getCanonical, getHomePermalink } from '~/utils/permalinks';
 import Layout from '~/layouts/PageLayout.astro';
 import { Icon } from 'astro-icon';
 
-const name= 'Dill';
-const icon= 'dill';
+const name= 'Viper Network';
+const icon= 'viper';
 const network= 'Testnet';
 const chain= '';
 const version= '';
 const stake= '#';
 const social = [
-  { label: 'Twitter', icon: 'tabler:brand-twitter', href: 'https://x.com/dill_xyz_' },
-  { label: 'Discord', icon: 'tabler:brand-discord', href: 'https://discord.gg/dill' },
-  { label: 'Chrome',  icon: 'tabler:brand-chrome', href: 'https://www.dill.xyz/' },
+  { label: 'Twitter', icon: 'tabler:brand-twitter', href: 'https://x.com/viper_network_' },
+  { label: 'Discord', icon: 'tabler:brand-discord', href: 'https://discord.gg/eBDYH4Zxek' },
+  { label: 'Chrome',  icon: 'tabler:brand-chrome', href: 'https://vipernet.xyz/' },
 ];
 const meta = {
 	title: SITE.title,
@@ -22,14 +22,15 @@ const meta = {
 };
 
 const items = [
-	{
-		title: 'Explorer',
-		Link: 'https://andes.dill.xyz',
-	},
-	{
+{
 		title: 'Node installation',
-		Link: 'https://service.sychonix.com/testnet/dill/installation',
+		Link: 'https://service.sychonix.com/testnet/viper/installation',
 	},
+	{
+		title: 'Cheat Sheet',
+		Link: 'https://service.sychonix.com/testnet/viper/cheat',
+	},
+
 ]	
 ---
 
@@ -68,9 +69,6 @@ const items = [
           <h1 class="text-5xl md:text-[3.50rem] font-bold leading-tighter tracking-tighter mb-4 font-heading">
             Service {name}
           </h1>
-          <a class="btn-card" href={stake} target="_blank">
-            Stake with me
-          </a>
         </div>
         <section class="bg-primary-100 dark:bg-slate-800 items-center">
           <div class="bg-transparent px-4 sm:px-6 py-4 text-md text-center font-medium">

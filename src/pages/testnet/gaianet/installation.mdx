@@ -1,0 +1,40 @@
+---
+title: Installation Node
+layout: '~/layouts/TestnetLayout.astro'
+network: 
+chain id : 
+icon: gaianet
+---
+
+Install GaiaNet node
+```
+curl -sSfL 'https://github.com/GaiaNet-AI/gaianet-node/releases/latest/download/install.sh' | bash
+source ~/.bashrc
+```
+
+Init with the qwen-1.5-0.5b-chat model
+```
+gaianet init --config https://raw.githubusercontent.com/GaiaNet-AI/node-configs/main/qwen-1.5-0.5b-chat/config.json
+```
+
+Start the node
+```
+gaianet start
+```
+
+---
+Auto chat script with Bot
+```
+git clone https://github.com/iyogz/gaian 
+cd gaian
+```
+change your NodeIdGaia with your gaianet node id
+```
+nano gaian.js
+```
+Start The script
+```
+screen -Rd gaianbot
+npm i
+node gaian.js
+```

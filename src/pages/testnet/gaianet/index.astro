@@ -4,16 +4,16 @@ import { getCanonical, getHomePermalink } from '~/utils/permalinks';
 import Layout from '~/layouts/PageLayout.astro';
 import { Icon } from 'astro-icon';
 
-const name= 'Dill';
-const icon= 'dill';
+const name= 'GaiaNet';
+const icon= 'gaianet';
 const network= 'Testnet';
 const chain= '';
 const version= '';
-const stake= '#';
+const stake= 'https://0xbb148a26f58a37abad079c5432ff19dd577d7396.us.gaianet.network/chatbot-ui/index.html';
 const social = [
-  { label: 'Twitter', icon: 'tabler:brand-twitter', href: 'https://x.com/dill_xyz_' },
-  { label: 'Discord', icon: 'tabler:brand-discord', href: 'https://discord.gg/dill' },
-  { label: 'Chrome',  icon: 'tabler:brand-chrome', href: 'https://www.dill.xyz/' },
+  { label: 'Twitter', icon: 'tabler:brand-twitter', href: 'https://x.com/Gaianet_AI' },
+  { label: 'Discord', icon: 'tabler:brand-discord', href: 'https://discord.com/invite/gaianet-ai' },
+  { label: 'Chrome',  icon: 'tabler:brand-chrome', href: 'https://www.gaianet.ai/' },
 ];
 const meta = {
 	title: SITE.title,
@@ -23,12 +23,12 @@ const meta = {
 
 const items = [
 	{
-		title: 'Explorer',
-		Link: 'https://andes.dill.xyz',
+		title: 'Chat With Bot',
+		Link: 'https://0xbb148a26f58a37abad079c5432ff19dd577d7396.us.gaianet.network/chatbot-ui/index.html',
 	},
 	{
 		title: 'Node installation',
-		Link: 'https://service.sychonix.com/testnet/dill/installation',
+		Link: 'https://service.sychonix.com/testnet/gaianet/installation',
 	},
 ]	
 ---
@@ -69,7 +69,7 @@ const items = [
             Service {name}
           </h1>
           <a class="btn-card" href={stake} target="_blank">
-            Stake with me
+            Chat with me
           </a>
         </div>
         <section class="bg-primary-100 dark:bg-slate-800 items-center">

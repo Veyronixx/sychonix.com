@@ -4,16 +4,16 @@ import { getCanonical, getHomePermalink } from '~/utils/permalinks';
 import Layout from '~/layouts/PageLayout.astro';
 import { Icon } from 'astro-icon';
 
-const name= 'Dill';
-const icon= 'dill';
+const name= 'Nubit';
+const icon= 'nubit';
 const network= 'Testnet';
-const chain= '';
+const chain= 'Nubit Alpha Testnet';
 const version= '';
 const stake= '#';
 const social = [
-  { label: 'Twitter', icon: 'tabler:brand-twitter', href: 'https://x.com/dill_xyz_' },
-  { label: 'Discord', icon: 'tabler:brand-discord', href: 'https://discord.gg/dill' },
-  { label: 'Chrome',  icon: 'tabler:brand-chrome', href: 'https://www.dill.xyz/' },
+  { label: 'Twitter', icon: 'tabler:brand-twitter', href: 'https://x.com/nubit_org' },
+  { label: 'Discord', icon: 'tabler:brand-discord', href: 'https://discord.gg/nubit' },
+  { label: 'Chrome',  icon: 'tabler:brand-chrome', href: 'https://www.nubit.org/' },
 ];
 const meta = {
 	title: SITE.title,
@@ -24,11 +24,11 @@ const meta = {
 const items = [
 	{
 		title: 'Explorer',
-		Link: 'https://andes.dill.xyz',
+		Link: 'https://www.explorer.nubit.org/',
 	},
 	{
 		title: 'Node installation',
-		Link: 'https://service.sychonix.com/testnet/dill/installation',
+		Link: 'https://service.sychonix.com/testnet/nubit/installation',
 	},
 ]	
 ---
@@ -69,7 +69,7 @@ const items = [
             Service {name}
           </h1>
           <a class="btn-card" href={stake} target="_blank">
-            Stake with me
+            Explorer
           </a>
         </div>
         <section class="bg-primary-100 dark:bg-slate-800 items-center">
