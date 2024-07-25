@@ -6,24 +6,24 @@ chain id :
 icon: dill
 ---
 
- Update and install packages
+- Update and install packages
 ```
 sudo apt update
 sudo apt install make clang pkg-config libssl-dev build-essential
 ```
 
- Install and Extract binary
+- Install and Extract binary
 ```
 curl -O https://dill-release.s3.ap-southeast-1.amazonaws.com/linux/dill.tar.gz
 tar -xzvf dill.tar.gz && cd dill
 ```
 
-Generate validator keys
+- Generate validator keys
 ```
 ./dill_validators_gen new-mnemonic --num_validators=1 --chain=andes --folder=./
 ```
 
-Import your keys to your keystore
+- Import your keys to your keystore
 ```
 ./dill-node accounts import --andes --wallet-dir ./keystore --keys-dir validator_keys/ --accept-terms-of-use
 ```
@@ -48,13 +48,13 @@ Importing accounts... 100% [====================================================
 ubuntu@ip-xxxxx:~/dill$
 ```
 
-Start the light validator node
+- Start the light validator node
 ```
 echo {your-password} > walletPw.txt
 ./start_light.sh -p walletPw.txt
 ```
 
- The node will ouput the following when started:
+- The node will ouput the following when started:
 ```
 Option --pwdfile, argument 'walletPw.txt'
 Remaining arguments:
@@ -64,5 +64,5 @@ start light node done
 ubuntu@xxxxx:~/dill$ nohup: redirecting stderr to stdout
 ```
 
-Stake your validator
+- Stake your validator
 Follow this [guides](https://past-chokeberry-e85.notion.site/andes-doc-a23a9f71a85a4be9a6737e54d2674060)

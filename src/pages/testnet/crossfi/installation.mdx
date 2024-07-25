@@ -3,13 +3,13 @@ layout: '~/layouts/TestnetLayout.astro'
 icon: crossfi
 ---
 
- Install dependencies 
+- Install dependencies 
 ```
 sudo apt update && sudo apt upgrade -y
 apt install curl iptables build-essential git wget jq make gcc nano tmux htop nvme-cli pkg-config libssl-dev libleveldb-dev tar clang bsdmainutils ncdu unzip libleveldb-dev -y
 ```
 
- Install go
+- Install go
 ```
 ver="1.21.1"
 wget "https://golang.org/dl/go$ver.linux-amd64.tar.gz"
@@ -21,7 +21,7 @@ source ~/.bash_profile
 go version
 ```
 
- Install binary
+- Install binary
 
 ```
 cd $HOME && mkdir -p $HOME/go/bin
@@ -31,28 +31,28 @@ chmod +x $HOME/bin/crossfid
 mv $HOME/bin/crossfid $HOME/go/bin
 rm -rf crossfi-node_0.3.0-prebuild3_linux_amd64.tar.gz readme.md $HOME/bin
 ```
- Initialize the node
+- Initialize the node
 ```
 crossfid init "your_node_name" --chain-id crossfi-evm-testnet-1
 crossfid config chain-id crossfi-evm-testnet-1
 ```
 
- Genesis
+- Genesis
 ```
 curl -Ls https://ss-t.crossfi.nodestake.org/genesis.json > $HOME/.mineplex-chain/config/genesis.json 
 ```
- Addrbook 
+- Addrbook 
 ```
 curl -Ls https://ss-t.crossfi.nodestake.org/addrbook.json > $HOME/.mineplex-chain/config/addrbook.json 
 ```
-Seed & Gas
+- Seed & Gas
 ```
 sed -i -e 's|^seeds *=.*|seeds = "89752fa7945a06e972d7d860222a5eeaeab5c357@128.140.70.97:26656,dd83e3c7c4e783f8a46dbb010ec8853135d29df0@crossfi-testnet-seed.itrocket.net:36656"|' $HOME/.mineplex-chain/config/config.toml
 sed -i -e 's|^minimum-gas-prices *=.*|minimum-gas-prices = "5000000000mpx"|' $HOME/.mineplex-chain/config/app.toml
 
 ```
 
- Prunning
+- Prunning
 ```
 sed -i \
   -e 's|^pruning *=.*|pruning = "custom"|' \
@@ -61,7 +61,7 @@ sed -i \
   $HOME/.mineplex-chain/config/app.toml
 ```
 
- Service
+- Service
 ```
 ssudo tee /etc/systemd/system/crossfid.service > /dev/null << EOF
 [Unit]
@@ -78,14 +78,14 @@ WantedBy=multi-user.target
 EOF
 ```
 
-# Start
+- Start
 ```
 sudo systemctl daemon-reload
 sudo systemctl enable crossfid.service
 sudo systemctl restart crossfid.service && sudo journalctl -u crossfid.service -f --no-hostname -o cat
 ```
 
- Create Validator
+- Create Validator
 
 Heads up to the Cheat Sheets to create validator
 

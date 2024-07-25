@@ -4,13 +4,13 @@ icon: nubit
 title: Installation Node
 ---
 
- Install dependencies 
+- Install dependencies 
 ```
 sudo apt update && sudo apt upgrade -y
 apt install curl iptables build-essential git wget jq make gcc nano tmux htop nvme-cli pkg-config libssl-dev libleveldb-dev tar clang bsdmainutils ncdu unzip libleveldb-dev -y
 ```
 
- Install go
+- Install go
 ```
 ver="1.21.1"
 wget "https://golang.org/dl/go$ver.linux-amd64.tar.gz"
@@ -22,14 +22,14 @@ source ~/.bash_profile
 go version
 ```
 
- Install binary
+- Install binary
 
 ```
 curl -sL1 https://nubit.sh | bash
 ```
 <span style="font-size: 15px;">wait until the node is running and then CTRL C to stop.</span>
 
- Create Service File 
+- Create Service File 
 ```
 sudo tee /etc/systemd/system/nubit.service > /dev/null << EOF
 [Unit]
@@ -48,18 +48,18 @@ WantedBy=multi-user.target
 EOF
 ```
 
-Enable Service
+- Enable Service
 ```
 sudo systemctl daemon-reload
 sudo systemctl enable nubit
 ```
 
-Start Node
+- Start Node
 ```
 sudo systemctl start nubit.service && sudo journalctl -u nubit.service -f --no-hostname -o cat
 ```
 
- Save Pharse
+- Save Pharse
  ```
 cd nubit-node
 sudo cat mnemonic.txt
