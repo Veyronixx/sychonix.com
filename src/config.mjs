@@ -7,9 +7,9 @@ const CONFIG = {
   basePathname: '/',
   trailingSlash: false,
 
-  title: '',
+  title: 'service',
   description:
-    'Validator & Node Operator Cosmos Networks',
+    'Validator & Node Operator Networks',
   defaultImage: defaultImage,
 
   defaultTheme: 'dark:only', // Values: "system" | "light" | "dark" | "light:only" | "dark:only"
