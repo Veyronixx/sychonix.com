@@ -66,3 +66,14 @@ ubuntu@xxxxx:~/dill$ nohup: redirecting stderr to stdout
 
 - Stake your validator
 Follow this [guides](https://past-chokeberry-e85.notion.site/andes-doc-a23a9f71a85a4be9a6737e54d2674060)
+
+
+cd $HOME
+apt install lz4
+sudo systemctl stop emped
+cp $HOME/.empe-chain/data/priv_validator_state.json $HOME/.empe-chain/priv_validator_state.json.backup
+rm -rf $HOME/.empe-chain/data
+curl -L https://archive-testnet.empe.io/empe-chain-1_2024-07-26.tar | tar -Ilz4 -xf - -C $HOME/.empe-chain
+
+mv $HOME/.empe-chain/priv_validator_state.json.backup $HOME/.empe-chain/data/priv_validator_state.json
+sudo systemctl restart wardend && journalctl -u wardend -f -o cat
