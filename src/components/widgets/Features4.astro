@@ -152,38 +152,31 @@ const items = [
 		  <h2 class="text-4xl md:text-5xl font-bold leading-tighter tracking-tighter mb-4 font-heading">
 			Archive
 		  </h2>
-		  <p class="max-w-3xl mx-auto text-center text-xl text-gray-400 dark:text-slate-400">
-		  </p>
-		</div>
-		<div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3 items-center my-12 dark:text-white">
-		  {
-			items.map(({ title, icon, Link }) => (
-			  <div class="card relative flex flex-col p-6 bg-gray dark:bg-slate-900 rounded-lg shadow-xl hover:shadow-lg transition border border-red-500 text-center">
-				<a href={Link}>
-				  <div class="icon-container w-20 h-20 mx-auto my-4 rounded-full overflow-hidden">
-					<Icon name={icon} class="w-full h-full object-cover" />
-				  </div>
-				</a>
-				<p class="pill-button text-#9CA3AF dark:text-black text-md font-semibold mt-4 relative">
-				  {title}
-				  <span class="pulse-shockwave inline-block ml-2"></span>
-				</p>
-				<style>
-				  .card:hover {
-					transform: translateY(-10px);
-					box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1);
-				  }
-				</style>
-			  </div>
-			))
-		  }
+		  <details>
+            <summary>Explore Archived Networks</summary>
+            <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3 items-center my-12 dark:text-white">
+                {items.map(({ title, icon, Link }) => (
+                  <div class="card relative flex flex-col p-6 bg-gray dark:bg-slate-900 rounded-lg shadow-xl hover:shadow-lg transition border border-red-500 text-center">
+                    <a href={Link}>
+                      <div class="icon-container w-20 h-20 mx-auto my-4 rounded-full overflow-hidden">
+                        <Icon name={icon} class="w-full h-full object-cover" />
+                      </div>
+                    </a>
+                    <p class="pill-button text-#9CA3AF dark:text-black text-md font-semibold mt-4 relative">
+                      {title}
+                      <span class="pulse-shockwave inline-block ml-2"></span>
+                    </p>
+                  </div>
+                ))}
+            </div>
+          </details>
 		</div>
 	  </div>
 	</div>
-  </section>
-  
-  <style>
-  .card {
+</section>
+
+<style>
+.card {
 	background-color: #1F2937;
 	border-radius: 1.5rem; /* 24px */
 	box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
@@ -191,9 +184,9 @@ const items = [
 	text-align: center;
 	transition: transform 0.2s ease-in-out;
 	border: 2px solid rgb(255, 255, 255); /* Add a red border */
-  }
-  
-  .icon-container {
+}
+
+.icon-container {
 	background-color: #697880;
 	border-radius: 50%;
 	display: flex;
@@ -203,27 +196,31 @@ const items = [
 	width: 80px;
 	margin: 0 auto;
 	overflow: hidden;
-  }
-  
-  .icon-container img {
+}
+
+.icon-container img {
 	object-fit: cover;
-  }
-  
-  .icon i {
+}
+
+.icon i {
 	font-size: 40px;
 	color: #1a202c;
-  }
-  
-  .title {
+}
+
+.title {
 	font-size: 20px;
 	font-weight: bold;
 	margin: 20px 0;
-  }
-  
-  .description {
+}
+
+.description {
 	font-size: 16px;
 	line-height: 1.5;
 	color: #967171;
-  }
-  </style>
-  
+}
+
+.card:hover {
+	transform: translateY(-10px);
+	box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1);
+}
+</style>
