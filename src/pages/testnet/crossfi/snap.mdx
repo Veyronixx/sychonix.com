@@ -1,0 +1,30 @@
+---
+title: Snapshot
+layout: '~/layouts/TestnetLayout.astro'
+network: 
+chain id : 
+icon: crossfi
+---
+
+
+
+- Stop Service
+```
+sudo systemctl stop crossfid
+```
+- Back up priv_validator_state.json
+```
+cp ~/.crossfid/data/priv_validator_state.json  ~/.crossfid/priv_validator_state.json
+```
+```
+crossfid tendermint unsafe-reset-all --home $HOME/.crossfid --keep-addr-book
+```
+```
+curl https://snapshot.sychonix.com/crossfi/crossfi-latest.tar.lz4 | lz4 -dc - | tar -xf - -C $HOME/.crossfid
+```
+```
+mv $HOME/.crossfid/priv_validator_state.json.backup $HOME/.crossfid/data/priv_validator_state.json
+```
+```
+sudo systemctl restart crossfid && sudo journalctl -u crossfid -f -o cat
+```
