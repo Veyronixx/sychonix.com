@@ -1,0 +1,103 @@
+---
+title: Installation Node
+layout: '~/layouts/TestnetLayout.astro'
+network: Testnet
+chain id : symphony-testnet-2
+icon: sym
+---
+
+- Install Dependencies
+```
+sudo apt update && sudo apt upgrade -y 
+sudo apt install -y git gcc make unzip jq
+```
+
+- Install Go
+```
+sudo rm -rf /usr/local/go
+curl -Ls https://go.dev/dl/go1.21.1.linux-amd64.tar.gz | sudo tar -xzf - -C /usr/local
+eval $(echo 'export PATH=$PATH:/usr/local/go/bin' | sudo tee /etc/profile.d/golang.sh)
+eval $(echo 'export PATH=$PATH:$HOME/go/bin' | tee -a $HOME/.profile)
+```
+
+- Install Binary
+```
+cd $HOME
+git clone https://github.com/Orchestra-Labs/symphony.git
+cd symphony
+git checkout v0.2.1
+make install
+```
+- Install dependencies 
+
+```
+sudo apt update && sudo apt upgrade -y
+apt install curl iptables build-essential git wget jq make gcc nano tmux htop nvme-cli pkg-config libssl-dev libleveldb-dev tar clang bsdmainutils ncdu unzip libleveldb-dev -y
+```
+
+- Initialize the node
+```
+symphonyd config chain-id symphony-testnet-2
+symphonyd config keyring-backend file
+symphonyd init <your_name> --chain-in symphony-testnet-2
+```
+
+- Genesis
+```
+curl -Ls https://ss-t.symphony.nodestake.org/genesis.json > $HOME/.symphonyd/config/genesis.json 
+```
+- Download addrbook
+```
+curl -Ls https://ss-t.symphony.nodestake.org/addrbook.json > $HOME/.symphonyd/config/addrbook.json
+```
+- Seed and Peer
+```
+PEERS="$(curl -sS https://rpc.symphony-t.indonode.net/net_info | jq -r '.result.peers[] | "(.node_info.id)@(.remote_ip):(.node_info.listen_addr)"' | awk -F ':' '{print $1":"$(NF)}' | sed -z 's|
+|,|g;s|.$||')"
+sed -i -e "s|^persistent_peers *=.*|persistent_peers = "$PEERS"|" $HOME/.symphonyd/config/config.toml
+```
+
+- Prunning
+```
+pruning="custom" && \
+pruning_keep_recent="100" && \
+pruning_keep_every="0" && \
+pruning_interval="10" && \
+sed -i -e "s/^pruning *=.*/pruning = \"$pruning\"/" $HOME/.symphonyd/config/app.toml && \
+sed -i -e "s/^pruning-keep-recent *=.*/pruning-keep-recent = \"$pruning_keep_recent\"/" $HOME/.symphonyd/config/app.toml && \
+sed -i -e "s/^pruning-keep-every *=.*/pruning-keep-every = \"$pruning_keep_every\"/" $HOME/.symphonyd/config/app.toml && \
+sed -i -e "s/^pruning-interval *=.*/pruning-interval = \"$pruning_interval\"/" $HOME/.symphonyd/config/app.toml
+```
+
+- Service
+```
+sudo tee /etc/systemd/system/symphonyd.service > /dev/null <<EOF
+[Unit]
+Description=symphonyd
+After=network-online.target
+[Service]
+User=$USER
+ExecStart=$(which symphonyd) start
+Restart=always
+RestartSec=3
+LimitNOFILE=65535
+[Install]
+WantedBy=multi-user.target
+EOF
+```
+
+- Start
+```
+sudo systemctl daemon-reload
+sudo systemctl enable symphonyd
+sudo systemctl restart symphonyd
+sudo journalctl -u symphonyd -f --no-hostname -o cat
+```
+
+ - Create Validator
+
+Heads up to the Cheat Sheets to create validator
+
+<a href="https://service.sychonix.com/testnet/symphonyd/cheat" target="_blank">
+  <button style="background-color: green; border: none; color: white; padding: 15px 32px; text-align: center; text-decoration: none; display: inline-block; font-size: 16px; margin: 4px 2px; cursor: pointer; border-radius: 10px; box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);" onmouseover="this.style.boxShadow='0 0 0 4px rgba(0,255,0,0.5)'" onmouseout="this.style.boxShadow='0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)'">CLI Cheatsheets</button>
+</a>
