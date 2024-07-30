@@ -175,8 +175,8 @@ icon : sym
 
 <pre class="my-pre">symphonyd tx staking create-validator \
 --amount=<span class="ramount1"></span>0000000note \
---moniker="<span class="rmoniker1"></span>" \
 --pubkey=$(symphonyd tendermint show-validator) \
+--moniker="<span class="rmoniker1"></span>" \
 --identity="<span class="ridentity1"></span>" \
 --details="<span class="rdetails1"></span>" \
 --website="<span class="rwebsite1"></span>" \
@@ -186,9 +186,11 @@ icon : sym
 --commission-max-rate=0.20\
 --commission-max-change-rate=0.01 \
 --min-self-delegation=1 \
+--gas-prices 0note \
+--gas "auto" \
+--gas-adjustment "1.5" \
 --from=<span class="rwallet8"> \
---gas="1000000" \
---gas-prices="0note"</pre>
+-y</pre>
 
  <label for="imoniker">2. Edit Validator</label>
 <div class="container">
@@ -221,7 +223,7 @@ symphonyd tx staking edit-validator \
 --chain-id=symphony-testnet-2 \
 --commission-rate=0.07 \
 --from=<span class="rwallet9"> \
---gas="1000000" \
+--gas="auto" \
 --gas-prices="0note"</pre>
 
 
