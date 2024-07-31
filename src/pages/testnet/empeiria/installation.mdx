@@ -48,18 +48,18 @@ export MONIKER=<your moniker>
 emped init $MONIKER --chain-id $CHAINID
 rm -rf ~/.empe-chain/config/genesis.json
 ```
-- Download Genesis
+- Genesis
 ```
-git clone https://github.com/empe-io/empe-chains.git
-cd empe-chains/testnet-2/  
+curl -Ls https://snapshot.sychonix.com/empeiria/genesis.json > $HOME/.empe-chain/config/genesis.json 
 ```
+- Download addrbook
 ```
-cp genesis.json ~/.empe-chain/config/
+curl -Ls https://snapshot.sychonix.com/empeiria/addrbook.json > $HOME/.empe-chain/config/addrbook.json
 ```
 - Configure Peers
 ```
-sed -e "s|persistent_peers = \".*\"|persistent_peers = \"$(cat .data | grep -oP 'Persistent peers\s+\K\S+')\"|g" ~/.empe-chain/config/config.toml > ~/.empe-chain/config/config.toml.tmp
-mv ~/.empe-chain/config/config.toml.tmp  ~/.empe-chain/config/config.toml
+PEERS="$(curl -sS https://rpc-empeiria-t.sychonix.com/net_info | jq -r '.result.peers[] | "\(.node_info.id)@\(.remote_ip):\(.node_info.listen_addr)"' | awk -F ':' '{print $1":"$(NF)}' | sed -z 's|\n|,|g;s|.$||')"
+sed -i.bak -e "s/^persistent_peers *=.*/persistent_peers = \"$PEERS\"/" $HOME/.empe-chain/config/config.toml
 ```
 - Configure Gas Prices
 ```
@@ -105,6 +105,10 @@ LimitNOFILE=65535
 [Install]
 WantedBy=multi-user.target
 EOF
+```
+- Download Snapshot
+```
+curl "https://snapshot.sychonix.com/empeiria/empeiria-latest.tar.lz4" | lz4 -dc - | tar -xf - -C "$HOME/.empe-chain"
 ```
 - Start Service
 ```
