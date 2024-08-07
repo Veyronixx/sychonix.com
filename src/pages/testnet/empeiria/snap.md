@@ -20,7 +20,7 @@ cp ~/.empe-chain/data/priv_validator_state.json  ~/.empe-chain/priv_validator_st
 emped tendermint unsafe-reset-all --home $HOME/.empe-chain --keep-addr-book
 ```
 ```
-curl https://snapshot.sychonix.com/empeiria/empeiria-latest.tar.lz4 | lz4 -dc - | tar -xf - -C $HOME/.empe-chain
+curl https://snapshot.service.sychonix.com/empeiria/empeiria-latest.tar.lz4 | lz4 -dc - | tar -xf - -C $HOME/.empe-chain
 ```
 ```
 mv $HOME/.empe-chain/priv_validator_state.json.backup $HOME/.empe-chain/data/priv_validator_state.json

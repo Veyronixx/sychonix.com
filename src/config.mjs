@@ -3,7 +3,7 @@ import defaultImage from './assets/images/sychonixx.png';
 const CONFIG = {
   name: 'sychonix',
 
-  origin: 'https://sychonix.com/',
+  origin: 'https://service.sychonix.com/',
   basePathname: '/',
   trailingSlash: false,
 
