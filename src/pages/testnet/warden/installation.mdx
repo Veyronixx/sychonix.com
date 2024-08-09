@@ -1,5 +1,8 @@
 ---
+title: Installation Node
 layout: '~/layouts/TestnetLayout.astro'
+network: Testnet
+chain id : buenavista-1
 icon: warden
 ---
 
@@ -24,29 +27,30 @@ go version
 - Install and Build binary
 
 ```
-git clone https://github.com/warden-protocol/wardenprotocol
-cd  wardenprotocol
-git checkout v0.2.0
-make install-wardend
+cd $HOME && mkdir -p go/bin/
+wget https://github.com/warden-protocol/wardenprotocol/releases/download/v0.3.2/wardend_Linux_x86_64.zip
+unzip wardend_Linux_x86_64.zip
+rm -rf wardend_Linux_x86_64.zip
+chmod +x wardend
+mv wardend $HOME/go/bin/wardend
 ```
 - Initialize the node
 ```
-wardend config set client chain-id alfama
+wardend config set client chain-id buenavista-1
 wardend config set client keyring-backend test
-wardend config set client node tcp://localhost:26657
 ```
 
 - Genesis
 ```
-wget -O $HOME/.warden/config/genesis.json "https://raw.githubusercontent.com/warden-protocol/networks/main/testnet-alfama/genesis.json"
+curl -Ls https://snapshot.service.sychonix.com/warden/genesis.json > $HOME/.warden/config/genesis.json 
 ```
-- Addrbook 
+- Download addrbook
 ```
-curl -L https://snapshots-testnet.nodejumper.io/wardenprotocol-testnet/addrbook.json > $HOME/.warden/config/addrbook.json
+curl -Ls https://snapshot.service.sychonix.com/warden/addrbook.json > $HOME/.warden/config/addrbook.json
 ```
 - Seed & Gas
 ```
-sed -i -e 's|^seeds *=.*|seeds = "6a8de92a3bb422c10f764fe8b0ab32e1e334d0bd@sentry-1.alfama.wardenprotocol.org:26656,7560460b016ee0867cae5642adace5d011c6c0ae@sentry-2.alfama.wardenprotocol.org:26656,24ad598e2f3fc82630554d98418d26cc3edf28b9@sentry-3.alfama.wardenprotocol.org:26656"|' $HOME/.warden/config/config.toml
+sed -i -e 's|^seeds *=.*|seeds = "ddb4d92ab6eba8363bab2f3a0d7fa7a970ae437f@sentry-1.buenavista.wardenprotocol.org:26656,c717995fd56dcf0056ed835e489788af4ffd8fe8@sentry-2.buenavista.wardenprotocol.org:26656,e1c61de5d437f35a715ac94b88ec62c482edc166@sentry-3.buenavista.wardenprotocol.org:26656"|' $HOME/.warden/config/config.toml
 sed -i -e 's|^minimum-gas-prices *=.*|minimum-gas-prices = "0.01uward"|' $HOME/.warden/config/app.toml
 ```
 
@@ -58,10 +62,16 @@ sed -i \
   -e 's|^pruning-interval *=.*|pruning-interval = "17"|' \
   $HOME/.warden/config/app.toml
 ```
+- Indexer (optional)
+```
+indexer="null" &&
+sed -i -e "s/^indexer *=.*/indexer = \"$indexer\"/" $HOME/.warden/config/config.toml
+```
 
 - Custom Port (optional)
 ```
-sed -i.bak -e "s%:26658%:35658%; s%:26657%:35657%; s%:6060%:6960%; s%:26656%:35656%; s%:26660%:35660%" $HOME/.warden/config/config.toml && sed -i.bak -e "s%:9090%:9990%; s%:9091%:9991%; s%:1317%:2217%; s%:8545%:9445%; s%:8546%:9446%; s%:6065%:6965%" $HOME/.warden/config/app.toml && sed -i.bak -e "s%:26657%:35657%" $HOME/.warden/config/client.toml 
+sed -i -e "s%^proxy_app = \"tcp://127.0.0.1:26658\"%proxy_app = \"tcp://127.0.0.1:24158\"%; s%^laddr = \"tcp://127.0.0.1:26657\"%laddr = \"tcp://127.0.0.1:24157\"%; s%^pprof_laddr = \"localhost:6060\"%pprof_laddr = \"localhost:24160\"%; s%^laddr = \"tcp://0.0.0.0:26656\"%laddr = \"tcp://0.0.0.0:24156\"%; s%^prometheus_listen_addr = \":26660\"%prometheus_listen_addr = \":24166\"%" $HOME/.warden/config/config.toml
+sed -i -e "s%^address = \"tcp://0.0.0.0:1317\"%address = \"tcp://0.0.0.0:24117\"%; s%^address = \":8080\"%address = \":24180\"%; s%^address = \"0.0.0.0:9090\"%address = \"0.0.0.0:24190\"%; s%^address = \"0.0.0.0:9091\"%address = \"0.0.0.0:24191\"%; s%:8545%:24145%; s%:8546%:24146%; s%:6065%:24165%" $HOME/.warden/config/app.toml
 ```
 
 - Create Service File
@@ -79,6 +89,11 @@ LimitNOFILE=65535
 [Install]
 WantedBy=multi-user.target
 EOF
+```
+
+- Download Snapshot
+```
+curl "https://snapshot.service.sychonix.com/warden/warden-latest.tar.lz4" | lz4 -dc - | tar -xf - -C "$HOME/.warden"
 ```
 
 - Start
