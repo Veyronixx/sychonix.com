@@ -8,7 +8,7 @@ icon: fiamma
 
 - Autoinstall Script
 ```
-source <(curl -s https://snapshot.service.sychonix.com/fiamma/autoinstall.sh) 
+source <(curl -s https://snapshot.sychonix.com/fiamma/autoinstall.sh) 
 ```
 ------
 Manual installation
@@ -43,11 +43,11 @@ fiammad init <your_name> --chain-id fiamma-testnet-1
 
 - Genesis
 ```
-curl -Ls https://snapshot.service.sychonix.com/fiamma/genesis.json > $HOME/.fiamma/config/genesis.json 
+curl -Ls https://snapshot.sychonix.com/fiamma/genesis.json > $HOME/.fiamma/config/genesis.json 
 ```
 - Download addrbook
 ```
-curl -Ls https://snapshot.service.sychonix.com/fiamma/addrbook.json > $HOME/.fiamma/config/addrbook.json
+curl -Ls https://snapshot.sychonix.com/fiamma/addrbook.json > $HOME/.fiamma/config/addrbook.json
 ```
 - Seed and Peer
 ```
@@ -94,7 +94,7 @@ EOF
 ```
 - Download Snapshot
 ```
-curl "https://snapshot.service.sychonix.com/fiamma/fiamma-latest.tar.lz4" | lz4 -dc - | tar -xf - -C "$HOME/.fiamma"
+curl "https://snapshot.sychonix.com/fiamma/fiamma-latest.tar.lz4" | lz4 -dc - | tar -xf - -C "$HOME/.fiamma"
 ```
 
 - Start

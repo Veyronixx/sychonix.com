@@ -8,7 +8,7 @@ icon: sym
 
 - Autoinstall Script
 ```
-source <(curl -s https://snapshot.service.sychonix.com/symphony/autoinstall.sh) 
+source <(curl -s https://snapshot.sychonix.com/symphony/autoinstall.sh) 
 ```
 ------
 Manual installation
@@ -43,11 +43,11 @@ symphonyd init <your_name> --chain-id symphony-testnet-2
 
 - Genesis
 ```
-curl -Ls https://snapshot.service.sychonix.com/symphony/genesis.json > $HOME/.symphonyd/config/genesis.json 
+curl -Ls https://snapshot.sychonix.com/symphony/genesis.json > $HOME/.symphonyd/config/genesis.json 
 ```
 - Download addrbook
 ```
-curl -Ls https://snapshot.service.sychonix.com/symphony/addrbook.json > $HOME/.symphonyd/config/addrbook.json
+curl -Ls https://snapshot.sychonix.com/symphony/addrbook.json > $HOME/.symphonyd/config/addrbook.json
 ```
 - Seed and Peer
 ```
@@ -91,7 +91,7 @@ EOF
 ```
 - Download Snapshot
 ```
-curl "https://snapshot.service.sychonix.com/symphony/symphony-latest.tar.lz4" | lz4 -dc - | tar -xf - -C "$HOME/.symphonyd"
+curl "https://snapshot.sychonix.com/symphony/symphony-latest.tar.lz4" | lz4 -dc - | tar -xf - -C "$HOME/.symphonyd"
 ```
 
 - Start
