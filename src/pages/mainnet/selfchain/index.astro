@@ -7,7 +7,7 @@ import { Icon } from 'astro-icon';
 const name= 'Selfchain';
 const icon= 'selfchain';
 const network= 'mainnet';
-const chain= '';
+const chain= 'self-1';
 const version= '';
 const stake= 'https://explorer.sychonix.com/selfchain-mainnet/staking/selfvaloper1sfnk4yqsvkpta82lfcfyas9txvv2lafdd5s6nv';
  const social = [
@@ -24,39 +24,39 @@ const stake= 'https://explorer.sychonix.com/selfchain-mainnet/staking/selfvalope
  const items = [
 	{
 		title: 'Explorer',
-		Link: 'https://explorer.sychonix.com/crossfi-testnet',
+		Link: 'https://explorer.sychonix.com/selfchain-mainnet/staking',
 	},
 	{
 		title: 'Node installation',
-		Link: 'https://service.sychonix.com/testnet/crossfi/installation',
+		Link: 'https://service.sychonix.com/testnet/selfchain/installation',
 	},
   {
 		title: 'Peers',
-		Link: 'https://service.sychonix.com/testnet/crossfi/peers',
+		Link: 'https://service.sychonix.com/testnet/selfchain/peers',
 	},
   {
 		title: 'RPC',
-		Link: 'https://service.sychonix.com/testnet/crossfi/rpc',
+		Link: 'https://service.sychonix.com/testnet/selfchain/rpc',
 	},
 	{
 		title: 'API',
-		Link: 'https://service.sychonix.com/testnet/crossfi/api',
+		Link: 'https://service.sychonix.com/testnet/selfchain/api',
 	},
 	{
 		title: 'CLI Cheatsheet',
-		Link: 'https://service.sychonix.com/testnet/crossfi/cheat',
+		Link: 'https://service.sychonix.com/testnet/selfchain/cheat',
 	},
   {
 		title: 'Snapshot',
-		Link: 'https://service.sychonix.com/testnet/crossfi/snap',
+		Link: 'https://service.sychonix.com/testnet/selfchain/snapshot',
 	},
   {
 		title: 'Addrbook',
-		Link: 'https://service.sychonix.com/testnet/crossfi/addrbook',
+		Link: 'https://service.sychonix.com/testnet/selfchain/addrbook',
 	},
   {
 		title: 'Genesis',
-		Link: 'https://service.sychonix.com/testnet/crossfi/addrbook',
+		Link: 'https://service.sychonix.com/testnet/selfchain/genesis',
 	},
 ]	
 ---
@@ -107,9 +107,6 @@ const stake= 'https://explorer.sychonix.com/selfchain-mainnet/staking/selfvalope
             </li>
             <li>
               <span class="font-bold">Chain-id:</span> {chain}
-            </li>
-            <li>
-              <span class="font-bold">Node version:</span> {version}
             </li>
             {social.map((item) => (
               <a href={item.href} target="_blank" rel="noopener noreferrer" key={item.label}>
