@@ -10,81 +10,50 @@ icon: tangle
 sudo apt install -y git clang curl libssl-dev llvm libudev-dev make protobuf-compiler
 ```
 
- Open port
+- Download Binary
 ```
-sudo ufw allow ssh; sudo ufw allow 30333
+cd $HOME
+wget -O tangle https://github.com/webb-tools/tangle/releases/download/v1.0.11/tangle-default-linux-amd64
+sudo chmod +x tangle
+sudo mv tangle /usr/local/bin/
+mkdir -p $HOME/.tangle/data
 ```
 
- Download Binary & Copy to /usr/bin
-```
-sudo wget -O /usr/bin/tangle https://github.com/webb-tools/tangle/releases/download/v0.6.1/tangle-testnet-linux-amd64 && sudo chmod +x /usr/bin/tangle
-```
-
- Create a service
+- Create a service
 Change **YourName** to your name
 ```
-sudo tee /etc/systemd/system/tangle.service > /dev/null << EOF
+sudo tee /etc/systemd/system/tangle.service > /dev/null <<EOF
 [Unit]
-Description=Tangle Validator Node
+Description=tangle node service
 After=network-online.target
-StartLimitIntervalSec=0
-
 [Service]
 User=$USER
 Restart=always
 RestartSec=3
-ExecStart=/usr/bin/tangle \
-  --base-path $HOME/.tangle/data/validator/YourName \
-  --name YourName \
-  --chain tangle-testnet \
-  --auto-insert-keys \
-  --port 30333 \
-  --telemetry-url "wss://telemetry.polkadot.io/submit/ 0" \
-  --validator \
-  --no-mdns
-
+LimitNOFILE=65535
+ExecStart=$(which tangle) start
+    --base-path "$HOME/.tangle/data" \
+    --chain tangle-mainnet \
+    --name "YourName" \
+    --telemetry-url "wss://telemetry.polkadot.io/submit/ 1" \
+    --validator \
+    --no-mdns
 [Install]
 WantedBy=multi-user.target
 EOF
 ```
 
- Enable service
+- Enable service
 ```
 sudo systemctl daemon-reload
 sudo systemctl enable tangle
 sudo systemctl start tangle
 ```
 
- Check the logs
+- Check the logs
 ```
 sudo journalctl -u tangle -f --no-hostname -o cat
 ```
-```
-Example Output:
-2024-01-17 15:48:02 Tangle Node
-2024-01-17 15:48:02 ✌️  version 0.6.1-721ffa6-x86_64-linux-gnu
-2024-01-17 15:48:02 ❤️  by Webb Technologies Inc., 2023-2024
-2024-01-17 15:48:02 📋 Chain specification: Tangle Testnet
-2024-01-17 15:48:02 🏷  Node name: YourName
-2024-01-17 15:48:02 👤 Role: AUTHORITY
-2024-01-17 15:48:02 💾 Database: RocksDb at /root/.tangle/data/validator/YourName/chains/tangle-testnet/db/full
-2024-01-17 15:49:25 💻 Operating system: linux
-2024-01-17 15:49:25 💻 CPU architecture: x86_64
-2024-01-17 15:49:25 💻 Target environment: gnu
-2024-01-17 15:49:25 💻 CPU: DO-Premium-AMD
-2024-01-17 15:49:25 💻 CPU cores: 4
-2024-01-17 15:49:25 💻 Memory: 7949MB
-2024-01-17 15:49:25 💻 Kernel: 5.15.0-67-generic
-2024-01-17 15:49:25 💻 Linux distribution: Ubuntu 22.04.3 LTS
-2024-01-17 15:49:25 💻 Virtual machine: yes
-2024-01-17 15:49:25 📦 Highest known block at #32288
-2024-01-17 15:49:25 Running JSON-RPC server: addr=127.0.0.1:9944, allowed origins=["http://localhost:*", "http://127.0.0.1:*", "https://localhost:*", "https://127.0.0.1:*", "https://polkadot.js.org"]
-2024-01-17 15:49:25 👶 Starting BABE Authorship worker
-2024-01-17 15:49:30 ⚙️  Syncing, target=#115237 (7 peers), best: #33177 (0xd4bc…0eee), finalized #32768 (0x32c4…9c2b), ⬇ 159.8kiB/s ⬆ 20.8kiB/s
-2024-01-17 15:49:35 ⚙️  Syncing 321.2 bps, target=#115238 (7 peers), best: #34783 (0xc5e9…b3a5), finalized #34304 (0x8cf1…3d79), ⬇ 205.0kiB/s ⬆ 17.2kiB/s
-2024-01-17 15:49:40 ⚙️  Syncing 313.8 bps, target=#115239 (7 peers), best: #36352 (0x0687…8a1b), finalized #35840 (0xde2e…d474), ⬇ 116.3kiB/s ⬆ 10.2kiB/s
-```
-
  Example Output after sync:
 ```
 2024-01-17 15:50:48 ✨ Imported #115248 (0x7a1e…219e)
@@ -101,4 +70,4 @@ Example Output:
 2024-01-17 15:51:13 💤 Idle (9 peers), best: #115252 (0x98ae…797a), finalized #115249 (0x3787…9cef), ⬇ 314.1kiB/s ⬆ 527.8kiB/s
 ```
 
-Start validating your node by following this [Guide](https://docs.webb.tools/docs/tangle-network/node/validator/requirements/) 
+Start validating your node by following this [Guide](https://docs.tangle.tools/operators/validator/introduction) 
