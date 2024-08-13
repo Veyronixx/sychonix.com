@@ -278,9 +278,9 @@ wardend tx staking edit-validator \
 wardend tx bank send<span class="rwallet22"></span> <span class="rtoken1"></span> <span class="rdelegete5"></span>000000000uward --from <span class="rwallet23"></span> --chain-id buenavista-1 --gas="1000000" --gas-prices="0uward"
 </pre></div>
 
-<h3 for="iwallet">Costum Port</h3>
+<h3 for="iwallet">Custom Port</h3>
 <div class="input-group ">
-  <input id="iport" type="text" placeholder="Enter Costum Port" oninput="updatePre()" />
+  <input id="iport" type="text" placeholder="Enter Custom Port" oninput="updatePre()" />
 </div>
  <pre class="my-pre" id="pre1" style="margin-top: 5px;">CUSTOM_PORT=<span class="rport1"></span>
 sed -i.bak -e "s%^proxy_app = \"tcp://127.0.0.1:26658\"%proxy_app = \"tcp://127.0.0.1:${CUSTOM_PORT}658\"%; s%^laddr = \"tcp://127.0.0.1:26657\"%laddr = \"tcp://127.0.0.1:${CUSTOM_PORT}657\"%; s%^pprof_laddr = \"localhost:6060\"%pprof_laddr = \"localhost:${CUSTOM_PORT}060\"%; s%^laddr = \"tcp://0.0.0.0:26656\"%laddr = \"tcp://0.0.0.0:${CUSTOM_PORT}656\"%; s%^prometheus_listen_addr = \":26660\"%prometheus_listen_addr = \":${CUSTOM_PORT}660\"%" $HOME/.warden/config/config.toml

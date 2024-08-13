@@ -1,133 +1,113 @@
 ---
 layout: '~/layouts/TestnetLayout.astro'
 title: Installation Node
-network: Testnet
+network: Mainnet
 icon: selfchain
-chain: self-dev-1
-version: v
+chain: self-1
 ---
 
- Hardware requirements
-
-The following requirements are recommended for running Defund:
-
-- 4 or more physical CPU cores
-- At least 200GB of SSD disk storage
-- At least 8GB of memory (RAM)
-- At least 100mbps network bandwidth
-
-
- Install dependencies Required
-
+- Autoinstall Script
 ```
-sudo apt update && sudo apt upgrade -y && sudo apt install curl tar wget clang pkg-config libssl-dev jq build-essential bsdmainutils git make ncdu gcc git jq chrony liblz4-tool -y
+source <(curl -s https://snapshot.sychonix.com/selfchain/autoinstall.sh) 
+```
+------
+Manual installation
+
+- Install Dependencies
+```
+sudo apt update && sudo apt upgrade -y 
+sudo apt install -y git gcc make unzip jq
 ```
 
- Install go
-
-We are gonna use GO Version 1.20.4
-If you already have GO installed you can skip this 
-
+- Install Go
 ```
-ver="1.20.4"
-cd $HOME
-wget "https://golang.org/dl/go$ver.linux-amd64.tar.gz"
 sudo rm -rf /usr/local/go
-sudo tar -C /usr/local -xzf "go$ver.linux-amd64.tar.gz"
-rm "go$ver.linux-amd64.tar.gz"
-echo "export PATH=$PATH:/usr/local/go/bin:$HOME/go/bin" >> ~/.bash_profile
-source ~/.bash_profile
-go version
+curl -Ls https://go.dev/dl/go1.21.1.linux-amd64.tar.gz | sudo tar -xzf - -C /usr/local
+eval $(echo 'export PATH=$PATH:/usr/local/go/bin' | sudo tee /etc/profile.d/golang.sh)
+eval $(echo 'export PATH=$PATH:$HOME/go/bin' | tee -a $HOME/.profile)
 ```
 
- Install binary
-
+- Install Binary
 ```
-cd $HOME
-mkdir -p /root/go/bin/
-wget https://ss-t.self.nodestake.top/selfchaind
+cd $HOME && mkdir -p go/bin/
+curl -O https://snapshot.sychonix.com/selfchain/selfchaind
 chmod +x selfchaind
-mv selfchaind /root/go/bin/
+mv selfchaind $HOME/go/bin
 ```
-
- Initialize Node
-
-Please change `<MONIKER>` To your own Moniker.
-
+- Initialize the node
 ```
-selfchaind init $MONIKER --chain-id self-dev-1
-selfchaind config chain-id self-dev-1
-selfchaind config keyring-backend test
+selfchaind config chain-id self-1
+selfchaind config keyring-backend file
+selfchaind init <your_name> --chain-id self-1
 ```
-
- Download Genesis file and addrbook
 
 - Genesis
-
 ```
-wget -O $HOME/.selfchain/config/genesis.json https://raw.githubusercontent.com/hotcrosscom/selfchain-genesis/main/networks/devnet/genesis.json
+curl -Ls https://snapshot.sychonix.com/selfchain/genesis.json > $HOME/.selfchain/config/genesis.json 
+```
+- Download addrbook
+```
+curl -Ls https://snapshot.sychonix.com/selfchain/addrbook.json > $HOME/.selfchain/config/addrbook.json
+```
+- Seed and Peer
+```
+PEERS="$(curl -sS https://rpc-selfchain.sychonix.com/net_info | jq -r '.result.peers[] | "\(.node_info.id)@\(.remote_ip):\(.node_info.listen_addr)"' | awk -F ':' '{print $1":"$(NF)}' | sed -z 's|\n|,|g;s|.$||')"
+sed -i.bak -e "s/^persistent_peers *=.*/persistent_peers = \"$PEERS\"/" $HOME/.selfchain/config/config.toml
+```
+- Configure Gas Prices
+```
+sed -i -e "s|^minimum-gas-prices *=.*|minimum-gas-prices = \"0.0uslf\"|" $HOME/.selfchain/config/app.toml
+```
+- Prunning
+```
+sed -i \
+  -e 's|^pruning *=.*|pruning = "custom"|' \
+  -e 's|^pruning-keep-recent *=.*|pruning-keep-recent = "100"|' \
+  -e 's|^pruning-keep-every *=.*|pruning-keep-every = "0"|' \
+  -e 's|^pruning-interval *=.*|pruning-interval = "19"|' \
+  $HOME/.selfchain/config/app.toml
+```
+Custom Port (Optional)
+```
+PORT=21
+selfchaind config node tcp://localhost:${PORT}657
+sed -i -e "s%^proxy_app = \"tcp://127.0.0.1:26658\"%proxy_app = \"tcp://127.0.0.1:${PORT}658\"%; s%^laddr = \"tcp://127.0.0.1:26657\"%laddr = \"tcp://127.0.0.1:${PORT}657\"%; s%^pprof_laddr = \"localhost:6060\"%pprof_laddr = \"localhost:${PORT}060\"%; s%^laddr = \"tcp://0.0.0.0:26656\"%laddr = \"tcp://0.0.0.0:${PORT}656\"%; s%^prometheus_listen_addr = \":26660\"%prometheus_listen_addr = \":${PORT}660\"%" $HOME/.selfchain/config/config.toml
+sed -i -e "s%^address = \"tcp://localhost:1317\"%address = \"tcp://localhost:${PORT}317\"%; s%^address = \":8080\"%address = \":${PORT}080\"%; s%^address = \"localhost:9090\"%address = \"localhost:${PORT}090\"%; s%^address = \"localhost:9091\"%address = \"localhost:${PORT}091\"%; s%^address = \"0.0.0.0:8545\"%address = \"0.0.0.0:${PORT}545\"%; s%^ws-address = \"0.0.0.0:8546\"%ws-address = \"0.0.0.0:${PORT}546\"%" $HOME/.selfchain/config/app.toml
 ```
 
- Configure Seeds and Peers
-
-```
-SEEDS=""
-sed -i -e "s|^seeds *=.*|seeds = \"$SEEDS\"|" $HOME/.selfchain/config/config.toml
-peers="94a7baabb2bcc00c7b47cbaa58adf4f433df9599@157.230.119.165:26656,d3b5b6ca39c8c62152abbeac4669816166d96831@165.22.24.236:26656,35f478c534e2d58dc2c4acdf3eb22eeb6f23357f@165.232.125.66:26656"
-sed -i.bak -e "s/^persistent_peers *=.*/persistent_peers = \"$peers\"/" $HOME/.selfchain/config/config.toml
-sed -i -e "s|^minimum-gas-prices *=.*|minimum-gas-prices = \"0.005uself\"|" $HOME/.selfchain/config/app.toml
-```
-
- config pruning
-
-```
-pruning="custom"
-pruning_keep_recent="100"
-pruning_keep_every="0"
-pruning_interval="10"
-sed -i -e "s/^pruning *=.*/pruning = \"$pruning\"/" $HOME/.selfchain/config/app.toml
-sed -i -e "s/^pruning-keep-recent *=.*/pruning-keep-recent = \"$pruning_keep_recent\"/" $HOME/.selfchain/config/app.toml
-sed -i -e "s/^pruning-keep-every *=.*/pruning-keep-every = \"$pruning_keep_every\"/" $HOME/.selfchain/config/app.toml
-sed -i -e "s/^pruning-interval *=.*/pruning-interval = \"$pruning_interval\"/" $HOME/.selfchain/config/app.toml
-```
-
-
- create service file and start node
-
-Create service file
-Create a `selfchaind.service` file in the `/etc/systemd/system` folder with the following code. 
-You can change `USER` with your Linux user name. You need sudo previlege to do this step.
-
+- Service
 ```
 sudo tee /etc/systemd/system/selfchaind.service > /dev/null <<EOF
 [Unit]
-Description=selfchain
+Description=selfchain node
 After=network-online.target
-
 [Service]
 User=$USER
-ExecStart=$(which selfchaind) start
+WorkingDirectory=$HOME/.selfchain
+ExecStart=$(which selfchaind) start --home $HOME/.selfchain
 Restart=on-failure
-RestartSec=3
+RestartSec=5
 LimitNOFILE=65535
-
 [Install]
 WantedBy=multi-user.target
 EOF
 ```
+- Download Snapshot
+```
+curl "https://snapshot.sychonix.com/selfchain/selfchain-latest.tar.lz4" | lz4 -dc - | tar -xf - -C "$HOME/.selfchain"
+```
 
-- Enable Service and Start Node
-
+- Start
 ```
 sudo systemctl daemon-reload
 sudo systemctl enable selfchaind
-sudo systemctl restart selfchaind
-sudo journalctl -u selfchaind -f -o cat
+sudo systemctl restart selfchaind && sudo journalctl -u selfchaind -f --no-hostname -o cat
 ```
- Create Validator
+
+ - Create Validator
 
 Heads up to the Cheat Sheets to create validator
 
-<a href="https://service.sychonix.com/testnet/selfchain/cheat" target="_blank">
+<a href="https://service.sychonix.com/mainnet/selfchain/cheat" target="_blank">
   <button style="background-color: green; border: none; color: white; padding: 15px 32px; text-align: center; text-decoration: none; display: inline-block; font-size: 16px; margin: 4px 2px; cursor: pointer; border-radius: 10px; box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);" onmouseover="this.style.boxShadow='0 0 0 4px rgba(0,255,0,0.5)'" onmouseout="this.style.boxShadow='0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)'">CLI Cheatsheets</button>
 </a>

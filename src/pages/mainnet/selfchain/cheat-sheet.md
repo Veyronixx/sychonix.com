@@ -3,8 +3,7 @@ layout: '~/layouts/TestnetLayout.astro'
 title: Installation Node
 network: Testnet
 icon: selfchain
-chain: self-dev-1
-version: v
+chain: self-1
 ---
 
 
@@ -282,15 +281,20 @@ selfchaind tx staking edit-validator \
 selfchaind tx bank send<span class="rwallet22"></span> <span class="rtoken1"></span> <span class="rdelegete5"></span>1000000000uself --from <span class="rwallet23"></span> --chain-id self-dev-1 --gas="auto" --gas-prices="0uself"
 </pre></div>
 
-<h3 for="iwallet">Costum Port</h3>
+<h3 for="iwallet">Custom Port</h3>
 <div class="input-group ">
-  <input id="iport" type="text" placeholder="Enter Costum Port" oninput="updatePre()" />
+  <input id="iport" type="text" placeholder="Enter Custom Port" oninput="updatePre()" />
 </div>
  <pre class="my-pre" id="pre1" style="margin-top: 5px;">CUSTOM_PORT=<span class="rport1"></span>
 sed -i.bak -e "s%^proxy_app = \"tcp://127.0.0.1:26658\"%proxy_app = \"tcp://127.0.0.1:${CUSTOM_PORT}658\"%; s%^laddr = \"tcp://127.0.0.1:26657\"%laddr = \"tcp://127.0.0.1:${CUSTOM_PORT}657\"%; s%^pprof_laddr = \"localhost:6060\"%pprof_laddr = \"localhost:${CUSTOM_PORT}060\"%; s%^laddr = \"tcp://0.0.0.0:26656\"%laddr = \"tcp://0.0.0.0:${CUSTOM_PORT}656\"%; s%^prometheus_listen_addr = \":26660\"%prometheus_listen_addr = \":${CUSTOM_PORT}660\"%" $HOME/.selfchain/config/config.toml
 sed -i.bak -e "s%^address = \"tcp://0.0.0.0:1317\"%address = \"tcp://0.0.0.0:${CUSTOM_PORT}317\"%; s%^address = \":8080\"%address = \":${CUSTOM_PORT}080\"%; s%^address = \"0.0.0.0:9090\"%address = \"0.0.0.0:${CUSTOM_PORT}090\"%; s%^address = \"0.0.0.0:9091\"%address = \"0.0.0.0:${CUSTOM_PORT}091\"%" $HOME/.selfchain/config/app.toml  ></pre>  </div>
  </div>
 
+
+- Deleted Node 
+```
+cd $HOME && sudo systemctl stop selfchaind && sudo systemctl disable selfchaind && sudo rm /etc/systemd/system/selfchaind.service && sudo systemctl daemon-reload && sudo rm -rf $(which selfchaind) && sudo rm -rf $HOME/.selfchain && sudo rm -rf $(which selfchaind) 
+```
 <script>
   function updatePre() {
     const walletInput = document.getElementById('iwallet').value.trim();
