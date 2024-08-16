@@ -12,7 +12,7 @@ const CONFIG = {
     'Validator & Node Operator Networks',
   defaultImage: defaultImage,
 
-  defaultTheme: 'dark:only', // Values: "system" | "light" | "dark" | "light:only" | "dark:only"
+  defaultTheme: 'dark', // Values: "system" | "light" | "dark" | "light:only" | "dark:only"
 
   language: 'en',
   textDirection: 'ltr',

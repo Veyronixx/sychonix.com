@@ -62,8 +62,9 @@ curl -Ls https://snapshot.sychonix.com/empeiria/genesis.json > $HOME/.empe-chain
 ```
 curl -Ls https://snapshot.sychonix.com/empeiria/addrbook.json > $HOME/.empe-chain/config/addrbook.json
 ```
-- Configure Peers
+- Configure Peers and Seeds
 ```
+sed -i -e 's|^seeds *=.*|seeds = "31b7897fd46f68ccede7fbd827c6b6439d5b97ab@rpc-empeiria-t.sychonix.com:24556"|' $HOME/.empe-chain/config/config.toml
 PEERS="$(curl -sS https://rpc-empeiria-t.sychonix.com/net_info | jq -r '.result.peers[] | "\(.node_info.id)@\(.remote_ip):\(.node_info.listen_addr)"' | awk -F ':' '{print $1":"$(NF)}' | sed -z 's|\n|,|g;s|.$||')"
 sed -i.bak -e "s/^persistent_peers *=.*/persistent_peers = \"$PEERS\"/" $HOME/.empe-chain/config/config.toml
 ```
