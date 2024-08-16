@@ -2,7 +2,7 @@
 title: Installation Node
 layout: '~/layouts/TestnetLayout.astro'
 network: Testnet
-chain id : symphony-testnet-2
+chain id : symphony-testnet-3
 icon: sym
 ---
 
@@ -29,16 +29,17 @@ eval $(echo 'export PATH=$PATH:$HOME/go/bin' | tee -a $HOME/.profile)
 - Install Binary
 ```
 cd $HOME
-git clone https://github.com/Orchestra-Labs/symphony.git
+rm -rf symphony
+git clone https://github.com/Orchestra-Labs/symphony symphony
 cd symphony
-git checkout v0.2.1
+git checkout v0.3.0
 make install
 ```
 - Initialize the node
 ```
-symphonyd config chain-id symphony-testnet-2
+symphonyd config chain-id symphony-testnet-3
 symphonyd config keyring-backend file
-symphonyd init <your_name> --chain-id symphony-testnet-2
+symphonyd init <your_name> --chain-id symphony-testnet-3
 ```
 
 - Genesis
@@ -51,13 +52,13 @@ curl -Ls https://snapshot.sychonix.com/symphony/addrbook.json > $HOME/.symphonyd
 ```
 - Seed and Peer
 ```
-sed -i -e 's|^seeds *=.*|seeds = "6d17b7e6c1eab75407fc947380a20a25a1d9e43c@rpc-symphony-t.sychonix.com:24856"|' $HOME/.symphonyd/config/config.toml
-PEERS="$(curl -sS https://rpc-symphony-t.sychonix.com/net_info | jq -r '.result.peers[] | "\(.node_info.id)@\(.remote_ip):\(.node_info.listen_addr)"' | awk -F ':' '{print $1":"$(NF)}' | sed -z 's|\n|,|g;s|.$||')"
-sed -i.bak -e "s/^persistent_peers *=.*/persistent_peers = \"$PEERS\"/" $HOME/.symphonyd/config/config.toml
+SEEDS="98fcefd53552f5ef2f77a92eda9b5ae22071400e@rpc-symphony-t.sychonix.com:24856"
+PEERS="$(curl -sS https://rpc-symphony.sychonix.com/net_info | jq -r '.result.peers[] | "\(.node_info.id)@\(.remote_ip):\(.node_info.listen_addr)"' | awk -F ':' '{print $1":"$(NF)}' | sed -z 's|\n|,|g;s|.$||')"
+sed -i.bak -e "s/^seeds *=.*/seeds = \"$SEEDS\"/; s/^persistent_peers *=.*/persistent_peers = \"$PEERS\"/" $HOME/.symphonyd/config/config.toml
 ```
 - Configure Gas Prices
 ```
-sed -i -e "s|^minimum-gas-prices *=.*|minimum-gas-prices = \"0note\"|" $HOME/.symphonyd/config/app.toml
+sed -i 's|minimum-gas-prices =.*|minimum-gas-prices = "0.25note"|g' $HOME/.symphonyd/config/app.toml
 ```
 - Prunning
 ```
