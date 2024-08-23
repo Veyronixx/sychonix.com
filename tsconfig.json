@@ -3,13 +3,15 @@
   "compilerOptions": {
     "strictNullChecks": true,
     "allowJs": true,
-    "baseUrl": ".",
+    "baseUrl": "src",
     "paths": {
       "~/*": [
         "src/*"
       ]
     },
     "verbatimModuleSyntax": true,
-    "ignoreDeprecations": "5.0"
+    "ignoreDeprecations": "5.0",
+    "jsx": "react-jsx",
+    "jsxImportSource": "react"
   }
 }

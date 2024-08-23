@@ -5,71 +5,129 @@ const items = [
   [
     {
       title: 'Highly Secured',
-      description: 'Experience unparalleled security with Sychonix Staking Service, featuring 24/7 monitoring and advanced protection.',
+      description: 'Sychonix is highly secured with 24/7 monitoring, ensuring the integrity and safety of transactions and stakeholder assets.',
       icon: 'tabler:rocket',
     },
     {
       title: 'Interchain-Explorer',
-      description: 'Explore the blockchain with confidence using our fast, reliable, and user-friendly interchain explorer.',
+      description: 'Our fast and reliable Interchain Explorer facilitates seamless navigation and interaction between blockchain networks, enhancing accessibility and user experience.',
       icon: 'tabler:components',
     },
   ],
   [
     {
-      title: 'Low Fees and Comission',
-      description: 'Enjoy low fees and commissions with Sychonix, along with impressive uptime and zero slashing incidents.',
-      icon: 'tabler:arrows-right-left',
+      title: 'Service Guide',
+      description: 'We provide comprehensive setup documents and guides for our community, empowering users to navigate and utilize our platform effectively.',
+      icon: 'tabler:book',
     },
     {
       title: 'Fully Comply',
-      description: 'Stay ahead in blockchain governance with our active participation in chain updates, upgrades, and community engagement.',
+      description: 'We fully comply with blockchain governance protocols, actively participating in chain governance, updates, and upgrades to ensure network stability and innovation.',
       icon: 'tabler:bulb',
     },
   ],
 ];
 ---
 
-<section class="scroll-mt-16" id="features">
+<section id="services" class="scroll-mt-16">
   <div class="px-4 py-16 mx-auto max-w-6xl lg:px-8 lg:py-20">
     <div class="mb-10 md:mx-auto sm:text-center md:mb-12 max-w-3xl">
-      <p class="text-base text-primary-600 dark:text-primary-200 font-semibold tracking-wide uppercase"></p>
       <h2 class="text-4xl md:text-5xl font-bold leading-tighter tracking-tighter mb-4 font-heading">
         What you need to know about <span class="whitespace-nowrap">Us</span>
       </h2>
-      <p class="max-w-3xl mx-auto sm:text-center text-xl text-gray-600 dark:text-slate-400"></p>
     </div>
-    <div class="grid mx-auto space-y-6 md:grid-cols-2 md:space-y-0">
-      {
-        items.map((subitems) => (
-          <div class="space-y-8 sm:px-8">
-            {subitems.map(({ title, description, icon }) => (
-              <div class="card flex flex-row max-w-md p-6">
-                <div class="mb-4 mr-4">
-                  <div class="flex items-center justify-center w-12 h-12 rounded-full bg-primary-500 dark:bg-primary-700">
-                    {icon && <Icon name={icon} class="w-6 h-6 text-white icon-light" />}
-                  </div>
+    <div class="services__container">
+      {items.map((subitems) => (
+        <div class="space-y-4 sm:px-1"> <!-- Mengganti space-y-6 dengan space-y-4 -->
+          {subitems.map(({ title, description, icon }) => (
+            <div class="card service">
+              <div class="flex items-start gap-4">
+                <div class="service__icon flex items-center justify-center w-10 h-10 bg-fuchsia-700"> <!-- Ukuran ikon dikurangi -->
+                  {icon && <Icon name={icon} class="w-5 h-5 text-white" />} <!-- Ukuran ikon dikurangi -->
                 </div>
                 <div>
-                  <h3 class="mb-3 text-xl font-bold">{title}</h3>
-                  <p class="text-gray-400 dark:text-slate-400">{description}</p>
+                  <h4 class="mb-2 text-base font-semibold">{title}</h4> <!-- Ukuran judul dikurangi -->
+                  <p class="text-gray-300 text-sm">{description}</p> <!-- Ukuran deskripsi dikurangi -->
                 </div>
               </div>
-            ))}
-          </div>
-        ))
-      }
+            </div>
+          ))}
+        </div>
+      ))}
     </div>
   </div>
 </section>
 
+
 <style>
-.card {
-  background-color: #1F2937;
-  border-radius: 1.5rem; /* 24px */
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-  padding: 20px;
-  text-align: auto;
-  transition: transform 0.2s ease-in-out;
-  border: 2px solid rgb(255, 255, 255); /* Add a red border */
+  .services__container {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.5rem; /* Mengurangi jarak antar kartu */
+  }
+  
+  .card {
+  background-color: rgba(90, 33, 182, 0);
+  padding: 0.75rem;
+  border: 2px solid transparent;
+  border-radius: 0.75rem;
+  border-color: rgba(90, 33, 182, 0.555);
+  transition: transform 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
+  min-height: 180px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  max-width: 650px;
+  position: -webkit-sticky; /* Safari */
+  top: 0; /* Adjust as needed */
 }
+
+  .card:hover {
+    background-color: rgba(90, 33, 182, 0.3);
+    border-color: rgba(90, 33, 182, 0.6);
+    transform: translateY(-0.5rem);
+  }
+
+  .service__icon {
+    background-color: rgb(90, 33, 182);
+    padding: 0.5rem;
+    border-radius: 0.5rem;   /* 6px */
+    font-size: 1.25rem;
+    color: var(--color-black);
+    transition: var(--transition);
+  }
+  
+  .service:hover .service__icon {
+    background-color: rgb(46 16 101);
+    color: var(--color-white);
+  }
+
+  .service h4 {
+    font-size: 1rem; /* 16px */
+    margin-bottom: 0.5rem;
+  }
+  
+  .service p {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.875rem; /* 14px */
+  }
+  
+/* MEDIA QUERIES (tablets) */
+@media screen and (max-width: 1024px) {
+  .services__container {
+    gap: 1.5rem;
+  }
+}
+
+/* MEDIA QUERIES (phones) */
+@media screen and (max-width: 600px) {
+  .services__container {
+    grid-template-columns: 1fr;
+    gap: 1.2rem;
+  }
+
+  .card.service {
+    gap: 1.2rem;
+  }
+  }
 </style>

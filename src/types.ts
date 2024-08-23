@@ -5,6 +5,7 @@ export interface Post {
   publishDate: Date;
   title: string;
   description?: string;
+  category?: string;
 
   image?: string;
 
@@ -25,6 +26,7 @@ export interface Post {
 export interface MetaSEO {
   title?: string;
   description?: string;
+  category?: string;
   image?: string;
 
   canonical?: string | URL;

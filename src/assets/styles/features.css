@@ -1,0 +1,60 @@
+.features {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Mengatur grid agar responsif */
+  gap: 16px; /* Mengatur jarak antar kartu */
+  padding: 0 16px; /* Mengurangi padding pada sisi kiri dan kanan */
+}
+
+.feature-card {
+  background-color: rgb(15, 23, 42);
+  border-radius: 1.5rem;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgb(13, 114, 255);
+  overflow: hidden;
+  transition: transform 0.2s ease-in-out;
+  text-align: center;
+  width: 300px; /* Perkecil ukuran kartu */
+  padding-bottom: 10px; /* Tambahkan padding bawah untuk ruang tambahan */
+  margin-bottom: 4px; /* Tambahkan margin bawah untuk jarak antar card */
+}
+
+.feature-card:hover {
+  transform: translateY(-0.5rem);
+}
+
+.feature-icon {
+  border-radius: 50%;
+  background-color: #000000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 50px;
+  width: 50px;
+  overflow: hidden;
+  color: white;
+  margin: 10px auto; /* Center the icon */
+}
+
+.feature-title {
+  font-size: 1rem; /* 16px */
+  margin-bottom: 0.5rem;
+  color: white;
+}
+
+.feature-description {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.875rem; /* 14px */
+  margin: 10px;
+}
+
+/* MEDIA QUERIES (phones) */
+@media screen and (max-width: 600px) {
+  .features {
+    grid-template-columns: 1fr;
+    gap: 1.2rem;
+  }
+
+  .feature-card {
+    gap: 1.2rem;
+  }
+}

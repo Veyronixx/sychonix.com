@@ -1,0 +1,32 @@
+.card {
+  background: transparent; /* Mengatur background menjadi transparan */
+  padding: 1.5rem;
+  border: 10px solid transparent;
+  border-color: rgba(90, 33, 182, 0.555);
+  border-radius: var(--border-radius-1);
+  border-width: 1px;
+  transition: var(--transition);
+}
+
+.card:hover {
+  background: transparent;
+  border-color: rgb(136 19 55);
+  border-width: 1px;
+  transform: translateY(-0.5rem);
+}
+
+.card.light {
+  background: var(--color-light);
+}
+
+.card.light:hover {
+  background-color: rgba(90, 33, 182, 0.336);
+  border-color: rgba(90, 33, 182, 0.466);
+}
+
+/* MEDIA QUERIES (phones) */
+@media screen and (max-width: 600px) {
+  .card {
+    padding: 1.2rem;
+  }
+}

@@ -2,25 +2,22 @@
 import { SITE } from '~/config.mjs';
 import { getCanonical, getHomePermalink } from '~/utils/permalinks';
 import Layout from '~/layouts/PageLayout.astro';
-
 import Hero from '~/components/widgets/Hero.astro';
 import Features from '~/components/widgets/Features.astro';
-import Features2 from '~/components/widgets/Features2.astro'; // mainnet
-import Features3 from '~/components/widgets/Features3.astro'; // testnet
+import Features2 from '~/components/widgets/Features2.astro';
+import Features3 from '~/components/widgets/Features3.astro';
 import Features4 from '~/components/widgets/Features4.astro';
 import CallToAction from '~/components/widgets/CallToAction.astro';
 
 const meta = {
-	title: SITE.title,
-	description: SITE.description,
-	canonical: getCanonical(getHomePermalink()),
+  title: SITE.title,
+  description: SITE.description,
+  canonical: getCanonical(getHomePermalink()),
 };
 ---
 
 <Layout {meta}>
-	<Hero />
-	<Features2 />
-	<Features3 />
-	<Features4 />
-	<CallToAction />
+  <Features />
+  <Features2 />
+  <CallToAction />
 </Layout>
