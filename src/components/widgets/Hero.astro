@@ -1,60 +1,16 @@
 ---
-import headerImg from '/public/header.png';
+import { Picture } from '@astrojs/image/components';
 ---
 
-<section class="banner" id="home">
-  <div class="container">
-    <div class="row align-items-center">
-      <div class="col-xs-12 col-md-6 col-xl-7">
-        <div class="text-container" id="text-container">
-          <h1>Hi! I'm Sychonix</h1>
-          <h4>is an Independent node validator.</h4>
-          <br />
-          <i>
-            <q>
-              Dedicated to running reliable and efficient blockchain nodes, contributing to the future of blockchain technology.
-            </q>
-          </i>
-        </div>
-      </div>
-      <div class="col-xs-12 col-md-6 col-xl-5">
-        <div class="img-container">
-          <img src={headerImg} alt="Header Img" />
-        </div>
-      </div>
-    </div>
+<section class="relative min-h-screen flex flex-col justify-center items-center bg-gradient-to-r from-purple-900 via-blue-900 to-black text-white">
+  <div class="absolute inset-0 w-full h-full bg-cover bg-center opacity-50"
+       style="background-image: url('/mnt/data/image.png');"></div>
+  <div class="relative z-10 text-center">
+    <h1 class="text-5xl md:text-6xl font-bold mb-4">Hi! I'm Sychonix</h1>
+    <p class="text-xl md:text-2xl font-semibold mb-8">is an Independent node validator.</p>
+    <blockquote class="text-lg italic mb-8">“Dedicated to running reliable and efficient blockchain nodes, contributing to the future of blockchain technology.”</blockquote>
+  </div>
+  <div class="relative z-10">
+    <img src="~/assets/images/banner.png" alt="Sychonix Logo" class="h-20 md:h-24" />
   </div>
 </section>
-
-<style>
-  .text-container {
-    margin-top: -200px; /* Adjust this value as needed */
-    opacity: 0;
-    transition: opacity 1s ease-in-out;
-  }
-  .text-container.visible {
-    opacity: 1;
-  }
-  .img-container img {
-    width: 100%;
-    height: auto;
-  }
-</style>
-
-<script type="text/javascript" client:load>
-  document.addEventListener('DOMContentLoaded', () => {
-    const textContainer = document.getElementById('text-container');
-    
-    const handleScroll = () => {
-      const scrollTop = window.scrollY;
-      if (scrollTop > 200) {
-        textContainer.classList.add('visible');
-      } else {
-        textContainer.classList.remove('visible');
-      }
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    handleScroll(); // Initial check
-  });
-</script>
