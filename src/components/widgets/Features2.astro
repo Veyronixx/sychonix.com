@@ -148,6 +148,146 @@ const items = [
 		Link: 'https://service.sychonix.com/testnet/warden',
     Link2: 'https://explorer.sychonix.com/warden-testnet/staking/wardenvaloper1v0uldcx995fupcwdh6l3r32ukzww0htudr3hjf',
   },
+  {
+		title: 'Artela',
+		description:
+			'archive',
+		icon: 'artela',
+		Link: 'https://service.sychonix.com/archive/artela',
+  },
+	{
+		title: 'Archway',
+		description:
+			'archive',
+		icon: 'archway',
+		Link: 'https://service.sychonix.com/archive/archway',
+	},
+{
+		title: 'Andromeda',
+		description:
+			'archive',
+		icon: 'andromeda',
+		Link: 'https://service.sychonix.com/archive/andromeda',
+	},
+{
+		title: 'Bonus Block',
+		description:
+			'archive',
+		icon: 'bonus',
+		Link: 'https://service.sychonix.com/archive/bonus-block',
+	},
+	{
+		title: 'Blockxnet',
+		description:
+			'archive',
+		icon: 'blockx',
+		Link: 'https://service.sychonix.com/archive/blockxnet',
+	},
+{
+		title: 'Composable',
+		description:
+			'archive',
+		icon: 'composable',
+		Link: 'https://service.sychonix.com/archive/composable',
+	},
+{
+		title: 'Cascadia',
+		description:
+			'archive',
+		icon: 'cascadia',
+		Link: 'https://service.sychonix.com/archive/cascadia',
+	},
+{
+		title: 'Dymension',
+		description:
+			'archive',
+		icon: 'dymension',
+		Link: 'https://service.sychonix.com/archive/dymension',
+	},
+{
+		title: 'Entangle',
+		description:
+			'archive',
+		icon: 'entangle',
+		Link: 'https://service.sychonix.com/archive/entangle',
+	},
+{
+		title: 'Empower',
+		description:
+			'archive',
+		icon: 'empower',
+		Link: 'https://service.sychonix.com/archive/empower',
+	},
+{
+		title: 'Elys',
+		description:
+			'archive',
+		icon: 'elys',
+		Link: 'https://service.sychonix.com/archive/elys',
+	},
+  {
+		title: 'Elixir',
+		description:
+			'archive',
+		icon: 'elixir',
+		Link: 'https://service.sychonix.com/archive/elixir/installation',
+	},
+{
+		title: 'Impact Protocol',
+		description:
+			'archive',
+		icon: 'impact',
+		Link: 'https://service.sychonix.com/archive/impact/installation',
+	},
+	{
+		title: 'Nibiru',
+		description:
+			'archive',
+		icon: 'nibiru',
+		Link: 'https://service.sychonix.com/archive/nibiru',
+  },
+{
+		title: 'Ojo',
+		description:
+			'archive',
+		icon: 'ojo',
+		Link: 'https://service.sychonix.com/archive/ojo',
+	},
+	{
+		title: 'Pryzm',
+		description:
+			'archive',
+		icon: 'pryzm',
+		Link: 'https://service.sychonix.com/archive/pryzm/installation',
+  },
+	{
+		title: 'Tangle',
+		description:
+			'archive',
+		icon: 'tangle',
+		Link: 'https://service.sychonix.com/archive/tangle',
+	},
+{
+		title: 'Side Protocol',
+		description:
+			'archive',
+		icon: 'side',
+		Link: 'https://service.sychonix.com/archive/side',
+	},
+{
+		title: 'Selfchain',
+		description:
+			'archive',
+		icon: 'selfchain',
+		Link: 'https://service.sychonix.com/archive/selfchain',
+	},
+  {
+		title: 'Wormholes',
+		description:
+			'archive',
+		icon: 'wormholes',
+		Link: 'https://service.sychonix.com/archive/wormholes/installation',
+  },
 ];
 ---
 
@@ -163,6 +303,7 @@ const items = [
           <button class="btn-category active" data-category="all">All</button>
           <button class="btn-category" data-category="mainnet">Mainnet</button>
           <button class="btn-category" data-category="testnet">Testnet</button>
+          <button class="btn-category" data-category="archive">Archive</button>
         </div>
       </div>
       <div class="grid gap-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 items-start my-12 dark:text-white">
@@ -265,7 +406,7 @@ document.addEventListener('DOMContentLoaded', function () {
 }
 
 .card:hover {
-    background-color: rgb(13, 114, 255);
+    background-color: rgba(13, 114, 255, 0);
     border-color: rgb(13, 114, 255);
     transform: translateY(-0.5rem);
   }
