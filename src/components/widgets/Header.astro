@@ -90,7 +90,12 @@ html {
 </style>
 
 <script type="module">
-  document.getElementById('services-link').addEventListener('click', () => {
-    window.location.href = '/services'; // Path relatif ke halaman layanan
-  });
+document.getElementById('services-link').addEventListener('click', () => {
+  window.location.href = '/services'; // Navigate to the services page
+});
+
+document.querySelector('a[href="#networks"]').addEventListener('click', () => {
+  window.location.href = '/#networks'; // Navigate to the home page and scroll to the network section
+});
+
 </script>
