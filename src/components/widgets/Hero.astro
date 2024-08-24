@@ -1,16 +1,56 @@
----
-import { Picture } from '@astrojs/image/components';
----
 
-<section class="relative min-h-screen flex flex-col justify-center items-center bg-gradient-to-r from-purple-900 via-blue-900 to-black text-white">
-  <div class="absolute inset-0 w-full h-full bg-cover bg-center opacity-50"
-       style="background-image: url('/mnt/data/image.png');"></div>
-  <div class="relative z-10 text-center">
-    <h1 class="text-5xl md:text-6xl font-bold mb-4">Hi! I'm Sychonix</h1>
-    <p class="text-xl md:text-2xl font-semibold mb-8">is an Independent node validator.</p>
-    <blockquote class="text-lg italic mb-8">“Dedicated to running reliable and efficient blockchain nodes, contributing to the future of blockchain technology.”</blockquote>
-  </div>
-  <div class="relative z-10">
-    <img src="~/assets/images/banner.png" alt="Sychonix Logo" class="h-20 md:h-24" />
+<section class="banner h-screen flex items-center pt-1 bg-cover bg-center bg-no-repeat" id="home">
+  <div class="container mx-auto px-6">
+    <div class="flex flex-col md:flex-row items-start justify-between">
+      <!-- Teks Bagian Kiri -->
+      <div class="w-full md:w-7/12 text-container" data-aos="fade-in">
+        <h1 class="text-white text-5xl font-bold animate-text">Hi! I'm Sychonix</h1>
+        <h4 class="text-white text-lg mt-4 animate-text">is an Independent node validator.</h4>
+        <br />
+        <i class="text-gray-300 animate-text">
+          <q>Dedicated to running reliable and efficient blockchain nodes, contributing to the future of blockchain technology.</q>
+        </i>
+      </div>
+      <!-- Gambar Bagian Kanan -->
+      <div class="w-full md:w-5/12 mt-12 md:mt-0 transform -translate-y-10" data-aos="zoom-in">
+        <img src="/header.png" alt="Sychonix Header" class="max-w-full h-auto animate-move" />
+      </div>
+    </div>
   </div>
 </section>
+
+<style>
+/* Atur background gambar */
+.banner {
+  background-image: url('/bg-main-dark-1440w.jpg');
+  background-size: cover; /* Pastikan gambar menutupi seluruh elemen */
+  background-position: center; /* Posisikan gambar di tengah */
+  background-repeat: no-repeat; /* Hindari gambar diulang */
+}
+
+@keyframes moveUpDown {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-21px); /* Adjust the value as needed */
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.animate-move {
+  animation: moveUpDown 2s infinite;
+}
+
+.animate-text {
+  animation: fadeIn 2s ease-in-out;
+}
+</style>

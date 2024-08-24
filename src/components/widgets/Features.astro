@@ -58,32 +58,36 @@ const items = [
   </div>
 </section>
 
-
 <style>
+  #services {
+    background-image: url('/bg-subtle-2-dark-1440w.jpg'); /* Ganti dengan path gambar yang sesuai */
+    background-size: cover;
+    background-position: center; /* Mengatur posisi gambar latar belakang ke bagian atas */
+  }
+
   .services__container {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 1.5rem; /* Mengurangi jarak antar kartu */
+    gap: 0.5rem; /* Mengurangi jarak antar kartu */
   }
-  
+
   .card {
-  background-color: rgba(90, 33, 182, 0);
-  padding: 0.75rem;
-  border: 1px solid rgb(13, 114, 255);
-  border-radius: 0.75rem;
-  border-color: rgb(13, 114, 255);
-  transition: transform 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
-  min-height: 180px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  max-width: 650px;
-  position: -webkit-sticky; /* Safari */
-  top: 0; /* Adjust as needed */
-}
+    background-color: rgba(90, 33, 182, 0);
+    padding: 0.75rem;
+    border: 1px solid rgb(13, 114, 255);
+    border-radius: 0.75rem;
+    border-color: rgb(13, 114, 255);
+    transition: transform 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
+    min-height: 180px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    max-width: 650px;
+    top: 0; /* Adjust as needed */
+  }
 
   .card:hover {
-    background-color: rgba(13, 114, 255, 0.26);
+    background-color: rgba(13, 114, 255, 0.219);
     border-color: rgb(13, 114, 255);
     transform: translateY(-0.5rem);
   }
@@ -112,22 +116,22 @@ const items = [
     font-size: 0.875rem; /* 14px */
   }
   
-/* MEDIA QUERIES (tablets) */
-@media screen and (max-width: 1024px) {
-  .services__container {
-    gap: 1.5rem;
-  }
-}
-
-/* MEDIA QUERIES (phones) */
-@media screen and (max-width: 600px) {
-  .services__container {
-    grid-template-columns: 1fr;
-    gap: 1.2rem;
+  /* MEDIA QUERIES (tablets) */
+  @media screen and (max-width: 1024px) {
+    .services__container {
+      gap: 1.5rem;
+    }
   }
 
-  .card.service {
-    gap: 1.2rem;
-  }
+  /* MEDIA QUERIES (phones) */
+  @media screen and (max-width: 600px) {
+    .services__container {
+      grid-template-columns: 1fr;
+      gap: 1.2rem;
+    }
+
+    .card.service {
+      gap: 1.2rem;
+    }
   }
 </style>
