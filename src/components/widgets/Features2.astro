@@ -475,7 +475,7 @@ document.addEventListener('DOMContentLoaded', function () {
 /* Style untuk tombol kategori */
 .category-wrapper {
   display: flex;
-  border: 2px solid rgb(169, 169, 169); /* Border abu-abu */
+  border: 1px solid #2563eb;
   border-radius: 5rem;
   padding: 1px;
   background-color: transparent;
@@ -484,7 +484,7 @@ document.addEventListener('DOMContentLoaded', function () {
 }
 
 .category-wrapper:hover {
-  border-color: white; /* Ubah border menjadi putih saat hover */
+  border-color: #1e40af;
 }
 
 /* Hapus background color hover di tombol kategori */
@@ -496,5 +496,20 @@ document.addEventListener('DOMContentLoaded', function () {
 .btn-category.active {
   background-color: #1F2937; /* Background biru saat kategori aktif */
   transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Media Query untuk Mobile */
+@media (max-width: 767px) {
+  .grid {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center cards horizontally */
+  }
+
+  .card {
+    width: 100%; /* Set card width to 100% of its container */
+    max-width: 300px; /* Ensure cards do not get too wide */
+    margin: 8px 0; /* Add vertical margin for spacing */
+  }
 }
 </style>

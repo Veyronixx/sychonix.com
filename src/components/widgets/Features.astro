@@ -36,19 +36,17 @@ const items = [
         What you need to know about <span class="whitespace-nowrap">Us</span>
       </h2>
     </div>
-    <div class="services__container">
+    <div class="services__container mx-auto grid grid-cols-1 md:grid-cols-2 gap-2">
       {items.map((subitems) => (
-        <div class="space-y-4 sm:px-1"> <!-- Mengganti space-y-6 dengan space-y-4 -->
+        <div class="space-y-5 sm:px-1">
           {subitems.map(({ title, description, icon }) => (
-            <div class="card service">
-              <div class="flex items-start gap-4">
-                <div class="service__icon flex items-center justify-center w-10 h-10 bg-fuchsia-700"> <!-- Ukuran ikon dikurangi -->
-                  {icon && <Icon name={icon} class="w-5 h-5 text-white" />} <!-- Ukuran ikon dikurangi -->
+            <div class="card service p-4 bg-transparent border border-blue-500 rounded-lg transition-all duration-300 transform hover:scale-105">
+              <div class="flex flex-col items-start text-left gap-2">
+                <div class="service__icon w-10 h-10 bg-fuchsia-700 flex items-center justify-center rounded-full">
+                  {icon && <Icon name={icon} class="w-6 h-6 text-white" />}
                 </div>
-                <div>
-                  <h4 class="mb-2 text-base font-semibold">{title}</h4> <!-- Ukuran judul dikurangi -->
-                  <p class="text-gray-300 text-sm">{description}</p> <!-- Ukuran deskripsi dikurangi -->
-                </div>
+                <h4 class="text-base font-semibold">{title}</h4>
+                <p class="text-gray-300 text-sm">{description}</p>
               </div>
             </div>
           ))}
@@ -58,33 +56,36 @@ const items = [
   </div>
 </section>
 
+
 <style>
-  #services {
+    #services {
     background-image: url('/bg-subtle-2-dark-1440w.jpg'); /* Ganti dengan path gambar yang sesuai */
     background-size: cover;
-    background-position: center; /* Mengatur posisi gambar latar belakang ke bagian atas */
+    background-position: bottom; /* Mengatur posisi gambar latar belakang ke bagian atas */
   }
 
-  .services__container {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 0.5rem; /* Mengurangi jarak antar kartu */
-  }
+.services__container {
+  display: flex;
+  flex-wrap: wrap; /* Membuat kartu membungkus ke baris berikutnya jika tidak ada ruang yang cukup */
+  justify-content: center; /* Memposisikan kartu di tengah */
+  gap: 0.5rem; /* Mengatur jarak antar kartu */
+}
 
-  .card {
-    background-color: rgba(90, 33, 182, 0);
-    padding: 0.75rem;
-    border: 1px solid rgb(13, 114, 255);
-    border-radius: 0.75rem;
-    border-color: rgb(13, 114, 255);
-    transition: transform 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
-    min-height: 180px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    max-width: 650px;
-    top: 0; /* Adjust as needed */
-  }
+.card {
+  background-color: rgba(90, 33, 182, 0);
+  padding: 1rem;
+  border: 1px solid rgb(13, 114, 255);
+  border-radius: 0.75rem;
+  border-color: rgb(13, 114, 255);
+  transition: transform 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
+  height: 210px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-width: 540px;
+  /* Hapus margin-left dan margin-right */
+}
+
 
   .card:hover {
     background-color: rgba(13, 114, 255, 0.219);
@@ -92,10 +93,11 @@ const items = [
     transform: translateY(-0.5rem);
   }
 
+
   .service__icon {
     background-color: rgb(13, 114, 255);
     padding: 0.5rem;
-    border-radius: 0.5rem;   /* 6px */
+    border-radius: 0.5rem;
     font-size: 1.25rem;
     color: var(--color-black);
     transition: var(--transition);
@@ -107,31 +109,34 @@ const items = [
   }
 
   .service h4 {
-    font-size: 1rem; /* 16px */
-    margin-bottom: 0.5rem;
+    font-size: 1rem;
   }
-  
+
   .service p {
     color: rgba(255, 255, 255, 0.7);
-    font-size: 0.875rem; /* 14px */
+    font-size: 0.875rem;
+    line-height: 1.2rem;
   }
   
-  /* MEDIA QUERIES (tablets) */
-  @media screen and (max-width: 1024px) {
+   /* MEDIA QUERIES (tablets) */
+   @media screen and (max-width: 1024px) {
     .services__container {
-      gap: 1.5rem;
+      gap: 1rem;
     }
   }
 
-  /* MEDIA QUERIES (phones) */
-  @media screen and (max-width: 600px) {
-    .services__container {
-      grid-template-columns: 1fr;
-      gap: 1.2rem;
-    }
-
-    .card.service {
-      gap: 1.2rem;
-    }
+/* MEDIA QUERIES (phones) */
+@media screen and (max-width: 600px) {
+  .services__container {
+    display: flex;
+    flex-direction: column; /* Menumpuk kartu secara vertikal */
+    align-items: center; /* Memastikan kartu berada di tengah */
+    gap: 1.2rem; /* Menghapus gap default, menggunakan margin di .card */
   }
+
+  .card.service p {
+    font-size: 0.875rem; /* Sesuaikan ukuran font untuk ponsel */
+  }
+}
+
 </style>
