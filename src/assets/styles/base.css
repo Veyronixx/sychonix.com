@@ -68,3 +68,26 @@
 [data-aw-toggle-menu].expanded g > path:last-child {
   @apply rotate-45 translate-y-[-8px] translate-x-[14px];
 }
+/* Tambahkan styling scrollbar di akhir base.css */
+
+/* Mengubah warna scrollbar untuk seluruh halaman */
+::-webkit-scrollbar {
+  width: 12px; /* Lebar scrollbar */
+}
+
+::-webkit-scrollbar-track {
+  background: #111827; /* Warna background track scrollbar */
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #94a3b8; /* Warna thumb scrollbar */
+  border-radius: 10px; /* Radius untuk sudut yang lebih lembut */
+  border: 3px solid #d1d5db; /* Menambahkan border dengan warna background halaman */
+}
+
+/* Untuk Firefox */
+* {
+  scrollbar-width: thin; /* Membuat scrollbar lebih tipis */
+  scrollbar-color: #d1d5db #0c0a09; /* thumb warna #4f46e5 dan track warna #1f2937 */
+}
+
