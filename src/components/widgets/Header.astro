@@ -24,25 +24,25 @@ import { getHomePermalink } from '~/utils/permalinks';
     <ul class="flex flex-col pt-8 md:pt-0 md:flex-row md:self-center w-full md:w-auto text-xl md:text-base">
       <li>
           <a
-              class="font-medium hover:text-gray-700 dark:hover:text-white px-4 py-3 flex items-center transition duration-150 ease-in-out"
+              class="font-medium text-gray-300 hover:text-white dark:hover:text-white px-4 py-3 flex items-center transition duration-150 ease-in-out"
               href="https://explorer.sychonix.com/"
           >Explorer</a>
       </li>
       <li>
           <a
-              class="font-medium hover:text-gray-700 dark:hover:text-white px-4 py-3 flex items-center transition duration-150 ease-in-out"
-              href="#networks" <!-- Mengarah ke ID section Networks -->
-          Networks</a>
+              class="font-medium text-gray-300 hover:text-white px-4 py-3 flex items-center transition duration-150 ease-in-out"
+              href="#networks"
+          >Networks</a>
       </li>
       <li>
           <a
-              class="font-medium hover:text-gray-700 dark:hover:text-white px-4 py-3 flex items-center transition duration-150 ease-in-out"
-              href="https://service.sychonix.com/services"
+              id="services-link"
+              class="font-medium text-gray-300 hover:text-white px-4 py-3 flex items-center transition duration-150 ease-in-out cursor-pointer"
           >Services</a>
       </li>
       <li class="md:hidden">
           <a
-              class="font-bold hover:text-gray-700 dark:hover:text-white px-4 py-3 flex items-center transition duration-150 ease-in-out"
+              class="font-bold text-gray-300 hover:text-white px-4 py-3 flex items-center transition duration-150 ease-in-out"
               href="https://github.com/sychonix"
           >Github</a>
       </li>
@@ -88,3 +88,9 @@ html {
   scroll-behavior: smooth; /* Menambahkan scroll-behavior smooth */
 }
 </style>
+
+<script type="module">
+  document.getElementById('services-link').addEventListener('click', () => {
+    window.location.href = '/services'; // Path relatif ke halaman layanan
+  });
+</script>
