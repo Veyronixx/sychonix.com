@@ -5,61 +5,71 @@ import { getHomePermalink } from '~/utils/permalinks';
 ---
 
 <header
-	class="sticky top-0 z-40 flex-none w-full bg-white md:bg-dark/90 dark:bg-slate-900 dark:md:bg-slate-900/90 md:backdrop-blur-sm"
-	id="header"
+  class="sticky top-0 z-40 flex-none w-full bg-transparent md:bg-dark/90 dark:bg-slate-900 dark:md:bg-slate-900/90 md:backdrop-blur-sm transition-colors duration-300"
+  id="header"
 >
-	<div class="py-3 px-3 mx-auto w-full md:flex md:justify-between max-w-6xl md:px-4">
-		<div class="flex justify-between items-center">
-			<a class="flex items-center" href={getHomePermalink()}>
-				<Icon name="logo" class="w-12 h-12" />
-			</a>
-			<div class="flex items-center md:hidden">
-				<ToggleMenu />
-			</div>
-		</div>
-		<nav
-			class="items-center w-full md:w-auto hidden md:flex text-white-600 dark:text-slate-200 h-auto overflow-hidden md:overflow-visible"
-			aria-label="Main navigation"
-		>
-    <ul class="flex flex-col pt-8 md:pt-0 md:flex-row md:self-center w-full md:w-auto text-xl md:text-base">
-      <li>
+  <div class="py-3 px-3 mx-auto w-full md:flex md:justify-between max-w-6xl md:px-4">
+    <div class="flex justify-between items-center">
+      <a class="flex items-center" href={getHomePermalink()}>
+        <Icon name="logo" class="w-12 h-12" />
+      </a>
+      <div class="flex items-center md:hidden">
+        <ToggleMenu />
+      </div>
+    </div>
+    <nav
+      class="items-center w-full md:w-auto hidden md:flex text-white-600 dark:text-slate-200 h-auto overflow-hidden md:overflow-visible"
+      aria-label="Main navigation"
+      id="mobile-menu"
+    >
+      <ul class="flex flex-col pt-8 md:pt-0 md:flex-row md:self-center w-full md:w-auto text-xl md:text-base">
+        <li>
           <a
-              class="font-medium text-gray-300 hover:text-white dark:hover:text-white px-4 py-3 flex items-center transition duration-150 ease-in-out"
-              href="https://explorer.sychonix.com/"
+            class="font-medium text-gray-300 hover:text-white dark:hover:text-white px-4 py-3 flex items-center transition duration-150 ease-in-out"
+            href="https://explorer.sychonix.com/"
           >Explorer</a>
-      </li>
-      <li>
+        </li>
+        <li>
           <a
-              class="font-medium text-gray-300 hover:text-white px-4 py-3 flex items-center transition duration-150 ease-in-out"
-              href="#networks"
+            class="font-medium text-gray-300 hover:text-white px-4 py-3 flex items-center transition duration-150 ease-in-out"
+            href="#networks"
           >Networks</a>
-      </li>
-      <li>
+        </li>
+        <li>
           <a
-              id="services-link"
-              class="font-medium text-gray-300 hover:text-white px-4 py-3 flex items-center transition duration-150 ease-in-out cursor-pointer"
+            id="services-link"
+            class="font-medium text-gray-300 hover:text-white px-4 py-3 flex items-center transition duration-150 ease-in-out cursor-pointer"
           >Services</a>
-      </li>
-      <li class="md:hidden">
+        </li>
+        <li class="md:hidden">
           <a
-              class="font-bold text-gray-300 hover:text-white px-4 py-3 flex items-center transition duration-150 ease-in-out"
-              href="https://github.com/sychonix"
+            class="font-bold text-gray-300 hover:text-white px-4 py-3 flex items-center transition duration-150 ease-in-out"
+            href="https://github.com/sychonix"
           >Github</a>
-      </li>
-  </ul>
-			<div class="md:self-center flex items-center mb-4 md:mb-0 ml-2">
-				<div class="hidden items-center md:flex">
-					<a
-						href="https://github.com/sychonix"
+        </li>
+      </ul>
+      <div class="md:self-center flex items-center mb-4 md:mb-0 ml-2">
+        <div class="hidden items-center md:flex">
+          <a
+            href="https://github.com/sychonix"
             class="inline-block text-gray-300 dark:text-gray-400 hover:bg-dark-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5 icon-hover-red"
-						aria-label="Astrowind Github"
-					>
-						<Icon name="tabler:brand-github" class="w-5 h-5" />
-					</a>
-				</div>
-			</div>
-		</nav>
-	</div>
+            aria-label="Astrowind Github"
+          >
+            <Icon name="tabler:brand-github" class="w-5 h-5" />
+          </a>
+        </div>
+      </div>
+    </nav>
+  </div>
+  <!-- Dropdown Menu for Mobile -->
+  <div id="dropdown-menu" class="fixed top-0 left-0 w-full h-full bg-black hidden">
+    <div class="flex flex-col items-center pt-16">
+      <a class="text-white text-2xl py-3 hover:text-white hover:bg-gray-800 transition duration-150 ease-in-out" href="https://explorer.sychonix.com/">Explorer</a>
+      <a class="text-white text-2xl py-3 hover:text-white hover:bg-gray-800 transition duration-150 ease-in-out" href="#networks">Networks</a>
+      <a id="services-link-dropdown" class="text-white text-2xl py-3 hover:text-white hover:bg-gray-800 cursor-pointer transition duration-150 ease-in-out">Services</a>
+      <a class="text-white text-2xl py-3" href="https://github.com/sychonix">Github</a>
+    </div>
+  </div>
 </header>
 
 <style>
@@ -68,11 +78,12 @@ import { getHomePermalink } from '~/utils/permalinks';
   top: 0;
   z-index: 40;
   width: 100%;
-  background-color: var(--color-background); /* Ganti dengan warna background yang sesuai */
+  background-color: transparent; /* Start with a transparent background */
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  border: none; /* Pastikan tidak ada border yang tidak diinginkan */
+  border: none; /* Ensure no unwanted border */
+  transition: background-color 0.3s ease; /* Smooth transition for background color */
 }
 
 .navbar {
@@ -80,16 +91,41 @@ import { getHomePermalink } from '~/utils/permalinks';
   max-width: 100%;
   overflow: hidden;
 }
-.scrolled {
-  background-color: rgba(0, 0, 0, 0.8); /* Mengubah warna latar belakang saat di-scroll */
-}
 
 html {
-  scroll-behavior: smooth; /* Menambahkan scroll-behavior smooth */
+  scroll-behavior: smooth; /* Smooth scroll behavior */
+}
+
+/* Background for mobile menu content only */
+@media (max-width: 768px) {
+  #mobile-menu.open ul::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%; /* Full width */
+    height: 50vh; /* Half of the viewport height */
+    background-color: rgb(0, 0, 0); /* Background color for the top half */
+    z-index: -1; /* Ensure the background is behind the content */
+  }
+  #dropdown-menu a {
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+}
+.header-bg {
+  background-color: rgba(255, 0, 0, 0.8) !important; /* Background color when menu is open */
 }
 </style>
 
 <script type="module">
+const header = document.getElementById('header');
+const toggleMenuButton = document.querySelector('.flex.items-center.md\\:hidden');
+const mobileMenu = document.getElementById('mobile-menu');
+
+toggleMenuButton.addEventListener('click', () => {
+  mobileMenu.classList.toggle('open');
+});
+
 document.getElementById('services-link').addEventListener('click', () => {
   window.location.href = '/services'; // Navigate to the services page
 });
@@ -97,5 +133,4 @@ document.getElementById('services-link').addEventListener('click', () => {
 document.querySelector('a[href="#networks"]').addEventListener('click', () => {
   window.location.href = '/#networks'; // Navigate to the home page and scroll to the network section
 });
-
 </script>

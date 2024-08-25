@@ -22,4 +22,27 @@ const meta: MetaSEO = {
       <slot />
     </div>
   </section>
+
+  <!-- Tambahkan script untuk fitur salin -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      document.querySelectorAll('.code-block-wrapper').forEach(wrapper => {
+        const button = wrapper.querySelector('.copy-btn');
+        const code = wrapper.querySelector('pre code');
+
+        if (button && code) {
+          button.addEventListener('click', () => {
+            const range = document.createRange();
+            range.selectNode(code);
+            window.getSelection().removeAllRanges();
+            window.getSelection().addRange(range);
+            document.execCommand('copy');
+            window.getSelection().removeAllRanges();
+            button.innerHTML = '<i class="fas fa-check"></i>';
+            setTimeout(() => button.innerHTML = '<i class="fas fa-copy"></i>', 2000);
+          });
+        }
+      });
+    });
+  </script>
 </Layout>

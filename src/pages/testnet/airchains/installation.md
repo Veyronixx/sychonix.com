@@ -5,10 +5,11 @@ icon: airchains
 
 - Install dependencies 
 
-```
-sudo apt update && sudo apt upgrade -y
-apt install curl iptables build-essential git wget jq make gcc nano tmux htop nvme-cli pkg-config libssl-dev libleveldb-dev tar clang bsdmainutils ncdu unzip libleveldb-dev -y
-```
+<div class="code-block-wrapper">
+  <pre><code>sudo apt update && sudo apt upgrade -y
+apt install curl iptables build-essential git wget jq make gcc nano tmux htop nvme-cli pkg-config libssl-dev libleveldb-dev tar clang bsdmainutils ncdu unzip libleveldb-dev -y</code></pre>
+  <button class="copy-btn"><i class="fas fa-copy"></i></button>
+</div>
 
 - Install go
 ```
