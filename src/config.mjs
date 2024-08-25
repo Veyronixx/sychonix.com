@@ -7,7 +7,7 @@ const CONFIG = {
   basePathname: '/',
   trailingSlash: false,
 
-  title: 'service',
+  title: '',
   description:
     'Validator & Node Operator Networks',
   defaultImage: defaultImage,
