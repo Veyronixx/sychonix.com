@@ -45,13 +45,16 @@ sudo apt install -y chainflip-cli chainflip-node chainflip-engine1.1</code></pre
   <pre><code>chainflip-cli generate-keys --path /etc/chainflip/keys</code></pre>
   <button class="copy-btn"><i class="fas fa-copy"></i></button>
 </div>
-Make sure to back up your Seed Phrase and make a note of the public keys and account ID. You will need the Seed Phrase if you ever need to restore your node or recover your funds if you lose access to the node. DO NOT LOSE THIS.**
-And you must ensure that the public Ethereum address generated above has at least 0.1 gETH. Make sure you send 0.1 gETH to this account's address before trying to add funds to your validator node
+<span style="font-size: 15px;">Make sure to back up your Seed Phrase and make a note of the public keys and account ID. You will need the Seed Phrase if you ever need to restore your node or recover your funds if you lose access to the node. DO NOT LOSE THIS.**
+And you must ensure that the public Ethereum address generated above has at least 0.1 gETH. Make sure you send 0.1 gETH to this account's address before trying to add funds to your validator node</span>
+
 
 - Create the engine config file
 
-Replace IP_ADDRESS_OF_YOUR_NODE with your server's public IP Address.
-Additionally, provide the ws_endpoint and http_endpoint specific to your chosen Ethereum client. The format varies based on the client you're using.
+<span style="font-size: 15px;">Replace IP_ADDRESS_OF_YOUR_NODE with your server's public IP Address.
+Additionally, provide the ws_endpoint and http_endpoint specific to your chosen Ethereum client. The format varies based on the client you're using.</span>
+
+
 ```
 # Default configurations for the CFE
 [node_p2p]
@@ -111,6 +114,7 @@ check the service status
   <pre><code>systemctl status chainflip-node</code></pre>
   <button class="copy-btn"><i class="fas fa-copy"></i></button>
 </div>
+
 At this point, you will need to wait for your node to catch up with the latest block. You can find the latest block on our [Block Explorer](https://blocks-perseverance.chainflip.io/)
 
 - Check the Node:
