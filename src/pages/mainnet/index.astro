@@ -300,18 +300,18 @@ const items = [
 ---
 
 <Layout {meta}>
-  <section class="scroll-mt-16" id="networks">
+  <section class="scroll-mt-16" id="services">
     <div class="absolute inset-0 bg-primary-50 dark:bg-slate-800 pointer-events-none mb-32" aria-hidden="true"></div>
-    <div class="relative max-w-6xl mx-auto px-10 sm:px-20 py-15 my-15">
+    <div class="relative max-w-6xl mx-auto px-10 sm:px-20 py-15 my-15 flex items-center justify-center">
       <div class="py-4 pt-8 sm:py-6 lg:py-8 lg:pt-12">
-        <div class="flex flex-col lg:flex-row justify-between items-center mb-8">
-          <h2 class="text-4xl md:text-5xl font-bold leading-tighter tracking-tighter font-heading text-slate-300 mb-4 lg:mb-0 lg:mr-4 mt-8">
-            Networks
+        <div class="flex flex-col lg:flex-row justify-center items-center mb-8">
+          <h2 class="text-center text-4xl md:text-5xl font-bold leading-tighter tracking-tighter font-heading text-slate-300 mb-4 lg:mb-0 mt-8">
+            Sychonix Services
           </h2>
         </div>
         
 <!-- Mainnet Section -->
-<h3 class="text-2xl font-semibold mt-2 mb-2 text-center">Mainnet</h3>
+<h3 class="text-2xl font-semibold mt-2 mb-2 ">Mainnet</h3>
 <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 items-start my-6 dark:text-white">
   {items.filter(({ description }) => description === 'mainnet').map(({ title, icon, description, Link, Link2 }) => (
     <div class="card network-card mainnet">
@@ -333,7 +333,7 @@ const items = [
 
         
         <!-- Testnet Cards -->
-        <h3 class="text-2xl font-semibold mt-2 mb-2 text-center">Testnet</h3>
+        <h3 class="text-2xl font-semibold mt-2 mb-2 ">Testnet</h3>
         <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 items-start my-6 dark:text-white">
           {items.filter(({ description }) => description === 'testnet').map(({ title, icon, description, Link, Link2 }) => (
             <div class="card network-card testnet">
@@ -354,7 +354,7 @@ const items = [
         </div>
 
         <!-- Archive Cards -->
-        <h3 class="text-2xl font-semibold mt-2 mb-2 text-center">Archive</h3>
+        <h3 class="text-2xl font-semibold mt-2 mb-2 ">Archive</h3>
         <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 items-start my-6 dark:text-white">
           {items.filter(({ description }) => description === 'archive').map(({ title, icon, description, Link, Link2 }) => (
             <div class="card network-card archive">
@@ -419,11 +419,6 @@ const items = [
       width: 60px;
       overflow: hidden;
     }
-    h3 {
-  text-align: center;
-  margin-top: 2rem; /* Sesuaikan nilai ini untuk jarak yang diinginkan dari atas */
-  margin-bottom: 2rem; /* Kurangi nilai ini untuk menurunkan jarak ke card */
-}
 
     .title {
       font-size: 17px;
