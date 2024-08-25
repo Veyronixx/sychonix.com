@@ -1,8 +1,6 @@
 ---
 title: Snapshot
 layout: '~/layouts/TestnetLayout.astro'
-network: 
-chain id: 
 icon: sym
 ---
 

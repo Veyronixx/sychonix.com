@@ -1,8 +1,6 @@
 ---
 title: RPC
 layout: '~/layouts/TestnetLayout.astro'
-network: 
-chain id : 
 icon: emped
 ---
 

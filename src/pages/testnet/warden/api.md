@@ -1,6 +1,7 @@
 ---
 layout: '~/layouts/TestnetLayout.astro'
 icon: warden
+title: API
 ---
 
 <div class="code-block-wrapper">

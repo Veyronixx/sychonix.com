@@ -1,8 +1,6 @@
 ---
 title: Genesis File
 layout: '~/layouts/TestnetLayout.astro'
-network: 
-chain id : 
 icon: warden
 ---
 

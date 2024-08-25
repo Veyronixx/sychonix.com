@@ -2,7 +2,7 @@
 title: Installation Node
 layout: '~/layouts/TestnetLayout.astro'
 network: Testnet
-chain id: goldberg
+chain id: Turing
 icon: avail
 ---
 

@@ -2,7 +2,6 @@
 title: Installation Node
 layout: '~/layouts/TestnetLayout.astro'
 network: Chasm Network 
-chain id : 
 icon: chasm
 ---
 

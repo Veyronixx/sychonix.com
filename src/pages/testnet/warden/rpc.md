@@ -1,6 +1,7 @@
 ---
 layout: '~/layouts/TestnetLayout.astro'
 icon: warden
+title: RPC
 ---
 
 <div class="code-block-wrapper">

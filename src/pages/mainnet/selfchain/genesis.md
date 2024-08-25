@@ -1,8 +1,6 @@
 ---
 title: Genesis
 layout: '~/layouts/TestnetLayout.astro'
-network: 
-chain id : 
 icon: selfchain
 ---
 

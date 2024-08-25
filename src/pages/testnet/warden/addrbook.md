@@ -1,8 +1,6 @@
 ---
 title: Addrbook
 layout: '~/layouts/TestnetLayout.astro'
-network: 
-chain id : 
 icon: warden
 ---
 

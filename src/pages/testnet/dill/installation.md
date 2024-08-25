@@ -2,7 +2,6 @@
 title: Installation Node
 layout: '~/layouts/TestnetLayout.astro'
 network: Dill Testnet Andes
-chain id: 
 icon: dill
 ---
 

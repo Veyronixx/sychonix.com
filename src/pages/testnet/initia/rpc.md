@@ -1,6 +1,7 @@
 ---
 layout: '~/layouts/TestnetLayout.astro'
 icon: initia
+title: RPC
 ---
 
 <div class="code-block-wrapper">

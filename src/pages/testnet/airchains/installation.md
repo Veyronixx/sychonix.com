@@ -1,6 +1,7 @@
 ---
 layout: '~/layouts/TestnetLayout.astro'
 icon: airchains
+title: Installation Node
 ---
 
 - Install dependencies 

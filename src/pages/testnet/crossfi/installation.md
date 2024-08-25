@@ -1,6 +1,7 @@
 ---
 layout: '~/layouts/TestnetLayout.astro'
 icon: crossfi
+title: Installation Node
 ---
 
 - Install dependencies 

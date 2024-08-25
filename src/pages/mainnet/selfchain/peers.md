@@ -1,10 +1,7 @@
 ---
 layout: '~/layouts/TestnetLayout.astro'
-title: Live Peers
-network: Testnet
+title: Peers
 icon: selfchain
-chain: self-1
-version: v
 ---
 - Automatically adding Live peers to your config.toml file
 

@@ -2,7 +2,6 @@
 title: Installation Node
 layout: '~/layouts/TestnetLayout.astro'
 network: Testnet
-chain id: 
 icon: gaianet
 ---
 

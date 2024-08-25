@@ -1,6 +1,7 @@
 ---
 layout: '~/layouts/TestnetLayout.astro'
 icon: airchains
+title: API
 ---
 
 <div class="code-block-wrapper">

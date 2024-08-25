@@ -1,6 +1,7 @@
 ---
 layout: '~/layouts/TestnetLayout.astro'
 icon: warden
+title: Peers
 ---
 
 <div class="code-block-wrapper">

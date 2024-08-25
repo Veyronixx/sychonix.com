@@ -1,6 +1,7 @@
 ---
 layout: '~/layouts/TestnetLayout.astro'
 icon: airchains
+title: RPC
 ---
 
 <div class="code-block-wrapper">
