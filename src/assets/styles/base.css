@@ -11,10 +11,11 @@
     border-radius: 0.5rem !important;     /* Sudut membulat */
     overflow-x: auto !important;          /* Scroll horizontal jika kode panjang */
     color: #ffffff !important;            /* Warna teks putih */
-    white-space: pre-wrap !important; /* Memastikan teks panjang dibungkus */
-    word-wrap: break-word !important; /* Memastikan kata panjang dipotong dengan benar */
+    white-space: nowrap !important; /* Memastikan teks panjang dibungkus */
+    word-wrap: normal !important;/* Memastikan kata panjang dipotong dengan benar */
     margin: 0 !important; /* Menghilangkan margin default */
     line-height: 1.4; /* Mengatur jarak antar baris */
+    max-width: 100%; /* Pastikan elemen kode tidak melebihi lebar container */
   }
 
   code {
@@ -30,15 +31,6 @@
     margin-bottom: 1rem;
   }
   
-  .code-block-wrapper {
-    position: relative;
-    margin-bottom: 1rem;
-  }
-  
-  .code-block-wrapper {
-    position: relative;
-    margin-bottom: 1rem;
-  }
   
   .copy-btn {
     position: absolute;
