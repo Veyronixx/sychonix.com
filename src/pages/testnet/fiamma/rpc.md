@@ -1,0 +1,12 @@
+---
+title: RPC
+layout: '~/layouts/TestnetLayout.astro'
+network: 
+chain id : 
+icon: fiamma
+---
+
+<div class="code-block-wrapper">
+  <pre><code>rpc-fiamma-t.sychonix.com</code></pre>
+  <button class="copy-btn"><i class="fas fa-copy"></i></button>
+</div>

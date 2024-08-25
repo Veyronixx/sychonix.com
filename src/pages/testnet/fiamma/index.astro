@@ -62,73 +62,96 @@ const openNewTabLinks = ['Stake with me', 'PolkadotJS Explorer', 'Telemetry'];
 
 <style>
   .card {
-    background-color: #1F2937;
+    background-color: #000000;
     border-radius: 1.5rem; /* 24px */
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
     padding: 20px;
     text-align: auto;
     transition: transform 0.2s ease-in-out;
-    border: 2px solid rgb(255, 255, 255); /* white border */
+    border-color: rgb(13, 114, 255);
   }
   
   .btn-card {
     display: inline-block;
     padding: 20px;
-    background-color: #1F2937;
+    background-color: #000000;
     border-radius: 1.5rem; /* 24px */
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
     text-align: center;
     transition: transform 0.2s ease-in-out;
-    border: 2px solid rgb(255, 255, 255); /* white border */
+    border: 2px solid rgb(13, 114, 255); /* white border */
     color: white;
     text-decoration: none;
     font-weight: bold;
   }
   </style>
   
-  <Layout {meta}>
-    <section>
-      <div class="max-w-6xl mx-auto px-4 sm:px-6">
-        <div class="py-10 md:py-20">
-          <div class="text-center pb-5 md:pb-5 max-w-5xl mx-auto">
-            <Icon name={icon} class="w-20 h-20 inline-block align-text-bottom rounded-full" />
-            <h1 class="text-5xl md:text-[3.50rem] font-bold leading-tighter tracking-tighter mb-4 font-heading">
-              Service {name}
-            </h1>
-            <a class="btn-card" href={stake} target="_blank">
-              Stake with me
-            </a>
-          </div>
-          <section class="bg-primary-100 dark:bg-slate-800 items-center">
-            <div class="bg-transparent px-4 sm:px-6 py-4 text-md text-center font-medium">
-              <li>
-                <span class="font-bold">Network Type:</span> {network}
-              </li>
-              <li>
-                <span class="font-bold">Chain-id:</span> {chain}
-              </li>
-              <li>
-                <span class="font-bold">Node version:</span> {version}
-              </li>
-              {social.map((item) => (
-                <a href={item.href} target="_blank" rel="noopener noreferrer" key={item.label}>
-                  <Icon name={item.icon} class="w-8 h-7 inline-block align-text-bottom" />
+  <style>
+    .card {
+      background-color: #1F2937;
+      border-radius: 1.5rem; /* 24px */
+      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+      text-align: auto;
+      transition: transform 0.2s ease-in-out;
+      border: 2px solid rgb(255, 255, 255); /* white border */
+    }
+    
+    .btn-card {
+      display: inline-block;
+      padding: 20px;
+      background-color: #1F2937;
+      border-radius: 1.5rem; /* 24px */
+      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      transition: transform 0.2s ease-in-out;
+      border: 2px solid rgb(255, 255, 255); /* white border */
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    </style>
+    
+    <Layout {meta}>
+      <section>
+        <div class="max-w-6xl mx-auto px-4 sm:px-6">
+          <div class="py-10 md:py-20">
+            <div class="text-center pb-5 md:pb-5 max-w-5xl mx-auto">
+              <Icon name={icon} class="w-20 h-20 inline-block align-text-bottom rounded-full" />
+              <h1 class="text-5xl md:text-[3.50rem] font-bold leading-tighter tracking-tighter mb-4 font-heading">
+                Service {name}
+              </h1>
+              <a class="btn-card" href={stake} target="_blank">
+                Stake with me
+              </a>
+            </div>
+            <section class="bg-primary-100 dark:bg-slate-800 items-center">
+              <div class="bg-transparent px-4 sm:px-6 py-4 text-md text-center font-medium">
+                <li>
+                  <span class="font-bold">Network Type:</span> {network}
+                </li>
+                <li>
+                  <span class="font-bold">Chain-id:</span> {chain}
+                </li>
+                {social.map((item) => (
+                  <a href={item.href} target="_blank" rel="noopener noreferrer" key={item.label}>
+                    <Icon name={item.icon} class="w-8 h-7 inline-block align-text-bottom" />
+                  </a>
+                ))}
+              </div>
+            </section>
+            <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3 items-start my-10 dark:text-white">
+              {items.map(({ title, Link }) => (
+                <a href={Link} target={title === 'Explorer' || title === 'Stake with me' ? '_blank' : '_self'}>
+                  <div class="card">
+                    <div class="flex items-center mb-4 text-center">
+                      <div class="ml-4 text-xl font-bold text-center">{title}</div>
+                    </div>
+                  </div>
                 </a>
               ))}
             </div>
-          </section>
-          <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3 items-start my-10 dark:text-white">
-            {items.map(({ title, Link }) => (
-              <a href={Link} target={title === 'Explorer' || title === 'Stake with me' ? '_blank' : '_self'}>
-                <div class="card">
-                  <div class="flex items-center mb-4 text-center">
-                    <div class="ml-4 text-xl font-bold text-center">{title}</div>
-                  </div>
-                </div>
-              </a>
-            ))}
           </div>
         </div>
-      </div>
-    </section>
-  </Layout>
+      </section>
+    </Layout>
