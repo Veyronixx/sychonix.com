@@ -1,6 +1,6 @@
 ---
 layout: '~/layouts/TestnetLayout.astro'
-title: Node CLI Cheatsheet
+title: CLI Cheatsheet
 icon : fiamma
 ---
 <!--
