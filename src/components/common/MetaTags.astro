@@ -55,7 +55,7 @@ const image =
 
 <AstroSeo
   title={title}
-  titleTemplate={dontUseTitleTemplate ? '%s' : `%s — ${SITE.name}`}
+  titleTemplate={dontUseTitleTemplate ? '%s' : `%s`} 
   description={description}
   canonical={String(canonical)}
   noindex={noindex}
@@ -73,11 +73,8 @@ const image =
           },
         ]
       : undefined,
-    // site_name: 'SiteName',
   }}
   twitter={{
-    // handle: '@handle',
-    // site: '@site',
     cardType: image ? 'summary_large_image' : undefined,
   }}
 />

@@ -1,15 +1,14 @@
 import defaultImage from './assets/images/sychonixx.png';
 
 const CONFIG = {
-  name: 'sychonix',
+  name: '',
 
   origin: 'https://sychonix.com/',
   basePathname: '/',
   trailingSlash: false,
 
-  title: '',
-  description:
-    'Validator & Node Operator Networks',
+  title: 'sychonix', // Mengatur judul website hanya dengan nama situs
+  description: 'Securing networks as a reliable validator.',
   defaultImage: defaultImage,
 
   defaultTheme: 'dark', // Values: "system" | "light" | "dark" | "light:only" | "dark:only"
