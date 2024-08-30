@@ -14,78 +14,13 @@
   ],
   "redirects": [
     {
-      "source": "/mainnet/crossfi/:slug.md",
-      "destination": "/mainnet/crossfi",
+      "source": "/mainnet/:folder/:slug.md",
+      "destination": "/mainnet",
       "statusCode": 302
     },
     {
-      "source": "/mainnet/selfchain/:slug.md",
-      "destination": "/mainnet/selfchain",
-      "statusCode": 302
-    },
-    {
-      "source": "/mainnet/tangle/:slug.md",
-      "destination": "/mainnet/tangle",
-      "statusCode": 302
-    },
-    {
-      "source": "/testnet/airchains/:slug.md",
-      "destination": "/testnet/airchains",
-      "statusCode": 302
-    },
-    {
-      "source": "/testnet/avail/:slug.md",
-      "destination": "/testnet/avail",
-      "statusCode": 302
-    },
-    {
-      "source": "/testnet/chainflip/:slug.md",
-      "destination": "/testnet/chainflip",
-      "statusCode": 302
-    },
-    {
-      "source": "/testnet/chasm/:slug.md",
-      "destination": "/testnet/chasm",
-      "statusCode": 302
-    },
-    {
-      "source": "/testnet/crossfi/:slug.md",
-      "destination": "/testnet/crossfi",
-      "statusCode": 302
-    },
-    {
-      "source": "/testnet/dill/:slug.md",
-      "destination": "/testnet/dill",
-      "statusCode": 302
-    },
-    {
-      "source": "/testnet/empeiria/:slug.md",
-      "destination": "/testnet/empeiria",
-      "statusCode": 302
-    },
-    {
-      "source": "/testnet/fiamma/:slug.md",
-      "destination": "/testnet/fiamma",
-      "statusCode": 302
-    },
-    {
-      "source": "/testnet/gaianet/:slug.md",
-      "destination": "/testnet/gaianet",
-      "statusCode": 302
-    },
-    {
-      "source": "/testnet/nubit/:slug.md",
-      "destination": "/testnet/nubit",
-      "statusCode": 302
-    },
-    {
-      "source": "/testnet/symphony/:slug.md",
-      "destination": "/testnet/symphony",
-      "statusCode": 302
-    },
-    {
-      "source": "/testnet/tanssi/:slug.md",
-      "destination": "/testnet/tanssi",
+      "source": "/testnet/:folder/:slug.md",
+      "destination": "/testnet",
       "statusCode": 302
     }
   ]
