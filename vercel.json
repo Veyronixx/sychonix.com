@@ -1,24 +1,27 @@
 {
-  "rewrites": [
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "headers": [
     {
-      "source": "/mainnet/:dir*/:file*.md",
-      "destination": "/mainnet/:dir*/"
-    },
-    {
-      "source": "/testnet/:dir*/:file*.md",
-      "destination": "/testnet/:dir*/"
+      "source": "/_astro/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
     }
   ],
   "redirects": [
     {
-      "source": "/mainnet/:dir*/:file*.md",
-      "destination": "/mainnet/:dir*/",
-      "permanent": false
+      "source": "/mainnet/:folder*/:slug.md",
+      "destination": "/mainnet/:folder*",
+      "statusCode": 302
     },
     {
-      "source": "/testnet/:dir*/:file*.md",
-      "destination": "/testnet/:dir*/",
-      "permanent": false
+      "source": "/testnet/:folder*/:slug.md",
+      "destination": "/testnet/:folder*",
+      "statusCode": 302
     }
   ]
 }
