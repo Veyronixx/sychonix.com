@@ -14,6 +14,13 @@ import { SITE } from './src/config.mjs';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
+const whenExternalScripts = (items = []) =>
+  SITE.googleAnalyticsId
+    ? Array.isArray(items)
+      ? items.map((item) => item())
+      : [items()]
+    : [];
+
 // Fungsi untuk mendapatkan semua path file .md dalam folder tertentu
 const getMarkdownPaths = (baseDir) => {
   const paths = [];
@@ -106,12 +113,10 @@ export default defineConfig({
               return;
             }
 
-            // Memeriksa apakah URL sesuai dengan path markdown (tanpa ekstensi .md)
-            const isMarkdownPath = markdownPaths.some(
-              (mdPath) => cleanUrl === mdPath || cleanUrl.startsWith(mdPath + '/')
-            );
+            // Cek apakah URL mengarah ke file markdown atau path markdown tanpa .md
+            const isMarkdownPath = markdownPaths.some((mdPath) => cleanUrl === mdPath || cleanUrl.startsWith(mdPath + '/'));
 
-            // Jika URL adalah markdown path, redirect ke direktori induk
+            // Jika URL mengarah ke markdown path, redirect ke direktori induk
             if (isMarkdownPath) {
               const basePath = cleanUrl.split('/').slice(0, -1).join('/');
               res.writeHead(302, { Location: basePath });
