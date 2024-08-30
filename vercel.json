@@ -11,5 +11,29 @@
         }
       ]
     }
+  ],
+  "redirects": [
+    {
+      "source": "/mainnet/:slug",
+      "destination": "/mainnet",
+      "has": [
+        {
+          "type": "query",
+          "key": "slug"
+        }
+      ],
+      "statusCode": 302
+    },
+    {
+      "source": "/testnet/:slug",
+      "destination": "/testnet",
+      "has": [
+        {
+          "type": "query",
+          "key": "slug"
+        }
+      ],
+      "statusCode": 302
+    }
   ]
 }

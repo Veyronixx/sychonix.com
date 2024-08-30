@@ -104,21 +104,16 @@ export default defineConfig({
           if (!server.middlewares) return;
 
           server.middlewares.use((req, res, next) => {
-            console.log(`Processing URL: ${req.url}`); // Debugging
-            
             if (req.url.includes('#')) {
+              // Jika URL memiliki hash, tidak perlu redirect atau blokir
               next();
               return;
             }
-          
-            // Ensure trailing slashes are normalized
-            const normalizedUrl = req.url.replace(/\/$/, '');
-            console.log(`Normalized URL: ${normalizedUrl}`); // Debugging
-            
-            if (markdownPaths.includes(normalizedUrl) && !normalizedUrl.endsWith('/')) {
-              const basePath = normalizedUrl.split('/').slice(0, -1).join('/');
-              console.log(`Redirecting to: ${basePath || '/'}`); // Debugging
-              res.writeHead(302, { Location: basePath || '/' });
+
+            if (markdownPaths.includes(req.url)) {
+              // Mengambil folder induk untuk redirect
+              const basePath = req.url.split('/').slice(0, -1).join('/');
+              res.writeHead(302, { Location: basePath });
               res.end();
             } else {
               next();
@@ -127,10 +122,5 @@ export default defineConfig({
         },
       },
     ],
-  },
-  server: {
-    // Add configuration for the production environment
-    port: 3000, // This will work for localhost
-    host: '0.0.0.0', // Allows external connections (like from production)
   },
 });
