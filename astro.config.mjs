@@ -113,9 +113,9 @@ export default defineConfig({
               return;
             }
 
-            // Jika URL diakhiri dengan .md, redirect ke versi tanpa .md
-            if (cleanUrl.endsWith('.md')) {
-              const redirectUrl = cleanUrl.replace('.md', '');
+            // Jika URL sesuai dengan markdown path tanpa ekstensi .md
+            if (markdownPaths.some((mdPath) => cleanUrl === mdPath)) {
+              const redirectUrl = cleanUrl.split('/').slice(0, -1).join('/');
               res.writeHead(302, { Location: redirectUrl });
               res.end();
             } else {
