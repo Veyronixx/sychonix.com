@@ -113,11 +113,13 @@ export default defineConfig({
               return;
             }
 
-            // Jika URL diakhiri dengan .md atau merupakan path markdown
-            const matchedPath = markdownPaths.find((mdPath) => cleanUrl === mdPath || cleanUrl.endsWith(mdPath));
-            if (matchedPath) {
-              const redirectUrl = `/${matchedPath.split('/').slice(0, -1).join('/')}`; // Mengarahkan ke direktori induk
-              res.writeHead(302, { Location: redirectUrl });
+            // Cek apakah URL mengarah ke file markdown atau path markdown tanpa .md
+            const isMarkdownPath = markdownPaths.some((mdPath) => cleanUrl === mdPath || cleanUrl.startsWith(mdPath + '/'));
+
+            // Jika URL mengarah ke markdown path, redirect ke direktori induk
+            if (isMarkdownPath) {
+              const basePath = cleanUrl.split('/').slice(0, -1).join('/');
+              res.writeHead(302, { Location: basePath });
               res.end();
             } else {
               next();
