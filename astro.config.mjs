@@ -104,7 +104,7 @@ export default defineConfig({
           if (!server.middlewares) return;
 
           server.middlewares.use((req, res, next) => {
-            // Hapus trailing slash dan hash untuk konsistensi URL
+            // Menghapus trailing slash untuk konsistensi URL
             let cleanUrl = req.url.replace(/\/$/, '');
 
             // Jika URL mengandung hash, tetap lanjutkan
@@ -113,11 +113,10 @@ export default defineConfig({
               return;
             }
 
-            // Cek apakah URL mengarah ke file markdown
-            if (markdownPaths.some((mdPath) => cleanUrl.startsWith(mdPath))) {
-              // Mengambil folder induk untuk redirect
-              const basePath = cleanUrl.split('/').slice(0, -1).join('/');
-              res.writeHead(302, { Location: basePath });
+            // Jika URL diakhiri dengan .md, redirect ke versi tanpa .md
+            if (cleanUrl.endsWith('.md')) {
+              const redirectUrl = cleanUrl.replace('.md', '');
+              res.writeHead(302, { Location: redirectUrl });
               res.end();
             } else {
               next();
