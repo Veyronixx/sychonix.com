@@ -14,13 +14,13 @@
   ],
   "redirects": [
     {
-      "source": "/mainnet/:folder/:slug.md",
-      "destination": "/mainnet",
+      "source": "/mainnet/:folder*/:slug.md",
+      "destination": "/mainnet/:folder*",
       "statusCode": 302
     },
     {
-      "source": "/testnet/:folder/:slug.md",
-      "destination": "/testnet",
+      "source": "/testnet/:folder*/:slug.md",
+      "destination": "/testnet/:folder*",
       "statusCode": 302
     }
   ]

@@ -104,15 +104,19 @@ export default defineConfig({
           if (!server.middlewares) return;
 
           server.middlewares.use((req, res, next) => {
-            if (req.url.includes('#')) {
-              // Jika URL memiliki hash, tidak perlu redirect atau blokir
+            // Hapus trailing slash dan hash untuk konsistensi URL
+            let cleanUrl = req.url.replace(/\/$/, '');
+
+            // Jika URL mengandung hash, tetap lanjutkan
+            if (cleanUrl.includes('#')) {
               next();
               return;
             }
 
-            if (markdownPaths.includes(req.url)) {
+            // Cek apakah URL mengarah ke file markdown
+            if (markdownPaths.some((mdPath) => cleanUrl.startsWith(mdPath))) {
               // Mengambil folder induk untuk redirect
-              const basePath = req.url.split('/').slice(0, -1).join('/');
+              const basePath = cleanUrl.split('/').slice(0, -1).join('/');
               res.writeHead(302, { Location: basePath });
               res.end();
             } else {
