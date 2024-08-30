@@ -1,7 +1,5 @@
 ---
 title: Snapshot
-
-icon: crossfi
 ---
 
 

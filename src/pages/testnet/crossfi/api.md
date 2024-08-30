@@ -1,6 +1,4 @@
 ---
-
-icon: crossfi
 title: API
 ---
 

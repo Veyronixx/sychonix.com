@@ -1,7 +1,5 @@
 ---
 title: Genesis
-
-icon: crossfi
 ---
 
 <div class="code-block-wrapper">

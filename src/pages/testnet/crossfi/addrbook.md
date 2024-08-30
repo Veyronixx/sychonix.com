@@ -1,7 +1,5 @@
 ---
 title: Addrbook
-
-icon: crossfi
 ---
 
 <div class="code-block-wrapper">

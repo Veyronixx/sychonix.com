@@ -1,6 +1,5 @@
 ---
 title: Upgrade
-icon: crossfi
 ---
 
 

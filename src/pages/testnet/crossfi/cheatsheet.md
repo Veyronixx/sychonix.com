@@ -1,6 +1,5 @@
 ---
 layout: '~/layouts/copybutton.astro'
-icon : crossfi
 ---
 <!-- saya mau menggunakan const detail ini
 node name and icon : crossfi
