@@ -102,18 +102,19 @@ export default defineConfig({
         name: 'redirect-md-to-index',
         configureServer(server) {
           if (!server.middlewares) return;
-   
+
           server.middlewares.use((req, res, next) => {
             console.log(`Processing URL: ${req.url}`); // Debugging
-          
+            
             if (req.url.includes('#')) {
               next();
               return;
             }
           
+            // Ensure trailing slashes are normalized
             const normalizedUrl = req.url.replace(/\/$/, '');
             console.log(`Normalized URL: ${normalizedUrl}`); // Debugging
-          
+            
             if (markdownPaths.includes(normalizedUrl) && !normalizedUrl.endsWith('/')) {
               const basePath = normalizedUrl.split('/').slice(0, -1).join('/');
               console.log(`Redirecting to: ${basePath || '/'}`); // Debugging
@@ -123,9 +124,13 @@ export default defineConfig({
               next();
             }
           });
-          
         },
       },
     ],
+  },
+  server: {
+    // Add configuration for the production environment
+    port: 3000, // This will work for localhost
+    host: '0.0.0.0', // Allows external connections (like from production)
   },
 });
