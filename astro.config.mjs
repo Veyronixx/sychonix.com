@@ -104,24 +104,26 @@ export default defineConfig({
           if (!server.middlewares) return;
    
           server.middlewares.use((req, res, next) => {
+            console.log(`Processing URL: ${req.url}`); // Debugging
+          
             if (req.url.includes('#')) {
-              // Jika URL memiliki hash, tidak perlu redirect atau blokir
               next();
               return;
             }
-   
-            // Normalize the URL to remove trailing slashes
+          
             const normalizedUrl = req.url.replace(/\/$/, '');
-   
-            if (markdownPaths.includes(normalizedUrl)) {
-              // If the URL is an exact match, redirect to its parent path
+            console.log(`Normalized URL: ${normalizedUrl}`); // Debugging
+          
+            if (markdownPaths.includes(normalizedUrl) && !normalizedUrl.endsWith('/')) {
               const basePath = normalizedUrl.split('/').slice(0, -1).join('/');
+              console.log(`Redirecting to: ${basePath || '/'}`); // Debugging
               res.writeHead(302, { Location: basePath || '/' });
               res.end();
             } else {
               next();
             }
           });
+          
         },
       },
     ],
