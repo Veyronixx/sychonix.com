@@ -113,8 +113,8 @@ export default defineConfig({
               return;
             }
 
-            // Cek apakah URL mengarah ke file markdown atau path markdown tanpa .md
-            const isMarkdownPath = markdownPaths.some((mdPath) => cleanUrl === mdPath || cleanUrl.startsWith(mdPath + '/'));
+            // Cek apakah URL mengarah ke markdown path
+            const isMarkdownPath = markdownPaths.some((mdPath) => cleanUrl === mdPath || cleanUrl.startsWith(mdPath + '/') || cleanUrl.startsWith(mdPath + '.md'));
 
             // Jika URL mengarah ke markdown path, redirect ke direktori induk
             if (isMarkdownPath) {
