@@ -113,9 +113,10 @@ export default defineConfig({
               return;
             }
 
-            // Jika URL sesuai dengan markdown path tanpa ekstensi .md
-            if (markdownPaths.some((mdPath) => cleanUrl === mdPath)) {
-              const redirectUrl = cleanUrl.split('/').slice(0, -1).join('/');
+            // Jika URL diakhiri dengan .md atau merupakan path markdown
+            const matchedPath = markdownPaths.find((mdPath) => cleanUrl === mdPath || cleanUrl.endsWith(mdPath));
+            if (matchedPath) {
+              const redirectUrl = `/${matchedPath.split('/').slice(0, -1).join('/')}`; // Mengarahkan ke direktori induk
               res.writeHead(302, { Location: redirectUrl });
               res.end();
             } else {
