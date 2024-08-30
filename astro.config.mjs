@@ -14,6 +14,14 @@ import { SITE } from './src/config.mjs';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
+// Fungsi untuk menginisialisasi skrip eksternal berdasarkan konfigurasi situs
+const whenExternalScripts = (items = []) =>
+  SITE.googleAnalyticsId
+    ? Array.isArray(items)
+      ? items.map((item) => item())
+      : [items()]
+    : [];
+
 // Fungsi untuk mendapatkan semua path file .md dalam folder tertentu
 const getMarkdownPaths = (baseDir) => {
   const paths = [];
