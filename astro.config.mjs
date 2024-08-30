@@ -102,18 +102,21 @@ export default defineConfig({
         name: 'redirect-md-to-index',
         configureServer(server) {
           if (!server.middlewares) return;
-
+   
           server.middlewares.use((req, res, next) => {
             if (req.url.includes('#')) {
               // Jika URL memiliki hash, tidak perlu redirect atau blokir
               next();
               return;
             }
-
-            if (markdownPaths.includes(req.url)) {
-              // Mengambil folder induk untuk redirect
-              const basePath = req.url.split('/').slice(0, -1).join('/');
-              res.writeHead(302, { Location: basePath });
+   
+            // Normalize the URL to remove trailing slashes
+            const normalizedUrl = req.url.replace(/\/$/, '');
+   
+            if (markdownPaths.includes(normalizedUrl)) {
+              // If the URL is an exact match, redirect to its parent path
+              const basePath = normalizedUrl.split('/').slice(0, -1).join('/');
+              res.writeHead(302, { Location: basePath || '/' });
               res.end();
             } else {
               next();
