@@ -1,5 +1,5 @@
 ---
-layout: '~/layouts/TestnetLayout.astro'
+
 icon: crossfi
 title: Installation Node
 ---
@@ -96,11 +96,3 @@ sudo systemctl enable crossfid.service
 sudo systemctl restart crossfid.service && sudo journalctl -u crossfid.service -f --no-hostname -o cat</code></pre>
   <button class="copy-btn"><i class="fas fa-copy"></i></button>
 </div>
-
-- Create Validator
-
-Heads up to the Cheat Sheets to create validator
-
-<a href="https://sychonix.com/testnet/crossfi/cheat" >
-  <button style="background-color: green; border: none; color: white; padding: 15px 32px; text-align: center; text-decoration: none; display: inline-block; font-size: 16px; margin: 4px 2px; cursor: pointer; border-radius: 10px; box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);" onmouseover="this.style.boxShadow='0 0 0 4px rgba(0,255,0,0.5)'" onmouseout="this.style.boxShadow='0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)'">CLI Cheatsheets</button>
-</a>

@@ -8,14 +8,40 @@ import mdx from '@astrojs/mdx';
 import partytown from '@astrojs/partytown';
 import compress from 'astro-compress';
 import react from '@astrojs/react';
+import fs from 'fs';
 
 import { SITE } from './src/config.mjs';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
-const whenExternalScripts = (items = []) => SITE.googleAnalyticsId
-  ? Array.isArray(items) ? items.map(item => item()) : [items()]
-  : [];
+const whenExternalScripts = (items = []) =>
+  SITE.googleAnalyticsId
+    ? Array.isArray(items)
+      ? items.map((item) => item())
+      : [items()]
+    : [];
+
+// Fungsi untuk mendapatkan semua path file .md dalam folder tertentu
+const getMarkdownPaths = (baseDir) => {
+  const paths = [];
+  const files = fs.readdirSync(baseDir);
+  files.forEach((file) => {
+    const fullPath = path.join(baseDir, file);
+    if (fs.statSync(fullPath).isDirectory()) {
+      paths.push(...getMarkdownPaths(fullPath)); // Rekursif untuk folder dalam
+    } else if (file.endsWith('.md')) {
+      const relativePath = path.relative(__dirname, fullPath);
+      paths.push(`/${relativePath.replace(/\\/g, '/').replace('src/pages/', '').replace('.md', '')}`);
+    }
+  });
+  return paths;
+};
+
+// Mengumpulkan semua path .md dari folder mainnet dan testnet
+const markdownPaths = [
+  ...getMarkdownPaths(path.join(__dirname, 'src/pages/mainnet')),
+  ...getMarkdownPaths(path.join(__dirname, 'src/pages/testnet')),
+];
 
 export default defineConfig({
   site: SITE.origin,
@@ -25,46 +51,76 @@ export default defineConfig({
   integrations: [
     tailwind({
       config: {
-        applyBaseStyles: false
-      }
+        applyBaseStyles: false,
+      },
     }),
     sitemap(),
     image({
-      serviceEntryPoint: '@astrojs/image/sharp'
+      serviceEntryPoint: '@astrojs/image/sharp',
     }),
     mdx({
       remarkPlugins: [],
-      gfm: false
+      gfm: false,
     }),
-    ...whenExternalScripts(() => partytown({
-      config: {
-        forward: ['dataLayer.push']
-      }
-    })),
+    ...whenExternalScripts(() =>
+      partytown({
+        config: {
+          forward: ['dataLayer.push'],
+        },
+      })
+    ),
     compress({
       css: true,
       html: {
-        removeAttributeQuotes: false
+        removeAttributeQuotes: false,
       },
       img: false,
       js: false,
       svg: false,
-      logger: 1
+      logger: 1,
     }),
-    react()
+    react(),
   ],
   markdown: {
     syntaxHighlight: 'prism',
     remarkPlugins: [],
     rehypePlugins: [],
     gfm: true,
-    copyButton: true
+    copyButton: true,
   },
   vite: {
     resolve: {
       alias: {
-        '~': path.resolve(__dirname, './src')
-      }
-    }
-  }
+        '~': path.resolve(__dirname, './src'),
+      },
+    },
+    server: {
+      middlewareMode: false,
+    },
+    plugins: [
+      {
+        name: 'redirect-md-to-index',
+        configureServer(server) {
+          if (!server.middlewares) return;
+
+          server.middlewares.use((req, res, next) => {
+            if (req.url.includes('#')) {
+              // Jika URL memiliki hash, tidak perlu redirect atau blokir
+              next();
+              return;
+            }
+
+            if (markdownPaths.includes(req.url)) {
+              // Mengambil folder induk untuk redirect
+              const basePath = req.url.split('/').slice(0, -1).join('/');
+              res.writeHead(302, { Location: basePath });
+              res.end();
+            } else {
+              next();
+            }
+          });
+        },
+      },
+    ],
+  },
 });

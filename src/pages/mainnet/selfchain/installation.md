@@ -1,9 +1,5 @@
 ---
-layout: '~/layouts/TestnetLayout.astro'
 title: Installation Node
-network: Mainnet
-icon: selfchain
-chain: self-1
 ---
 
 - Autoinstall Script
@@ -13,9 +9,9 @@ chain: self-1
   <button class="copy-btn" data-target="source <(curl -s https://snapshot.sychonix.com/selfchain/autoinstall.sh)"><i class="fas fa-copy"></i></button>
 </div>
 
-------
+---------------
 
-Manual installation
+<p style="font-weight: bold; font-size: 1.2rem; margin-top: 1rem; margin-bottom: 1rem;">Manual Installation</p>
 
 - Install Dependencies
 
@@ -140,11 +136,3 @@ sudo systemctl enable selfchaind
 sudo systemctl restart selfchaind && sudo journalctl -u selfchaind -f --no-hostname -o cat</code></pre>
   <button class="copy-btn" data-target="sudo systemctl daemon-reload\nsudo systemctl enable selfchaind\nsudo systemctl restart selfchaind && sudo journalctl -u selfchaind -f --no-hostname -o cat"><i class="fas fa-copy"></i></button>
 </div>
-
-- Create Validator
-
-Heads up to the Cheat Sheets to create validator
-
-<a href="https://sychonix.com/mainnet/selfchain/cheat" >
-  <button style="background-color: green; border: none; color: white; padding: 15px 32px; text-align: center; text-decoration: none; display: inline-block; font-size: 16px; margin: 4px 2px; cursor: pointer; border-radius: 10px; box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);" onmouseover="this.style.boxShadow='0 0 0 4px rgba(0,255,0,0.5)'" onmouseout="this.style.boxShadow='0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)'">CLI Cheatsheets</button>
-</a>

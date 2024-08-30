@@ -1,37 +1,23 @@
----
-title: Installation Node
-layout: '~/layouts/TestnetLayout.astro'
-network: Testnet
-chain id: Turing
-icon: avail
----
-
-- Update and install packages
-
+Update and install packages
 <div class="code-block-wrapper">
   <pre><code>sudo apt update
 sudo apt install make clang pkg-config libssl-dev build-essential</code></pre>
   <button class="copy-btn"><i class="fas fa-copy"></i></button>
 </div>
-
-- Create directory
-
+Create directory
 <div class="code-block-wrapper">
   <pre><code>mkdir -p ${HOME}/avail-node
 mkdir -p ${HOME}/avail-node/data
 mkdir -p ${HOME}/avail-node/systemd</code></pre>
   <button class="copy-btn"><i class="fas fa-copy"></i></button>
 </div>
-
-- Extract binary
+Extract binary
 <div class="code-block-wrapper">
   <pre><code>cd avail-node
 wget https://github.com/availproject/avail/releases/download/v1.8.0.0/amd64-ubuntu-2204-data-avail.tar.gz</code></pre>
   <button class="copy-btn"><i class="fas fa-copy"></i></button>
 </div>
-
-- Extract File
-
+Extract File
 <div class="code-block-wrapper">
   <pre><code>tar -xvzf amd64-ubuntu-2204-data-avail.tar.gz
 cp amd64-ubuntu-2204-data-avail data-avail</code></pre>
@@ -106,7 +92,34 @@ The node will output the following when started:
 2023-06-03 20:36:35 🏁 Disk score (seq. writes): 1.91 GiBs
 2023-06-03 20:36:35 🏁 Disk score (rand. writes): 454.66 MiBs
 ```
-
-- Stake your validator
-
-Follow this [guide](https://docs.availproject.org/operate/validator/staking/)
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      document.querySelectorAll('.code-block-wrapper').forEach(wrapper => {
+        const button = wrapper.querySelector('.copy-btn');
+        const code = wrapper.querySelector('pre code');
+    
+        if (button && code) {
+          button.addEventListener('click', () => {
+            // Gunakan navigator.clipboard.writeText untuk metode yang lebih modern
+            navigator.clipboard.writeText(code.textContent)
+              .then(() => {
+                button.innerHTML = '<i class="fas fa-check"></i>';
+                setTimeout(() => button.innerHTML = '<i class="fas fa-copy"></i>', 2000);
+              })
+              .catch(err => {
+                console.error('Failed to copy: ', err);
+                // Untuk fallback jika navigator.clipboard.writeText gagal
+                const range = document.createRange();
+                range.selectNode(code);
+                window.getSelection().removeAllRanges();
+                window.getSelection().addRange(range);
+                document.execCommand('copy');
+                window.getSelection().removeAllRanges();
+                button.innerHTML = '<i class="fas fa-check"></i>';
+                setTimeout(() => button.innerHTML = '<i class="fas fa-copy"></i>', 2000);
+              });
+          });
+        }
+      });
+    });
+    </script>

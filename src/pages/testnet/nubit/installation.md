@@ -1,5 +1,5 @@
 ---
-layout: '~/layouts/TestnetLayout.astro'
+
 icon: nubit
 title: Installation Node
 ---
@@ -75,3 +75,35 @@ sudo systemctl enable nubit</code></pre>
 sudo cat mnemonic.txt</code></pre>
   <button class="copy-btn"><i class="fas fa-copy"></i></button>
 </div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+      document.querySelectorAll('.code-block-wrapper').forEach(wrapper => {
+        const button = wrapper.querySelector('.copy-btn');
+        const code = wrapper.querySelector('pre code');
+    
+        if (button && code) {
+          button.addEventListener('click', () => {
+            // Gunakan navigator.clipboard.writeText untuk metode yang lebih modern
+            navigator.clipboard.writeText(code.textContent)
+              .then(() => {
+                button.innerHTML = '<i class="fas fa-check"></i>';
+                setTimeout(() => button.innerHTML = '<i class="fas fa-copy"></i>', 2000);
+              })
+              .catch(err => {
+                console.error('Failed to copy: ', err);
+                // Untuk fallback jika navigator.clipboard.writeText gagal
+                const range = document.createRange();
+                range.selectNode(code);
+                window.getSelection().removeAllRanges();
+                window.getSelection().addRange(range);
+                document.execCommand('copy');
+                window.getSelection().removeAllRanges();
+                button.innerHTML = '<i class="fas fa-check"></i>';
+                setTimeout(() => button.innerHTML = '<i class="fas fa-copy"></i>', 2000);
+              });
+          });
+        }
+      });
+    });
+    </script>

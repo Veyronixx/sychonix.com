@@ -3,35 +3,44 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;500;600;700&display=swap');
+
 
 @layer components {
-  pre {
-    background-color: #111827 !important; /* Warna latar belakang gelap */
-    padding: 1rem !important;            /* Jarak padding */
-    border-radius: 0.5rem !important;     /* Sudut membulat */
-    overflow-x: auto !important;          /* Scroll horizontal jika kode panjang */
-    color: #ffffff !important;            /* Warna teks putih */
-    white-space: nowrap !important; /* Memastikan teks panjang dibungkus */
-    word-wrap: normal !important;/* Memastikan kata panjang dipotong dengan benar */
-    margin: 0 !important; /* Menghilangkan margin default */
-    line-height: 1.4; /* Mengatur jarak antar baris */
-    max-width: 100%; /* Pastikan elemen kode tidak melebihi lebar container */
+  .code-block-wrapper {
+    position: relative;
+    margin-bottom: 1rem;
+    overflow-x: auto; /* Ensures horizontal scroll for long content */
   }
 
-  code {
-    color: inherit !important;            /* Warna teks mengikuti elemen induk */
-    background-color: transparent !important; /* Hapus latar belakang bawaan kode */
-    display: block; /* Membuat kode mengambil lebar penuh dari elemen <pre> */
-    white-space: pre-wrap; /* Membungkus teks di dalam <code> */
-    line-height: 1.4; /* Mengatur jarak antar baris dalam kode */
+  pre {
+    font-family: 'Fira Code', 'Source Code Pro', !important;
+    background-color: #020617 !important;
+    font-size: 0.9rem !important;
+    padding: 1rem !important;
+    border-radius: 0.5rem !important;
+    overflow-x: auto !important; /* Ensures horizontal scroll */
+    white-space: pre !important; /* Preserves whitespace and allows horizontal scroll */
+    word-wrap: normal !important; /* Prevents word break and allows long lines */
+    margin: 0 !important;
+    line-height: 1.4;
+    max-width: 100%; /* Ensures the code block doesn't exceed the container width */
   }
   
+  code {
+    font-family: 'Fira Code', 'Source Code Pro', !important;
+    color: inherit !important;
+    background-color: transparent !important;
+    display: block;
+    white-space: pre; /* Preserves whitespace */
+    line-height: 1.4;
+  }
   .code-block-wrapper {
     position: relative;
     margin-bottom: 1rem;
   }
-  
-  
+
   .copy-btn {
     position: absolute;
     top: 0.5rem;
@@ -46,17 +55,16 @@
     display: flex;
     align-items: center;
   }
-  
+
   .copy-btn:hover {
     border-color: rgb(22 163 74);
     background-color: #0056b3;
   }
-  
+
   .copy-btn i {
     font-size: 0.75rem;
   }
-  
-  
+
   .text-page {
     color: var(--aw-color-text-page);
   }
@@ -73,11 +81,7 @@
     color: white;
   }
 
-  .bg-light {
-    background-image: url('/bekgronport.jpg');
-  }
-
-  .bg-dark {
+  .bg-light, .bg-dark {
     background-image: url('/bekgronport.jpg');
   }
 
@@ -92,55 +96,49 @@
   .btn-primary {
     @apply font-semibold bg-primary text-white border-primary hover:bg-red-600 hover:border-green-700 hover:text-white dark:text-white dark:bg-primary dark:border-primary dark:hover:border-blue-900 dark:hover:bg-blue-900;
   }
-}
 
-#header.scroll {
-  @apply shadow-md md:shadow-lg bg-transparent md:bg-transparent md:backdrop-blur-sm dark:bg-transparent dark:md:bg-transparent/90;
-}
+  @media (max-width: 640px) { /* Mobile responsiveness */
+    pre {
+      font-size: 0.875rem !important; /* Smaller font size for mobile */
+      white-space: pre !important; /* Prevent wrapping text */
+      overflow-x: auto !important; /* Ensure horizontal scroll */
+    }
 
-.dropdown:hover .dropdown-menu {
-  display: block;
-}
+    code {
+      white-space: pre !important; /* Prevent wrapping text within code */
+      word-wrap: normal !important; /* Prevent word breaks within code */
+    }
 
-[astro-icon].icon-light > * {
-  stroke-width: 1.2;
-}
+    .code-block-wrapper {
+      margin-bottom: 0.75rem;
+    }
 
-[astro-icon].icon-bold > * {
-  stroke-width: 2.4;
-}
+    .copy-btn {
+      top: 0.25rem;
+      right: 0.25rem;
+      padding: 0.2rem;
+      font-size: 0.65rem;
+    }
+  }
 
-[data-aw-toggle-menu] path {
-  @apply transition;
-}
-[data-aw-toggle-menu].expanded g > path:first-child {
-  @apply -rotate-45 translate-y-[15px] translate-x-[-3px];
-}
+  /* Scrollbar styling */
+  ::-webkit-scrollbar {
+    width: 12px;
+  }
 
-[data-aw-toggle-menu].expanded g > path:last-child {
-  @apply rotate-45 translate-y-[-8px] translate-x-[14px];
+  ::-webkit-scrollbar-track {
+    background: #111827;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: #94a3b8;
+    border-radius: 10px;
+    border: 3px solid #d1d5db;
+  }
+
+  /* Firefox scrollbar styling */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: #d1d5db #0c0a09;
+  }
 }
-/* Tambahkan styling scrollbar di akhir base.css */
-
-/* Mengubah warna scrollbar untuk seluruh halaman */
-::-webkit-scrollbar {
-  width: 12px; /* Lebar scrollbar */
-}
-
-::-webkit-scrollbar-track {
-  background: #111827; /* Warna background track scrollbar */
-}
-
-::-webkit-scrollbar-thumb {
-  background-color: #94a3b8; /* Warna thumb scrollbar */
-  border-radius: 10px; /* Radius untuk sudut yang lebih lembut */
-  border: 3px solid #d1d5db; /* Menambahkan border dengan warna background halaman */
-}
-
-/* Untuk Firefox */
-* {
-  scrollbar-width: thin; /* Membuat scrollbar lebih tipis */
-  scrollbar-color: #d1d5db #0c0a09; /* thumb warna #4f46e5 dan track warna #1f2937 */
-}
-
-

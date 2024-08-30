@@ -1,9 +1,5 @@
 ---
 title: Installation Node
-layout: '~/layouts/TestnetLayout.astro'
-network: Mainnet
-icon: crossfi
-chain: crossfi-evm-mainnet-1
 ---
 
 - Install dependencies 
@@ -17,14 +13,10 @@ apt install curl iptables build-essential git wget jq make gcc nano tmux htop nv
 - Install go
 
 <div class="code-block-wrapper">
-  <pre><code>ver="1.21.1"
-wget "https://golang.org/dl/go$ver.linux-amd64.tar.gz"
-sudo rm -rf /usr/local/go
-sudo tar -C /usr/local -xzf "go$ver.linux-amd64.tar.gz"
-rm "go$ver.linux-amd64.tar.gz"
-echo "export PATH=$PATH:/usr/local/go/bin:$HOME/go/bin" >> ~/.bash_profile
-source ~/.bash_profile
-go version</code></pre>
+  <pre><code>sudo rm -rf /usr/local/go
+curl -Ls https://go.dev/dl/go1.21.1.linux-amd64.tar.gz | sudo tar -xzf - -C /usr/local
+eval $(echo 'export PATH=$PATH:/usr/local/go/bin' | sudo tee /etc/profile.d/golang.sh)
+eval $(echo 'export PATH=$PATH:$HOME/go/bin' | tee -a $HOME/.profile)</code></pre>
   <button class="copy-btn"><i class="fas fa-copy"></i></button>
 </div>
 
@@ -124,11 +116,3 @@ sudo systemctl enable crossfid.service
 sudo systemctl restart crossfid.service && sudo journalctl -u crossfid.service -f --no-hostname -o cat</code></pre>
   <button class="copy-btn"><i class="fas fa-copy"></i></button>
 </div>
-
-- Create Validator
-
-Heads up to the Cheat Sheets to create validator
-
-<a href="https://sychonix.com/mainnet/crossfi/cheat" >
-  <button style="background-color: green; border: none; color: white; padding: 15px 32px; text-align: center; text-decoration: none; display: inline-block; font-size: 16px; margin: 4px 2px; cursor: pointer; border-radius: 10px; box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);" onmouseover="this.style.boxShadow='0 0 0 4px rgba(0,255,0,0.5)'" onmouseout="this.style.boxShadow='0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)'">CLI Cheatsheets</button>
-</a>

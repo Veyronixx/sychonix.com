@@ -1,6 +1,5 @@
 ---
 title: Snapshot
-layout: '~/layouts/TestnetLayout.astro'
 icon: crossfi
 ---
 

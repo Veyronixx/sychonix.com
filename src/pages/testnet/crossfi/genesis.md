@@ -1,6 +1,6 @@
 ---
 title: Genesis
-layout: '~/layouts/TestnetLayout.astro'
+
 icon: crossfi
 ---
 

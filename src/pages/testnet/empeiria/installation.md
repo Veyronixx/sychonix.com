@@ -1,6 +1,6 @@
 ---
 title: Installation Node
-layout: '~/layouts/TestnetLayout.astro'
+
 network: Testnet
 chain id: empe-testnet-2
 icon: emped
@@ -13,6 +13,8 @@ icon: emped
   <pre><code>source &lt;(curl -s https://snapshot.sychonix.com/empeiria/autoinstall.sh)</code></pre>
   <button class="copy-btn"><i class="fas fa-copy"></i></button>
 </div>
+------------
+<p style="font-weight: bold; font-size: 1.2rem; margin-top: 1rem; margin-bottom: 1rem;">Manual Installation</p>
 
 - Install Dependencies
 <div class="code-block-wrapper">

@@ -1,6 +1,6 @@
 ---
 title: Installation Node
-layout: '~/layouts/TestnetLayout.astro'
+
 network: Testnet
 chain id: symphony-testnet-3
 icon: sym
@@ -15,7 +15,7 @@ icon: sym
 
 ------
 
-Manual installation
+<p style="font-weight: bold; font-size: 1.2rem; margin-top: 1rem; margin-bottom: 1rem;">Manual Installation</p>
 
 - Install Dependencies
 

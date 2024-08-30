@@ -1,6 +1,6 @@
 ---
 title: Genesis File
-layout: '~/layouts/TestnetLayout.astro'
+
 icon: fiamma
 ---
 

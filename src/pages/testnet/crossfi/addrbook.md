@@ -1,6 +1,6 @@
 ---
 title: Addrbook
-layout: '~/layouts/TestnetLayout.astro'
+
 icon: crossfi
 ---
 

@@ -1,10 +1,10 @@
 ---
-layout: '~/layouts/TestnetLayout.astro'
 icon: crossfi
 title: Peers
 ---
 
 <div class="code-block-wrapper">
-  <pre><code>49aa9cb060eb5de5c47ac832bcd7a192d196445c@2a01:4f9:c012:45e9::1:26056</code></pre>
+  <pre><code>PEERS="$(curl -sS https://rpc-crossfi.sychonix.com/net_info | jq -r '.result.peers[] | "\(.node_info.id)@\(.remote_ip):\(.node_info.listen_addr)"' | awk -F ':' '{print $1":"$(NF)}' | sed -z 's|\n|,|g;s|.$||')"
+sed -i.bak -e "s/^persistent_peers *=.*/persistent_peers = \"$PEERS\"/" $HOME/.crossfid/config/config.toml</code></pre>
   <button class="copy-btn"><i class="fas fa-copy"></i></button>
 </div>

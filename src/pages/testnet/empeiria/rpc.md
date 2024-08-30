@@ -1,6 +1,6 @@
 ---
 title: RPC
-layout: '~/layouts/TestnetLayout.astro'
+
 icon: emped
 ---
 

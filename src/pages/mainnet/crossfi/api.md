@@ -1,5 +1,4 @@
 ---
-layout: '~/layouts/TestnetLayout.astro'
 icon: crossfi
 title: API
 ---

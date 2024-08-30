@@ -1,6 +1,5 @@
 ---
 title: Installation Node
-layout: '~/layouts/TestnetLayout.astro'
 network: Chasm Network 
 icon: chasm
 ---
@@ -67,4 +66,35 @@ docker run -d --restart=always --env-file ./.env -p 3001:3001 --name scout johns
   <button class="copy-btn"><i class="fas fa-copy"></i></button>
 </div>
 
-- Check your Scouts [Here](https://scout.chasm.net/dashboard)
+- Check your Scouts Here : https://scout.chasm.net/dashboard
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+      document.querySelectorAll('.code-block-wrapper').forEach(wrapper => {
+        const button = wrapper.querySelector('.copy-btn');
+        const code = wrapper.querySelector('pre code');
+    
+        if (button && code) {
+          button.addEventListener('click', () => {
+            // Gunakan navigator.clipboard.writeText untuk metode yang lebih modern
+            navigator.clipboard.writeText(code.textContent)
+              .then(() => {
+                button.innerHTML = '<i class="fas fa-check"></i>';
+                setTimeout(() => button.innerHTML = '<i class="fas fa-copy"></i>', 2000);
+              })
+              .catch(err => {
+                console.error('Failed to copy: ', err);
+                // Untuk fallback jika navigator.clipboard.writeText gagal
+                const range = document.createRange();
+                range.selectNode(code);
+                window.getSelection().removeAllRanges();
+                window.getSelection().addRange(range);
+                document.execCommand('copy');
+                window.getSelection().removeAllRanges();
+                button.innerHTML = '<i class="fas fa-check"></i>';
+                setTimeout(() => button.innerHTML = '<i class="fas fa-copy"></i>', 2000);
+              });
+          });
+        }
+      });
+    });
+    </script>

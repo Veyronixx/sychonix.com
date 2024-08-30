@@ -1,6 +1,6 @@
 ---
 title: Installation Node
-layout: '~/layouts/TestnetLayout.astro'
+
 network: Dill Testnet Andes
 icon: dill
 ---
@@ -61,16 +61,43 @@ ubuntu@ip-xxxxx:~/dill$
 </div>
 
 - The node will output the following when started:
-<div class="code-block-wrapper">
-  <pre><code>Option --pwdfile, argument 'walletPw.txt'
+```
+Option --pwdfile, argument 'walletPw.txt'
 Remaining arguments:
 using password file at walletPw.txt
 start light node
 start light node done
-ubuntu@xxxxx:~/dill$ nohup: redirecting stderr to stdout</code></pre>
-  <button class="copy-btn"><i class="fas fa-copy"></i></button>
-</div>
+ubuntu@xxxxx:~/dill$ nohup: redirecting stderr to stdout
+```
 
-- Stake your validator
-
-Follow this [guides](https://past-chokeberry-e85.notion.site/andes-doc-a23a9f71a85a4be9a6737e54d2674060)
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+      document.querySelectorAll('.code-block-wrapper').forEach(wrapper => {
+        const button = wrapper.querySelector('.copy-btn');
+        const code = wrapper.querySelector('pre code');
+    
+        if (button && code) {
+          button.addEventListener('click', () => {
+            // Gunakan navigator.clipboard.writeText untuk metode yang lebih modern
+            navigator.clipboard.writeText(code.textContent)
+              .then(() => {
+                button.innerHTML = '<i class="fas fa-check"></i>';
+                setTimeout(() => button.innerHTML = '<i class="fas fa-copy"></i>', 2000);
+              })
+              .catch(err => {
+                console.error('Failed to copy: ', err);
+                // Untuk fallback jika navigator.clipboard.writeText gagal
+                const range = document.createRange();
+                range.selectNode(code);
+                window.getSelection().removeAllRanges();
+                window.getSelection().addRange(range);
+                document.execCommand('copy');
+                window.getSelection().removeAllRanges();
+                button.innerHTML = '<i class="fas fa-check"></i>';
+                setTimeout(() => button.innerHTML = '<i class="fas fa-copy"></i>', 2000);
+              });
+          });
+        }
+      });
+    });
+    </script>

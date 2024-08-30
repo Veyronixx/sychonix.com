@@ -1,6 +1,6 @@
 ---
 title: Installation Node
-layout: '~/layouts/TestnetLayout.astro'
+
 network: Testnet
 chain id: dancebox
 icon: tanssi
@@ -92,3 +92,35 @@ systemctl restart tanssi.service && journalctl -f -u tanssi.service</code></pre>
   <pre><code>./tanssi-node key generate -w24</code></pre>
   <button class="copy-btn"><i class="fas fa-copy"></i></button>
 </div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+      document.querySelectorAll('.code-block-wrapper').forEach(wrapper => {
+        const button = wrapper.querySelector('.copy-btn');
+        const code = wrapper.querySelector('pre code');
+    
+        if (button && code) {
+          button.addEventListener('click', () => {
+            // Gunakan navigator.clipboard.writeText untuk metode yang lebih modern
+            navigator.clipboard.writeText(code.textContent)
+              .then(() => {
+                button.innerHTML = '<i class="fas fa-check"></i>';
+                setTimeout(() => button.innerHTML = '<i class="fas fa-copy"></i>', 2000);
+              })
+              .catch(err => {
+                console.error('Failed to copy: ', err);
+                // Untuk fallback jika navigator.clipboard.writeText gagal
+                const range = document.createRange();
+                range.selectNode(code);
+                window.getSelection().removeAllRanges();
+                window.getSelection().addRange(range);
+                document.execCommand('copy');
+                window.getSelection().removeAllRanges();
+                button.innerHTML = '<i class="fas fa-check"></i>';
+                setTimeout(() => button.innerHTML = '<i class="fas fa-copy"></i>', 2000);
+              });
+          });
+        }
+      });
+    });
+    </script>

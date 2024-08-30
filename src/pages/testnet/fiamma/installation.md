@@ -1,6 +1,6 @@
 ---
 title: Installation Node
-layout: '~/layouts/TestnetLayout.astro'
+
 network: Testnet
 chain id: fiamma-testnet-1
 icon: fiamma
@@ -14,7 +14,8 @@ icon: fiamma
 
 ------
 
-Manual installation
+<p style="font-weight: bold; font-size: 1.2rem; margin-top: 1rem; margin-bottom: 1rem;">Manual Installation</p>
+
 - Install Dependencies
 <div class="code-block-wrapper">
   <pre><code>sudo apt update && sudo apt upgrade -y 

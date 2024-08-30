@@ -1,9 +1,8 @@
 ---
 title: Genesis
-layout: '~/layouts/TestnetLayout.astro'
 icon: crossfi
+setup: |
 ---
-
 
 <div class="code-block-wrapper">
   <pre><code>curl -Ls https://snapshot.sychonix.com/crossfi/genesis.json > $HOME/.mineplex-chain/config/genesis.json</code></pre>

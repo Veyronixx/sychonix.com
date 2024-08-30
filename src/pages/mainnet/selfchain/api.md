@@ -1,5 +1,5 @@
 ---
-layout: '~/layouts/TestnetLayout.astro'
+
 icon: selfchain
 title: API
 ---
