@@ -285,24 +285,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // Fetch and update Block Height
-  async function fetchBlockHeight() {
-    try {
-      const response = await fetch('https://rpc.gaianet.tools/status');
-      const data = await response.json();
-      const latestBlockHeight = data.result.sync_info.latest_block_height;
-
-      // Update only the latest block height
-      const blockHeightElement = document.getElementById('block-height');
-      blockHeightElement.innerHTML = `<strong>Block Height:</strong> ${latestBlockHeight}`;
-    } catch (error) {
-      console.error('Error fetching block height:', error);
-    }
-  }
-
-  // Update block height every 5 seconds
-  setInterval(fetchBlockHeight, 1000);
-
   // Handle initial tab state based on URL
   const currentPath = window.location.pathname.split('/').pop();
   const dashboardButton = [...tabButtons].find(button => button.dataset.path === 'dashboard');

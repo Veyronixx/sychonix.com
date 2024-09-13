@@ -1,9 +1,0 @@
----
-layout: '~/layouts/ArchiveLayout.astro'
-icon: artela
----
-## Genesis File
-
-```
-wget -O $HOME/.artelad/config/genesis.json https://docs.artela.network/assets/files/genesis-314f4b0294712c1bc6c3f4213fa76465.json
-```

@@ -318,21 +318,34 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // Fetch and update Block Height
-  async function fetchBlockHeight() {
-    try {
-      const response = await fetch('https://selfchain.rpc.nodex.one/status');
-      const data = await response.json();
-      const latestBlockHeight = data.result.sync_info.latest_block_height;
 
-      // Update only the latest block height
-      const blockHeightElement = document.getElementById('block-height');
-      blockHeightElement.innerHTML = `<strong>Block Height:</strong> ${latestBlockHeight}`;
-    } catch (error) {
-      console.error('Error fetching block height:', error);
+    // Fetch and update Block Height
+    async function fetchBlockHeight() {
+  try {
+    const cachedHeight = localStorage.getItem('blockHeight');
+    const lastFetchTime = localStorage.getItem('lastFetchTime');
+    const currentTime = new Date().getTime();
+
+    // Check if cache is older than 10 minutes
+    if (cachedHeight && lastFetchTime && currentTime - lastFetchTime < 600000) {
+      document.getElementById('block-height').innerHTML = `<strong>Block Height:</strong> ${cachedHeight}`;
+      return;
     }
-  }
 
+    const response = await fetch('https://selfchain.rpc.nodex.one/status');
+    const data = await response.json();
+    const latestBlockHeight = data.result.sync_info.latest_block_height;
+
+    // Update the block height in localStorage
+    localStorage.setItem('blockHeight', latestBlockHeight);
+    localStorage.setItem('lastFetchTime', currentTime);
+
+    // Update only the latest block height
+    document.getElementById('block-height').innerHTML = `<strong>Block Height:</strong> ${latestBlockHeight}`;
+  } catch (error) {
+    console.error('Error fetching block height:', error);
+  }
+}
   // Update block height every 5 seconds
   setInterval(fetchBlockHeight, 5000);
 

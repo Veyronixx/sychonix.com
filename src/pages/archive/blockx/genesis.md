@@ -1,9 +1,0 @@
----
-layout: '~/layouts/ArchiveLayout.astro'
-icon: blockx
----
-
- Genesis File
-```
-wget -O $HOME/.blockxd/config/genesis.json "https://raw.githubusercontent.com/BlockXLabs/networks/master/chains/blockx_100-1/genesis.json"
-```
