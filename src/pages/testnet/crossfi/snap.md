@@ -24,7 +24,7 @@ title: Snapshot
 
 - Download Snapshot
 <div class="code-block-wrapper">
-  <pre><code>curl https://snapshot.sychonix.com/crossfi/crossfi-latest.tar.lz4 | lz4 -dc - | tar -xf - -C $HOME/.crossfid</code></pre>
+  <pre><code>curl https://snapshot.sychonix.com/testnet/crossfi/crossfi-latest.tar.lz4 | lz4 -dc - | tar -xf - -C $HOME/.crossfid</code></pre>
   <button class="copy-btn"><i class="fas fa-copy"></i></button>
 </div>
 

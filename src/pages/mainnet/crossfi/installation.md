@@ -43,7 +43,7 @@ crossfid config chain-id crossfi-evm-mainnet-1</code></pre>
 - Genesis
 
 <div class="code-block-wrapper">
-  <pre><code>curl -Ls https://snapshot.sychonix.com/crossfi/genesis.json > $HOME/.mineplex-chain/config/genesis.json</code></pre>
+  <pre><code>curl -Ls https://snapshot.sychonix.com/mainnet/crossfi/genesis.json > $HOME/.mineplex-chain/config/genesis.json</code></pre>
   <button class="copy-btn"><i class="fas fa-copy"></i></button>
 </div>
 
@@ -104,7 +104,7 @@ EOF</code></pre>
 - Snapshot
 
 <div class="code-block-wrapper">
-  <pre><code>curl "https://snapshot.sychonix.com/crossfi/crossfi-latest.tar.lz4" | lz4 -dc - | tar -xf - -C "$HOME/.mineplex-chain"</code></pre>
+  <pre><code>curl "https://snapshot.sychonix.com/mainnet/crossfi/crossfi-latest.tar.lz4" | lz4 -dc - | tar -xf - -C "$HOME/.mineplex-chain"</code></pre>
   <button class="copy-btn"><i class="fas fa-copy"></i></button>
 </div>
 

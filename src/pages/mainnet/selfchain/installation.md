@@ -2,17 +2,6 @@
 title: Installation Node
 ---
 
-- Autoinstall Script
-
-<div class="code-block-wrapper">
-  <pre><code>source <(curl -s https://snapshot.sychonix.com/selfchain/autoinstall.sh)</code></pre>
-  <button class="copy-btn" data-target="source <(curl -s https://snapshot.sychonix.com/selfchain/autoinstall.sh)"><i class="fas fa-copy"></i></button>
-</div>
-
----------------
-
-<p style="font-weight: bold; font-size: 1.2rem; margin-top: 1rem; margin-bottom: 1rem;">Manual Installation</p>
-
 - Install Dependencies
 
 <div class="code-block-wrapper">
@@ -35,10 +24,10 @@ eval $(echo 'export PATH=$PATH:$HOME/go/bin' | tee -a $HOME/.profile)</code></pr
 
 <div class="code-block-wrapper">
   <pre><code>cd $HOME && mkdir -p go/bin/
-curl -O https://snapshot.sychonix.com/selfchain/selfchaind
+curl -O https://snapshot.sychonix.com/mainnet/selfchain/selfchaind
 chmod +x selfchaind
 mv selfchaind $HOME/go/bin</code></pre>
-  <button class="copy-btn" data-target="cd $HOME && mkdir -p go/bin/\ncurl -O https://snapshot.sychonix.com/selfchain/selfchaind\nchmod +x selfchaind\nmv selfchaind $HOME/go/bin"><i class="fas fa-copy"></i></button>
+  <button class="copy-btn" data-target="cd $HOME && mkdir -p go/bin/\ncurl -O https://snapshot.sychonix.com/mainnet/selfchain/selfchaind\nchmod +x selfchaind\nmv selfchaind $HOME/go/bin"><i class="fas fa-copy"></i></button>
 </div>
 
 - Initialize the node
@@ -53,14 +42,14 @@ selfchaind init &lt;your_name&gt; --chain-id self-1</code></pre>
 - Genesis
 
 <div class="code-block-wrapper">
-  <pre><code>curl -Ls https://snapshot.sychonix.com/selfchain/genesis.json > $HOME/.selfchain/config/genesis.json</code></pre>
-  <button class="copy-btn" data-target="curl -Ls https://snapshot.sychonix.com/selfchain/genesis.json > $HOME/.selfchain/config/genesis.json"><i class="fas fa-copy"></i></button>
+  <pre><code>curl -Ls https://snapshot.sychonix.com/mainnet/selfchain/genesis.json > $HOME/.selfchain/config/genesis.json</code></pre>
+  <button class="copy-btn" data-target="curl -Ls https://snapshot.sychonix.com/mainnet/selfchain/genesis.json > $HOME/.selfchain/config/genesis.json"><i class="fas fa-copy"></i></button>
 </div>
 
 - Download addrbook
 
 <div class="code-block-wrapper">
-  <pre><code>curl -Ls https://snapshot.sychonix.com/selfchain/addrbook.json > $HOME/.selfchain/config/addrbook.json</code></pre>
+  <pre><code>curl -Ls https://snapshot.sychonix.com/mainnet/selfchain/addrbook.json > $HOME/.selfchain/config/addrbook.json</code></pre>
   <button class="copy-btn" data-target="curl -Ls https://snapshot.sychonix.com/selfchain/addrbook.json > $HOME/.selfchain/config/addrbook.json"><i class="fas fa-copy"></i></button>
 </div>
 
@@ -124,8 +113,8 @@ EOF</code></pre>
 - Download Snapshot
 
 <div class="code-block-wrapper">
-  <pre><code>curl "https://snapshot.sychonix.com/selfchain/selfchain-latest.tar.lz4" | lz4 -dc - | tar -xf - -C "$HOME/.selfchain"</code></pre>
-  <button class="copy-btn" data-target="curl \"https://snapshot.sychonix.com/selfchain/selfchain-latest.tar.lz4\" | lz4 -dc - | tar -xf - -C \"$HOME/.selfchain\""><i class="fas fa-copy"></i></button>
+  <pre><code>curl "https://snapshot.sychonix.com/mainnet/selfchain/selfchain-latest.tar.lz4" | lz4 -dc - | tar -xf - -C "$HOME/.selfchain"</code></pre>
+  <button class="copy-btn" data-target="curl \"https://snapshot.sychonix.com/mainnet/selfchain/selfchain-latest.tar.lz4\" | lz4 -dc - | tar -xf - -C \"$HOME/.selfchain\""><i class="fas fa-copy"></i></button>
 </div>
 
 - Start

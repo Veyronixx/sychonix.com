@@ -24,8 +24,8 @@ icon: crossfi
 </div>
 
 <div class="code-block-wrapper">
-  <pre><code>curl https://snapshot.sychonix.com/crossfi/crossfi-latest.tar.lz4 | lz4 -dc - | tar -xf - -C $HOME/.mineplex-chain</code></pre>
-  <button class="copy-btn" data-target="curl https://snapshot.sychonix.com/crossfi/crossfi-latest.tar.lz4 | lz4 -dc - | tar -xf - -C $HOME/.mineplex-chain"><i class="fas fa-copy"></i></button>
+  <pre><code>curl https://snapshot.sychonix.com/mainnet/crossfi/crossfi-latest.tar.lz4 | lz4 -dc - | tar -xf - -C $HOME/.mineplex-chain</code></pre>
+  <button class="copy-btn" data-target="curl https://snapshot.sychonix.com/mainnet/crossfi/crossfi-latest.tar.lz4 | lz4 -dc - | tar -xf - -C $HOME/.mineplex-chain"><i class="fas fa-copy"></i></button>
 </div>
 
 <div class="code-block-wrapper">

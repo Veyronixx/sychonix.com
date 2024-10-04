@@ -22,7 +22,7 @@ icon: fiamma
 </div>
 
 <div class="code-block-wrapper">
-  <pre><code>curl https://snapshot.sychonix.com/fiamma/fiamma-latest.tar.lz4 | lz4 -dc - | tar -xf - -C $HOME/.fiamma</code></pre>
+  <pre><code>curl https://snapshot.sychonix.com/testnet/fiamma/fiamma-latest.tar.lz4 | lz4 -dc - | tar -xf - -C $HOME/.fiamma</code></pre>
   <button class="copy-btn"><i class="fas fa-copy"></i></button>
 </div>
 

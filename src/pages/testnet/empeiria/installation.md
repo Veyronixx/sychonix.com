@@ -6,16 +6,6 @@ chain id: empe-testnet-2
 icon: emped
 ---
 
-
-
-- Autoinstall Script
-<div class="code-block-wrapper">
-  <pre><code>source &lt;(curl -s https://snapshot.sychonix.com/empeiria/autoinstall.sh)</code></pre>
-  <button class="copy-btn"><i class="fas fa-copy"></i></button>
-</div>
-------------
-<p style="font-weight: bold; font-size: 1.2rem; margin-top: 1rem; margin-bottom: 1rem;">Manual Installation</p>
-
 - Install Dependencies
 <div class="code-block-wrapper">
   <pre><code>sudo apt update && sudo apt upgrade -y
@@ -69,13 +59,13 @@ rm -rf ~/.empe-chain/config/genesis.json</code></pre>
 
 - Genesis
 <div class="code-block-wrapper">
-  <pre><code>curl -Ls https://snapshot.sychonix.com/empeiria/genesis.json > $HOME/.empe-chain/config/genesis.json</code></pre>
+  <pre><code>curl -Ls https://snapshot.sychonix.com/testnet/empeiria/genesis.json > $HOME/.empe-chain/config/genesis.json</code></pre>
   <button class="copy-btn"><i class="fas fa-copy"></i></button>
 </div>
 
 - Download addrbook
 <div class="code-block-wrapper">
-  <pre><code>curl -Ls https://snapshot.sychonix.com/empeiria/addrbook.json > $HOME/.empe-chain/config/addrbook.json</code></pre>
+  <pre><code>curl -Ls https://snapshot.sychonix.com/testnet/empeiria/addrbook.json > $HOME/.empe-chain/config/addrbook.json</code></pre>
   <button class="copy-btn"><i class="fas fa-copy"></i></button>
 </div>
 
@@ -141,7 +131,7 @@ EOF</code></pre>
 
 - Download Snapshot
 <div class="code-block-wrapper">
-  <pre><code>curl "https://snapshot.sychonix.com/empeiria/empeiria-latest.tar.lz4" | lz4 -dc - | tar -xf - -C "$HOME/.empe-chain"</code></pre>
+  <pre><code>curl "https://snapshot.sychonix.com/testnet/empeiria/empeiria-latest.tar.lz4" | lz4 -dc - | tar -xf - -C "$HOME/.empe-chain"</code></pre>
   <button class="copy-btn"><i class="fas fa-copy"></i></button>
 </div>
 

@@ -6,15 +6,6 @@ chain id: symphony-testnet-3
 icon: sym
 ---
 
-- Autoinstall Script
-
-<div class="code-block-wrapper">
-  <pre><code>source &lt;(curl -s https://snapshot.sychonix.com/symphony/autoinstall.sh)</code></pre>
-  <button class="copy-btn"><i class="fas fa-copy"></i></button>
-</div>
-
-------
-
 <p style="font-weight: bold; font-size: 1.2rem; margin-top: 1rem; margin-bottom: 1rem;">Manual Installation</p>
 
 - Install Dependencies
@@ -59,14 +50,14 @@ symphonyd init &lt;your_name&gt; --chain-id symphony-testnet-3</code></pre>
 - Genesis
 
 <div class="code-block-wrapper">
-  <pre><code>curl -Ls https://snapshot.sychonix.com/symphony/genesis.json &gt; $HOME/.symphonyd/config/genesis.json</code></pre>
+  <pre><code>curl -Ls https://snapshot.sychonix.com/testnet/symphony/genesis.json &gt; $HOME/.symphonyd/config/genesis.json</code></pre>
   <button class="copy-btn"><i class="fas fa-copy"></i></button>
 </div>
 
 - Download addrbook
 
 <div class="code-block-wrapper">
-  <pre><code>curl -Ls https://snapshot.sychonix.com/symphony/addrbook.json &gt; $HOME/.symphonyd/config/addrbook.json</code></pre>
+  <pre><code>curl -Ls https://snapshot.sychonix.com/testnet/symphony/addrbook.json &gt; $HOME/.symphonyd/config/addrbook.json</code></pre>
   <button class="copy-btn"><i class="fas fa-copy"></i></button>
 </div>
 
@@ -128,7 +119,7 @@ EOF</code></pre>
 - Download Snapshot
 
 <div class="code-block-wrapper">
-  <pre><code>curl "https://snapshot.sychonix.com/symphony/symphony-latest.tar.lz4" | lz4 -dc - | tar -xf - -C "$HOME/.symphonyd"</code></pre>
+  <pre><code>curl "https://snapshot.sychonix.com/testnet/symphony/symphony-latest.tar.lz4" | lz4 -dc - | tar -xf - -C "$HOME/.symphonyd"</code></pre>
   <button class="copy-btn"><i class="fas fa-copy"></i></button>
 </div>
 

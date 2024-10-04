@@ -28,7 +28,7 @@ icon: sym
 - Download Snapshot
 
 <div class="code-block-wrapper">
-  <pre><code>curl https://snapshot.sychonix.com/symphony/symphony-latest.tar.lz4 | lz4 -dc - | tar -xf - -C $HOME/.symphonyd</code></pre>
+  <pre><code>curl https://snapshot.sychonix.com/testnet/symphony/symphony-latest.tar.lz4 | lz4 -dc - | tar -xf - -C $HOME/.symphonyd</code></pre>
   <button class="copy-btn"><i class="fas fa-copy"></i></button>
 </div>
 
