@@ -23,11 +23,10 @@ eval $(echo 'export PATH=$PATH:$HOME/go/bin' | tee -a $HOME/.profile)</code></pr
 - Install Binary
 
 <div class="code-block-wrapper">
-  <pre><code>cd $HOME && mkdir -p go/bin/
-curl -O https://snapshot.sychonix.com/mainnet/selfchain/selfchaind
-chmod +x selfchaind
-mv selfchaind $HOME/go/bin</code></pre>
-  <button class="copy-btn" data-target="cd $HOME && mkdir -p go/bin/\ncurl -O https://snapshot.sychonix.com/mainnet/selfchain/selfchaind\nchmod +x selfchaind\nmv selfchaind $HOME/go/bin"><i class="fas fa-copy"></i></button>
+  <pre><code>cd $HOME
+curl -L https://snapshot.sychonix.com/mainnet/selfchain/selfchaind.tar.gz | tar -xvzf - -C $HOME
+sudo mv selfchaind /usr/local/bin/</code></pre>
+  <button class="copy-btn" data-target="cd $HOME curl -L https://snapshot.sychonix.com/mainnet/selfchain/selfchaind.tar.gz | tar -xvzf - -C $HOME sudo mv selfchaind /usr/local/bin/"><i class="fas fa-copy"></i></button>
 </div>
 
 - Initialize the node
