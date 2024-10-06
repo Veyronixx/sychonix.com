@@ -34,7 +34,8 @@ sudo mv cnhod /usr/local/bin/</code></pre>
 <div class="code-block-wrapper">
   <pre><code>cnhod config chain-id cnho_stables-1
 cnhod config keyring-backend file
-cnhod init "your_node_name" --chain-id cnho_stables-1
+cnhod init "YourName" --chain-id cnho_stables-1
+
 </code></pre>
   <button class="copy-btn"><i class="fas fa-copy"></i></button>
 </div>
@@ -49,7 +50,7 @@ cnhod init "your_node_name" --chain-id cnho_stables-1
 - Addrbook 
 
 <div class="code-block-wrapper">
-  <pre><code>curl -Ls https://snapshot.sychonix.com/cnho/addrbook.json > $HOME/.cnho/config/addrbook.json</code></pre>
+  <pre><code>curl -Ls https://snapshot.sychonix.com/mainnet/cnho/addrbook.json > $HOME/.cnho/config/addrbook.json</code></pre>
   <button class="copy-btn"><i class="fas fa-copy"></i></button>
 </div>
 

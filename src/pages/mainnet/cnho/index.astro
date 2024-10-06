@@ -15,7 +15,7 @@ import Snap from './snap.md';
 import Upgrade from './upgrade.md';
 
 const name = 'CNHO Stables';
-const icon = '/img/cnho.jpg';
+const icon = '/img/cnho.png';
 const network = 'Mainnet';
 const chain = 'cnho_stables-1';
 const version = 'v1.0.0';
@@ -331,7 +331,7 @@ document.addEventListener('DOMContentLoaded', () => {
       return;
     }
 
-    const response = await fetch('https://cnhostables_mainnet_rpc.chain.whenmoonwhenlambo.money/status');
+    const response = await fetch('https://rpc.cnho.indonode.net/status');
     const data = await response.json();
     const latestBlockHeight = data.result.sync_info.latest_block_height;
 
