@@ -14,23 +14,23 @@ icon: cnho
 - Back up priv_validator_state.json
 
 <div class="code-block-wrapper">
-  <pre><code>cp ~/.mineplex-chain/data/priv_validator_state.json  ~/.mineplex-chain/priv_validator_state.json</code></pre>
-  <button class="copy-btn" data-target="cp ~/.mineplex-chain/data/priv_validator_state.json  ~/.mineplex-chain/priv_validator_state.json"><i class="fas fa-copy"></i></button>
+  <pre><code>cp ~/.cnho/data/priv_validator_state.json  ~/.cnho/priv_validator_state.json</code></pre>
+  <button class="copy-btn" data-target="cp ~/.cnho/data/priv_validator_state.json  ~/.cnho/priv_validator_state.json"><i class="fas fa-copy"></i></button>
 </div>
 
 <div class="code-block-wrapper">
-  <pre><code>cnhod tendermint unsafe-reset-all --home $HOME/.mineplex-chain --keep-addr-book</code></pre>
-  <button class="copy-btn" data-target="cnhod tendermint unsafe-reset-all --home $HOME/.mineplex-chain --keep-addr-book"><i class="fas fa-copy"></i></button>
+  <pre><code>cnhod tendermint unsafe-reset-all --home $HOME/.cnho --keep-addr-book</code></pre>
+  <button class="copy-btn" data-target="cnhod tendermint unsafe-reset-all --home $HOME/.cnho --keep-addr-book"><i class="fas fa-copy"></i></button>
 </div>
 
 <div class="code-block-wrapper">
-  <pre><code>curl https://snapshot.sychonix.com/mainnet/cnho/cnho-snapshot.tar.lz4 | lz4 -dc - | tar -xf - -C $HOME/.mineplex-chain</code></pre>
-  <button class="copy-btn" data-target="curl https://snapshot.sychonix.com/mainnet/cnho/cnho-snapshot.tar.lz4 | lz4 -dc - | tar -xf - -C $HOME/.mineplex-chain"><i class="fas fa-copy"></i></button>
+  <pre><code>curl https://snapshot.sychonix.com/mainnet/cnho/cnho-snapshot.tar.lz4 | lz4 -dc - | tar -xf - -C $HOME/.cnho</code></pre>
+  <button class="copy-btn" data-target="curl https://snapshot.sychonix.com/mainnet/cnho/cnho-snapshot.tar.lz4 | lz4 -dc - | tar -xf - -C $HOME/.cnho"><i class="fas fa-copy"></i></button>
 </div>
 
 <div class="code-block-wrapper">
-  <pre><code>mv $HOME/.mineplex-chain/priv_validator_state.json.backup $HOME/.mineplex-chain/data/priv_validator_state.json</code></pre>
-  <button class="copy-btn" data-target="mv $HOME/.mineplex-chain/priv_validator_state.json.backup $HOME/.mineplex-chain/data/priv_validator_state.json"><i class="fas fa-copy"></i></button>
+  <pre><code>mv $HOME/.cnho/priv_validator_state.json.backup $HOME/.cnho/data/priv_validator_state.json</code></pre>
+  <button class="copy-btn" data-target="mv $HOME/.cnho/priv_validator_state.json.backup $HOME/.cnho/data/priv_validator_state.json"><i class="fas fa-copy"></i></button>
 </div>
 
 <div class="code-block-wrapper">

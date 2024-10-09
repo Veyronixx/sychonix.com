@@ -9,7 +9,10 @@ import CheatSheet from './cheatsheet.md';
 import Eigen from './eigen.md';
 import Upgrade from './upgrade.md';
 import RPC from './rpc.md';
+import Snap from './snap.md';
+import Addrbook from './addrbook.md';
 import Dashboard from './dashboard.md';
+import Genesis from './genesis.md';
 
 const name= 'Airchains'; 
 const icon = '/img/airchains.jpg';
@@ -44,6 +47,15 @@ const combinedMenu = [
     items: [
       { title: 'API', path: 'api', component: API, icon: 'tabler:api-app' },
       { title: 'RPC', path: 'rpc', component: RPC, icon: 'tabler:exchange' },
+    ],
+    type: 'submenu',
+  },
+  {
+    title: 'Sync',
+    items: [
+      { title: 'Snapshot', path: 'snap', component: Snap, icon: 'tabler:camera' },
+      { title: 'Addrbook', path: 'addrbook', component: Addrbook, icon: 'tabler:book' },
+      { title: 'Genesis', path: 'genesis', component: Genesis, icon: 'tabler:tree' },
     ],
     type: 'submenu',
   },
