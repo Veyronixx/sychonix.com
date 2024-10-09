@@ -14,18 +14,19 @@ import Dashboard from './dashboard.md';
 import Snap from './snap.md';
 import Upgrade from './upgrade.md';
 
-const name = 'Empeiria';
-const icon = '/img/emped.jpg';
-const network = 'Testnet';
-const chain = 'empe-testnet-2';
-const version = '0.3.0-prebuild9';
-const stake = 'https://explorer.sychonix.com/Empeiria-Testnet/staking/empevaloper1g7u2rvuff7lx73eahtr2qsvngv6ptp2hedw2tt';
+const name = 'CNHO Stables';
+const icon = '/img/cnho.png';
+const network = 'Mainnet';
+const chain = 'cnho_stables-1';
+const version = 'v1.0.0';
+const stake = '';
 
 const social = [
-  { label: 'Twitter', icon: 'tabler:brand-twitter', href: 'https://x.com/empe_io' },
-  { label: 'Discord', icon: 'tabler:brand-discord', href: 'https://empe.io/' },
-  { label: 'Chrome',  icon: 'tabler:brand-chrome', href: 'https://t.me/EmpeValidators' },
+  { label: 'Twitter', icon: 'tabler:brand-twitter', href: 'https://x.com/cnho_io' },
+  { label: 'Discord', icon: 'tabler:brand-discord', href: 'https://discord.gg/K3VCEAxVuH' },
+  { label: 'Chrome', icon: 'tabler:brand-chrome', href: 'https://cnho.io/' },
 ];
+
 
 const meta = {
   title: SITE.title,
@@ -66,7 +67,7 @@ const combinedMenu = [
         
 <!-- Top-Bar layout -->
 <div class="top-bar flex items-center justify-between px-4 py-2">
-  <a href="/testnet/empeiria" class="flex items-center">
+  <a href="/mainnet/cnho" class="flex items-center">
     <img src={icon} alt={name} class="w-8 h-8 inline-block rounded-full object-cover mr-0" />
     <span class="text-md font-bold">{name} - {network}</span>
   </a>
@@ -87,10 +88,9 @@ const combinedMenu = [
           </button>
         </div>
 
-        <!-- Close button for mobile menu -->
         <div id="mobile-close-button" class="hidden md:hidden p-2 absolute right-4 top-4 z-50">
-         <!-- Icon removed as requested -->        
-         </div>
+          <!-- Anda bisa menambahkan konten lain di sini jika diperlukan -->
+        </div>
 
         <!-- Tab layout: Sidebar and Content -->
         <div class="flex flex-col md:flex-row md:items-start">
@@ -217,9 +217,9 @@ document.addEventListener('DOMContentLoaded', () => {
     // Update the URL based on the tab content being shown
     const selectedPath = tabButtons[index].dataset.path;
     if (selectedPath === 'dashboard') {
-      history.pushState(null, '', '/testnet/empeiria'); // Only use base path for Dashboard
+      history.pushState(null, '', '/mainnet/cnho'); // Only use base path for Dashboard
     } else {
-      history.pushState(null, '', `/testnet/empeiria/${selectedPath}`);
+      history.pushState(null, '', `/mainnet/cnho/${selectedPath}`);
     }
   }
 
@@ -331,7 +331,7 @@ document.addEventListener('DOMContentLoaded', () => {
       return;
     }
 
-    const response = await fetch('https://empeiria-testnet-rpc.itrocket.net/status');
+    const response = await fetch('https://rpc.cnho.indonode.net/status');
     const data = await response.json();
     const latestBlockHeight = data.result.sync_info.latest_block_height;
 
@@ -346,7 +346,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 }
 
-  // Update block height every 5 seconds
+  // Update block height every 7 seconds
   setInterval(fetchBlockHeight, 7000);
 
   // Handle initial tab state based on URL
@@ -355,7 +355,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const dashboardIndex = [...tabButtons].indexOf(dashboardButton);
 
   // Set the default tab to "Dashboard" if no specific tab is selected or path is empty
-  if (!currentPath || currentPath === 'empeiria') {
+  if (!currentPath || currentPath === 'cnho') {
     showTabContent(dashboardIndex); // Show "Dashboard" by default
   } else {
     const currentIndex = [...tabButtons].findIndex(button => button.dataset.path === currentPath);
