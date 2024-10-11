@@ -331,7 +331,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const currentTime = new Date().getTime();
 
     // Check if cache is older than 10 minutes
-    if (cachedHeight && lastFetchTime && currentTime - lastFetchTime < 600000) {
+    if (cachedHeight && lastFetchTime && currentTime - lastFetchTime < 30000) {
       document.getElementById('block-height').innerHTML = `<strong>Block Height:</strong> ${cachedHeight}`;
       return;
     }
@@ -352,7 +352,7 @@ document.addEventListener('DOMContentLoaded', () => {
 }
 
   // Update block height every 5 seconds
-  setInterval(fetchBlockHeight, 7000);
+  setInterval(fetchBlockHeight, 6000);
 
   
   // Handle initial tab state based on URL
