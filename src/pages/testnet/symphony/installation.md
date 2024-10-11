@@ -65,7 +65,7 @@ symphonyd init &lt;your_name&gt; --chain-id symphony-testnet-3</code></pre>
 
 <div class="code-block-wrapper">
   <pre><code>SEEDS="98fcefd53552f5ef2f77a92eda9b5ae22071400e@rpc-symphony-t.sychonix.com:24856"
-PEERS="$(curl -sS https://rpc-symphony.sychonix.com/net_info | jq -r '.result.peers[] | "\(.node_info.id)@\(.remote_ip):\(.node_info.listen_addr)"' | awk -F ':' '{print $1":"$(NF)}' | sed -z 's|\n|,|g;s|.$||')"
+PEERS="$(curl -sS https://rpc-symphony-t.sychonix.com/net_info | jq -r '.result.peers[] | "\(.node_info.id)@\(.remote_ip):\(.node_info.listen_addr)"' | awk -F ':' '{print $1":"$(NF)}' | sed -z 's|\n|,|g;s|.$||')"
 sed -i.bak -e "s/^seeds *=.*/seeds = \"$SEEDS\"/; s/^persistent_peers *=.*/persistent_peers = \"$PEERS\"/" $HOME/.symphonyd/config/config.toml</code></pre>
   <button class="copy-btn"><i class="fas fa-copy"></i></button>
 </div>
@@ -119,7 +119,7 @@ EOF</code></pre>
 - Download Snapshot
 
 <div class="code-block-wrapper">
-  <pre><code>curl "https://snapshot.sychonix.com/testnet/symphony/symphony-latest.tar.lz4" | lz4 -dc - | tar -xf - -C "$HOME/.symphonyd"</code></pre>
+  <pre><code>curl "https://snapshot.sychonix.com/testnet/symphony/symphony-snapshot.tar.lz4" | lz4 -dc - | tar -xf - -C "$HOME/.symphonyd"</code></pre>
   <button class="copy-btn"><i class="fas fa-copy"></i></button>
 </div>
 

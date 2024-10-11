@@ -96,6 +96,13 @@ EOF</code></pre>
   <button class="copy-btn"><i class="fas fa-copy"></i></button>
 </div>
 
+- Download Snapshot
+
+<div class="code-block-wrapper">
+  <pre><code>curl "https://snapshot.sychonix.com/testnet/airchains/airchains-snapshot.tar.lz4" | lz4 -dc - | tar -xf - -C "$HOME/.junction"</code></pre>
+  <button class="copy-btn"><i class="fas fa-copy"></i></button>
+</div>
+
 - Start
 
 <div class="code-block-wrapper">
