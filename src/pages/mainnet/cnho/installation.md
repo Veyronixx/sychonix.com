@@ -2,7 +2,7 @@
 title: Installation Node
 ---
 
-- Install dependencies 
+- Install Dependencies 
 
 <div class="code-block-wrapper">
   <pre><code>sudo apt update && sudo apt upgrade -y
@@ -10,7 +10,7 @@ apt install curl iptables build-essential git wget jq make gcc nano tmux htop nv
   <button class="copy-btn"><i class="fas fa-copy"></i></button>
 </div>
 
-- Install go
+- Install Go
 
 <div class="code-block-wrapper">
   <pre><code>sudo rm -rf /usr/local/go
@@ -20,7 +20,7 @@ eval $(echo 'export PATH=$PATH:$HOME/go/bin' | tee -a $HOME/.profile)</code></pr
   <button class="copy-btn"><i class="fas fa-copy"></i></button>
 </div>
 
-- Install binary
+- Install Binary
 
 <div class="code-block-wrapper">
   <pre><code>cd $HOME
@@ -29,41 +29,41 @@ sudo mv cnhod /usr/local/bin/</code></pre>
   <button class="copy-btn"><i class="fas fa-copy"></i></button>
 </div>
 
-- Initialize the node
+- Initialize The Node
 
 <div class="code-block-wrapper">
-  <pre><code>cnhod config chain-id cnho_stables-1
-cnhod config keyring-backend file
-cnhod init "YourName" --chain-id cnho_stables-1
-
-</code></pre>
+  <pre><code>cnhod config node tcp://localhost:11357
+cnhod config keyring-backend os
+cnhod config chain-id cnho_stables-1
+cnhod init "YourName" --chain-id cnho_stables-1</code></pre>
   <button class="copy-btn"><i class="fas fa-copy"></i></button>
 </div>
 
-- Genesis
+- Download Genesis & Addrbook
 
 <div class="code-block-wrapper">
-  <pre><code>curl -Ls https://snapshot.sychonix.com/mainnet/cnho/genesis.json > $HOME/.cnho/config/genesis.json</code></pre>
+  <pre><code>curl -Ls https://snapshot.sychonix.com/mainnet/cnho/genesis.json > $HOME/.cnho/config/genesis.json
+curl -Ls https://snapshot.sychonix.com/mainnet/cnho/addrbook.json > $HOME/.cnho/config/addrbook.json</code></pre>
   <button class="copy-btn"><i class="fas fa-copy"></i></button>
 </div>
 
-- Addrbook 
-
-<div class="code-block-wrapper">
-  <pre><code>curl -Ls https://snapshot.sychonix.com/mainnet/cnho/addrbook.json > $HOME/.cnho/config/addrbook.json</code></pre>
-  <button class="copy-btn"><i class="fas fa-copy"></i></button>
-</div>
-
-- Configure Peers and Gas Prices
+- Configure Seeds and Peers
 
 <div class="code-block-wrapper">
   <pre><code>PEERS="$(curl -sS https://rpc-cnho.sychonix.com/net_info | jq -r '.result.peers[] | "\(.node_info.id)@\(.remote_ip):\(.node_info.listen_addr)"' | awk -F ':' '{print $1":"$(NF)}' | sed -z 's|\n|,|g;s|.$||')"
-sed -i.bak -e "s/^persistent_peers *=.*/persistent_peers = \"$PEERS\"/" $HOME/.cnho/config/config.toml
-sed -i -e "s|^minimum-gas-prices *=.*|minimum-gas-prices = \"0.00001ucnho\"|" $HOME/.cnho/config/app.toml</code></pre>
+sed -i.bak -e "s/^persistent_peers *=.*/persistent_peers = \"$PEERS\"/" $HOME/.cnho/config/config.toml</code></pre>
   <button class="copy-btn"><i class="fas fa-copy"></i></button>
 </div>
 
-- Prunning
+- Update Port Configuration
+
+<div class="code-block-wrapper">
+  <pre><code>sed -i -e "s%:1317%:11317%; s%:8080%:11380%; s%:9090%:11390%; s%:9091%:11391%; s%:8545%:11345%; s%:8546%:11346%; s%:6065%:11365%" $HOME/.cnho/config/app.toml
+sed -i -e "s%:26658%:11358%; s%:26657%:11357%; s%:6060%:11360%; s%:26656%:11356%; s%:26660%:11361%" $HOME/.cnho/config/config.toml</code></pre>
+  <button class="copy-btn"><i class="fas fa-copy"></i></button>
+</div>
+
+- Customize Pruning
 
 <div class="code-block-wrapper">
   <pre><code>sed -i \
@@ -74,15 +74,16 @@ sed -i -e "s|^minimum-gas-prices *=.*|minimum-gas-prices = \"0.00001ucnho\"|" $H
   <button class="copy-btn"><i class="fas fa-copy"></i></button>
 </div>
 
-- Indexer
+- Set Minimum Gas Price, Enable Prometheus, and Disable the Indexer
 
 <div class="code-block-wrapper">
-  <pre><code>indexer="null" &&
-sed -i -e "s/^indexer *=.*/indexer = \"$indexer\"/" $HOME/.cnho/config/config.toml</code></pre>
+  <pre><code>sed -i -e "s|^minimum-gas-prices *=.*|minimum-gas-prices = \"0.00001ucnho\"|" $HOME/.cnho/config/app.toml
+sed -i -e "s/prometheus = false/prometheus = true/" $HOME/.cnho/config/config.toml
+sed -i -e "s/^indexer *=.*/indexer = \"null\"/" $HOME/.cnho/config/config.toml</code></pre>
   <button class="copy-btn"><i class="fas fa-copy"></i></button>
 </div>
 
-- Service
+- Create Service File
 
 <div class="code-block-wrapper">
   <pre><code>sudo tee /etc/systemd/system/cnhod.service &gt; /dev/null &lt;&lt;EOF
@@ -101,14 +102,14 @@ EOF</code></pre>
   <button class="copy-btn"><i class="fas fa-copy"></i></button>
 </div>
 
-- Snapshot
+- Download Current Snapshot
 
 <div class="code-block-wrapper">
   <pre><code>curl "https://snapshot.sychonix.com/mainnet/cnho/cnho-snapshot.tar.lz4" | lz4 -dc - | tar -xf - -C "$HOME/.cnho"</code></pre>
   <button class="copy-btn"><i class="fas fa-copy"></i></button>
 </div>
 
-- Start
+- Enable the Service and Start the Node
 
 <div class="code-block-wrapper">
   <pre><code>sudo systemctl daemon-reload

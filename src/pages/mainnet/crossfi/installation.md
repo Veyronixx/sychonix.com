@@ -2,7 +2,7 @@
 title: Installation Node
 ---
 
-- Install dependencies 
+- Install Dependencies
 
 <div class="code-block-wrapper">
   <pre><code>sudo apt update && sudo apt upgrade -y
@@ -10,7 +10,7 @@ apt install curl iptables build-essential git wget jq make gcc nano tmux htop nv
   <button class="copy-btn"><i class="fas fa-copy"></i></button>
 </div>
 
-- Install go
+- Install Go
 
 <div class="code-block-wrapper">
   <pre><code>sudo rm -rf /usr/local/go
@@ -20,7 +20,7 @@ eval $(echo 'export PATH=$PATH:$HOME/go/bin' | tee -a $HOME/.profile)</code></pr
   <button class="copy-btn"><i class="fas fa-copy"></i></button>
 </div>
 
-- Install binary
+- Install the Binary
 
 <div class="code-block-wrapper">
   <pre><code>cd $HOME
@@ -32,37 +32,41 @@ rm mineplex-2-node._v0.1.1_linux_amd64.tar.gz</code></pre>
   <button class="copy-btn"><i class="fas fa-copy"></i></button>
 </div>
 
-- Initialize the node
+- Initialize the Node
 
 <div class="code-block-wrapper">
-  <pre><code>crossfid init "your_node_name" --chain-id crossfi-evm-mainnet-1
-crossfid config chain-id crossfi-evm-mainnet-1</code></pre>
+  <pre><code>crossfid config node tcp://localhost:11057
+crossfid config keyring-backend os
+crossfid config chain-id crossfi-evm-mainnet-1
+crossfid init "YourName" --chain-id crossfi-evm-mainnet-1</code></pre>
   <button class="copy-btn"><i class="fas fa-copy"></i></button>
 </div>
 
-- Genesis
+- Download Genesis and Addrbook
 
 <div class="code-block-wrapper">
-  <pre><code>curl -Ls https://snapshot.sychonix.com/mainnet/crossfi/genesis.json > $HOME/.mineplex-chain/config/genesis.json</code></pre>
+  <pre><code>curl -Ls https://snapshot.sychonix.com/mainnet/crossfi/genesis.json > $HOME/.mineplex-chain/config/genesis.json
+curl -Ls https://snapshot.sychonix.com/crossfi/addrbook.json > $HOME/.mineplex-chain/config/addrbook.json</code></pre>
   <button class="copy-btn"><i class="fas fa-copy"></i></button>
 </div>
 
-- Addrbook 
+- Configure Seeds and Peers
 
 <div class="code-block-wrapper">
-  <pre><code>curl -Ls https://snapshot.sychonix.com/crossfi/addrbook.json > $HOME/.mineplex-chain/config/addrbook.json</code></pre>
+  <pre><code>PEERS="$(curl -sS https://rpc-crossfi.sychonix.com/net_info | jq -r '.result.peers[] | "\(.node_info.id)@\(.remote_ip):\(.node_info.listen_addr)"' | awk -F ':' '{print $1":"$(NF)}' | sed -z 's|\n|,|g;s|.$||')"
+sed -i.bak -e "s/^persistent_peers *=.*/persistent_peers = \"$PEERS\"/" $HOME/.mineplex-chain/config/config.toml</code></pre>
   <button class="copy-btn"><i class="fas fa-copy"></i></button>
 </div>
 
-- Seed & Gas
+- Update Port Configuration
 
 <div class="code-block-wrapper">
-  <pre><code>sed -i -e 's|^seeds *=.*|seeds = "693d9fe729d41ade244717176ab1415b2c06cf86@crossfi-mainnet-seed.itrocket.net:48656"|' $HOME/.mineplex-chain/config/config.toml
-sed -i -e 's|^minimum-gas-prices *=.*|minimum-gas-prices = "5000000000mpx"|' $HOME/.mineplex-chain/config/app.toml</code></pre>
+  <pre><code>sed -i -e "s%:1317%:11017%; s%:8080%:11080%; s%:9090%:11090%; s%:9091%:11091%; s%:8545%:11045%; s%:8546%:11046%; s%:6065%:11065%" $HOME/.mineplex-chain/config/app.toml
+sed -i -e "s%:26658%:11058%; s%:26657%:11057%; s%:6060%:11060%; s%:26656%:11056%; s%:26660%:11061%" $HOME/.mineplex-chain/config/config.toml</code></pre>
   <button class="copy-btn"><i class="fas fa-copy"></i></button>
 </div>
 
-- Prunning
+- Customize Pruning
 
 <div class="code-block-wrapper">
   <pre><code>sed -i \
@@ -73,24 +77,25 @@ sed -i -e 's|^minimum-gas-prices *=.*|minimum-gas-prices = "5000000000mpx"|' $HO
   <button class="copy-btn"><i class="fas fa-copy"></i></button>
 </div>
 
-- Indexer
+- Set Minimum Gas Price, Enable Prometheus, and Disable the Indexer
 
 <div class="code-block-wrapper">
-  <pre><code>sed -i -e "s/^indexer *=.*/indexer = \"null\"/" $HOME/.mineplex-chain/config/config.toml</code></pre>
+  <pre><code>sed -i 's|minimum-gas-prices =.*|minimum-gas-prices = "10000000000000mpx"|g' $HOME/.mineplex-chain/config/app.toml
+sed -i -e "s/prometheus = false/prometheus = true/" $HOME/.mineplex-chain/config/config.toml
+sed -i -e "s/^indexer *=.*/indexer = \"null\"/" $HOME/.mineplex-chain/config/config.toml</code></pre>
   <button class="copy-btn"><i class="fas fa-copy"></i></button>
 </div>
 
-- Service
+- Create Service File
 
 <div class="code-block-wrapper">
   <pre><code>sudo tee /etc/systemd/system/crossfid.service &gt; /dev/null &lt;&lt;EOF
 [Unit]
-Description=Crossfi node
+Description=crossfi mainnet node
 After=network-online.target
 [Service]
 User=$USER
-WorkingDirectory=$HOME/.mineplex-chain
-ExecStart=$(which crossfid) start --home $HOME/.mineplex-chain
+ExecStart=$(which crossfid) start
 Restart=always
 RestartSec=3
 LimitNOFILE=65535
@@ -100,14 +105,14 @@ EOF</code></pre>
   <button class="copy-btn"><i class="fas fa-copy"></i></button>
 </div>
 
-- Snapshot
+- Download Current Snapshot
 
 <div class="code-block-wrapper">
   <pre><code>curl "https://snapshot.sychonix.com/mainnet/crossfi/crossfi-snapshot.tar.lz4" | lz4 -dc - | tar -xf - -C "$HOME/.mineplex-chain"</code></pre>
   <button class="copy-btn"><i class="fas fa-copy"></i></button>
 </div>
 
-- Start
+- Enable the Service and Start the Node
 
 <div class="code-block-wrapper">
   <pre><code>sudo systemctl daemon-reload
