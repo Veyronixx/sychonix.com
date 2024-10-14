@@ -50,10 +50,7 @@ curl -Ls https://snapshot.sychonix.com/testnet/prysm/addrbook.json > $HOME/.prys
 - Configure Seeds and Peers
 
 <div class="code-block-wrapper">
-  <pre><code>PEERS="$(curl -sS https://rpc-prysm-t.sychonix.com/net_info | jq -r '.result.peers[] | "\(.node_info.id)@\(.remote_ip):\(.node_info.listen_addr)"' | awk -F ':' '{print $1":"$(NF)}' | sed -z 's|\n|,|g;s|.$||')"
-sed -i.bak -e "s/^persistent_peers *=.*/persistent_peers = \"$PEERS\"/" $HOME/.prysm/config/config.toml
-seed="1b5b6a532e24c91d1bc4491a6b989581f5314ea5@prysm-testnet-seed.itrocket.net:25656,c80143f844fd8da4f76a0a43de86936f72372168@prysm-testnet-seed.synergynodes.com:18656,ade4d8bc8cbe014af6ebdf3cb7b1e9ad36f412c0@testnet-seeds.polkachu.com:29856"
-sed -i.bak -e "s/^seed *=.*/seed = \"$seed\"/" ~/.prysm/config/config.toml</code></pre>
+  <pre><code>sed -i -e "s|^seeds *=.*|seeds = \"9e64aabd8502346fa810857e2ce1f6fb6b8c6292@prysm-testnet.sychonix.com:19756\"|" $HOME/.prysm/config/config.toml</code></pre>
   <button class="copy-btn"><i class="fas fa-copy"></i></button>
 </div>
 
