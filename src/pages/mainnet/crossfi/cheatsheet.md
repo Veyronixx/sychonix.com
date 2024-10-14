@@ -320,7 +320,7 @@ sed -i.bak -e "s%^address = \"tcp://0.0.0.0:1317\"%address = \"tcp://0.0.0.0:${C
 
 <label> Remove Node</label>
 <div class="pre-container">
-  <pre class="my-pre" id="pre21">sudo systemctl stop crossfid && sudo systemctl disable crossfid && sudo rm /etc/systemd/system/crossfid.service && sudo systemctl daemon-reload && rm -rf $HOME/.mineplex-chain && rm -rf mineplex-mainnet-1 && sudo rm -rf $(which crossfid)</pre>
+  <pre class="my-pre" id="pre21">cd $HOME && sudo systemctl stop crossfid && sudo systemctl disable crossfid && sudo rm /etc/systemd/system/crossfid.service && sudo systemctl daemon-reload && sudo rm -rf $(which crossfid) && sudo rm -rf $HOME/.mineplex-chain && sudo rm -rf $(which crossfid)</pre>
   <button class="copy-btn" id="copy21" data-clipboard-text="" onclick="copyText(21)"></button>
 </div>
 

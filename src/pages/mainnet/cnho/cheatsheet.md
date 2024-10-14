@@ -320,7 +320,7 @@ sed -i.bak -e "s%^address = \"tcp://0.0.0.0:1317\"%address = \"tcp://0.0.0.0:${C
 
 <label> Remove Node</label>
 <div class="pre-container">
-  <pre class="my-pre" id="pre21">sudo systemctl stop cnhod && sudo systemctl disable cnhod && sudo rm /etc/systemd/system/cnhod.service && sudo systemctl daemon-reload && rm -rf $HOME/.cnho && rm -rf cnho_stables-1 && sudo rm -rf $(which cnhod)</pre>
+  <pre class="my-pre" id="pre21">cd $HOME && sudo systemctl stop cnhod && sudo systemctl disable cnhod && sudo rm /etc/systemd/system/cnhod.service && sudo systemctl daemon-reload && sudo rm -rf $(which cnhod) && sudo rm -rf $HOME/.cnho && sudo rm -rf $(which cnhod)</pre>
   <button class="copy-btn" id="copy21" data-clipboard-text="" onclick="copyText(21)"></button>
 </div>
 

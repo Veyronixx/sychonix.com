@@ -320,7 +320,7 @@ sed -i.bak -e "s%^address = \"tcp://0.0.0.0:1317\"%address = \"tcp://0.0.0.0:${C
 
 <label> Remove Node</label>
 <div class="pre-container">
-  <pre class="my-pre" id="pre21">sudo systemctl stop emped && sudo systemctl disable emped && sudo rm /etc/systemd/system/emped.service && sudo systemctl daemon-reload && rm -rf $HOME/.empe-chain && rm -rf empe-testnet-2 && sudo rm -rf $(which emped)</pre>
+  <pre class="my-pre" id="pre21">cd $HOME && sudo systemctl stop emped && sudo systemctl disable emped && sudo rm /etc/systemd/system/emped.service && sudo systemctl daemon-reload && sudo rm -rf $(which emped) && sudo rm -rf $HOME/.empe-chain && sudo rm -rf $(which emped)</pre>
   <button class="copy-btn" id="copy21" data-clipboard-text="" onclick="copyText(21)"></button>
 </div>
 
