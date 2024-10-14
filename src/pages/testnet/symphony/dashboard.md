@@ -16,14 +16,14 @@ Symphony is a Cosmos-based blockchain enabling global trading of real-world asse
 
 <label class="block mt-1 mb-1">RPC Endpoints</label> <!-- Added mt-1 mb-1 to adjust spacing -->
 <div class="code-block-wrapper">
-  <pre><code>https://rpc-symphony-testnet.sychonix.com</code></pre>
+  <pre><code>https://rpc-symphony-t.sychonix.com</code></pre>
   <button class="copy-btn"><i class="fas fa-copy"></i></button>
 </div>
 
 
   <label>API Endpoints</label>
   <div class="code-block-wrapper">
-  <pre><code>https://api-symphony-testnet.sychonix.com</code></pre>
+  <pre><code>https://api-symphony-t.sychonix.com</code></pre>
   <button class="copy-btn"><i class="fas fa-copy"></i></button>
 </div>
 

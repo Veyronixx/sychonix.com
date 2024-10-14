@@ -79,7 +79,7 @@ sed -i -e "s%:26658%:12158%; s%:26657%:12157%; s%:6060%:12160%; s%:26656%:12156%
 - Set Minimum Gas Price, Enable Prometheus, and Disable the Indexer
 
 <div class="code-block-wrapper">
-  <pre><code>sed -i -e "s|^minimum-gas-prices *=.*|minimum-gas-prices = \"0.0001uempe\"|" $HOME/.symphonyd/config/app.toml
+  <pre><code>sed -i -e "s|^minimum-gas-prices *=.*|minimum-gas-prices = \"0.25note\"|" $HOME/.symphonyd/config/app.toml
 sed -i -e "s/prometheus = false/prometheus = true/" $HOME/.symphonyd/config/config.toml
 sed -i -e "s/^indexer *=.*/indexer = \"null\"/" $HOME/.symphonyd/config/config.toml</code></pre>
   <button class="copy-btn"><i class="fas fa-copy"></i></button>
