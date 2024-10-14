@@ -320,7 +320,7 @@ sed -i.bak -e "s%^address = \"tcp://0.0.0.0:1317\"%address = \"tcp://0.0.0.0:${C
 
 <label> Remove Node</label>
 <div class="pre-container">
-  <pre class="my-pre" id="pre21">sudo systemctl stop prysmd  && sudo systemctl disable prysmd  && sudo rm /etc/systemd/system/prysmd .service && sudo systemctl daemon-reload && rm -rf $HOME/.prysm && rm -rf prysm-devnet-1 && sudo rm -rf $(which prysmd )</pre>
+  <pre class="my-pre" id="pre21">sudo systemctl stop prysmd  && sudo systemctl disable prysmd  && sudo rm /etc/systemd/system/prysmd.service && sudo systemctl daemon-reload && rm -rf $HOME/.prysm && rm -rf prysm-devnet-1 && sudo rm -rf $(which prysmd )</pre>
   <button class="copy-btn" id="copy21" data-clipboard-text="" onclick="copyText(21)"></button>
 </div>
 
