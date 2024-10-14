@@ -35,9 +35,7 @@ make install</code></pre>
 - Initialize The Node
 
 <div class="code-block-wrapper">
-  <pre><code>prysmd config keyring-backend os
-prysmd config chain-id prysm-devnet-1
-prysmd init "YourName" --chain-id prysm-devnet-1</code></pre>
+  <pre><code>prysmd init "YourName" --chain-id prysm-devnet-1</code></pre>
   <button class="copy-btn"><i class="fas fa-copy"></i></button>
 </div>
 
