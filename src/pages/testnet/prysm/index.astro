@@ -32,7 +32,7 @@ const meta = {
   canonical: getCanonical(getHomePermalink()),
 };
 const combinedMenu = [
-  { title: '', path: 'dashboard', component: Dashboard, type: 'item' },
+  { title: 'Network Overview', path: 'dashboard', component: Dashboard, type: 'item' },
   { title: 'Installation', path: 'installation', component: Installation, type: 'item' },
   { title: 'Upgrade', path: 'upgrade', component: Upgrade, type: 'item' },
   {
@@ -98,21 +98,8 @@ const combinedMenu = [
           <div id="sidebar" class="tabs flex-shrink-0 md:block hidden">
             <div class="submenu-container">
               {combinedMenu.map((menu, index) => {
-                if (menu.path === 'dashboard') {
-                  // Sembunyikan Dashboard dengan kelas khusus
-                  return (
-                    <button
-                      class="tab-button hidden-dashboard"
-                      onclick={`showTabContent('${index}')`}
-                      key={menu.title}
-                      data-index={index}
-                      data-path={menu.path}
-                    >
-                      <span class="icon-arrow inline-block mr-2">▸</span>
-                      {menu.title}
-                    </button>
-                  );
-                } else if (menu.type === 'submenu') {
+                // Menghapus kondisi yang menyembunyikan dashboard
+                if (menu.type === 'submenu') {
                   return (
                     <div key={menu.title}>
                       <button class="submenu-toggle" onclick={`toggleSubmenu(${index})`}>
