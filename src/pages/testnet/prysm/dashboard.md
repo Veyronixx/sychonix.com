@@ -15,16 +15,16 @@ title: Dashboard
 </div>
 
 <!-- Tabs Navigation Section -->
-<div class="tabs mt-4 mb-4">
-  <ul class="flex border-b border-gray-600 min-w-full space-x-1">
+<div class="tabs mt-4 mb-4 overflow-x-auto border-b border-gray-600">
+  <ul class="flex w-full space-x-1">
     <li class="shrink-0">
-      <a class="tab-link inline-block py-2 px-2 text-sm md:text-base text-white font-semibold hover:text-blue-700 whitespace-nowrap" href="#public-endpoints">Public Endpoints</a>
+      <a class="tab-link inline-block py-2 px-2 text-base md:text-lg text-blue-500 font-semibold border-b-2 border-blue-500 hover:text-blue-700 transition duration-300 whitespace-nowrap" href="#public-endpoints">Public Endpoints</a>
     </li>
     <li class="shrink-0">
-      <a class="tab-link inline-block py-2 px-2 text-sm md:text-base text-white font-semibold hover:text-blue-700 whitespace-nowrap" href="#network-service">Network Service</a>
+      <a class="tab-link inline-block py-2 px-2 text-base md:text-lg text-blue-500 font-semibold border-b-2 border-blue-500 hover:text-blue-700 transition duration-300 whitespace-nowrap" href="#network-service">Network Service</a>
     </li>
     <li class="shrink-0">
-      <a class="tab-link inline-block py-2 px-2 text-sm md:text-base text-white font-semibold hover:text-blue-700 whitespace-nowrap" href="#chain-explorer">Chain Explorer</a>
+      <a class="tab-link inline-block py-2 px-2 text-base md:text-lg text-blue-500 font-semibold border-b-2 border-blue-500 hover:text-blue-700 transition duration-300 whitespace-nowrap" href="#chain-explorer">Chain Explorer</a>
     </li>
   </ul>
 </div>
@@ -95,13 +95,11 @@ sed -i -e "s|^persistent_peers *=.*|persistent_peers = \"$PEERS\"|" $HOME/.prysm
 </div>
 
 <script>
-  // JavaScript for tab switching functionality
   const tabs = document.querySelectorAll('.tab-link');
-  const sections = document.querySelectorAll('div[id^="public-endpoints"], div[id^="network-service"], div[id^="chain-explorer"]');
+  const sections = document.querySelectorAll('#public-endpoints, #network-service, #chain-explorer');
 
-  // Function to activate a tab and corresponding section
   function activateTab(tab, section) {
-    // Remove active class from all tabs
+    // Remove active classes from all tabs
     tabs.forEach(t => t.classList.remove('text-blue-500', 'border-b-2', 'border-blue-500'));
     
     // Add active class to the clicked tab

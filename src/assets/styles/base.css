@@ -139,6 +139,6 @@
   /* Firefox scrollbar styling */
   * {
     scrollbar-width: thin;
-    scrollbar-color: #d1d5db #0c0a09;
+    scrollbar-color: #d1d5db81 #0c0a09;
   }
 }

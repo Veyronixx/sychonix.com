@@ -23,12 +23,9 @@ eval $(echo 'export PATH=$PATH:$HOME/go/bin' | tee -a $HOME/.profile)</code></pr
 - Install the Binary
 
 <div class="code-block-wrapper">
-  <pre><code>cd $HOME
-wget https://github.com/crossfichain/crossfi-node/releases/download/v0.1.1/mineplex-2-node._v0.1.1_linux_amd64.tar.gz && tar -xf mineplex-2-node._v0.1.1_linux_amd64.tar.gz
-tar -xvf mineplex-2-node._v0.1.1_linux_amd64.tar.gz
-chmod +x $HOME/mineplex-chaind
-mv $HOME/mineplex-chaind $HOME/go/bin/crossfid
-rm mineplex-2-node._v0.1.1_linux_amd64.tar.gz</code></pre>
+  <pre><code>cd $HOME 
+curl -L https://snapshot.sychonix.com/mainnet/crossfi/crossfid.tar.gz | tar -xvzf - -C $HOME
+sudo mv crossfid $HOME/go/bin/</code></pre>
   <button class="copy-btn"><i class="fas fa-copy"></i></button>
 </div>
 
@@ -45,8 +42,8 @@ crossfid init "YourName" --chain-id crossfi-evm-mainnet-1</code></pre>
 - Download Genesis and Addrbook
 
 <div class="code-block-wrapper">
-  <pre><code>curl -Ls https://snapshot.sychonix.com/mainnet/crossfi/genesis.json > $HOME/.mineplex-chain/config/genesis.json
-curl -Ls https://snapshot.sychonix.com/crossfi/addrbook.json > $HOME/.mineplex-chain/config/addrbook.json</code></pre>
+  <pre><code>curl -Ls https://snapshot.sychonix.com/mainnet/crossfi/genesis.json > $HOME/.crossfid/config/genesis.json
+curl -Ls https://snapshot.sychonix.com/crossfi/addrbook.json > $HOME/.crossfid/config/addrbook.json</code></pre>
   <button class="copy-btn"><i class="fas fa-copy"></i></button>
 </div>
 
@@ -54,15 +51,15 @@ curl -Ls https://snapshot.sychonix.com/crossfi/addrbook.json > $HOME/.mineplex-c
 
 <div class="code-block-wrapper">
   <pre><code>PEERS="$(curl -sS https://rpc-crossfi.sychonix.com/net_info | jq -r '.result.peers[] | "\(.node_info.id)@\(.remote_ip):\(.node_info.listen_addr)"' | awk -F ':' '{print $1":"$(NF)}' | sed -z 's|\n|,|g;s|.$||')"
-sed -i.bak -e "s/^persistent_peers *=.*/persistent_peers = \"$PEERS\"/" $HOME/.mineplex-chain/config/config.toml</code></pre>
+sed -i.bak -e "s/^persistent_peers *=.*/persistent_peers = \"$PEERS\"/" $HOME/.crossfid/config/config.toml</code></pre>
   <button class="copy-btn"><i class="fas fa-copy"></i></button>
 </div>
 
 - Update Port Configuration
 
 <div class="code-block-wrapper">
-  <pre><code>sed -i -e "s%:1317%:11017%; s%:8080%:11080%; s%:9090%:11090%; s%:9091%:11091%; s%:8545%:11045%; s%:8546%:11046%; s%:6065%:11065%" $HOME/.mineplex-chain/config/app.toml
-sed -i -e "s%:26658%:11058%; s%:26657%:11057%; s%:6060%:11060%; s%:26656%:11056%; s%:26660%:11061%" $HOME/.mineplex-chain/config/config.toml</code></pre>
+  <pre><code>sed -i -e "s%:1317%:11017%; s%:8080%:11080%; s%:9090%:11090%; s%:9091%:11091%; s%:8545%:11045%; s%:8546%:11046%; s%:6065%:11065%" $HOME/.crossfid/config/app.toml
+sed -i -e "s%:26658%:11058%; s%:26657%:11057%; s%:6060%:11060%; s%:26656%:11056%; s%:26660%:11061%" $HOME/.crossfid/config/config.toml</code></pre>
   <button class="copy-btn"><i class="fas fa-copy"></i></button>
 </div>
 
@@ -73,16 +70,16 @@ sed -i -e "s%:26658%:11058%; s%:26657%:11057%; s%:6060%:11060%; s%:26656%:11056%
   -e 's|^pruning *=.*|pruning = "custom"|' \
   -e 's|^pruning-keep-recent *=.*|pruning-keep-recent = "100"|' \
   -e 's|^pruning-interval *=.*|pruning-interval = "17"|' \
-  $HOME/.mineplex-chain/config/app.toml</code></pre>
+  $HOME/.crossfid/config/app.toml</code></pre>
   <button class="copy-btn"><i class="fas fa-copy"></i></button>
 </div>
 
 - Set Minimum Gas Price, Enable Prometheus, and Disable the Indexer
 
 <div class="code-block-wrapper">
-  <pre><code>sed -i 's|minimum-gas-prices =.*|minimum-gas-prices = "10000000000000mpx"|g' $HOME/.mineplex-chain/config/app.toml
-sed -i -e "s/prometheus = false/prometheus = true/" $HOME/.mineplex-chain/config/config.toml
-sed -i -e "s/^indexer *=.*/indexer = \"null\"/" $HOME/.mineplex-chain/config/config.toml</code></pre>
+  <pre><code>sed -i 's|minimum-gas-prices =.*|minimum-gas-prices = "10000000000000mpx"|g' $HOME/.crossfid/config/app.toml
+sed -i -e "s/prometheus = false/prometheus = true/" $HOME/.crossfid/config/config.toml
+sed -i -e "s/^indexer *=.*/indexer = \"null\"/" $HOME/.crossfid/config/config.toml</code></pre>
   <button class="copy-btn"><i class="fas fa-copy"></i></button>
 </div>
 
@@ -108,7 +105,7 @@ EOF</code></pre>
 - Download Current Snapshot
 
 <div class="code-block-wrapper">
-  <pre><code>curl "https://snapshot.sychonix.com/mainnet/crossfi/crossfi-snapshot.tar.lz4" | lz4 -dc - | tar -xf - -C "$HOME/.mineplex-chain"</code></pre>
+  <pre><code>curl "https://snapshot.sychonix.com/mainnet/crossfi/crossfi-snapshot.tar.lz4" | lz4 -dc - | tar -xf - -C "$HOME/.crossfid"</code></pre>
   <button class="copy-btn"><i class="fas fa-copy"></i></button>
 </div>
 

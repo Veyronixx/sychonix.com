@@ -34,8 +34,8 @@ const meta = {
   canonical: getCanonical(getHomePermalink()),
 };
 const combinedMenu = [
-  { title: '', path: 'dashboard', component: Dashboard, type: 'item' },
-  { title: 'Installation', path: 'installation', component: Installation, type: 'item' },
+{ title: 'Network Overview', path: 'dashboard', component: Dashboard, type: 'item' },
+{ title: 'Installation', path: 'installation', component: Installation, type: 'item' },
   { title: 'Upgrade', path: 'upgrade', component: Upgrade, type: 'item' },
   {
     title: 'Sync',
@@ -88,9 +88,10 @@ const combinedMenu = [
           </button>
         </div>
 
+        <!-- Close button for mobile menu -->
         <div id="mobile-close-button" class="hidden md:hidden p-2 absolute right-4 top-4 z-50">
-          <!-- Anda bisa menambahkan konten lain di sini jika diperlukan -->
-        </div>
+         <!-- Icon removed as requested -->        
+         </div>
 
         <!-- Tab layout: Sidebar and Content -->
         <div class="flex flex-col md:flex-row md:items-start">
@@ -99,21 +100,8 @@ const combinedMenu = [
           <div id="sidebar" class="tabs flex-shrink-0 md:block hidden">
             <div class="submenu-container">
               {combinedMenu.map((menu, index) => {
-                if (menu.path === 'dashboard') {
-                  // Sembunyikan Dashboard dengan kelas khusus
-                  return (
-                    <button
-                      class="tab-button hidden-dashboard"
-                      onclick={`showTabContent('${index}')`}
-                      key={menu.title}
-                      data-index={index}
-                      data-path={menu.path}
-                    >
-                      <span class="icon-arrow inline-block mr-2">▸</span>
-                      {menu.title}
-                    </button>
-                  );
-                } else if (menu.type === 'submenu') {
+                // Menghapus kondisi yang menyembunyikan dashboard
+                if (menu.type === 'submenu') {
                   return (
                     <div key={menu.title}>
                       <button class="submenu-toggle" onclick={`toggleSubmenu(${index})`}>

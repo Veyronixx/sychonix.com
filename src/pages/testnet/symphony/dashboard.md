@@ -14,23 +14,112 @@ Symphony is a Cosmos-based blockchain enabling global trading of real-world asse
   </div>
 </div>
 
-<label class="block mt-1 mb-1">RPC Endpoints</label> <!-- Added mt-1 mb-1 to adjust spacing -->
-<div class="code-block-wrapper">
-  <pre><code>https://rpc-symphony-t.sychonix.com</code></pre>
-  <button class="copy-btn"><i class="fas fa-copy"></i></button>
+<!-- Tabs Navigation Section -->
+<div class="tabs mt-4 mb-4 overflow-x-auto border-b border-gray-600">
+  <ul class="flex w-full space-x-1">
+    <li class="shrink-0">
+      <a class="tab-link inline-block py-2 px-2 text-base md:text-lg text-blue-500 font-semibold border-b-2 border-blue-500 hover:text-blue-700 transition duration-300 whitespace-nowrap" href="#public-endpoints">Public Endpoints</a>
+    </li>
+    <li class="shrink-0">
+      <a class="tab-link inline-block py-2 px-2 text-base md:text-lg text-blue-500 font-semibold border-b-2 border-blue-500 hover:text-blue-700 transition duration-300 whitespace-nowrap" href="#network-service">Network Service</a>
+    </li>
+    <li class="shrink-0">
+      <a class="tab-link inline-block py-2 px-2 text-base md:text-lg text-blue-500 font-semibold border-b-2 border-blue-500 hover:text-blue-700 transition duration-300 whitespace-nowrap" href="#chain-explorer">Chain Explorer</a>
+    </li>
+  </ul>
 </div>
 
+<!-- Public Endpoints Section -->
+<div id="public-endpoints">
+  <h3 class="text-lg font-semibold mb-2"></h3> <!-- Added title for Public Endpoints -->
+
+  <label class="block mt-1 mb-1">RPC Endpoints</label> <!-- Added mt-1 mb-1 to adjust spacing -->
+  <div class="code-block-wrapper">
+    <pre><code>https://rpc-symphony-t.sychonix.com</code></pre>
+    <button class="copy-btn"><i class="fas fa-copy"></i></button>
+  </div>
 
   <label>API Endpoints</label>
   <div class="code-block-wrapper">
-  <pre><code>https://api-symphony-t.sychonix.com</code></pre>
-  <button class="copy-btn"><i class="fas fa-copy"></i></button>
+    <pre><code>https://api-symphony-t.sychonix.com</code></pre>
+    <button class="copy-btn"><i class="fas fa-copy"></i></button>
+  </div>
 </div>
 
-  <label>Chain Explorer</label>
+<!-- Network Service Section (Previously Peering Service) -->
+<div id="network-service" class="hidden">
+  <h3 class="text-lg font-semibold mb-2"></h3>
+  
+  <label class="block mt-1 mb-1">Seeds</label>
   <div class="code-block-wrapper">
-  <pre><code></code>https://explorer.sychonix.com/symphony-testnet</pre>
-  <button class="copy-btn"><i class="fas fa-copy"></i></button>
+    <pre><code>f0caa6bdad7a8f42a9aa7f5d00029ca596809a7d@symphony-testnet.sychonix.com:12156</code></pre>
+    <button class="copy-btn"><i class="fas fa-copy"></i></button>
+  </div>
+
+  <label class="block mt-1 mb-1">Live Peers</label>
+  <div class="code-block-wrapper">
+    <pre><code>PEERS="$(curl -sS https://rpc-symphony-t.sychonix.com/net_info | jq -r '.result.peers[] | "\(.node_info.id)@\(.remote_ip):\(.node_info.listen_addr)"' | awk -F ':' '{print $1":"$(NF)}' | sed -z 's|\n|,|g;s|.$||')"  
+sed -i -e "s|^persistent_peers *=.*|persistent_peers = \"$PEERS\"|" $HOME/  /config/config.toml</code></pre>
+    <button class="copy-btn"><i class="fas fa-copy"></i></button>
+  </div>
+
+  <label class="block mt-1 mb-1">Genesis File</label>
+  <div class="code-block-wrapper">
+    <pre><code>curl -Ls https://snapshot.sychonix.com/testnet/symphony/genesis.json > $HOME/.symphonyd/config/genesis.json</code></pre>
+    <button class="copy-btn"><i class="fas fa-copy"></i></button>
+  </div>
+
+  <label class="block mt-1 mb-1">Addrbook File</label>
+  <div class="code-block-wrapper">
+    <pre><code>curl -Ls https://snapshot.sychonix.com/testnet/symphony/addrbook.json > $HOME/.symphonyd/config/addrbook.json</code></pre>
+    <button class="copy-btn"><i class="fas fa-copy"></i></button>
+  </div>
 </div>
 
 
+<!-- Chain Explorer Section -->
+<div id="chain-explorer" class="hidden bg-slate-950 p-4 rounded-lg shadow-md">
+  <!-- Added clickable link -->
+  <p class="text-sm text-gray-300">
+    <a href="https://explorer.sychonix.com/symphony-testnet" target="_blank" 
+       class="text-blue-500 underline hover:text-blue-700 hover:shadow-lg">
+      https://explorer.sychonix.com/symphony-testnet
+    </a>
+  </p>
+</div>
+
+<script>
+  const tabs = document.querySelectorAll('.tab-link');
+  const sections = document.querySelectorAll('#public-endpoints, #network-service, #chain-explorer');
+
+  function activateTab(tab, section) {
+    // Remove active classes from all tabs
+    tabs.forEach(t => t.classList.remove('text-blue-500', 'border-b-2', 'border-blue-500'));
+    
+    // Add active class to the clicked tab
+    tab.classList.add('text-blue-500', 'border-b-2', 'border-blue-500');
+
+    // Hide all sections
+    sections.forEach(sec => sec.classList.add('hidden'));
+
+    // Show the corresponding section
+    section.classList.remove('hidden');
+  }
+
+  // Set default tab to Public Endpoints on page load
+  document.addEventListener('DOMContentLoaded', () => {
+    const defaultTab = document.querySelector('a[href="#public-endpoints"]');
+    const defaultSection = document.querySelector('#public-endpoints');
+    activateTab(defaultTab, defaultSection);
+  });
+
+  // Add event listeners for tab clicks
+  tabs.forEach(tab => {
+    tab.addEventListener('click', function(event) {
+      event.preventDefault();
+      
+      const targetSection = document.querySelector(this.getAttribute('href'));
+      activateTab(this, targetSection);
+    });
+  });
+</script>
