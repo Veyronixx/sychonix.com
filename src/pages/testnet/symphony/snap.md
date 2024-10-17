@@ -3,7 +3,7 @@ title: Snapshot
 
 icon: sym
 ---
-
+<!-- Note: Change nodename, Binary, and $HOME/.binary -->
 - Stop Service
 
 <div class="code-block-wrapper">

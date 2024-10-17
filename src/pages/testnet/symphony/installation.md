@@ -33,13 +33,13 @@ make install</code></pre>
 
 - Initialize The Node
 
-<div class="code-block-wrapper">
+<div class="code-block-wrapper"><!-- Change chain id and port -->
   <pre><code>symphonyd config node tcp://localhost:12157
 symphonyd config keyring-backend os
 symphonyd config chain-id symphony-testnet-3
 symphonyd init "YourName" --chain-id symphony-testnet-3</code></pre>
   <button class="copy-btn"><i class="fas fa-copy"></i></button>
-</div>
+</div><!-- Change chain id and port -->
 
 - Download Genesis & Addrbook
 
@@ -78,12 +78,12 @@ sed -i -e "s%:26658%:12158%; s%:26657%:12157%; s%:6060%:12160%; s%:26656%:12156%
 
 - Set Minimum Gas Price, Enable Prometheus, and Disable the Indexer
 
-<div class="code-block-wrapper">
+<div class="code-block-wrapper"><!-- Note: Change gas price and denom -->
   <pre><code>sed -i -e "s|^minimum-gas-prices *=.*|minimum-gas-prices = \"0.25note\"|" $HOME/.symphonyd/config/app.toml
 sed -i -e "s/prometheus = false/prometheus = true/" $HOME/.symphonyd/config/config.toml
 sed -i -e "s/^indexer *=.*/indexer = \"null\"/" $HOME/.symphonyd/config/config.toml</code></pre>
   <button class="copy-btn"><i class="fas fa-copy"></i></button>
-</div>
+</div><!-- Note: Change gas price and denom -->
 
 - Create Service File
 

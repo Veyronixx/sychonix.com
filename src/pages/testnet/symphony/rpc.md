@@ -4,7 +4,7 @@ title: RPC
 icon: sym
 ---
 
-<div class="code-block-wrapper">
+<div class="code-block-wrapper"><!-- Note: Change nodename-->
   <pre><code>rpc-symphony-t.sychonix.com</code></pre>
   <button class="copy-btn"><i class="fas fa-copy"></i></button>
-</div>
+</div><!-- Note: Change nodename-->

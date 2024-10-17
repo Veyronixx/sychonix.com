@@ -3,7 +3,7 @@ title: Snapshot
 icon: crossfi
 ---
 
-
+<!-- Note: Change nodename and $HOME/.binary -->
 - Stop Service
 
 <div class="code-block-wrapper">
