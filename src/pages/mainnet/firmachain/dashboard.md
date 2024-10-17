@@ -82,7 +82,7 @@ sed -i -e "s|^persistent_peers *=.*|persistent_peers = \"$PEERS\"|" $HOME/.firma
   <p class="text-sm text-gray-300">
     <a href="https://explorer.sychonix.com/firmachainestnet" target="_blank" 
        class="text-blue-500 underline hover:text-blue-700 hover:shadow-lg">
-      https://explorer.sychonix.com/firmachainestnet
+      https://explorer.sychonix.com/firmachain-mainnet
     </a>
   </p>
 </div>
