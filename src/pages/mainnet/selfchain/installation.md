@@ -78,7 +78,7 @@ sed -i -e "s%:26658%:11258%; s%:26657%:11257%; s%:6060%:11260%; s%:26656%:11256%
 - Set Minimum Gas Price, Enable Prometheus, and Disable the Indexer
 
 <div class="code-block-wrapper">
-  <pre><code>sed -i -e "s|^minimum-gas-prices *=.*|minimum-gas-prices = \"0.0uslf\"|" $HOME/.selfchain/config/app.toml
+  <pre><code>sed -i -e "s|^minimum-gas-prices *=.*|minimum-gas-prices = \"1uslf\"|" $HOME/.selfchain/config/app.toml
 sed -i -e "s/prometheus = false/prometheus = true/" $HOME/.selfchain/config/config.toml
 sed -i -e "s/^indexer *=.*/indexer = \"null\"/" $HOME/.selfchain/config/config.toml</code></pre>
   <button class="copy-btn"><i class="fas fa-copy"></i></button>

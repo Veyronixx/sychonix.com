@@ -21,6 +21,7 @@ source $HOME/.bash_profile
 go version</code></pre>
   <button class="copy-btn"><i class="fas fa-copy"></i></button>
 </div>
+
 - Install the Binary
 
 <div class="code-block-wrapper">
@@ -36,8 +37,8 @@ git checkout v0.3.5-patch</code></pre>
 <div class="code-block-wrapper">
   <pre><code>firmachaind config node tcp://localhost:11457
 fiammad config keyring-backend os
-fiammad config chain-id firmachain-evm-mainnet-1
-fiammad init "YourName" --chain-id firmachain-evm-mainnet-1</code></pre>
+fiammad config chain-id colosseum-1
+fiammad init "YourName" --chain-id colosseum-1</code></pre>
   <button class="copy-btn"><i class="fas fa-copy"></i></button>
 </div>
 
@@ -45,7 +46,7 @@ fiammad init "YourName" --chain-id firmachain-evm-mainnet-1</code></pre>
 
 <div class="code-block-wrapper">
   <pre><code>curl -Ls https://snapshot.sychonix.com/mainnet/firmachain/genesis.json > $HOME/.firmachain/config/genesis.json
-curl -Ls https://snapshot.sychonix.com/firmachain/addrbook.json > $HOME/.firmachain/config/addrbook.json</code></pre>
+curl -Ls https://snapshot.sychonix.com/mainnet/firmachain/addrbook.json > $HOME/.firmachain/config/addrbook.json</code></pre>
   <button class="copy-btn"><i class="fas fa-copy"></i></button>
 </div>
 

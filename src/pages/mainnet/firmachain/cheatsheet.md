@@ -1,14 +1,16 @@
 ---
 layout: '~/layouts/copybutton.astro'
+icon : cnho
 ---
-<!--
-please modify this according to the chain
-node name and icon : firmachain
-chain id : colosseum-1
-Binary Name : firmachaind
-Binary Home : $HOME/.firmachain
-Staking Denom : ufct
-systemd name : firmachaind 
+<!-- Change it
+firmachain
+colosseum-1
+firmachaind
+$HOME/.firmachain
+ufct
+firmachaind 
+0.1ufct
+1000000ufct
 -->
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
@@ -58,24 +60,26 @@ systemd name : firmachaind
 
 <label for="iwallet" style="vertical-align: top;"> Check balance</label>
 <div class="pre-container">
-  <pre class="my-pre" id="pre7">firmachaind q bank balances $(firmachaind  keys show <span class="rwallet7"></span> -a)</pre>
+  <pre class="my-pre" id="pre7">firmachaind q bank balances $(firmachaind keys show <span class="rwallet7"></span> -a)</pre>
   <button class="copy-btn" id="copy7" data-clipboard-text="" onclick="copyText(7)"></button>
 </div>
 
 
 <h3 for="imoniker">Validator Management</h3>
-<label for="ivalidator" style="vertical-align: top;"> Create New Validator</label>
 <div class="input-row">
   <!-- Col 1 -->
   <div class="input-col">
+  <h4>Moniker</h4>
     <div class="input-group">
       <label for="imoniker">Moniker</label>
       <input id="imoniker" type="text" placeholder="Enter Moniker" oninput="updatePre()" />
     </div>
+    <h4>Identity</h4>
     <div class="input-group">
       <label for="iidentity">Identity</label>
       <input id="iidentity" type="text" placeholder="Enter Identity" oninput="updatePre()" />
     </div>
+    <h4>Details</h4>
     <div class="input-group">
       <label for="idetails">Details</label>
       <input id="idetails" type="text" placeholder="Enter Details" oninput="updatePre()" />
@@ -83,44 +87,51 @@ systemd name : firmachaind
   </div>
   <!-- Col 2 -->
   <div class="input-col">
+    <h4>Website</h4> 
     <div class="input-group">
       <label for="iwebsite">Website</label>
       <input id="iwebsite" type="text" placeholder="Enter Website" oninput="updatePre()" />
     </div>
+  <h4>Security Contact</h4> 
     <div class="input-group">
       <label for="icontact">Contact</label>
-      <input id="icontact" type="text" placeholder="Enter Contact" oninput="updatePre()" />
+      <input id="icontact" type="text" placeholder="Enter Your Email" oninput="updatePre()" />
     </div>
+  <h4>Commission</h4>
     <div class="input-group">
       <label for="iamount">Amount</label>
-      <input id="iamount" type="text" placeholder="Enter Amount" oninput="updatePre()" />
+      <input id="iamount" type="text" value="1000000" placeholder="Enter Amount" oninput="updatePre()" />
     </div>
-    <div class="input-group">
-      <label for="icommission">Commission</label>
-      <input id="icommission" type="text" placeholder="Enter Commission" oninput="updatePre()" />
-    </div>
+  <h4></h4>
+<div class="input-group" style="display: none;">
+  <label for="icommission">Commission</label>
+  <input id="icommission" type="text" value="0.05" placeholder="Enter Commission" />
+</div>
   </div>
 </div>
 
 <!-- Wrap the <pre> and button in a new container -->
 <div class="pre-container">
+<label for="ivalidator" style="vertical-align: top;"> Create New Validator</label>
   <pre class="my-pre" id="pre8">
-firmachaind  tx staking create-validator \
---amount=<span class="ramount1"></span>0000000ufct \
+firmachaind tx staking create-validator \
+--amount=<span class="ramount1">1000000ufct</span> \
+--pubkey=$(firmachaind tendermint show-validator) \
 --moniker="<span class="rmoniker1"></span>" \
---pubkey=$(firmachaind  tendermint show-validator) \
 --identity="<span class="ridentity1"></span>" \
 --details="<span class="rdetails1"></span>" \
 --website="<span class="rwebsite1"></span>" \
 --security-contact=<span class="rcontact1"></span> \
 --chain-id=colosseum-1 \
---commission-rate=<span class="rcommission1"></span> \
+--commission-rate=<span class="rcommission1">0.05</span> \
 --commission-max-rate=0.20 \
 --commission-max-change-rate=0.01 \
 --min-self-delegation=1 \
---from=<span class="rwallet8"></span> \
---gas=auto  \
---gas-prices="0ufct"</pre>
+--gas-prices 0.1ufct \
+--gas "auto" \
+--gas-adjustment "1.5" \
+--from <span class="rwallet8">wallet</span> \
+-y</pre>
   <button class="copy-btn" id="copy8" data-clipboard-text="" onclick="copyText(8)"></button>
 
 
@@ -146,34 +157,35 @@ firmachaind  tx staking create-validator \
 
 <div class="pre-container">
 <pre class="my-pre" id="pre9">
-firmachaind  tx staking edit-validator \
+firmachaind tx staking edit-validator \
 --new-moniker="<span class="reditmoniker1"></span>" \
 --identity="<span class="reditidentity1"></span>" \
 --details="<span class="reditdetails1"></span>" \
 --website="<span class="reditweb1"></span>" \
 --chain-id=colosseum-1 \
 --commission-rate=0.07 \
---from=<span class="rwallet9"></span> \
---gas=auto  \
---gas-prices="0ufct"  </pre>
+--from <span class="rwallet9">wallet</span> \
+--gas=auto \
+--gas-prices 0.1ufct \
+-y</pre>
   <button class="copy-btn" id="copy8" data-clipboard-text="" onclick="copyText(8)"></button>
 </div>
 
 <label for="iwallet" style="vertical-align: top;"> Unjail Validator</label>
 <div class="pre-container">
-  <pre class="my-pre" id="pre10">firmachaind tx slashing unjail --from <span class="rwallet10"></span> --chain-id colosseum-1 --gas-prices 0.00025ufct --gas-adjustment 1.5 --gas auto -y</pre>
+  <pre class="my-pre" id="pre10">firmachaind tx slashing unjail --from wallet --chain-id colosseum-1 --gas auto --gas-adjustment 1.5  </pre>
   <button class="copy-btn" id="copy10" data-clipboard-text="" onclick="copyText(10)"></button>
 </div>
 
 <label for="iwallet" style="vertical-align: top;"> Jail Reason</label>
 <div class="pre-container">
-  <pre class="my-pre" id="pre11">firmachaind query slashing signing-info $(firmachaind  tendermint show-validator)</pre>
+  <pre class="my-pre" id="pre11">firmachaind query slashing signing-info $(firmachaind tendermint show-validator)</pre>
   <button class="copy-btn" id="copy11" data-clipboard-text="" onclick="copyText(11)"></button>
 </div>
 
 <label for="iwallet" style="vertical-align: top;"> View validator details</label>
 <div class="pre-container">
-  <pre class="my-pre" id="pre12">firmachaind q staking validator $(firmachaind  keys show <span class="rwallet11"></span> --bech val -a)</pre>
+  <pre class="my-pre" id="pre12">firmachaind q staking validator $(firmachaind keys show wallet --bech val -a)</pre>
   <button class="copy-btn" id="copy12" data-clipboard-text="" onclick="copyText(12)"></button>
 </div>
 
@@ -197,15 +209,15 @@ firmachaind  tx staking edit-validator \
 
 <h3 for="imoniker">Token Management</h3>
 
-<label for="ivalidator" style="vertical-align: top;"> Withdraw rewards from all validators</label>
+<label for="ivalidator">Withdraw rewards from all validators</label>
 <div class="pre-container">
-  <pre class="my-pre" id="pre13">firmachaind tx distribution withdraw-all-rewards --from <span class="rwallet12"></span> --chain-id colosseum-1 --gas=auto  --gas-prices="0ufct"</pre>
+  <pre class="my-pre" id="pre13">firmachaind tx distribution withdraw-all-rewards --from wallet --chain-id colosseum-1 --gas auto --gas-adjustment 1.5 --gas-prices 0.1ufct -y </pre>
   <button class="copy-btn" id="copy13" data-clipboard-text="" onclick="copyText(13)"></button>
 </div>
 
 <label for="ivalidator" style="vertical-align: top;"> Withdraw commission and rewards from your validator</label>
 <div class="pre-container">
-  <pre class="my-pre" id="pre14">firmachaind tx distribution withdraw-rewards $(firmachaind  keys show <span class="rwallet13"></span> --bech val -a) --commission --from <span class="rwallet14"></span> --chain-id colosseum-1 --gas=auto --gas-prices="0ufct"</pre>
+  <pre class="my-pre" id="pre14">firmachaind tx distribution withdraw-rewards $(firmachaind keys show wallet --bech val -a) --commission --from wallet --chain-id colosseum-1 --gas auto --gas-adjustment 1.5 --gas-prices 0.1ufct -y </pre>
   <button class="copy-btn" id="copy14" data-clipboard-text="" onclick="copyText(14)"></button>
 </div>
 
@@ -213,46 +225,43 @@ firmachaind  tx staking edit-validator \
 <div class="input-group">
 
 <label for="idelegete" style="vertical-align: top;"> Delegate tokens to yourself</label>
-<div class="input-group">
+<div class="input-group" style="display: none;">
   <input id="idelegete" type="text" placeholder="Enter Amount" oninput="updatePre()" />
 </div>
 <div class="pre-container">
-  <pre class="my-pre" id="pre15" style="margin-top: 5px;">firmachaind tx staking delegate $(firmachaind  keys show <span class="rwallet15"></span> --bech val -a) <span class="rdelegete1"></span>00000000ufct --from <span class="rwallet16"></span> --chain-id colosseum-1 --gas=auto --gas-prices="0ufct"</pre>
-  <button class="copy-btn" id="copy15" data-clipboard-text="" onclick="copyText(15)"></button>
+  <pre class="my-pre" id="pre15" style="margin-top: 5px;">firmachaind tx staking delegate $(firmachaind keys show wallet --bech val -a) <span class="rdelegete1"></span>1000000ufct --from wallet --chain-id colosseum-1 --gas auto --gas-adjustment 1.5 --gas-prices 0.1ufct -y </pre>
+  <button class="copy-btn" id="copy15" data-clipboard-text="" onclick="copyText(15)">Copy</button>
 </div>
-
 
 <label for="iredelegete" style="vertical-align: top;"> Redelegate tokens to another validator</label>
 <div class="input-group">
   <input id="iredelegete" type="text" placeholder="Enter <TO_VALOPER_ADDRESS>" oninput="updatePre()" />
 </div>
 <div class="pre-container">
-  <pre class="my-pre" id="pre16" style="margin-top: 5px;">firmachaind tx staking redelegate $(firmachaind  keys show <span class="rwallet17"></span> --bech val -a) <span class="rredelegete1"></span> <span class="rdelegete2"></span>00000000ufct --from <span class="rwallet18"></span> --chain-id colosseum-1 --gas=auto --gas-prices="0ufct"</pre>
+  <pre class="my-pre" id="pre16" style="margin-top: 5px;">firmachaind tx staking redelegate $(firmachaind keys show wallet --bech val -a) <span class="rredelegete1"></span> <span class="rdelegete2"></span>1000000ufct --from wallet --chain-id colosseum-1 --gas auto --gas-adjustment 1.5 --gas-prices 0.1ufct -y</pre>
   <button class="copy-btn" id="copy16" data-clipboard-text="" onclick="copyText(16)"></button>
 </div>
 
 
 <label for="iredelegete" style="vertical-align: top;"> Delegate tokens to validator</label>
 <div class="pre-container">
-  <pre class="my-pre" id="pre17" style="margin-top: 5px;">firmachaind tx staking delegate <span class="rredelegete2"></span> <span class="rdelegete3"></span>00000000ufct --from <span class="rwallet19"></span> --chain-id colosseum-1 --gas=auto --gas-prices="0ufct"</pre>
+  <pre class="my-pre" id="pre17" style="margin-top: 5px;">firmachaind tx staking delegate <span class="rredelegete2"></span> <span class="rdelegete3"></span>1000000ufct --from <span class="rwallet19"></span> --chain-id colosseum-1 --gas auto --gas-adjustment 1.5 --gas-prices 0.1ufct -y </pre>
   <button class="copy-btn" id="copy17" data-clipboard-text="" onclick="copyText(17)"></button>
 </div>
 
 
 <label for="iredelegete" style="vertical-align: top;"> Unbond tokens from your validator</label>
 <div class="pre-container">
-  <pre class="my-pre" id="pre18" style="margin-top: 5px;">firmachaind tx staking unbond $(firmachaind  keys show <span class="rwallet20"></span> --bech val -a) <span class="rdelegete4"></span>00000000ufct --from <span class="rwallet21"></span> --chain-id colosseum-1 --gas=auto --gas-prices="0ufct"</pre>
+  <pre class="my-pre" id="pre18" style="margin-top: 5px;">firmachaind tx staking unbond $(firmachaind keys show wallet --bech val -a) <span class="rdelegete4"></span>1000000ufct --from wallet --chain-id colosseum-1 --gas auto --gas-adjustment 1.5 --gas-prices 0.1ufct -y</pre>
   <button class="copy-btn" id="copy18" data-clipboard-text="" onclick="copyText(18)"></button>
 </div>
-
-
 
 <label for="idelegete" style="vertical-align: top;"> Send tokens to Any wallet</label>
 <div class="input-group">
   <input id="itoken" type="text" placeholder="Enter Address Wallet" oninput="updatePre()" />
 </div>
 <div class="pre-container">
-  <pre class="my-pre" id="pre19" style="margin-top: 5px;">firmachaind tx bank send <span class="rwallet22"></span> <span class="rtoken1"></span> <span class="rdelegete5"></span>000000000ufct --from <span class="rwallet23"></span> --chain-id colosseum-1 --gas=auto --gas-prices="0ufct"</pre>
+  <pre class="my-pre" id="pre19" style="margin-top: 5px;">firmachaind tx bank send wallet</span> <span class="rtoken1"></span> <span class="rdelegete5"></span>1000000ufct --from wallet --chain-id colosseum-1 --gas auto --gas-adjustment 1.5 --gas-prices 0.1ufct -y</pre>
   <button class="copy-btn" id="copy19" data-clipboard-text="" onclick="copyText(19)"></button>
 </div>
 
@@ -267,43 +276,43 @@ firmachaind  tx staking edit-validator \
 
 <label> Enable Service</label>
 <div class="pre-container">
-  <pre class="my-pre" id="pre27">sudo systemctl enable firmachaind </pre>
+  <pre class="my-pre" id="pre27">sudo systemctl enable firmachaind</pre>
   <button class="copy-btn" id="copy27" data-clipboard-text="" onclick="copyText(27)"></button>
 </div>
 
 <label> Disable Service</label>
 <div class="pre-container">
-  <pre class="my-pre" id="pre28">sudo systemctl disable firmachaind </pre>
+  <pre class="my-pre" id="pre28">sudo systemctl disable firmachaind</pre>
   <button class="copy-btn" id="copy28" data-clipboard-text="" onclick="copyText(28)"></button>
 </div>
 
 <label> Run Service</label>
 <div class="pre-container">
-  <pre class="my-pre" id="pre29">sudo systemctl start firmachaind </pre>
+  <pre class="my-pre" id="pre29">sudo systemctl start firmachaind</pre>
   <button class="copy-btn" id="copy29" data-clipboard-text="" onclick="copyText(29)"></button>
 </div>
 
 <label> Stop Service</label>
 <div class="pre-container">
-  <pre class="my-pre" id="pre30">sudo systemctl stop firmachaind </pre>
+  <pre class="my-pre" id="pre30">sudo systemctl stop firmachaind</pre>
   <button class="copy-btn" id="copy30" data-clipboard-text="" onclick="copyText(30)"></button>
 </div>
 
 <label> Restart Service</label>
 <div class="pre-container">
-  <pre class="my-pre" id="pre31">sudo systemctl restart firmachaind </pre>
+  <pre class="my-pre" id="pre31">sudo systemctl restart firmachaind</pre>
   <button class="copy-btn" id="copy31" data-clipboard-text="" onclick="copyText(31)"></button>
 </div>
 
 <label> Check Service Status</label>
 <div class="pre-container">
-  <pre class="my-pre" id="pre32">sudo systemctl status firmachaind </pre>
+  <pre class="my-pre" id="pre32">sudo systemctl status firmachaind</pre>
   <button class="copy-btn" id="copy32" data-clipboard-text="" onclick="copyText(32)"></button>
 </div>
 
 <label> Check Service Logs</label>
 <div class="pre-container">
-  <pre class="my-pre" id="pre33">sudo journalctl -u firmachaind  -f --no-hostname -o cat</pre>
+  <pre class="my-pre" id="pre33">sudo journalctl -u firmachaind -f --no-hostname -o cat</pre>
   <button class="copy-btn" id="copy33" data-clipboard-text="" onclick="copyText(33)"></button>
 </div>
 
@@ -320,7 +329,7 @@ sed -i.bak -e "s%^address = \"tcp://0.0.0.0:1317\"%address = \"tcp://0.0.0.0:${C
 
 <label> Remove Node</label>
 <div class="pre-container">
-  <pre class="my-pre" id="pre21">sudo systemctl stop firmachaind  && sudo systemctl disable firmachaind  && sudo rm /etc/systemd/system/firmachaind.service && sudo systemctl daemon-reload && rm -rf $HOME/.firmachain && rm -rf colosseum-1 && sudo rm -rf $(which firmachaind )</pre>
+  <pre class="my-pre" id="pre21">cd $HOME && sudo systemctl stop firmachaind && sudo systemctl disable firmachaind && sudo rm /etc/systemd/system/firmachaind.service && sudo systemctl daemon-reload && sudo rm -rf $(which firmachaind) && sudo rm -rf $HOME/.firmachain && sudo rm -rf $(which firmachaind)</pre>
   <button class="copy-btn" id="copy21" data-clipboard-text="" onclick="copyText(21)"></button>
 </div>
 
@@ -336,22 +345,6 @@ sed -i.bak -e "s%^address = \"tcp://0.0.0.0:1317\"%address = \"tcp://0.0.0.0:${C
     document.querySelector('.rwallet5').textContent = walletInput;
     document.querySelector('.rwallet6').textContent = walletInput;
     document.querySelector('.rwallet7').textContent = walletInput;
-    document.querySelector('.rwallet8').textContent = walletInput;
-    document.querySelector('.rwallet9').textContent = walletInput;
-    document.querySelector('.rwallet10').textContent = walletInput;
-    document.querySelector('.rwallet11').textContent = walletInput;
-    document.querySelector('.rwallet12').textContent = walletInput;
-    document.querySelector('.rwallet13').textContent = walletInput;
-    document.querySelector('.rwallet14').textContent = walletInput;
-     document.querySelector('.rwallet15').textContent = walletInput;
-      document.querySelector('.rwallet16').textContent = walletInput;
-        document.querySelector('.rwallet17').textContent = walletInput;
-          document.querySelector('.rwallet18').textContent = walletInput;
-          document.querySelector('.rwallet19').textContent = walletInput;
-          document.querySelector('.rwallet20').textContent = walletInput;
-          document.querySelector('.rwallet21').textContent = walletInput;
-          document.querySelector('.rwallet22').textContent = walletInput;
-          document.querySelector('.rwallet23').textContent = walletInput;
 
     const monikerInput = document.getElementById('imoniker').value.trim();
     document.querySelector('.rmoniker1').textContent = monikerInput;
@@ -369,7 +362,7 @@ sed -i.bak -e "s%^address = \"tcp://0.0.0.0:1317\"%address = \"tcp://0.0.0.0:${C
     document.querySelector('.rcontact1').textContent = contactInput;
 
     const amountInput = document.getElementById('iamount').value.trim();
-    document.querySelector('.ramount1').textContent = amountInput;
+    document.querySelector('.ramount1').textContent = amountInput + 'ufct'; 
     
     const commissionInput = document.getElementById('icommission').value.trim();
     document.querySelector('.rcommission1').textContent = commissionInput;
@@ -449,12 +442,6 @@ function copyText(preIndex) {
   color: #e5e5e5 !important; /* Text color for labels */
   margin-left: 0.1rem !important; /* Align left with a bit of indentation */
 }
-/* Adjust spacing for the specific label 'Create New Validator' */
-.cheat-sheet-container label[for="ivalidator"] {
-  margin-bottom: 0 !important; /* Remove bottom margin */
-  margin-top: 0 !important; /* Remove top margin to move it up */
-  padding: 0 !important; /* Remove any padding */
-}
 
 .cheat-sheet-container .copy-btn {
   position: absolute; /* Position relative to the nearest positioned ancestor */
@@ -509,6 +496,20 @@ function copyText(preIndex) {
     margin-bottom: 20px;
   }
 
+/* Styling khusus untuk elemen h4 di dalam input-col */
+.input-col h4 {
+  margin-bottom: 2px;  /* Membuat jarak antara judul dan input sangat dekat */
+  margin-top: 5px;     /* Jarak minimal antara judul dengan elemen di atasnya */
+  font-size: 1rem;     /* Ukuran font tetap */
+  font-weight: 600;    /* Membuat teks lebih tebal */
+  color: #e5e5e5;      /* Warna teks yang konsisten dengan tema */
+}
+
+/* Menyesuaikan jarak antara input dan elemen h4 sebelumnya */
+.input-group {
+  margin-bottom: 10px; /* Jarak antar group input juga diperpendek */
+}
+
   /* Input Group Styles */
   .cheat-sheet-container .input-group {
     margin-bottom: 20px;
@@ -530,12 +531,15 @@ function copyText(preIndex) {
   }
 
   .cheat-sheet-container .input-group input {
-    background-color: #0f172a;
+    background-color: #020617;
+    border-color: rgb(226 232 240);
+    border-width: 2px;
   }
 
   .cheat-sheet-container .input-group input:focus {
     outline: none;
-    border-color: rgb(0, 0, 0);
+    border-color: rgb(226 232 240);
+    border-width: 2px;
   }
 
   .cheat-sheet-container .input-group input::placeholder {

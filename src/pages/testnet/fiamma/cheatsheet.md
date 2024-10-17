@@ -95,10 +95,6 @@ systemd name : fiammad
       <label for="iamount">Amount</label>
       <input id="iamount" type="text" placeholder="Enter Amount" oninput="updatePre()" />
     </div>
-    <div class="input-group">
-      <label for="icommission">Commission</label>
-      <input id="icommission" type="text" placeholder="Enter Commission" oninput="updatePre()" />
-    </div>
   </div>
 </div>
 
@@ -121,8 +117,7 @@ fiammad tx staking create-validator \
 --from=<span class="rwallet8"></span> \
 --gas=auto  \
 --gas-prices="0ufia"</pre>
-  <button class="copy-btn" id="copy8" data-clipboard-text="" onclick="copyText(8)"></button>
-
+<button class="copy-btn" id="copy8" data-clipboard-text="" onclick="copyText(8)"></button>
 
 <label for="imoniker"> Edit Validator</label>
 <div class="container">
@@ -156,7 +151,7 @@ fiammad tx staking edit-validator \
 --from=<span class="rwallet9"></span> \
 --gas=auto  \
 --gas-prices="0ufia"  </pre>
-  <button class="copy-btn" id="copy8" data-clipboard-text="" onclick="copyText(8)"></button>
+  <button class="copy-btn" id="copy9" data-clipboard-text="" onclick="copyText(9)"></button>
 </div>
 
 <label for="iwallet" style="vertical-align: top;"> Unjail Validator</label>
@@ -533,14 +528,16 @@ function copyText(preIndex) {
     background-color: #0f172a;
   }
 
-  .cheat-sheet-container .input-group input:focus {
-    outline: none;
-    border-color: rgb(0, 0, 0);
+  .cheat-sheet-container .input-group input {
+    background-color: #020617;
+    border-color: rgb(226 232 240);
+    border-width: 2px;
   }
 
-  .cheat-sheet-container .input-group input::placeholder {
-    color: #cbd5e1; /* Placeholder text color */
-    font-size: 13px; /* Placeholder text size */
+  .cheat-sheet-container .input-group input:focus {
+    outline: none;
+    border-color: rgb(226 232 240);
+    border-width: 2px;
   }
 
   /* Popup Styles */
