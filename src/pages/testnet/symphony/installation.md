@@ -13,13 +13,14 @@ apt install curl iptables build-essential git wget jq make gcc nano tmux htop nv
 - Install Go
 
 <div class="code-block-wrapper">
-  <pre><code>sudo rm -rf /usr/local/go
-curl -Ls https://go.dev/dl/go1.21.1.linux-amd64.tar.gz | sudo tar -xzf - -C /usr/local
-eval $(echo 'export PATH=$PATH:/usr/local/go/bin' | sudo tee /etc/profile.d/golang.sh)
-eval $(echo 'export PATH=$PATH:$HOME/go/bin' | tee -a $HOME/.profile)</code></pre>
+  <pre><code>VER="1.21.6"
+sudo rm -rf /usr/local/go
+curl -Ls https://go.dev/dl/go$VER.linux-amd64.tar.gz | sudo tar -xzf - -C /usr/local
+echo "export PATH=$PATH:/usr/local/go/bin:$HOME/go/bin" >> $HOME/.bash_profile
+source $HOME/.bash_profile
+go version</code></pre>
   <button class="copy-btn"><i class="fas fa-copy"></i></button>
 </div>
-
 - Install Binary
 
 <div class="code-block-wrapper">
