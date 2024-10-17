@@ -22,22 +22,22 @@ eval $(echo 'export PATH=$PATH:$HOME/go/bin' | tee -a $HOME/.profile)</code></pr
 
 - Install the Binary
 
-<div class="code-block-wrapper">
+<div class="code-block-wrapper"><!-- Binary-->
   <pre><code>cd $HOME 
 curl -L https://snapshot.sychonix.com/mainnet/crossfi/crossfid.tar.gz | tar -xvzf - -C $HOME
 sudo mv crossfid $HOME/go/bin/</code></pre>
   <button class="copy-btn"><i class="fas fa-copy"></i></button>
-</div>
+</div><!-- Binary-->
 
 - Initialize the Node
 
-<div class="code-block-wrapper">
+<div class="code-block-wrapper"><!-- Change chain id and port -->
   <pre><code>crossfid config node tcp://localhost:11057
 crossfid config keyring-backend os
 crossfid config chain-id crossfi-evm-mainnet-1
 crossfid init "YourName" --chain-id crossfi-evm-mainnet-1</code></pre>
   <button class="copy-btn"><i class="fas fa-copy"></i></button>
-</div>
+</div><!-- Change chain id and port -->
 
 - Download Genesis and Addrbook
 
@@ -74,14 +74,13 @@ sed -i -e "s%:26658%:11058%; s%:26657%:11057%; s%:6060%:11060%; s%:26656%:11056%
   <button class="copy-btn"><i class="fas fa-copy"></i></button>
 </div>
 
-- Set Minimum Gas Price, Enable Prometheus, and Disable the Indexer
-
+- Set Minimum Gas Price, Enable Prometheus, and Disable the Indexer <!-- Note: Change gas price and denom -->
 <div class="code-block-wrapper">
   <pre><code>sed -i 's|minimum-gas-prices =.*|minimum-gas-prices = "10000000000000mpx"|g' $HOME/.crossfid/config/app.toml
 sed -i -e "s/prometheus = false/prometheus = true/" $HOME/.crossfid/config/config.toml
 sed -i -e "s/^indexer *=.*/indexer = \"null\"/" $HOME/.crossfid/config/config.toml</code></pre>
   <button class="copy-btn"><i class="fas fa-copy"></i></button>
-</div>
+</div><!-- Note: Change gas price and denom -->
 
 - Create Service File
 
