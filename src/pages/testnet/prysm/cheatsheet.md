@@ -98,7 +98,7 @@ prysmd
       <label for="icontact">Contact</label>
       <input id="icontact" type="text" placeholder="Enter Your Email" oninput="updatePre()" />
     </div>
-  <h4>Commission</h4>
+  <h4>Amount</h4>
     <div class="input-group">
       <label for="iamount">Amount</label>
       <input id="iamount" type="text" value="1000000" placeholder="Enter Amount" oninput="updatePre()" />
