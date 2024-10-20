@@ -64,13 +64,13 @@ sed -i -e "s|^persistent_peers *=.*|persistent_peers = \"$PEERS\"|" $HOME/.firma
 
   <label class="block mt-1 mb-1">Genesis File</label>
   <div class="code-block-wrapper">
-    <pre><code>curl -Ls https://snapshot.sychonix.com/mainnet/prysm/genesis.json > $HOME/.firmachain/config/genesis.json</code></pre>
+    <pre><code>curl -Ls https://snapshot.sychonix.com/mainnet/firmachain/genesis.json > $HOME/.firmachain/config/genesis.json</code></pre>
     <button class="copy-btn"><i class="fas fa-copy"></i></button>
   </div>
 
   <label class="block mt-1 mb-1">Addrbook File</label>
   <div class="code-block-wrapper">
-    <pre><code>curl -Ls https://snapshot.sychonix.com/mainnet/prysm/addrbook.json > $HOME/.firmachain/config/addrbook.json</code></pre>
+    <pre><code>curl -Ls https://snapshot.sychonix.com/mainnet/firmachain/addrbook.json > $HOME/.firmachain/config/addrbook.json</code></pre>
     <button class="copy-btn"><i class="fas fa-copy"></i></button>
   </div>
 </div>
@@ -80,7 +80,7 @@ sed -i -e "s|^persistent_peers *=.*|persistent_peers = \"$PEERS\"|" $HOME/.firma
 <div id="chain-explorer" class="hidden bg-slate-950 p-4 rounded-lg shadow-md">
   <!-- Added clickable link -->
   <p class="text-sm text-gray-300">
-    <a href="https://explorer.sychonix.com/firmachainestnet" target="_blank" 
+    <a href="https://explorer.sychonix.com/firmachain-mainnet" target="_blank" 
        class="text-blue-500 underline hover:text-blue-700 hover:shadow-lg">
       https://explorer.sychonix.com/firmachain-mainnet
     </a>
