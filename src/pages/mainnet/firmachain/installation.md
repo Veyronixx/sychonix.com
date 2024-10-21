@@ -36,9 +36,9 @@ git checkout v0.3.5-patch</code></pre>
 
 <div class="code-block-wrapper">
   <pre><code>firmachaind config node tcp://localhost:11457
-fiammad config keyring-backend os
-fiammad config chain-id colosseum-1
-fiammad init "YourName" --chain-id colosseum-1</code></pre>
+firmachaind config keyring-backend os
+firmachaind config chain-id colosseum-1
+firmachaind init "YourName" --chain-id colosseum-1</code></pre>
   <button class="copy-btn"><i class="fas fa-copy"></i></button>
 </div>
 
@@ -90,13 +90,13 @@ sed -i -e "s/^indexer *=.*/indexer = \"null\"/" $HOME/.firmachain/config/config.
 - Create Service File
 
 <div class="code-block-wrapper">
-  <pre><code>sudo tee /etc/systemd/system/fiammad.service &gt; /dev/null &lt;&lt;EOF
+  <pre><code>sudo tee /etc/systemd/system/firmachaind.service &gt; /dev/null &lt;&lt;EOF
 [Unit]
 Description=firmachain mainnet node
 After=network-online.target
 [Service]
 User=$USER
-ExecStart=$(which fiammad) start
+ExecStart=$(which firmachaind) start
 Restart=always
 RestartSec=3
 LimitNOFILE=65535
@@ -117,7 +117,7 @@ EOF</code></pre>
 
 <div class="code-block-wrapper">
   <pre><code>sudo systemctl daemon-reload
-sudo systemctl enable fiammad.service
-sudo systemctl restart fiammad.service && sudo journalctl -u fiammad.service -f --no-hostname -o cat</code></pre>
+sudo systemctl enable firmachaind.service
+sudo systemctl restart firmachaind.service && sudo journalctl -u firmachaind.service -f --no-hostname -o cat</code></pre>
   <button class="copy-btn"><i class="fas fa-copy"></i></button>
 </div>
