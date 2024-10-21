@@ -35,7 +35,7 @@ make install</code></pre>
 <div class="code-block-wrapper"><!-- Change chain id and port -->
   <pre><code>kopid config set client chain-id kopi-test-5
 kopid config set client node tcp://localhost:11657
-kopid config keyring-backend os
+kopid config set client keyring-backend os
 kopid init $MONIKER --chain-id kopi-test-5</code></pre>
   <button class="copy-btn"><i class="fas fa-copy"></i></button>
 </div><!-- Change chain id and port -->
