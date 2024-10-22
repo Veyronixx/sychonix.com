@@ -171,60 +171,85 @@ const items = [
             Sychonix Services
           </h2>
         </div>
-        
-<!-- Mainnet Section -->
-<h3 class="text-2xl font-semibold mt-2 mb-2 ">Mainnet</h3>
-<div class="grid gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 items-start my-6 dark:text-white">
-  {items.filter(({ description }) => description === 'mainnet').map(({ title, icon, description, Link, Link2 }) => (
-    <div class="card network-card mainnet">
-      <div class="flex p-4">
-        <div class="icon-container w-12 h-12 rounded-full overflow-hidden bg-white flex-shrink-0">
-          <img src={icon} alt={title} class="w-full h-full object-cover"/>
-        </div>
-        <div class="ml-4 text-left">
-          <h3 class="title text-sm font-semibold text-white">{title}</h3>
-        </div>
-      </div>
-      <div class="flex justify-between mt-auto p-4">
-        <a href={Link2} target="_blank" class="btn-explorer flex-1 mx-1 px-3 py-1 bg-blue-500 text-white rounded-xl hover:bg-blue-700 text-xs">Explorer</a>
-        <a href={Link} class="btn-service flex-1 mx-1 px-3 py-1 bg-gray-700 text-white rounded-xl hover:bg-gray-900 text-xs">Service</a>
-      </div>
-    </div>
-  ))}
-</div>
 
-        
-        <!-- Testnet Cards -->
-        <h3 class="text-2xl font-semibold mt-2 mb-2 ">Testnet</h3>
+        <!-- Mainnet Section -->
+        <h3 class="text-2xl font-semibold mt-2 mb-2">Mainnet</h3>
         <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 items-start my-6 dark:text-white">
-          {items.filter(({ description }) => description === 'testnet').map(({ title, icon, description, Link, Link2 }) => (
-            <div class="card network-card testnet">
-              <div class="flex p-4">
-                <div class="icon-container w-12 h-12 rounded-full overflow-hidden bg-white flex-shrink-0">
-                  <img src={icon} alt={title} class="w-full h-full object-cover"/>
+          {items.filter(({ description }) => description === 'mainnet').map(
+            ({ title, icon, Link, Link2 }) => (
+              <div class="card network-card mainnet">
+                <div class="flex p-4">
+                  <div class="icon-container w-12 h-12 rounded-full overflow-hidden bg-white flex-shrink-0">
+                    <img src={icon} alt={title} class="w-full h-full object-cover" />
+                  </div>
+                  <div class="ml-4 text-left">
+                    <h3 class="title text-sm font-semibold text-white">{title}</h3>
+                  </div>
                 </div>
-                <div class="ml-4 text-left">
-                  <h3 class="title text-sm font-semibold text-white">{title}</h3>
+                <div class="flex justify-between mt-auto p-4">
+                  <a
+                    href={Link2}
+                    target="_blank"
+                    class="btn-explorer flex-1 mx-1 px-3 py-1 bg-blue-500 text-white rounded-xl hover:bg-blue-700 text-xs"
+                  >
+                    Explorer
+                  </a>
+                  <a
+                    href={Link}
+                    class="btn-service flex-1 mx-1 px-3 py-1 bg-gray-700 text-white rounded-xl hover:bg-gray-900 text-xs"
+                  >
+                    Service
+                  </a>
                 </div>
               </div>
-              <div class="flex justify-between mt-auto p-4">
-                <a href={Link2} target="_blank" class="btn-explorer flex-1 mx-1 px-3 py-1 bg-blue-500 text-white rounded-xl hover:bg-blue-700 text-xs">Explorer</a>
-                <a href={Link} class="btn-service flex-1 mx-1 px-3 py-1 bg-gray-700 text-white rounded-xl hover:bg-gray-900 text-xs">Service</a>
+            )
+          )}
+        </div>
+
+        <!-- Testnet Cards -->
+        <h3 class="text-2xl font-semibold mt-2 mb-2">Testnet</h3>
+        <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 items-start my-6 dark:text-white">
+          {items.filter(({ description }) => description === 'testnet').map(
+            ({ title, icon, Link, Link2 }) => (
+              <div class="card network-card testnet">
+                <div class="flex p-4">
+                  <div class="icon-container w-12 h-12 rounded-full overflow-hidden bg-white flex-shrink-0">
+                    <img src={icon} alt={title} class="w-full h-full object-cover" />
+                  </div>
+                  <div class="ml-4 text-left">
+                    <h3 class="title text-sm font-semibold text-white">{title}</h3>
+                  </div>
+                </div>
+                <div class="flex justify-between mt-auto p-4">
+                  <a
+                    href={Link2}
+                    target="_blank"
+                    class="btn-explorer flex-1 mx-1 px-3 py-1 bg-blue-500 text-white rounded-xl hover:bg-blue-700 text-xs"
+                  >
+                    Explorer
+                  </a>
+                  <a
+                    href={Link}
+                    class="btn-service flex-1 mx-1 px-3 py-1 bg-gray-700 text-white rounded-xl hover:bg-gray-900 text-xs"
+                  >
+                    Service
+                  </a>
+                </div>
               </div>
-            </div>
-          ))}
+            )
+          )}
         </div>
       </div>
     </div>
   </section>
-  
+
   <style>
     #features2 {
       background-image: url('/bekgronport.jpg');
       position: relative;
       color: white;
     }
-  
+
     .card {
       background-color: rgb(15 23 42);
       border-radius: 1.5rem;
@@ -237,19 +262,19 @@ const items = [
       padding-bottom: 10px;
       margin-bottom: 4px;
     }
-  
+
     .card:hover {
       background-color: rgba(13, 114, 255, 0.219);
       border-color: rgb(13, 114, 255);
       transform: translateY(-0.5rem);
     }
-  
+
     .card .flex {
       display: flex;
       align-items: center;
       padding: 20px;
     }
-  
+
     .icon-container {
       border-radius: 50%;
       background-color: #000000;
@@ -267,7 +292,7 @@ const items = [
       margin: 10px 0;
       margin-left: -8px;
     }
-  
+
     .btn-explorer,
     .btn-service {
       border-radius: 0.5rem;
@@ -276,19 +301,19 @@ const items = [
       margin-top: -11px;
       transition: background-color 0.3s ease;
     }
-  
+
     .btn-explorer {
       background-color: #2563eb;
     }
-  
+
     .btn-service {
       background-color: #374151;
     }
-  
+
     .btn-explorer:hover {
       background-color: #1d4ed8;
     }
-  
+
     .btn-service:hover {
       background-color: #1f2937;
     }
