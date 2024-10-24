@@ -51,7 +51,7 @@ curl -Ls https://snapshot.sychonix.com/testnet/warden/addrbook.json > $HOME/.war
 - Configure Seeds and Peers
 
 <div class="code-block-wrapper">
-  <pre><code>SEEDS="c51fda38278d5d7985a08557c149fd0cc93dae96@warden-testnet.sychonix.com:11656"
+  <pre><code>SEEDS="5cbacb5ad7aa6be5e4f9efb073be7b024100ff0f@warden-testnet.sychonix.com:12056"
 PEERS="$(curl -sS https://rpc-warden-t.sychonix.com/net_info | jq -r '.result.peers[] | "\(.node_info.id)@\(.remote_ip):\(.node_info.listen_addr)"' | awk -F ':' '{print $1":"$(NF)}' | sed -z 's|\n|,|g;s|.$||')"
 sed -i -e "s|^seeds *=.*|seeds = '"$SEEDS"'|; s|^persistent_peers *=.*|persistent_peers = '"$PEERS"'|" $HOME/.warden/config/config.toml</code></pre>
   <button class="copy-btn"><i class="fas fa-copy"></i></button>
