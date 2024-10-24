@@ -52,7 +52,9 @@ curl -Ls https://snapshot.sychonix.com/testnet/prysm/addrbook.json > $HOME/.prys
 - Configure Seeds and Peers
 
 <div class="code-block-wrapper">
-  <pre><code>sed -i -e "s|^seeds *=.*|seeds = \"9e64aabd8502346fa810857e2ce1f6fb6b8c6292@prysm-testnet.sychonix.com:19756\"|" $HOME/.prysm/config/config.toml</code></pre>
+  <pre><code>SEEDS="4a88c4925f887325872451659e554aafebdb026d@prysm-testnet.sychonix.com:19756"
+PEERS="$(curl -sS https://rpc-prysm-t.sychonix.com/net_info | jq -r '.result.peers[] | "\(.node_info.id)@\(.remote_ip):\(.node_info.listen_addr)"' | awk -F ':' '{print $1":"$(NF)}' | sed -z 's|\n|,|g;s|.$||')"
+sed -i -e "s|^seeds *=.*|seeds = '"$SEEDS"'|; s|^persistent_peers *=.*|persistent_peers = '"$PEERS"'|" $HOME/.prysm/config/config.toml</code></pre>
   <button class="copy-btn"><i class="fas fa-copy"></i></button>
 </div>
 

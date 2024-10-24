@@ -52,13 +52,7 @@ title: Dashboard
   
   <label class="block mt-1 mb-1">Seeds</label>
   <div class="code-block-wrapper">
-    <pre><code>9e64aabd8502346fa810857e2ce1f6fb6b8c6292@prysm-testnet.sychonix.com:19756</code></pre>
-    <button class="copy-btn"><i class="fas fa-copy"></i></button>
-  </div>
-
-  <label class="block mt-1 mb-1">Peers</label>
-  <div class="code-block-wrapper">
-    <pre><code>e0daf1e5649feba5ba3787288e66e1c9921b2c4c@prysm-testnet.sychonix.com:19756</code></pre>
+    <pre><code>4a88c4925f887325872451659e554aafebdb026d@prysm-testnet.sychonix.com:19756</code></pre>
     <button class="copy-btn"><i class="fas fa-copy"></i></button>
   </div>
 
