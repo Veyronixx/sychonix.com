@@ -51,7 +51,7 @@ Warden Protocol is a Layer 1 blockchain designed to bring AI capabilities to the
   
   <label class="block mt-1 mb-1">Seeds</label>
   <div class="code-block-wrapper">
-    <pre><code>c51fda38278d5d7985a08557c149fd0cc93dae96@warden-testnet.sychonix.com:11656</code></pre>
+    <pre><code>5cbacb5ad7aa6be5e4f9efb073be7b024100ff0f@warden-testnet.sychonix.com:12056</code></pre>
     <button class="copy-btn"><i class="fas fa-copy"></i></button>
   </div>
 
