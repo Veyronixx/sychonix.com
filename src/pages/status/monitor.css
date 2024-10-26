@@ -1,0 +1,193 @@
+#features2 {
+  background-image: url('/bekgronport.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  padding: 100px 0;
+  color: white;
+}
+
+.monitor-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  text-align: center;
+}
+
+.monitor {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 20px;
+  background-color: rgba(15, 23, 42, 0.8);
+  border-radius: 8px;
+  color: #fff;
+  font-family: Arial, sans-serif;
+  width: 80%;
+  margin: 20px auto;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.status-indicator {
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-weight: bold;
+}
+
+.status-indicator.up {
+  background-color: #4caf50;
+}
+
+.monitor-name {
+  flex-grow: 1;
+  text-align: left;
+}
+
+.status-history {
+  display: flex;
+  gap: 2px;
+}
+
+.history-bar {
+  width: 10px;
+  height: 20px;
+  border-radius: 3px;
+  background-color: #555;
+  opacity: 0.5;
+  animation: fill-bar 1s forwards;
+}
+
+/* Atur judul monitor */
+.monitor-title {
+  text-align: left;
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  margin-left: 10%;
+  color: #ffffff;
+}
+
+/* Lingkaran hijau dengan centang putih */
+.circle-check {
+  width: 16px;
+  height: 16px;
+  background-color: #4caf50;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 8px;
+}
+
+.checkmark {
+  width: 5px;
+  height: 10px;
+  border: solid #fff;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+  display: inline-block;
+}
+
+.status-label {
+  display: flex;
+  align-items: center;
+  font-size: 17px;
+  color: #ffffffcb;
+}
+
+.status-header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.status-header h1 {
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 5px;
+  color: #ffffff;
+}
+
+.last-updated {
+  font-size: 14px;
+  color: #ffffff9c;
+}
+
+.status-header .operational-status {
+  display: inline-flex;
+  color: #ffffff;
+}
+
+.operational-status img {
+  width: 16px;
+  height: 16px;
+  margin-right: 8px;
+}
+
+.operational-status-text {
+  color: #ffffff;
+}
+
+/* Animasi delay */
+.history-bar:nth-child(1) { animation-delay: 0.3s; }
+.history-bar:nth-child(2) { animation-delay: 0.6s; }
+.history-bar:nth-child(3) { animation-delay: 0.9s; }
+.history-bar:nth-child(4) { animation-delay: 1.2s; }
+.history-bar:nth-child(5) { animation-delay: 1.5s; }
+.history-bar:nth-child(6) { animation-delay: 1.8s; }
+.history-bar:nth-child(7) { animation-delay: 2.1s; }
+.history-bar:nth-child(8) { animation-delay: 2.4s; }
+.history-bar:nth-child(9) { animation-delay: 2.7s; }
+.history-bar:nth-child(10) { animation-delay: 3s; }
+.history-bar:nth-child(11) { animation-delay: 3.3s; }
+.history-bar:nth-child(12) { animation-delay: 3.6s; }
+.history-bar:nth-child(13) { animation-delay: 3.9s; }
+.history-bar:nth-child(14) { animation-delay: 4.2s; }
+.history-bar:nth-child(15) { animation-delay: 4.5s; }
+.history-bar:nth-child(16) { animation-delay: 4.8s; }
+.history-bar:nth-child(17) { animation-delay: 5.1s; }
+.history-bar:nth-child(18) { animation-delay: 5.4s; }
+.history-bar:nth-child(19) { animation-delay: 5.7s; }
+.history-bar:nth-child(20) { animation-delay: 6s; }
+
+@keyframes fill-bar {
+  from {
+    background-color: #555;
+    opacity: 0.5;
+  }
+  to {
+    background-color: #4caf50;
+    opacity: 1;
+  }
+}
+
+/* Media query untuk tampilan mobile */
+@media (max-width: 768px) {
+  .monitor {
+    flex-direction: column;
+    align-items: flex-start;
+    width: 90%;
+  }
+
+  .status-label {
+    font-size: 15px;
+  }
+
+  .status-history {
+    margin-top: 10px;
+  }
+
+  .monitor-title {
+    text-align: center;
+    margin-left: 0;
+    font-size: 18px;
+  }
+
+  .status-header h1 {
+    font-size: 20px;
+  }
+
+  .last-updated {
+    font-size: 12px;
+  }
+}

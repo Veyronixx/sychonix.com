@@ -1,0 +1,81 @@
+---
+import { SITE } from '~/config.mjs';
+import { getCanonical, getHomePermalink } from '~/utils/permalinks';
+import Layout from '~/layouts/PageLayout.astro';
+
+import '../../pages/status/monitor.css';
+
+const mainnetNames = [
+  'CNHO Stables', 'Crossfi', 'firmachain', 'Self Chain', 'Tangle Network'
+];
+
+const testnetNames = [
+  'Airchains', 'Avail', 'Chainflip', 'Chasm', 'Crossfi', 'Dill', 
+  'Empeiria', 'fiamma', 'GaiaNet', 'Initia', 'Nubit', 'Kopi', 
+  'Prysm Network', 'Symphony', 'T3rn', 'Tanssi', 'Warden'
+];
+
+const historyBars = Array(20).fill(null); // Array untuk 10 indikator
+---
+
+<Layout>
+  <section id="features2" class="py-6">
+    <div class="monitor-container">
+      <div class="status-header">
+        <h1>All Systems Operational</h1>
+        <p id="last-updated" class="last-updated"></p>
+      </div>
+
+      <h2 class="monitor-title">Mainnet</h2>
+      {mainnetNames.map(name => (
+        <div class="monitor">
+          <div class="status-label">
+            <img style="width: 16px;" class="mr-2" src="https://uptime.betterstack.com/assets/status_pages/operational_small-da9ff2fc30b3886ee7a3c8f15a12c3e9d33658fafbd6b2a3759c5bfe2a47c90b.png" alt="Operational">
+            <span>{name}</span>
+          </div>
+          <div class="status-history">
+            {historyBars.map(() => (
+              <span class="history-bar"></span>
+            ))}
+          </div>
+        </div>
+      ))}
+
+      <h2 class="monitor-title">Testnet</h2>
+      {testnetNames.map(name => (
+        <div class="monitor">
+          <div class="status-label">
+            <img style="width: 16px;" class="mr-2" src="https://uptime.betterstack.com/assets/status_pages/operational_small-da9ff2fc30b3886ee7a3c8f15a12c3e9d33658fafbd6b2a3759c5bfe2a47c90b.png" alt="Operational">
+            <span>{name}</span>
+          </div>
+          <div class="status-history">
+            {historyBars.map(() => (
+              <span class="history-bar"></span>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <script is:inline>
+    function updateTime() {
+      const now = new Date();
+      const options = { 
+        year: 'numeric', 
+        month: 'long', 
+        day: '2-digit', 
+        hour: '2-digit', 
+        minute: '2-digit', 
+        timeZoneName: 'short', 
+        hour12: false 
+      };
+      const formattedTime = now.toLocaleString('en-US', options);
+
+      document.getElementById('last-updated').textContent = `As of ${formattedTime}`;
+    }
+
+    updateTime();
+    setInterval(updateTime, 1000);
+  </script>
+</Layout>

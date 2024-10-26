@@ -39,7 +39,7 @@ import { getHomePermalink } from '~/utils/permalinks';
           <a
             id="services-link"
             class="font-medium text-gray-300 hover:text-white px-4 py-3 flex items-center transition duration-150 ease-in-out cursor-pointer"
-          >Services</a>
+          >Status</a>
         </li>
         <li class="md:hidden">
           <a
@@ -66,7 +66,7 @@ import { getHomePermalink } from '~/utils/permalinks';
     <div class="flex flex-col items-center pt-16">
       <a class="text-white text-2xl py-3 hover:text-white hover:bg-gray-800 transition duration-150 ease-in-out" href="https://explorer.sychonix.com/">Explorer</a>
       <a class="text-white text-2xl py-3 hover:text-white hover:bg-gray-800 transition duration-150 ease-in-out" href="#networks">Networks</a>
-      <a id="services-link-dropdown" class="text-white text-2xl py-3 hover:text-white hover:bg-gray-800 cursor-pointer transition duration-150 ease-in-out">Services</a>
+      <a id="services-link-dropdown" class="text-white text-2xl py-3 hover:text-white hover:bg-gray-800 cursor-pointer transition duration-150 ease-in-out">Status</a>
       <a class="text-white text-2xl py-3" href="https://github.com/sychonix">Github</a>
     </div>
   </div>
@@ -127,7 +127,7 @@ toggleMenuButton.addEventListener('click', () => {
 });
 
 document.getElementById('services-link').addEventListener('click', () => {
-  window.location.href = '/services'; // Navigate to the services page
+  window.location.href = '/status'; // Navigate to the services page
 });
 
 document.querySelector('a[href="#networks"]').addEventListener('click', () => {
