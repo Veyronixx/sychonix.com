@@ -28,8 +28,8 @@ icon: selfchain
 - Download Snapshot
 
 <div class="code-block-wrapper">
-  <pre><code>curl https://snapshot.sychonix.com/mainnet/selfchain/selfchain-latest.tar.lz4 | lz4 -dc - | tar -xf - -C $HOME/.selfchain</code></pre>
-  <button class="copy-btn" data-target="curl https://snapshot.sychonix.com/mainnet/selfchain/selfchain-latest.tar.lz4 | lz4 -dc - | tar -xf - -C $HOME/.selfchain"><i class="fas fa-copy"></i></button>
+  <pre><code>curl https://snapshot.sychonix.com/mainnet/selfchain/selfchain-snapshot.tar.lz4 | lz4 -dc - | tar -xf - -C $HOME/.selfchain</code></pre>
+  <button class="copy-btn" data-target="curl https://snapshot.sychonix.com/mainnet/selfchain/selfchain-snapshot.tar.lz4 | lz4 -dc - | tar -xf - -C $HOME/.selfchain"><i class="fas fa-copy"></i></button>
 </div>
 
 - Restore Backup

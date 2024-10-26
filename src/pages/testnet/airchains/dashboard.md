@@ -15,20 +15,20 @@ Airchains is distinct from RaaS providers because we built our own ZK circuit fr
 
 <label class="block mt-1 mb-1">RPC Endpoints</label> <!-- Added mt-1 mb-1 to adjust spacing -->
 <div class="code-block-wrapper">
-  <pre><code>https://rpc-selfchain.sychonix.com</code></pre>
+  <pre><code>https://rpc-airchains-t.sychonix.com</code></pre>
   <button class="copy-btn"><i class="fas fa-copy"></i></button>
 </div>
 
 
   <label>API Endpoints</label>
   <div class="code-block-wrapper">
-  <pre><code>https://api-selfchain.sychonix.com</code></pre>
+  <pre><code>https://api-airchains-t.sychonix.com</code></pre>
   <button class="copy-btn"><i class="fas fa-copy"></i></button>
 </div>
 
   <label>Chain Explorer</label>
   <div class="code-block-wrapper">
-  <pre><code></code>https://explorer.sychonix.com/selfchain-mainnet</pre>
+  <pre><code></code>https://explorer.sychonix.com/airchains-testnet</pre>
   <button class="copy-btn"><i class="fas fa-copy"></i></button>
 </div>
 

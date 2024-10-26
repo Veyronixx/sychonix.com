@@ -24,7 +24,7 @@ icon: emped
 </div>
 
 <div class="code-block-wrapper">
-  <pre><code>curl https://snapshot.sychonix.com/testnet/empeiria/empeiria-latest.tar.lz4 | lz4 -dc - | tar -xf - -C $HOME/.empe-chain</code></pre>
+  <pre><code>curl https://snapshot.sychonix.com/testnet/empeiria/empeiria-snapshot.tar.lz4 | lz4 -dc - | tar -xf - -C $HOME/.empe-chain</code></pre>
   <button class="copy-btn"><i class="fas fa-copy"></i></button>
 </div>
 

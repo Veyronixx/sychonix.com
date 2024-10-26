@@ -532,14 +532,16 @@ function copyText(preIndex) {
     background-color: #0f172a;
   }
 
-  .cheat-sheet-container .input-group input:focus {
-    outline: none;
-    border-color: rgb(0, 0, 0);
+  .cheat-sheet-container .input-group input {
+    background-color: #020617;
+    border-color: rgb(226 232 240);
+    border-width: 2px;
   }
 
-  .cheat-sheet-container .input-group input::placeholder {
-    color: #cbd5e1; /* Placeholder text color */
-    font-size: 13px; /* Placeholder text size */
+  .cheat-sheet-container .input-group input:focus {
+    outline: none;
+    border-color: rgb(226 232 240);
+    border-width: 2px;
   }
 
   /* Popup Styles */

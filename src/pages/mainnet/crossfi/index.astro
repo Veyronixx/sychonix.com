@@ -17,7 +17,7 @@ import Upgrade from './upgrade.md';
 const name = 'Crossfi Finance';
 const icon = '/img/crossfi.jpg';
 const network = 'Mainnet';
-const chain = 'mineplex-mainnet-1';
+const chain = 'crossfi-mainnet-1';
 const version = '0.3.0-prebuild9';
 const stake = 'https://explorer.sychonix.com/crossfi-mainnet/staking/mxvaloper1lf8unxkwj4qwsyhrp3qceexrm9heyh9gxllf6r';
 
@@ -34,7 +34,7 @@ const meta = {
   canonical: getCanonical(getHomePermalink()),
 };
 const combinedMenu = [
-  { title: '', path: 'dashboard', component: Dashboard, type: 'item' },
+  { title: 'Network Overview', path: 'dashboard', component: Dashboard, type: 'item' },
   { title: 'Installation', path: 'installation', component: Installation, type: 'item' },
   { title: 'Upgrade', path: 'upgrade', component: Upgrade, type: 'item' },
   {
@@ -99,7 +99,7 @@ const combinedMenu = [
           <div id="sidebar" class="tabs flex-shrink-0 md:block hidden">
             <div class="submenu-container">
               {combinedMenu.map((menu, index) => {
-                if (menu.path === 'dashboard') {
+                if (menu.path === 'submenu') {
                   // Sembunyikan Dashboard dengan kelas khusus
                   return (
                     <button
@@ -325,15 +325,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const lastFetchTime = localStorage.getItem('lastFetchTime');
     const currentTime = new Date().getTime();
 
-    // Check if cache is older than 10 minutes
-    if (cachedHeight && lastFetchTime && currentTime - lastFetchTime < 600000) {
-      document.getElementById('block-height').innerHTML = `<strong>Block Height:</strong> ${cachedHeight}`;
-      return;
-    }
-
     const response = await fetch('https://crossfi-mainnet-rpc.itrocket.net/status');
     const data = await response.json();
     const latestBlockHeight = data.result.sync_info.latest_block_height;
+
+    if (cachedHeight && lastFetchTime && currentTime - lastFetchTime < 30000) {
+  document.getElementById('block-height').innerHTML = `<strong>Block Height:</strong> ${cachedHeight}`;
+  return;
+}
 
     // Update the block height in localStorage
     localStorage.setItem('blockHeight', latestBlockHeight);
@@ -347,7 +346,7 @@ document.addEventListener('DOMContentLoaded', () => {
 }
 
   // Update block height every 7 seconds
-  setInterval(fetchBlockHeight, 7000);
+  setInterval(fetchBlockHeight, 6000);
 
   // Handle initial tab state based on URL
   const currentPath = window.location.pathname.split('/').pop();
