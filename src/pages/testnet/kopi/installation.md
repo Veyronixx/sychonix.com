@@ -23,9 +23,10 @@ eval $(echo 'export PATH=$PATH:$HOME/go/bin' | tee -a $HOME/.profile)</code></pr
 - Install Binary
 
 <div class="code-block-wrapper">
-  <pre><code>cd $HOME
-git clone --quiet --depth 1 --branch v0.6 https://github.com/kopi-money/kopi.git
+  <pre><code>cd $HOME && mkdir -p go/bin/
+git clone https://github.com/kopi-money/kopi.git
 cd kopi
+git checkout v0.6.3
 make install</code></pre>
   <button class="copy-btn"><i class="fas fa-copy"></i></button>
 </div>
