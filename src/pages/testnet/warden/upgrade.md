@@ -12,6 +12,7 @@ unzip wardend_Linux_x86_64.zip
 rm -rf wardend_Linux_x86_64.zip
 chmod +x wardend
 mv wardend $(which wardend)
-wardend version --long</code></pre>
+wardend version --long
+sudo systemctl restart wardend && sudo journalctl -u wardend -f -o cat</code></pre>
   <button class="copy-btn"><i class="fas fa-copy"></i></button>
 </div>
