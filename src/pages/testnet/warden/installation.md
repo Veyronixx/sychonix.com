@@ -24,7 +24,7 @@ eval $(echo 'export PATH=$PATH:$HOME/go/bin' | tee -a $HOME/.profile)</code></pr
 
 <div class="code-block-wrapper">
   <pre><code>cd $HOME && mkdir -p go/bin/
-wget https://github.com/warden-protocol/wardenprotocol/releases/download/v0.5.2/wardend_Linux_x86_64.zip
+wget https://github.com/warden-protocol/wardenprotocol/releases/download/v0.5.3/wardend_Linux_x86_64.zip
 unzip wardend_Linux_x86_64.zip
 rm -rf wardend_Linux_x86_64.zip
 chmod +x wardend
