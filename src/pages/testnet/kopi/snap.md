@@ -72,7 +72,7 @@ title: Snapshot
   <button class="copy-btn"><i class="fas fa-copy"></i></button>
 </div>
 
-- Reset State
+- Reset the data
 
 <div class="code-block-wrapper">
   <pre><code>kopid tendermint unsafe-reset-all --home $HOME/.kopid --keep-addr-book</code></pre>

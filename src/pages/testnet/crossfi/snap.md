@@ -16,7 +16,7 @@ title: Snapshot
   <button class="copy-btn"><i class="fas fa-copy"></i></button>
 </div>
 
-- Reset State
+- Reset the data
 <div class="code-block-wrapper">
   <pre><code>crossfid tendermint unsafe-reset-all --home $HOME/.crossfid --keep-addr-book</code></pre>
   <button class="copy-btn"><i class="fas fa-copy"></i></button>
