@@ -1,15 +1,18 @@
 ---
 layout: '~/layouts/copybutton.astro'
+icon : cnho
 ---
-<!--
-please modify this according to the chain
-node name and icon : fiamma
-chain id : fiamma-testnet-1
-Binary Name : fiammad
-Binary Home : $HOME/.fiamma
-Staking Denom : ufia
-systemd name : fiammad 
+<!-- Change it
+cnho
+fiamma-testnet-1
+fiammad
+$HOME/.fiamma
+ufia
+fiammad 
+0.00001ufia
+1000000ufia
 -->
+
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
 
@@ -64,18 +67,20 @@ systemd name : fiammad
 
 
 <h3 for="imoniker">Validator Management</h3>
-<label for="ivalidator" style="vertical-align: top;"> Create New Validator</label>
 <div class="input-row">
   <!-- Col 1 -->
   <div class="input-col">
+  <h4>Moniker</h4>
     <div class="input-group">
       <label for="imoniker">Moniker</label>
       <input id="imoniker" type="text" placeholder="Enter Moniker" oninput="updatePre()" />
     </div>
+    <h4>Identity</h4>
     <div class="input-group">
       <label for="iidentity">Identity</label>
       <input id="iidentity" type="text" placeholder="Enter Identity" oninput="updatePre()" />
     </div>
+    <h4>Details</h4>
     <div class="input-group">
       <label for="idetails">Details</label>
       <input id="idetails" type="text" placeholder="Enter Details" oninput="updatePre()" />
@@ -83,41 +88,53 @@ systemd name : fiammad
   </div>
   <!-- Col 2 -->
   <div class="input-col">
+    <h4>Website</h4> 
     <div class="input-group">
       <label for="iwebsite">Website</label>
       <input id="iwebsite" type="text" placeholder="Enter Website" oninput="updatePre()" />
     </div>
+  <h4>Security Contact</h4> 
     <div class="input-group">
       <label for="icontact">Contact</label>
-      <input id="icontact" type="text" placeholder="Enter Contact" oninput="updatePre()" />
+      <input id="icontact" type="text" placeholder="Enter Your Email" oninput="updatePre()" />
     </div>
+  <h4>Amount</h4>
     <div class="input-group">
       <label for="iamount">Amount</label>
-      <input id="iamount" type="text" placeholder="Enter Amount" oninput="updatePre()" />
+      <input id="iamount" type="text" value="1000000" placeholder="Enter Amount" oninput="updatePre()" />
     </div>
+  <h4></h4>
+<div class="input-group" style="display: none;">
+  <label for="icommission">Commission</label>
+  <input id="icommission" type="text" value="0.05" placeholder="Enter Commission" />
+</div>
   </div>
 </div>
 
 <!-- Wrap the <pre> and button in a new container -->
 <div class="pre-container">
+<label for="ivalidator" style="vertical-align: top;"> Create New Validator</label>
   <pre class="my-pre" id="pre8">
 fiammad tx staking create-validator \
---amount=<span class="ramount1"></span>0000000ufia \
---moniker="<span class="rmoniker1"></span>" \
+--amount=<span class="ramount1">1000000ufia</span> \
 --pubkey=$(fiammad tendermint show-validator) \
+--moniker="<span class="rmoniker1"></span>" \
 --identity="<span class="ridentity1"></span>" \
 --details="<span class="rdetails1"></span>" \
 --website="<span class="rwebsite1"></span>" \
 --security-contact=<span class="rcontact1"></span> \
 --chain-id=fiamma-testnet-1 \
---commission-rate=<span class="rcommission1"></span> \
+--commission-rate=<span class="rcommission1">0.05</span> \
 --commission-max-rate=0.20 \
 --commission-max-change-rate=0.01 \
 --min-self-delegation=1 \
---from=<span class="rwallet8"></span> \
---gas=auto  \
---gas-prices="0ufia"</pre>
-<button class="copy-btn" id="copy8" data-clipboard-text="" onclick="copyText(8)"></button>
+--gas-prices 0.00001ufia \
+--gas "auto" \
+--gas-adjustment "1.5" \
+--from <span class="rwallet8">wallet</span> \
+-y</pre>
+  <button class="copy-btn" id="copy8" data-clipboard-text="" onclick="copyText(8)"></button>
+
 
 <label for="imoniker"> Edit Validator</label>
 <div class="container">
@@ -148,15 +165,16 @@ fiammad tx staking edit-validator \
 --website="<span class="reditweb1"></span>" \
 --chain-id=fiamma-testnet-1 \
 --commission-rate=0.07 \
---from=<span class="rwallet9"></span> \
---gas=auto  \
---gas-prices="0ufia"  </pre>
-  <button class="copy-btn" id="copy9" data-clipboard-text="" onclick="copyText(9)"></button>
+--from <span class="rwallet9">wallet</span> \
+--gas=auto \
+--gas-prices 0.00001ufia \
+-y</pre>
+  <button class="copy-btn" id="copy8" data-clipboard-text="" onclick="copyText(8)"></button>
 </div>
 
 <label for="iwallet" style="vertical-align: top;"> Unjail Validator</label>
 <div class="pre-container">
-  <pre class="my-pre" id="pre10">fiammad tx slashing unjail --from <span class="rwallet10"></span> --chain-id fiamma-testnet-1 --gas-prices 0.00025ufia --gas-adjustment 1.5 --gas auto -y</pre>
+  <pre class="my-pre" id="pre10">fiammad tx slashing unjail --from wallet --chain-id fiamma-testnet-1 --gas auto --gas-adjustment 1.5  </pre>
   <button class="copy-btn" id="copy10" data-clipboard-text="" onclick="copyText(10)"></button>
 </div>
 
@@ -168,7 +186,7 @@ fiammad tx staking edit-validator \
 
 <label for="iwallet" style="vertical-align: top;"> View validator details</label>
 <div class="pre-container">
-  <pre class="my-pre" id="pre12">fiammad q staking validator $(fiammad keys show <span class="rwallet11"></span> --bech val -a)</pre>
+  <pre class="my-pre" id="pre12">fiammad q staking validator $(fiammad keys show wallet --bech val -a)</pre>
   <button class="copy-btn" id="copy12" data-clipboard-text="" onclick="copyText(12)"></button>
 </div>
 
@@ -192,15 +210,15 @@ fiammad tx staking edit-validator \
 
 <h3 for="imoniker">Token Management</h3>
 
-<label for="ivalidator" style="vertical-align: top;"> Withdraw rewards from all validators</label>
+<label for="ivalidator">Withdraw rewards from all validators</label>
 <div class="pre-container">
-  <pre class="my-pre" id="pre13">fiammad tx distribution withdraw-all-rewards --from <span class="rwallet12"></span> --chain-id fiamma-testnet-1 --gas=auto  --gas-prices="0ufia"</pre>
+  <pre class="my-pre" id="pre13">fiammad tx distribution withdraw-all-rewards --from wallet --chain-id fiamma-testnet-1 --gas auto --gas-adjustment 1.5 --gas-prices 0.00001ufia -y </pre>
   <button class="copy-btn" id="copy13" data-clipboard-text="" onclick="copyText(13)"></button>
 </div>
 
 <label for="ivalidator" style="vertical-align: top;"> Withdraw commission and rewards from your validator</label>
 <div class="pre-container">
-  <pre class="my-pre" id="pre14">fiammad tx distribution withdraw-rewards $(fiammad keys show <span class="rwallet13"></span> --bech val -a) --commission --from <span class="rwallet14"></span> --chain-id fiamma-testnet-1 --gas=auto --gas-prices="0ufia"</pre>
+  <pre class="my-pre" id="pre14">fiammad tx distribution withdraw-rewards $(fiammad keys show wallet --bech val -a) --commission --from wallet --chain-id fiamma-testnet-1 --gas auto --gas-adjustment 1.5 --gas-prices 0.00001ufia -y </pre>
   <button class="copy-btn" id="copy14" data-clipboard-text="" onclick="copyText(14)"></button>
 </div>
 
@@ -208,46 +226,43 @@ fiammad tx staking edit-validator \
 <div class="input-group">
 
 <label for="idelegete" style="vertical-align: top;"> Delegate tokens to yourself</label>
-<div class="input-group">
+<div class="input-group" style="display: none;">
   <input id="idelegete" type="text" placeholder="Enter Amount" oninput="updatePre()" />
 </div>
 <div class="pre-container">
-  <pre class="my-pre" id="pre15" style="margin-top: 5px;">fiammad tx staking delegate $(fiammad keys show <span class="rwallet15"></span> --bech val -a) <span class="rdelegete1"></span>00000000ufia --from <span class="rwallet16"></span> --chain-id fiamma-testnet-1 --gas=auto --gas-prices="0ufia"</pre>
-  <button class="copy-btn" id="copy15" data-clipboard-text="" onclick="copyText(15)"></button>
+  <pre class="my-pre" id="pre15" style="margin-top: 5px;">fiammad tx staking delegate $(fiammad keys show wallet --bech val -a) <span class="rdelegete1"></span>1000000ufia --from wallet --chain-id fiamma-testnet-1 --gas auto --gas-adjustment 1.5 --gas-prices 0.00001ufia -y </pre>
+  <button class="copy-btn" id="copy15" data-clipboard-text="" onclick="copyText(15)">Copy</button>
 </div>
-
 
 <label for="iredelegete" style="vertical-align: top;"> Redelegate tokens to another validator</label>
 <div class="input-group">
   <input id="iredelegete" type="text" placeholder="Enter <TO_VALOPER_ADDRESS>" oninput="updatePre()" />
 </div>
 <div class="pre-container">
-  <pre class="my-pre" id="pre16" style="margin-top: 5px;">fiammad tx staking redelegate $(fiammad keys show <span class="rwallet17"></span> --bech val -a) <span class="rredelegete1"></span> <span class="rdelegete2"></span>00000000ufia --from <span class="rwallet18"></span> --chain-id fiamma-testnet-1 --gas=auto --gas-prices="0ufia"</pre>
+  <pre class="my-pre" id="pre16" style="margin-top: 5px;">fiammad tx staking redelegate $(fiammad keys show wallet --bech val -a) <span class="rredelegete1"></span> <span class="rdelegete2"></span>1000000ufia --from wallet --chain-id fiamma-testnet-1 --gas auto --gas-adjustment 1.5 --gas-prices 0.00001ufia -y</pre>
   <button class="copy-btn" id="copy16" data-clipboard-text="" onclick="copyText(16)"></button>
 </div>
 
 
 <label for="iredelegete" style="vertical-align: top;"> Delegate tokens to validator</label>
 <div class="pre-container">
-  <pre class="my-pre" id="pre17" style="margin-top: 5px;">fiammad tx staking delegate <span class="rredelegete2"></span> <span class="rdelegete3"></span>00000000ufia --from <span class="rwallet19"></span> --chain-id fiamma-testnet-1 --gas=auto --gas-prices="0ufia"</pre>
+  <pre class="my-pre" id="pre17" style="margin-top: 5px;">fiammad tx staking delegate <span class="rredelegete2"></span> <span class="rdelegete3"></span>1000000ufia --from <span class="rwallet19"></span> --chain-id fiamma-testnet-1 --gas auto --gas-adjustment 1.5 --gas-prices 0.00001ufia -y </pre>
   <button class="copy-btn" id="copy17" data-clipboard-text="" onclick="copyText(17)"></button>
 </div>
 
 
 <label for="iredelegete" style="vertical-align: top;"> Unbond tokens from your validator</label>
 <div class="pre-container">
-  <pre class="my-pre" id="pre18" style="margin-top: 5px;">fiammad tx staking unbond $(fiammad keys show <span class="rwallet20"></span> --bech val -a) <span class="rdelegete4"></span>00000000ufia --from <span class="rwallet21"></span> --chain-id fiamma-testnet-1 --gas=auto --gas-prices="0ufia"</pre>
+  <pre class="my-pre" id="pre18" style="margin-top: 5px;">fiammad tx staking unbond $(fiammad keys show wallet --bech val -a) <span class="rdelegete4"></span>1000000ufia --from wallet --chain-id fiamma-testnet-1 --gas auto --gas-adjustment 1.5 --gas-prices 0.00001ufia -y</pre>
   <button class="copy-btn" id="copy18" data-clipboard-text="" onclick="copyText(18)"></button>
 </div>
-
-
 
 <label for="idelegete" style="vertical-align: top;"> Send tokens to Any wallet</label>
 <div class="input-group">
   <input id="itoken" type="text" placeholder="Enter Address Wallet" oninput="updatePre()" />
 </div>
 <div class="pre-container">
-  <pre class="my-pre" id="pre19" style="margin-top: 5px;">fiammad tx bank send <span class="rwallet22"></span> <span class="rtoken1"></span> <span class="rdelegete5"></span>000000000ufia --from <span class="rwallet23"></span> --chain-id fiamma-testnet-1 --gas=auto --gas-prices="0ufia"</pre>
+  <pre class="my-pre" id="pre19" style="margin-top: 5px;">fiammad tx bank send wallet</span> <span class="rtoken1"></span> <span class="rdelegete5"></span>1000000ufia --from wallet --chain-id fiamma-testnet-1 --gas auto --gas-adjustment 1.5 --gas-prices 0.00001ufia -y</pre>
   <button class="copy-btn" id="copy19" data-clipboard-text="" onclick="copyText(19)"></button>
 </div>
 
@@ -315,7 +330,7 @@ sed -i.bak -e "s%^address = \"tcp://0.0.0.0:1317\"%address = \"tcp://0.0.0.0:${C
 
 <label> Remove Node</label>
 <div class="pre-container">
-  <pre class="my-pre" id="pre21">sudo systemctl stop fiammad && sudo systemctl disable fiammad && sudo rm /etc/systemd/system/fiammad.service && sudo systemctl daemon-reload && rm -rf $HOME/.fiamma && rm -rf fiamma-testnet-1 && sudo rm -rf $(which fiammad)</pre>
+  <pre class="my-pre" id="pre21">cd $HOME && sudo systemctl stop fiammad && sudo systemctl disable fiammad && sudo rm /etc/systemd/system/fiammad.service && sudo systemctl daemon-reload && sudo rm -rf $(which fiammad) && sudo rm -rf $HOME/.fiamma && sudo rm -rf $(which fiammad)</pre>
   <button class="copy-btn" id="copy21" data-clipboard-text="" onclick="copyText(21)"></button>
 </div>
 
@@ -331,22 +346,6 @@ sed -i.bak -e "s%^address = \"tcp://0.0.0.0:1317\"%address = \"tcp://0.0.0.0:${C
     document.querySelector('.rwallet5').textContent = walletInput;
     document.querySelector('.rwallet6').textContent = walletInput;
     document.querySelector('.rwallet7').textContent = walletInput;
-    document.querySelector('.rwallet8').textContent = walletInput;
-    document.querySelector('.rwallet9').textContent = walletInput;
-    document.querySelector('.rwallet10').textContent = walletInput;
-    document.querySelector('.rwallet11').textContent = walletInput;
-    document.querySelector('.rwallet12').textContent = walletInput;
-    document.querySelector('.rwallet13').textContent = walletInput;
-    document.querySelector('.rwallet14').textContent = walletInput;
-     document.querySelector('.rwallet15').textContent = walletInput;
-      document.querySelector('.rwallet16').textContent = walletInput;
-        document.querySelector('.rwallet17').textContent = walletInput;
-          document.querySelector('.rwallet18').textContent = walletInput;
-          document.querySelector('.rwallet19').textContent = walletInput;
-          document.querySelector('.rwallet20').textContent = walletInput;
-          document.querySelector('.rwallet21').textContent = walletInput;
-          document.querySelector('.rwallet22').textContent = walletInput;
-          document.querySelector('.rwallet23').textContent = walletInput;
 
     const monikerInput = document.getElementById('imoniker').value.trim();
     document.querySelector('.rmoniker1').textContent = monikerInput;
@@ -364,7 +363,7 @@ sed -i.bak -e "s%^address = \"tcp://0.0.0.0:1317\"%address = \"tcp://0.0.0.0:${C
     document.querySelector('.rcontact1').textContent = contactInput;
 
     const amountInput = document.getElementById('iamount').value.trim();
-    document.querySelector('.ramount1').textContent = amountInput;
+    document.querySelector('.ramount1').textContent = amountInput + 'ufia'; 
     
     const commissionInput = document.getElementById('icommission').value.trim();
     document.querySelector('.rcommission1').textContent = commissionInput;
@@ -444,12 +443,6 @@ function copyText(preIndex) {
   color: #e5e5e5 !important; /* Text color for labels */
   margin-left: 0.1rem !important; /* Align left with a bit of indentation */
 }
-/* Adjust spacing for the specific label 'Create New Validator' */
-.cheat-sheet-container label[for="ivalidator"] {
-  margin-bottom: 0 !important; /* Remove bottom margin */
-  margin-top: 0 !important; /* Remove top margin to move it up */
-  padding: 0 !important; /* Remove any padding */
-}
 
 .cheat-sheet-container .copy-btn {
   position: absolute; /* Position relative to the nearest positioned ancestor */
@@ -504,6 +497,20 @@ function copyText(preIndex) {
     margin-bottom: 20px;
   }
 
+/* Styling khusus untuk elemen h4 di dalam input-col */
+.input-col h4 {
+  margin-bottom: 2px;  /* Membuat jarak antara judul dan input sangat dekat */
+  margin-top: 5px;     /* Jarak minimal antara judul dengan elemen di atasnya */
+  font-size: 1rem;     /* Ukuran font tetap */
+  font-weight: 600;    /* Membuat teks lebih tebal */
+  color: #e5e5e5;      /* Warna teks yang konsisten dengan tema */
+}
+
+/* Menyesuaikan jarak antara input dan elemen h4 sebelumnya */
+.input-group {
+  margin-bottom: 10px; /* Jarak antar group input juga diperpendek */
+}
+
   /* Input Group Styles */
   .cheat-sheet-container .input-group {
     margin-bottom: 20px;
@@ -525,10 +532,6 @@ function copyText(preIndex) {
   }
 
   .cheat-sheet-container .input-group input {
-    background-color: #0f172a;
-  }
-
-  .cheat-sheet-container .input-group input {
     background-color: #020617;
     border-color: rgb(226 232 240);
     border-width: 2px;
@@ -538,6 +541,11 @@ function copyText(preIndex) {
     outline: none;
     border-color: rgb(226 232 240);
     border-width: 2px;
+  }
+
+  .cheat-sheet-container .input-group input::placeholder {
+    color: #cbd5e1; /* Placeholder text color */
+    font-size: 13px; /* Placeholder text size */
   }
 
   /* Popup Styles */

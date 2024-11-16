@@ -1,102 +1,104 @@
 ---
 title: Installation Node
-
-network: Testnet
-chain id: fiamma-testnet-1
-icon: fiamma
 ---
-- Install Dependencies
+
+- Install Dependencies 
+
 <div class="code-block-wrapper">
-  <pre><code>sudo apt update && sudo apt upgrade -y 
-sudo apt install -y git gcc make unzip jq</code></pre>
+  <pre><code>sudo apt update && sudo apt upgrade -y
+apt install curl iptables build-essential git wget jq make gcc nano tmux htop nvme-cli pkg-config libssl-dev libleveldb-dev tar clang bsdmainutils ncdu unzip libleveldb-dev -y</code></pre>
   <button class="copy-btn"><i class="fas fa-copy"></i></button>
 </div>
 
 - Install Go
+
 <div class="code-block-wrapper">
-  <pre><code>VER="1.21.6"
-sudo rm -rf /usr/local/go
-curl -Ls https://go.dev/dl/go$VER.linux-amd64.tar.gz | sudo tar -xzf - -C /usr/local
-echo "export PATH=$PATH:/usr/local/go/bin:$HOME/go/bin" >> $HOME/.bash_profile
-source $HOME/.bash_profile
-go version</code></pre>
+  <pre><code>sudo rm -rf /usr/local/go
+curl -Ls https://go.dev/dl/go1.23.2.linux-amd64.tar.gz | sudo tar -xzf - -C /usr/local
+eval $(echo 'export PATH=$PATH:/usr/local/go/bin' | sudo tee /etc/profile.d/golang.sh)
+eval $(echo 'export PATH=$PATH:$HOME/go/bin' | tee -a $HOME/.profile)</code></pre>
   <button class="copy-btn"><i class="fas fa-copy"></i></button>
 </div>
+
 - Install Binary
+
 <div class="code-block-wrapper">
   <pre><code>cd $HOME
-git clone https://github.com/fiamma-chain/fiamma
+rm -rf fiamma
+git clone https://github.com/fiamma-chain/fiamma.git
 cd fiamma
-git checkout v0.1.3
+git checkout v1.0.0
 make install</code></pre>
   <button class="copy-btn"><i class="fas fa-copy"></i></button>
 </div>
 
-- Initialize the node
+- Initialize The Node
+
+<div class="code-block-wrapper"><!-- Change chain id and port -->
+  <pre><code>fiammad init $MONIKER --chain-id fiamma-testnet-1
+sed -i -e "s|^node *=.*|node = \"tcp://localhost:12257\"|" $HOME/.fiamma/config/client.toml
+sed -i -e "s|^keyring-backend *=.*|keyring-backend = \"os\"|" $HOME/.fiamma/config/client.toml
+sed -i -e "s|^chain-id *=.*|chain-id = \"fiamma-testnet-1\"|" $HOME/.fiamma/config/client.toml</code></pre>
+  <button class="copy-btn"><i class="fas fa-copy"></i></button>
+</div><!-- Change chain id and port -->
+
+- Download Genesis & Addrbook
+
 <div class="code-block-wrapper">
-  <pre><code>fiammad config chain-id fiamma-testnet-1
-fiammad config keyring-backend file
-fiammad init &lt;your_name&gt; --chain-id fiamma-testnet-1</code></pre>
+  <pre><code>curl -Ls https://snapshot.sychonix.com/testnet/fiamma/genesis.json > $HOME/.fiamma/config/genesis.json
+curl -Ls https://snapshot.sychonix.com/testnet/fiamma/addrbook.json > $HOME/.fiamma/config/addrbook.json</code></pre>
   <button class="copy-btn"><i class="fas fa-copy"></i></button>
 </div>
 
-- Genesis
+- Configure Seeds and Peers
+
 <div class="code-block-wrapper">
-  <pre><code>curl -Ls https://snapshot.sychonix.com/testnet/fiamma/genesis.json > $HOME/.fiamma/config/genesis.json</code></pre>
+  <pre><code>SEEDS="7b3421f0c36ed44a247ca1bdb281e2639e8e5e0e@fiamma-t.sychonix.com:12256"
+PEERS="$(curl -sS https://rpc-fiamma-t.sychonix.com/net_info | jq -r '.result.peers[] | "\(.node_info.id)@\(.remote_ip):\(.node_info.listen_addr)"' | awk -F ':' '{print $1":"$(NF)}' | sed -z 's|\n|,|g;s|.$||')"
+sed -i -e "s|^seeds *=.*|seeds = '"$SEEDS"'|; s|^persistent_peers *=.*|persistent_peers = '"$PEERS"'|" $HOME/.fiamma/config/config.toml</code></pre>
   <button class="copy-btn"><i class="fas fa-copy"></i></button>
 </div>
 
-- Download addrbook
+- Update Port Configuration
+
 <div class="code-block-wrapper">
-  <pre><code>curl -Ls https://snapshot.sychonix.com/testnet/fiamma/addrbook.json > $HOME/.fiamma/config/addrbook.json</code></pre>
+  <pre><code>sed -i -e "s%:1317%:11617%; s%:8080%:11680%; s%:9090%:11690%; s%:9091%:11691%; s%:8545%:11645%; s%:8546%:11646%; s%:6065%:11665%" $HOME/.fiamma/config/app.toml
+sed -i -e "s%:26658%:11658%; s%:26657%:11657%; s%:6060%:11660%; s%:26656%:11656%; s%:26660%:11661%" $HOME/.fiamma/config/config.toml</code></pre>
   <button class="copy-btn"><i class="fas fa-copy"></i></button>
 </div>
 
-- Seed and Peer
-<div class="code-block-wrapper">
-  <pre><code>PEERS="$(curl -sS https://rpc-fiamma-t.sychonix.com/net_info | jq -r '.result.peers[] | "\(.node_info.id)@\(.remote_ip):\(.node_info.listen_addr)"' | awk -F ':' '{print $1":"$(NF)}' | sed -z 's|\n|,|g;s|.$||')"
-sed -i.bak -e "s/^persistent_peers *=.*/persistent_peers = \"$PEERS\"/" $HOME/.fiamma/config/config.toml</code></pre>
-  <button class="copy-btn"><i class="fas fa-copy"></i></button>
-</div>
+- Customize Pruning
 
-- Configure Gas Prices
-<div class="code-block-wrapper">
-  <pre><code>sed -i -e "s|^minimum-gas-prices *=.*|minimum-gas-prices = \"0.00001ufia\"|" $HOME/.fiamma/config/app.toml</code></pre>
-  <button class="copy-btn"><i class="fas fa-copy"></i></button>
-</div>
-
-- Pruning
 <div class="code-block-wrapper">
   <pre><code>sed -i \
   -e 's|^pruning *=.*|pruning = "custom"|' \
   -e 's|^pruning-keep-recent *=.*|pruning-keep-recent = "100"|' \
-  -e 's|^pruning-keep-every *=.*|pruning-keep-every = "0"|' \
-  -e 's|^pruning-interval *=.*|pruning-interval = "19"|' \
+  -e 's|^pruning-interval *=.*|pruning-interval = "17"|' \
   $HOME/.fiamma/config/app.toml</code></pre>
   <button class="copy-btn"><i class="fas fa-copy"></i></button>
 </div>
 
-- Custom Port (Optional)
-<div class="code-block-wrapper">
-  <pre><code>PORT=21
-fiammad config node tcp://localhost:${PORT}657
-sed -i -e "s%^proxy_app = \"tcp://127.0.0.1:26658\"%proxy_app = \"tcp://127.0.0.1:${PORT}658\"%; s%^laddr = \"tcp://127.0.0.1:26657\"%laddr = \"tcp://127.0.0.1:${PORT}657\"%; s%^pprof_laddr = \"localhost:6060\"%pprof_laddr = \"localhost:${PORT}060\"%; s%^laddr = \"tcp://0.0.0.0:26656\"%laddr = \"tcp://0.0.0.0:${PORT}656\"%; s%^prometheus_listen_addr = \":26660\"%prometheus_listen_addr = \":${PORT}660\"%" $HOME/.fiamma/config/config.toml
-sed -i -e "s%^address = \"tcp://localhost:1317\"%address = \"tcp://localhost:${PORT}317\"%; s%^address = \":8080\"%address = \":${PORT}080\"%; s%^address = \"localhost:9090\"%address = \"localhost:${PORT}090\"%; s%^address = \"localhost:9091\"%address = \"localhost:${PORT}091\"%; s%^address = \"0.0.0.0:8545\"%address = \"0.0.0.0:${PORT}545\"%; s%^ws-address = \"0.0.0.0:8546\"%ws-address = \"0.0.0.0:${PORT}546\"%" $HOME/.fiamma/config/app.toml</code></pre>
-  <button class="copy-btn"><i class="fas fa-copy"></i></button>
-</div>
+- Set Minimum Gas Price, Enable Prometheus, and Disable the Indexer
 
-- Service
+<div class="code-block-wrapper"><!-- Note: Change gas price and denom -->
+  <pre><code>sed -i -e "s|^minimum-gas-prices *=.*|minimum-gas-prices = \"0.00001ufia\"|" $HOME/.fiamma/config/app.toml
+sed -i -e "s/prometheus = false/prometheus = true/" $HOME/.fiamma/config/config.toml
+sed -i -e "s/^indexer *=.*/indexer = \"null\"/" $HOME/.fiamma/config/config.toml</code></pre>
+  <button class="copy-btn"><i class="fas fa-copy"></i></button>
+</div><!-- Note: Change gas price and denom -->
+
+- Create Service File
+
 <div class="code-block-wrapper">
-  <pre><code>sudo tee /etc/systemd/system/fiammad.service > /dev/null &lt;&lt;EOF
+  <pre><code>sudo tee /etc/systemd/system/fiammad.service &gt; /dev/null &lt;&lt;EOF
 [Unit]
-Description=Fiamma node
+Description=fiamma node service
 After=network-online.target
 [Service]
 User=$USER
-WorkingDirectory=$HOME/.fiamma
-ExecStart=$(which fiammad) start --home $HOME/.fiamma
-Restart=on-failure
-RestartSec=5
+ExecStart=$(which fiammad) start
+Restart=always
+RestartSec=3
 LimitNOFILE=65535
 [Install]
 WantedBy=multi-user.target
@@ -104,24 +106,18 @@ EOF</code></pre>
   <button class="copy-btn"><i class="fas fa-copy"></i></button>
 </div>
 
-- Download Snapshot
+- Download Current Snapshot
+
 <div class="code-block-wrapper">
-  <pre><code>curl "https://snapshot.sychonix.com/testnet/fiamma/fiamma-latest.tar.lz4" | lz4 -dc - | tar -xf - -C "$HOME/.fiamma"</code></pre>
+  <pre><code>curl "https://snapshot.sychonix.com/testnet/fiamma/fiamma-snapshot.tar.lz4" | lz4 -dc - | tar -xf - -C "$HOME/.fiamma"</code></pre>
   <button class="copy-btn"><i class="fas fa-copy"></i></button>
 </div>
 
-- Start
+- Enable the Service and Start the Node
+
 <div class="code-block-wrapper">
   <pre><code>sudo systemctl daemon-reload
-sudo systemctl enable fiammad
-sudo systemctl restart fiammad && sudo journalctl -u fiammad -f --no-hostname -o cat</code></pre>
+sudo systemctl enable fiammad.service
+sudo systemctl restart fiammad.service && sudo journalctl -u fiammad.service -f --no-hostname -o cat</code></pre>
   <button class="copy-btn"><i class="fas fa-copy"></i></button>
 </div>
-
-- Create Validator
-
-Heads up to the Cheat Sheets to create validator
-
-<a href="https://sychonix.com/testnet/fiamma/cheat" >
-  <button style="background-color: green; border: none; color: white; padding: 15px 32px; text-align: center; text-decoration: none; display: inline-block; font-size: 16px; margin: 4px 2px; cursor: pointer; border-radius: 10px; box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);" onmouseover="this.style.boxShadow='0 0 0 4px rgba(0,255,0,0.5)'" onmouseout="this.style.boxShadow='0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)'">CLI Cheatsheets</button>
-</a>
