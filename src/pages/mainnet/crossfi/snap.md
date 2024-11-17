@@ -56,6 +56,13 @@ title: Snapshot
   <span class="label">Size:</span> <span class="value" id="size">Loading...</span>
 </div>
 
+- Install dependencies, if needed
+
+<div class="code-block-wrapper">
+  <pre><code>sudo apt update && sudo apt install aria2</code></pre>
+  <button class="copy-btn"><i class="fas fa-copy"></i></button>
+</div>
+
 <!-- Note: Change nodename and $HOME/.binary -->
 - Stop Service
 
@@ -77,7 +84,7 @@ title: Snapshot
 </div>
 
 <div class="code-block-wrapper">
-  <pre><code>curl https://snapshot.sychonix.com/mainnet/crossfi/crossfi-snapshot.tar.lz4 | lz4 -dc - | tar -xf - -C $HOME/.crossfid</code></pre>
+  <pre><code>aria2c -x 16 -s 16 -o - https://snapshot.sychonix.com/mainnet/crossfi/crossfi-snapshot.tar.lz4 | lz4 -dc - | tar -xf - -C $HOME/.crossfid</code></pre>
   <button class="copy-btn" data-target="curl https://snapshot.sychonix.com/mainnet/crossfi/crossfi-snapshot.tar.lz4 | lz4 -dc - | tar -xf - -C $HOME/.crossfid"><i class="fas fa-copy"></i></button>
 </div>
 
