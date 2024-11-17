@@ -25,9 +25,9 @@ go version</code></pre>
 
 <div class="code-block-wrapper">
   <pre><code>cd $HOME
-git clone https://github.com/Orchestra-Labs/symphony symphony
+git clone https://github.com/Orchestra-Labs/symphony
 cd symphony
-git checkout v0.3.0
+git checkout v0.4.1
 make install</code></pre>
   <button class="copy-btn"><i class="fas fa-copy"></i></button>
 </div>
@@ -35,10 +35,10 @@ make install</code></pre>
 - Initialize The Node
 
 <div class="code-block-wrapper"><!-- Change chain id and port -->
-  <pre><code>symphonyd config node tcp://localhost:12157
-symphonyd config keyring-backend os
-symphonyd config chain-id symphony-testnet-3
-symphonyd init "YourName" --chain-id symphony-testnet-3</code></pre>
+  <pre><code>symphonyd init $MONIKER --chain-id symphony-testnet-4
+sed -i -e "s|^keyring-backend *=.*|keyring-backend = \"os\"|" $HOME/.symphonyd/config/client.toml
+sed -i -e "s|^chain-id *=.*|chain-id = \"symphony-testnet-4\"|" $HOME/.symphonyd/config/client.toml
+sed -i -e "s|^node *=.*|node = \"tcp://localhost:12157\"|" $HOME/.symphonyd/config/client.toml</code></pre>
   <button class="copy-btn"><i class="fas fa-copy"></i></button>
 </div><!-- Change chain id and port -->
 
@@ -53,8 +53,9 @@ curl -Ls https://snapshot.sychonix.com/testnet/symphony/addrbook.json > $HOME/.s
 - Configure Seeds and Peers
 
 <div class="code-block-wrapper">
-  <pre><code>PEERS="$(curl -sS https://rpc-symphony-t.sychonix.com/net_info | jq -r '.result.peers[] | "\(.node_info.id)@\(.remote_ip):\(.node_info.listen_addr)"' | awk -F ':' '{print $1":"$(NF)}' | sed -z 's|\n|,|g;s|.$||')"
-sed -i.bak -e "s/^persistent_peers *=.*/persistent_peers = \"$PEERS\"/" $HOME/.symphonyd/config/config.toml</code></pre>
+  <pre><code>SEEDS="de40129d6a823e7dff8edec28a60998373b43ed0@symphony-testnet.sychonix.com:12156"
+PEERS="$(curl -sS https://rpc-symphony-t.sychonix.com/net_info | jq -r '.result.peers[] | "\(.node_info.id)@\(.remote_ip):\(.node_info.listen_addr)"' | awk -F ':' '{print $1":"$(NF)}' | sed -z 's|\n|,|g;s|.$||')"
+sed -i -e "s|^seeds *=.*|seeds = '"$SEEDS"'|; s|^persistent_peers *=.*|persistent_peers = '"$PEERS"'|" $HOME/.symphonyd/config/config.toml</code></pre>
   <button class="copy-btn"><i class="fas fa-copy"></i></button>
 </div>
 
@@ -91,7 +92,7 @@ sed -i -e "s/^indexer *=.*/indexer = \"null\"/" $HOME/.symphonyd/config/config.t
 <div class="code-block-wrapper">
   <pre><code>sudo tee /etc/systemd/system/symphonyd.service &gt; /dev/null &lt;&lt;EOF
 [Unit]
-Description=symphony testnet node
+Description=symphony node service
 After=network-online.target
 [Service]
 User=$USER

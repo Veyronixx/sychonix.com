@@ -6,7 +6,7 @@ icon : cnho
 cnho
 symphony-testnet-3
 symphonyd
-$HOME/.symphony
+$HOME/.symphonyd
 note
 symphonyd 
 0.25note
@@ -322,14 +322,14 @@ symphonyd tx staking edit-validator \
 </div>
 <div class="pre-container">
   <pre class="my-pre" id="pre20" style="margin-top: 5px;">CUSTOM_PORT=<span class="rport1"></span>
-sed -i.bak -e "s%^proxy_app = \"tcp://127.0.0.1:26658\"%proxy_app = \"tcp://127.0.0.1:${CUSTOM_PORT}658\"%; s%^laddr = \"tcp://127.0.0.1:26657\"%laddr = \"tcp://127.0.0.1:${CUSTOM_PORT}657\"%; s%^pprof_laddr = \"localhost:6060\"%pprof_laddr = \"localhost:${CUSTOM_PORT}060\"%; s%^laddr = \"tcp://0.0.0.0:26656\"%laddr = \"tcp://0.0.0.0:${CUSTOM_PORT}656\"%; s%^prometheus_listen_addr = \":26660\"%prometheus_listen_addr = \":${CUSTOM_PORT}660\"%" $HOME/.symphony/config/config.toml
-sed -i.bak -e "s%^address = \"tcp://0.0.0.0:1317\"%address = \"tcp://0.0.0.0:${CUSTOM_PORT}317\"%; s%^address = \":8080\"%address = \":${CUSTOM_PORT}080\"%; s%^address = \"0.0.0.0:9090\"%address = \"0.0.0.0:${CUSTOM_PORT}090\"%; s%^address = \"0.0.0.0:9091\"%address = \"0.0.0.0:${CUSTOM_PORT}091\"%" $HOME/.symphony/config/app.toml</pre>
+sed -i.bak -e "s%^proxy_app = \"tcp://127.0.0.1:26658\"%proxy_app = \"tcp://127.0.0.1:${CUSTOM_PORT}658\"%; s%^laddr = \"tcp://127.0.0.1:26657\"%laddr = \"tcp://127.0.0.1:${CUSTOM_PORT}657\"%; s%^pprof_laddr = \"localhost:6060\"%pprof_laddr = \"localhost:${CUSTOM_PORT}060\"%; s%^laddr = \"tcp://0.0.0.0:26656\"%laddr = \"tcp://0.0.0.0:${CUSTOM_PORT}656\"%; s%^prometheus_listen_addr = \":26660\"%prometheus_listen_addr = \":${CUSTOM_PORT}660\"%" $HOME/.symphonyd/config/config.toml
+sed -i.bak -e "s%^address = \"tcp://0.0.0.0:1317\"%address = \"tcp://0.0.0.0:${CUSTOM_PORT}317\"%; s%^address = \":8080\"%address = \":${CUSTOM_PORT}080\"%; s%^address = \"0.0.0.0:9090\"%address = \"0.0.0.0:${CUSTOM_PORT}090\"%; s%^address = \"0.0.0.0:9091\"%address = \"0.0.0.0:${CUSTOM_PORT}091\"%" $HOME/.symphonyd/config/app.toml</pre>
   <button class="copy-btn" id="copy20" data-clipboard-text="" onclick="copyText(20)"></button>
 </div>
 
 <label> Remove Node</label>
 <div class="pre-container">
-  <pre class="my-pre" id="pre21">cd $HOME && sudo systemctl stop symphonyd && sudo systemctl disable symphonyd && sudo rm /etc/systemd/system/symphonyd.service && sudo systemctl daemon-reload && sudo rm -rf $(which symphonyd) && sudo rm -rf $HOME/.symphony && sudo rm -rf $(which symphonyd)</pre>
+  <pre class="my-pre" id="pre21">cd $HOME && sudo systemctl stop symphonyd && sudo systemctl disable symphonyd && sudo rm /etc/systemd/system/symphonyd.service && sudo systemctl daemon-reload && sudo rm -rf $(which symphonyd) && sudo rm -rf $HOME/.symphonyd && sudo rm -rf $(which symphonyd)</pre>
   <button class="copy-btn" id="copy21" data-clipboard-text="" onclick="copyText(21)"></button>
 </div>
 
