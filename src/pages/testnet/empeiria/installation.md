@@ -6,7 +6,7 @@ title: Installation Node
 
 <div class="code-block-wrapper">
   <pre><code>sudo apt update && sudo apt upgrade -y
-sudo apt install curl iptables build-essential git wget jq make gcc nano tmux htop nvme-cli pkg-config libssl-dev libleveldb-dev tar clang bsdmainutils ncdu unzip libleveldb-dev -y</code></pre>
+sudo apt install curl iptables build-essential git wget jq make gcc nano tmux htop nvme-cli pkg-config libssl-dev libleveldb-dev tar clang bsdmainutils ncdu unzip libleveldb-dev aria2 -y</code></pre>
   <button class="copy-btn"><i class="fas fa-copy"></i></button>
 </div>
 
