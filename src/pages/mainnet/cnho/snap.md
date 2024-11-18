@@ -67,32 +67,42 @@ title: Snapshot
 
 <div class="code-block-wrapper">
   <pre><code>sudo systemctl stop cnhod</code></pre>
-  <button class="copy-btn" data-target="sudo systemctl stop cnhod"><i class="fas fa-copy"></i></button>
+  <button class="copy-btn"><i class="fas fa-copy"></i></button>
 </div>
 
 - Back up priv_validator_state.json
 
 <div class="code-block-wrapper">
-  <pre><code>cp ~/.cnho/data/priv_validator_state.json  ~/.cnho/priv_validator_state.json</code></pre>
-  <button class="copy-btn" data-target="cp ~/.cnho/data/priv_validator_state.json  ~/.cnho/priv_validator_state.json"><i class="fas fa-copy"></i></button>
+  <pre><code>cp $HOME/.cnho/data/priv_validator_state.json $HOME/.cnho/priv_validator_state.json.backup</code></pre>
+  <button class="copy-btn"><i class="fas fa-copy"></i></button>
 </div>
+
+- Reset the data
 
 <div class="code-block-wrapper">
   <pre><code>cnhod tendermint unsafe-reset-all --home $HOME/.cnho --keep-addr-book</code></pre>
-  <button class="copy-btn" data-target="cnhod tendermint unsafe-reset-all --home $HOME/.cnho --keep-addr-book"><i class="fas fa-copy"></i></button>
+  <button class="copy-btn"><i class="fas fa-copy"></i></button>
 </div>
 
+- Download Snapshot
+
 <div class="code-block-wrapper">
-  <pre><code>aria2c -x 16 -s 16 -o - https://snapshot.sychonix.com/mainnet/cnho/cnho-snapshot.tar.lz4 | lz4 -dc - | tar -xf - -C $HOME/.cnho</code></pre>
-  <button class="copy-btn" data-target="curl https://snapshot.sychonix.com/mainnet/cnho/cnho-snapshot.tar.lz4 | lz4 -dc - | tar -xf - -C $HOME/.cnho"><i class="fas fa-copy"></i></button>
+  <pre><code>aria2c -x 16 -s 16 -o cnho-snapshot.tar.lz4 https://snapshot.sychonix.com/mainnet/cnho/cnho-snapshot.tar.lz4
+lz4 -dc cnho-snapshot.tar.lz4 | tar -xf - -C $HOME/.cnho
+rm -v cnho-snapshot.tar.lz4</code></pre>
+  <button class="copy-btn"><i class="fas fa-copy"></i></button>
 </div>
+
+- Restore Backup and Restart Service
 
 <div class="code-block-wrapper">
   <pre><code>mv $HOME/.cnho/priv_validator_state.json.backup $HOME/.cnho/data/priv_validator_state.json</code></pre>
-  <button class="copy-btn" data-target="mv $HOME/.cnho/priv_validator_state.json.backup $HOME/.cnho/data/priv_validator_state.json"><i class="fas fa-copy"></i></button>
+  <button class="copy-btn"><i class="fas fa-copy"></i></button>
 </div>
+
+
 
 <div class="code-block-wrapper">
   <pre><code>sudo systemctl restart cnhod && sudo journalctl -u cnhod -f -o cat</code></pre>
-  <button class="copy-btn" data-target="sudo systemctl restart cnhod && sudo journalctl -u cnhod -f -o cat"><i class="fas fa-copy"></i></button>
+  <button class="copy-btn"><i class="fas fa-copy"></i></button>
 </div>

@@ -74,7 +74,7 @@ title: Snapshot
 - Back up priv_validator_state.json
 
 <div class="code-block-wrapper">
-  <pre><code>cp ~/.fiamma/data/priv_validator_state.json  ~/.fiamma/priv_validator_state.json</code></pre>
+  <pre><code>cp $HOME/.fiamma/data/priv_validator_state.json $HOME/.fiamma/priv_validator_state.json.backup</code></pre>
   <button class="copy-btn"><i class="fas fa-copy"></i></button>
 </div>
 
@@ -88,7 +88,9 @@ title: Snapshot
 - Download Snapshot
 
 <div class="code-block-wrapper">
-  <pre><code>aria2c -x 16 -s 16 -o - https://snapshot.sychonix.com/testnet/fiamma/fiamma-snapshot.tar.lz4 | lz4 -dc - | tar -xf - -C $HOME/.fiamma</code></pre>
+  <pre><code>aria2c -x 16 -s 16 -o fiamma-snapshot.tar.lz4 https://snapshot.sychonix.com/testnet/fiamma/fiamma-snapshot.tar.lz4
+lz4 -dc fiamma-snapshot.tar.lz4 | tar -xf - -C $HOME/.fiamma
+rm -v fiamma-snapshot.tar.lz4</code></pre>
   <button class="copy-btn"><i class="fas fa-copy"></i></button>
 </div>
 
@@ -98,8 +100,6 @@ title: Snapshot
   <pre><code>mv $HOME/.fiamma/priv_validator_state.json.backup $HOME/.fiamma/data/priv_validator_state.json</code></pre>
   <button class="copy-btn"><i class="fas fa-copy"></i></button>
 </div>
-
-
 
 <div class="code-block-wrapper">
   <pre><code>sudo systemctl restart fiammad && sudo journalctl -u fiammad -f -o cat</code></pre>

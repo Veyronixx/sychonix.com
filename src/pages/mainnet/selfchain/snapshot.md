@@ -66,41 +66,41 @@ title: Snapshot
 - Stop Service
 
 <div class="code-block-wrapper">
-  <pre><code>sudo systemctl stop selfchain</code></pre>
-  <button class="copy-btn" data-target="sudo systemctl stop selfchain"><i class="fas fa-copy"></i></button>
+  <pre><code>sudo systemctl stop selfchaind</code></pre>
+  <button class="copy-btn"><i class="fas fa-copy"></i></button>
 </div>
 
 - Back up priv_validator_state.json
 
 <div class="code-block-wrapper">
-  <pre><code>cp ~/.selfchain/data/priv_validator_state.json  ~/.selfchain/priv_validator_state.json</code></pre>
-  <button class="copy-btn" data-target="cp ~/.selfchain/data/priv_validator_state.json  ~/.selfchain/priv_validator_state.json"><i class="fas fa-copy"></i></button>
+  <pre><code>cp $HOME/.selfchain/data/priv_validator_state.json $HOME/.selfchain/priv_validator_state.json.backup</code></pre>
+  <button class="copy-btn"><i class="fas fa-copy"></i></button>
 </div>
 
-- Reset State
+- Reset the data
 
 <div class="code-block-wrapper">
-  <pre><code>selfchain tendermint unsafe-reset-all --home $HOME/.selfchain --keep-addr-book</code></pre>
-  <button class="copy-btn" data-target="selfchain tendermint unsafe-reset-all --home $HOME/.selfchain --keep-addr-book"><i class="fas fa-copy"></i></button>
+  <pre><code>selfchaind tendermint unsafe-reset-all --home $HOME/.selfchain --keep-addr-book</code></pre>
+  <button class="copy-btn"><i class="fas fa-copy"></i></button>
 </div>
 
 - Download Snapshot
 
 <div class="code-block-wrapper">
-  <pre><code>aria2c -x 16 -s 16 -o - https://snapshot.sychonix.com/mainnet/selfchain/selfchain-snapshot.tar.lz4 | lz4 -dc - | tar -xf - -C $HOME/.selfchain</code></pre>
-  <button class="copy-btn" data-target="curl https://snapshot.sychonix.com/mainnet/selfchain/selfchain-snapshot.tar.lz4 | lz4 -dc - | tar -xf - -C $HOME/.selfchain"><i class="fas fa-copy"></i></button>
+  <pre><code>aria2c -x 16 -s 16 -o selfchain-snapshot.tar.lz4 https://snapshot.sychonix.com/mainnet/selfchain/selfchain-snapshot.tar.lz4
+lz4 -dc selfchain-snapshot.tar.lz4 | tar -xf - -C $HOME/.selfchain
+rm -v selfchain-snapshot.tar.lz4</code></pre>
+  <button class="copy-btn"><i class="fas fa-copy"></i></button>
 </div>
 
-- Restore Backup
+- Restore Backup and Restart Service
 
 <div class="code-block-wrapper">
   <pre><code>mv $HOME/.selfchain/priv_validator_state.json.backup $HOME/.selfchain/data/priv_validator_state.json</code></pre>
-  <button class="copy-btn" data-target="mv $HOME/.selfchain/priv_validator_state.json.backup $HOME/.selfchain/data/priv_validator_state.json"><i class="fas fa-copy"></i></button>
+  <button class="copy-btn"><i class="fas fa-copy"></i></button>
 </div>
-
-- Restart Service
 
 <div class="code-block-wrapper">
   <pre><code>sudo systemctl restart selfchaind && sudo journalctl -u selfchaind -f -o cat</code></pre>
-  <button class="copy-btn" data-target="sudo systemctl restart selfchaind && sudo journalctl -u selfchaind -f -o cat"><i class="fas fa-copy"></i></button>
+  <button class="copy-btn"><i class="fas fa-copy"></i></button>
 </div>

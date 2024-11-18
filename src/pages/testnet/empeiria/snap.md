@@ -56,6 +56,7 @@ title: Snapshot
   <span class="label">Size:</span> <span class="value" id="size">Loading...</span>
 </div>
 
+
 - Install dependencies, if needed
 
 <div class="code-block-wrapper">
@@ -64,26 +65,36 @@ title: Snapshot
 </div>
 
 - Stop Service
+
 <div class="code-block-wrapper">
   <pre><code>sudo systemctl stop emped</code></pre>
   <button class="copy-btn"><i class="fas fa-copy"></i></button>
 </div>
 
 - Back up priv_validator_state.json
+
 <div class="code-block-wrapper">
-  <pre><code>cp ~/.empe-chain/data/priv_validator_state.json  ~/.empe-chain/priv_validator_state.json</code></pre>
+  <pre><code>cp $HOME/.empe-chain/data/priv_validator_state.json $HOME/.empe-chain/priv_validator_state.json.backup</code></pre>
   <button class="copy-btn"><i class="fas fa-copy"></i></button>
 </div>
+
+- Reset the data
 
 <div class="code-block-wrapper">
   <pre><code>emped tendermint unsafe-reset-all --home $HOME/.empe-chain --keep-addr-book</code></pre>
   <button class="copy-btn"><i class="fas fa-copy"></i></button>
 </div>
 
+- Download Snapshot
+
 <div class="code-block-wrapper">
-  <pre><code>aria2c -x 16 -s 16 -o - https://snapshot.sychonix.com/testnet/empeiria/empeiria-snapshot.tar.lz4 | lz4 -dc - | tar -xf - -C $HOME/.empe-chain</code></pre>
+  <pre><code>aria2c -x 16 -s 16 -o empeiria-snapshot.tar.lz4 https://snapshot.sychonix.com/testnet/empeiria/empeiria-snapshot.tar.lz4
+lz4 -dc empeiria-snapshot.tar.lz4 | tar -xf - -C $HOME/.empe-chain
+rm -v empeiria-snapshot.tar.lz4</code></pre>
   <button class="copy-btn"><i class="fas fa-copy"></i></button>
 </div>
+
+- Restore Backup and Restart Service
 
 <div class="code-block-wrapper">
   <pre><code>mv $HOME/.empe-chain/priv_validator_state.json.backup $HOME/.empe-chain/data/priv_validator_state.json</code></pre>

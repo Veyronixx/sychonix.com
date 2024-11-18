@@ -56,6 +56,14 @@ title: Snapshot
   <span class="label">Size:</span> <span class="value" id="size">Loading...</span>
 </div>
 
+
+- Install dependencies, if needed
+
+<div class="code-block-wrapper">
+  <pre><code>sudo apt update && sudo apt install aria2</code></pre>
+  <button class="copy-btn"><i class="fas fa-copy"></i></button>
+</div>
+
 - Stop Service
 
 <div class="code-block-wrapper">
@@ -66,11 +74,11 @@ title: Snapshot
 - Back up priv_validator_state.json
 
 <div class="code-block-wrapper">
-  <pre><code>cp ~/.firmachain/data/priv_validator_state.json  ~/.firmachain/priv_validator_state.json</code></pre>
+  <pre><code>cp $HOME/.firmachain/data/priv_validator_state.json $HOME/.firmachain/priv_validator_state.json.backup</code></pre>
   <button class="copy-btn"><i class="fas fa-copy"></i></button>
 </div>
 
-- Reset State
+- Reset the data
 
 <div class="code-block-wrapper">
   <pre><code>firmachaind tendermint unsafe-reset-all --home $HOME/.firmachain --keep-addr-book</code></pre>
@@ -80,7 +88,9 @@ title: Snapshot
 - Download Snapshot
 
 <div class="code-block-wrapper">
-  <pre><code>curl https://snapshot.sychonix.com/mainnet/firmachain/firmachain-snapshot.tar.lz4 | lz4 -dc - | tar -xf - -C $HOME/.firmachain</code></pre>
+  <pre><code>aria2c -x 16 -s 16 -o firmachain-snapshot.tar.lz4 https://snapshot.sychonix.com/mainnet/firmachain/firmachain-snapshot.tar.lz4
+lz4 -dc firmachain-snapshot.tar.lz4 | tar -xf - -C $HOME/.firmachain
+rm -v firmachain-snapshot.tar.lz4</code></pre>
   <button class="copy-btn"><i class="fas fa-copy"></i></button>
 </div>
 

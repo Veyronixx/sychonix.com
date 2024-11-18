@@ -74,7 +74,7 @@ title: Snapshot
 - Back up priv_validator_state.json
 
 <div class="code-block-wrapper">
-  <pre><code>cp ~/.symphonyd/data/priv_validator_state.json  ~/.symphonyd/priv_validator_state.json</code></pre>
+  <pre><code>cp $HOME/.symphonyd/data/priv_validator_state.json $HOME/.symphonyd/priv_validator_state.json.backup</code></pre>
   <button class="copy-btn"><i class="fas fa-copy"></i></button>
 </div>
 
@@ -88,7 +88,9 @@ title: Snapshot
 - Download Snapshot
 
 <div class="code-block-wrapper">
-  <pre><code>aria2c -x 16 -s 16 -o - https://snapshot.sychonix.com/testnet/symphony/symphony-snapshot.tar.lz4 | lz4 -dc - | tar -xf - -C $HOME/.symphonyd</code></pre>
+  <pre><code>aria2c -x 16 -s 16 -o symphony-snapshot.tar.lz4 https://snapshot.sychonix.com/testnet/symphony/symphony-snapshot.tar.lz4
+lz4 -dc symphony-snapshot.tar.lz4 | tar -xf - -C $HOME/.symphonyd
+rm -v symphony-snapshot.tar.lz4</code></pre>
   <button class="copy-btn"><i class="fas fa-copy"></i></button>
 </div>
 
@@ -98,8 +100,6 @@ title: Snapshot
   <pre><code>mv $HOME/.symphonyd/priv_validator_state.json.backup $HOME/.symphonyd/data/priv_validator_state.json</code></pre>
   <button class="copy-btn"><i class="fas fa-copy"></i></button>
 </div>
-
-
 
 <div class="code-block-wrapper">
   <pre><code>sudo systemctl restart symphonyd && sudo journalctl -u symphonyd -f -o cat</code></pre>
