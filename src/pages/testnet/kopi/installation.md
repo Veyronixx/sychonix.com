@@ -52,7 +52,7 @@ curl -Ls https://snapshot.sychonix.com/testnet/kopi/addrbook.json > $HOME/.kopid
 - Configure Seeds and Peers
 
 <div class="code-block-wrapper">
-  <pre><code>SEEDS="c51fda38278d5d7985a08557c149fd0cc93dae96@kopi-testnet.sychonix.com:11656"
+  <pre><code>SEEDS="cfef0546b0621abba2818874a2935507878dbc80@kopi-testnet.sychonix.com:11656"
 PEERS="$(curl -sS https://rpc-kopi-t.sychonix.com/net_info | jq -r '.result.peers[] | "\(.node_info.id)@\(.remote_ip):\(.node_info.listen_addr)"' | awk -F ':' '{print $1":"$(NF)}' | sed -z 's|\n|,|g;s|.$||')"
 sed -i -e "s|^seeds *=.*|seeds = '"$SEEDS"'|; s|^persistent_peers *=.*|persistent_peers = '"$PEERS"'|" $HOME/.kopid/config/config.toml</code></pre>
   <button class="copy-btn"><i class="fas fa-copy"></i></button>
