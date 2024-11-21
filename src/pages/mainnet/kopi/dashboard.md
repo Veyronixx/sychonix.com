@@ -59,7 +59,7 @@ Kopi Money is a decentralized finance (DeFi) protocol combining a Decentralized 
   <label class="block mt-1 mb-1">Live Peers</label>
   <div class="code-block-wrapper">
     <pre><code>PEERS="$(curl -sS https://rpc-kopi.sychonix.com/net_info | jq -r '.result.peers[] | "\(.node_info.id)@\(.remote_ip):\(.node_info.listen_addr)"' | awk -F ':' '{print $1":"$(NF)}' | sed -z 's|\n|,|g;s|.$||')"  
-sed -i -e "s|^persistent_peers *=.*|persistent_peers = \"$PEERS\"|" $HOME/  /config/config.toml</code></pre>
+sed -i -e "s|^persistent_peers *=.*|persistent_peers = \"$PEERS\"|" $HOME/.kopid/config/config.toml</code></pre>
     <button class="copy-btn"><i class="fas fa-copy"></i></button>
   </div>
 
