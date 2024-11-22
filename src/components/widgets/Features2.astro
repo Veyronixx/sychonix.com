@@ -39,14 +39,14 @@ const items = [
     Link2: 'https://explorer.sychonix.com/cnho-mainnet/staking/cnhovaloper1ntq4fpumu3wl28leks6a0xln0r5xrmp27cf6ld',
   },
   {
-    title: 'Crossfi-Mainnet',
+    title: 'Crossfi',
     description: 'mainnet',
     icon: '/img/crossfi.jpg',
     Link: 'https://sychonix.com/mainnet/crossfi',
     Link2: 'https://explorer.sychonix.com/crossfi-mainnet/staking/mxvaloper1d4qanpsc3ettqm8x6uksccnjke5mvv5v7akeza',
   },
   {
-    title: 'Crossfi-Testnet',
+    title: 'Crossfi',
     description: 'testnet',
     icon: '/img/crossfi.jpg',
     Link: 'https://sychonix.com/testnet/crossfi',
@@ -102,14 +102,14 @@ const items = [
     Link2: '#',
   },
   {
-    title: 'Kopi-Testnet',
+    title: 'Kopi',
     description: 'testnet',
     icon: '/img/kopi.jpg',
     Link: 'https://sychonix.com/testnet/kopi',
     Link2: 'https://explorer.sychonix.com/kopi-testnet/staking/kopivaloper1autj9qgeh6va8p88s4rp94p83dxdf0pqu4gwx2',
   },
   {
-    title: 'Kopi-Mainnet',
+    title: 'Kopi',
     description: 'mainnet',
     icon: '/img/kopi.jpg',
     Link: 'https://sychonix.com/mainnet/kopi',
@@ -176,8 +176,7 @@ const items = [
           Networks
         </h2>
         <div class="category-wrapper"> <!-- Tambahkan wrapper di sini -->
-          <button class="btn-category active" data-category="all">All</button>
-          <button class="btn-category" data-category="mainnet">Mainnet</button>
+          <button class="btn-category active" data-category="mainnet">Mainnet</button>
           <button class="btn-category" data-category="testnet">Testnet</button>
         </div>
       </div>
@@ -190,7 +189,6 @@ const items = [
               </div>
               <div class="ml-4 text-left">
                 <h3 class="title text-sm font-semibold text-white">{title}</h3>
-                <!-- <p class="description text-xs text-gray-400">{description}</p> --> <!-- Komentar deskripsi di sini -->
               </div>
             </div>
             <div class="flex justify-between mt-auto p-4">
@@ -203,7 +201,6 @@ const items = [
     </div>
   </div>
 </section>
-
 
 <script>
 document.addEventListener('DOMContentLoaded', function () {
@@ -221,10 +218,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
       // Filter kartu berdasarkan kategori
       cards.forEach(card => {
-        // Tambahkan console.log untuk debugging
-        console.log('Card description:', card.classList.contains(category), category);
-
-        if (category === 'all' || card.classList.contains(category)) {
+        if (card.classList.contains(category)) {
           card.style.display = 'block'; // Tampilkan kartu
         } else {
           card.style.display = 'none';  // Sembunyikan kartu
@@ -233,12 +227,15 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
 
-  // Pilih kategori default "all" saat halaman dimuat
-  document.querySelector('.btn-category[data-category="all"]').click();
+  // Pilih kategori default "mainnet" dan tampilkan kartunya
+  const defaultCategory = 'mainnet';
+  document.querySelector(`.btn-category[data-category="${defaultCategory}"]`).classList.add('active');
+  cards.forEach(card => {
+    if (card.classList.contains(defaultCategory)) {
+      card.style.display = 'block'; // Tampilkan kartu default
+    }
+  });
 });
-
-
-
 </script>
 
 <style>
@@ -360,6 +357,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
 .category-wrapper:hover {
   border-color: #1e40af;
+}
+.network-card {
+  display: none; /* Sembunyikan semua kartu secara default */
 }
 
 /* Hapus background color hover di tombol kategori */
