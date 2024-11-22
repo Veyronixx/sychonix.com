@@ -35,13 +35,13 @@ Kopi Money is a decentralized finance (DeFi) protocol combining a Decentralized 
 
   <label class="block mt-1 mb-1">RPC Endpoints</label> <!-- Added mt-1 mb-1 to adjust spacing -->
   <div class="code-block-wrapper">
-    <pre><code>https://rpc-kopi-t.sychonix.com</code></pre>
+    <pre><code>https://rpc-kopi.sychonix.com</code></pre>
     <button class="copy-btn"><i class="fas fa-copy"></i></button>
   </div>
 
   <label>API Endpoints</label>
   <div class="code-block-wrapper">
-    <pre><code>https://api-kopi-t.sychonix.com</code></pre>
+    <pre><code>https://api-kopi.sychonix.com</code></pre>
     <button class="copy-btn"><i class="fas fa-copy"></i></button>
   </div>
 </div>
