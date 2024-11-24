@@ -21,7 +21,7 @@ title: Snapshot
 <script>
   async function fetchSnapshotInfo() {
     try {
-      const response = await fetch('https://snapshot.sychonix.com/testnet/kopi/log.json');
+      const response = await fetch('https://snapshot-2.sychonix.com/testnet/kopi/log.json');
       const data = await response.json();
       const snapshotInfo = data.snapshot_info;
 
@@ -88,7 +88,7 @@ title: Snapshot
 - Download Snapshot
 
 <div class="code-block-wrapper">
-  <pre><code>aria2c -x 16 -s 16 -o kopi-snapshot.tar.lz4 https://snapshot.sychonix.com/testnet/kopi/kopi-snapshot.tar.lz4
+  <pre><code>aria2c -x 16 -s 16 -o kopi-snapshot.tar.lz4 https://snapshot-2.sychonix.com/testnet/kopi/kopi-snapshot.tar.lz4
 lz4 -dc kopi-snapshot.tar.lz4 | tar -xf - -C $HOME/.kopid
 rm -v kopi-snapshot.tar.lz4</code></pre>
   <button class="copy-btn"><i class="fas fa-copy"></i></button>

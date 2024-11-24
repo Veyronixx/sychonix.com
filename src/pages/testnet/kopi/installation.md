@@ -44,8 +44,8 @@ kopid init $MONIKER --chain-id kopi-test-5</code></pre>
 - Download Genesis & Addrbook
 
 <div class="code-block-wrapper">
-  <pre><code>curl -Ls https://snapshot.sychonix.com/testnet/kopi/genesis.json > $HOME/.kopid/config/genesis.json
-curl -Ls https://snapshot.sychonix.com/testnet/kopi/addrbook.json > $HOME/.kopid/config/addrbook.json</code></pre>
+  <pre><code>curl -Ls https://snapshot-2.sychonix.com/testnet/kopi/genesis.json > $HOME/.kopid/config/genesis.json
+curl -Ls https://snapshot-2.sychonix.com/testnet/kopi/addrbook.json > $HOME/.kopid/config/addrbook.json</code></pre>
   <button class="copy-btn"><i class="fas fa-copy"></i></button>
 </div>
 
@@ -108,7 +108,7 @@ EOF</code></pre>
 - Download Current Snapshot
 
 <div class="code-block-wrapper">
-  <pre><code>curl "https://snapshot.sychonix.com/testnet/kopi/kopi-snapshot.tar.lz4" | lz4 -dc - | tar -xf - -C "$HOME/.kopid"</code></pre>
+  <pre><code>curl "https://snapshot-2.sychonix.com/testnet/kopi/kopi-snapshot-2.tar.lz4" | lz4 -dc - | tar -xf - -C "$HOME/.kopid"</code></pre>
   <button class="copy-btn"><i class="fas fa-copy"></i></button>
 </div>
 
