@@ -25,9 +25,9 @@ go version</code></pre>
 
 <div class="code-block-wrapper">
   <pre><code>cd $HOME
-wget https://github.com/airchains-network/junction/releases/download/v0.1.0/junctiond
+wget -O junctiond https://github.com/airchains-network/junction/releases/download/v0.2.0/junctiond-linux-amd64
 chmod +x junctiond
-sudo mv junctiond /usr/local/bin/</code></pre>
+mv junctiond $HOME/go/bin/</code></pre>
   <button class="copy-btn"><i class="fas fa-copy"></i></button>
 </div>
 
