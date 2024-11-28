@@ -52,7 +52,7 @@ Kopi Money is a decentralized finance (DeFi) protocol combining a Decentralized 
   
   <label class="block mt-1 mb-1">Seeds</label>
   <div class="code-block-wrapper">
-    <pre><code>cfef0546b0621abba2818874a2935507878dbc80@kopi-testnet.sychonix.com:11656</code></pre>
+    <pre><code>12ce235e2f141237cff68cf0544a0de80e55bcea@kopi-testnet.sychonix.com:11656</code></pre>
     <button class="copy-btn"><i class="fas fa-copy"></i></button>
   </div>
 

@@ -24,9 +24,8 @@ eval $(echo 'export PATH=$PATH:$HOME/go/bin' | tee -a $HOME/.profile)</code></pr
 
 <div class="code-block-wrapper">
   <pre><code>cd $HOME && mkdir -p go/bin/
-git clone https://github.com/kopi-money/kopi.git
+git clone --depth 1 --branch v0.6.5.1 https://github.com/kopi-money/kopi.git ~/kopi
 cd kopi
-git checkout v0.6.4.1
 make install</code></pre>
   <button class="copy-btn"><i class="fas fa-copy"></i></button>
 </div>
@@ -34,10 +33,10 @@ make install</code></pre>
 - Initialize The Node
 
 <div class="code-block-wrapper"><!-- Change chain id and port -->
-  <pre><code>kopid config set client chain-id kopi-test-5
+  <pre><code>kopid config set client chain-id kopi-test-6
 kopid config set client node tcp://localhost:11657
 kopid config set client keyring-backend os
-kopid init $MONIKER --chain-id kopi-test-5</code></pre>
+kopid init $MONIKER --chain-id kopi-test-6</code></pre>
   <button class="copy-btn"><i class="fas fa-copy"></i></button>
 </div><!-- Change chain id and port -->
 
@@ -52,7 +51,7 @@ curl -Ls https://snapshot-2.sychonix.com/testnet/kopi/addrbook.json > $HOME/.kop
 - Configure Seeds and Peers
 
 <div class="code-block-wrapper">
-  <pre><code>SEEDS="cfef0546b0621abba2818874a2935507878dbc80@kopi-testnet.sychonix.com:11656"
+  <pre><code>SEEDS="12ce235e2f141237cff68cf0544a0de80e55bcea@kopi-testnet.sychonix.com:11656,7427da3a793f0c7f08f4034215b6f310e214fb28@95.217.154.60:26656"
 PEERS="$(curl -sS https://rpc-kopi-t.sychonix.com/net_info | jq -r '.result.peers[] | "\(.node_info.id)@\(.remote_ip):\(.node_info.listen_addr)"' | awk -F ':' '{print $1":"$(NF)}' | sed -z 's|\n|,|g;s|.$||')"
 sed -i -e "s|^seeds *=.*|seeds = '"$SEEDS"'|; s|^persistent_peers *=.*|persistent_peers = '"$PEERS"'|" $HOME/.kopid/config/config.toml</code></pre>
   <button class="copy-btn"><i class="fas fa-copy"></i></button>
@@ -108,7 +107,7 @@ EOF</code></pre>
 - Download Current Snapshot
 
 <div class="code-block-wrapper">
-  <pre><code>curl "https://snapshot-2.sychonix.com/testnet/kopi/kopi-snapshot-2.tar.lz4" | lz4 -dc - | tar -xf - -C "$HOME/.kopid"</code></pre>
+  <pre><code>curl "https://snapshot-2.sychonix.com/testnet/kopi/kopi-snapshot.tar.lz4" | lz4 -dc - | tar -xf - -C "$HOME/.kopid"</code></pre>
   <button class="copy-btn"><i class="fas fa-copy"></i></button>
 </div>
 
