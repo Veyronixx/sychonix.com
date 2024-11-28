@@ -119,3 +119,36 @@ sudo systemctl enable kopid.service
 sudo systemctl restart kopid.service && sudo journalctl -u kopid.service -f --no-hostname -o cat</code></pre>
   <button class="copy-btn"><i class="fas fa-copy"></i></button>
 </div>
+
+- Create Validator
+
+<div class="code-block-wrapper">
+  <pre><code>kopid tendermint show-validator</code></pre>
+  <button class="copy-btn"><i class="fas fa-copy"></i></button>
+</div>
+
+- Create validator.json file
+<div class="code-block-wrapper">
+  <pre><code>sudo nano $HOME/.kopid/validator.json
+{
+  "pubkey": {"#pubkey"},
+  "amount": "", 
+  "moniker": "", 
+  "identity": "",
+  "website": "",
+  "security": "", 
+  "details": "", 
+  "commission-rate": "0.05",
+  "commission-max-rate": "0.2",
+  "commission-max-change-rate": "0.05",
+  "min-self-delegation": "1"
+}</code></pre>
+  <button class="copy-btn"><i class="fas fa-copy"></i></button>
+</div>
+
+<div class="code-block-wrapper">
+  <pre><code>kopid tx staking create-validator $HOME/.kopid/validator.json \
+--from wallet \
+--chain-id kopi-test-6</code></pre>
+  <button class="copy-btn"><i class="fas fa-copy"></i></button>
+</div>
