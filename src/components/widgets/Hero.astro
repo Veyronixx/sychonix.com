@@ -1,19 +1,12 @@
-<section class="banner h-screen flex items-center pt-1 bg-cover bg-center bg-no-repeat" id="home">
+<section class="banner h-[90vh] flex items-center justify-center text-center bg-cover bg-center bg-no-repeat" id="home">
   <div class="container mx-auto px-6">
-    <div class="flex flex-col md:flex-row items-start justify-between">
-      <!-- Teks Bagian Kiri -->
-      <div class="w-full md:w-7/12 text-container" data-aos="fade-in">
-        <h1 class="text-white text-5xl font-bold animate-text">Hi! I'm Sychonix</h1>
-        <h4 class="text-white text-lg mt-4 animate-text">is an Independent node validator.</h4>
-        <br />
-        <i class="text-gray-300 animate-text">
-          <q>As an independent validator, Sychonix is committed to maintaining the stability and security of blockchain networks through reliable and efficient node operations. We support the development of a trusted, transparent, and innovative blockchain ecosystem, with a focus on tangible contributions in maintaining network sustainability.</q>
-        </i>
-      </div>
-      <!-- Gambar Bagian Kanan -->
-      <div class="w-full md:w-5/12 mt-12 md:mt-0 transform -translate-y-10" data-aos="zoom-in">
-        <img src="/header.png" alt="Sychonix Header" class="max-w-full h-auto animate-move" />
-      </div>
+    <div class="w-full text-container" data-aos="fade-in">
+      <h1 class="text-white text-5xl font-bold animate-slide-up">Hi! I'm Sychonix</h1>
+      <h4 class="text-white text-lg mt-4 animate-slide-up">is an Independent node validator.</h4>
+      <br />
+      <i class="text-gray-300 animate-slide-up">
+        <q>As an independent validator, Sychonix is committed to maintaining the stability and security of blockchain networks through reliable and efficient node operations. We support the development of a trusted, transparent, and innovative blockchain ecosystem, with a focus on tangible contributions in maintaining network sustainability.</q>
+      </i>
     </div>
   </div>
 </section>
@@ -25,58 +18,54 @@
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  height: 90vh; /* Tinggi untuk desktop */
 }
 
-/* Animasi gambar */
-@keyframes moveUpDown {
-  0%, 100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-21px);
-  }
-}
-
-.animate-move {
-  animation: moveUpDown 2s infinite;
-}
-
-/* Animasi teks */
-@keyframes fadeIn {
+/* Animasi slide up */
+@keyframes slideUp {
   from {
+    transform: translateY(50px);
     opacity: 0;
   }
   to {
+    transform: translateY(0);
     opacity: 1;
   }
 }
 
-.animate-text {
-  animation: fadeIn 2s ease-in-out;
+.animate-slide-up {
+  animation: slideUp 1.5s ease-out forwards;
 }
 
-/* Tambahan styling khusus untuk mobile */
+/* Atur posisi teks di tengah */
+.text-container {
+  max-width: 800px;
+  margin: 0 auto;
+  transform: translateY(-2rem); /* Mendorong teks lebih ke atas untuk desktop */
+}
+
+/* Responsif untuk layar kecil */
 @media (max-width: 768px) {
   .banner {
-    padding-top: 5rem; /* Memberi ruang pada atas teks */
+    height: 85vh; /* Kurangi tinggi banner untuk layar kecil */
   }
 
   .text-container {
-    text-align: left; /* Tetap rata kiri */
+    transform: translateY(-4rem); /* Geser teks lebih ke atas untuk layar kecil */
   }
 
   .text-container h1 {
-    font-size: 2rem; /* Perkecil ukuran teks heading */
+    font-size: 2rem;
   }
 
   .text-container h4 {
-    font-size: 1rem; /* Perkecil ukuran subtitle */
+    font-size: 1rem;
     margin-top: 0.5rem;
   }
 
   .text-container i {
-    font-size: 0.875rem; /* Perkecil ukuran paragraf */
-    line-height: 1.4; /* Tambahkan spasi antar baris */
+    font-size: 0.875rem;
+    line-height: 1.4;
     display: block;
     margin-top: 1rem;
   }
