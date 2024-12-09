@@ -44,8 +44,8 @@ junctiond init "YourName" --chain-id junction</code></pre>
 - Download Genesis & Addrbook
 
 <div class="code-block-wrapper">
-  <pre><code>curl -Ls https://snapshot.sychonix.com/testnet/airchains/genesis.json > $HOME/.junction/config/genesis.json
-curl -Ls https://snapshot.sychonix.com/testnet/airchains/addrbook.json > $HOME/.junction/config/addrbook.json</code></pre>
+  <pre><code>curl -L https://snapshot.sychonix.com/testnet/airchains/genesis.json > $HOME/.junction/config/genesis.json
+curl -L https://snapshot.sychonix.com/testnet/airchains/addrbook.json > $HOME/.junction/config/addrbook.json</code></pre>
   <button class="copy-btn"><i class="fas fa-copy"></i></button>
 </div>
 

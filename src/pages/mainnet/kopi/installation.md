@@ -44,8 +44,8 @@ kopid init $MONIKER --chain-id luwak-1</code></pre>
 - Download Genesis & Addrbook
 
 <div class="code-block-wrapper">
-  <pre><code>curl -Ls https://snapshot.sychonix.com/mainnet/kopi/genesis.json > $HOME/.kopid/config/genesis.json
-curl -Ls https://snapshot.sychonix.com/mainnet/kopi/addrbook.json > $HOME/.kopid/config/addrbook.json</code></pre>
+  <pre><code>curl -L https://snapshot.sychonix.com/mainnet/kopi/genesis.json > $HOME/.kopid/config/genesis.json
+curl -L https://snapshot.sychonix.com/mainnet/kopi/addrbook.json > $HOME/.kopid/config/addrbook.json</code></pre>
   <button class="copy-btn"><i class="fas fa-copy"></i></button>
 </div>
 

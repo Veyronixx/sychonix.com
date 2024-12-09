@@ -65,13 +65,13 @@ sed -i -e "s|^persistent_peers *=.*|persistent_peers = \"$PEERS\"|" $HOME/  /con
 
   <label class="block mt-1 mb-1">Genesis File</label>
   <div class="code-block-wrapper">
-    <pre><code>curl -Ls https://snapshot.sychonix.com/testnet/fiamma/genesis.json > $HOME/.fiamma/config/genesis.json</code></pre>
+    <pre><code>curl -L https://snapshot.sychonix.com/testnet/fiamma/genesis.json > $HOME/.fiamma/config/genesis.json</code></pre>
     <button class="copy-btn"><i class="fas fa-copy"></i></button>
   </div>
 
   <label class="block mt-1 mb-1">Addrbook File</label>
   <div class="code-block-wrapper">
-    <pre><code>curl -Ls https://snapshot.sychonix.com/testnet/fiamma/addrbook.json > $HOME/.fiamma/config/addrbook.json</code></pre>
+    <pre><code>curl -L https://snapshot.sychonix.com/testnet/fiamma/addrbook.json > $HOME/.fiamma/config/addrbook.json</code></pre>
     <button class="copy-btn"><i class="fas fa-copy"></i></button>
   </div>
 </div>

@@ -43,8 +43,8 @@ sed -i -e "s|^node *=.*|node = \"tcp://localhost:12057\"|" $HOME/.warden/config/
 - Download Genesis & Addrbook
 
 <div class="code-block-wrapper">
-  <pre><code>curl -Ls https://snapshot.sychonix.com/testnet/warden/genesis.json > $HOME/.warden/config/genesis.json
-curl -Ls https://snapshot.sychonix.com/testnet/warden/addrbook.json > $HOME/.warden/config/addrbook.json</code></pre>
+  <pre><code>curl -L https://snapshot.sychonix.com/testnet/warden/genesis.json > $HOME/.warden/config/genesis.json
+curl -L https://snapshot.sychonix.com/testnet/warden/addrbook.json > $HOME/.warden/config/addrbook.json</code></pre>
   <button class="copy-btn"><i class="fas fa-copy"></i></button>
 </div>
 

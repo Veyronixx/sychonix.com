@@ -44,8 +44,8 @@ cnhod init "YourName" --chain-id cnho_stables-1</code></pre>
 - Download Genesis & Addrbook
 
 <div class="code-block-wrapper">
-  <pre><code>curl -Ls https://snapshot.sychonix.com/mainnet/cnho/genesis.json > $HOME/.cnho/config/genesis.json
-curl -Ls https://snapshot.sychonix.com/mainnet/cnho/addrbook.json > $HOME/.cnho/config/addrbook.json</code></pre>
+  <pre><code>curl -L https://snapshot.sychonix.com/mainnet/cnho/genesis.json > $HOME/.cnho/config/genesis.json
+curl -L https://snapshot.sychonix.com/mainnet/cnho/addrbook.json > $HOME/.cnho/config/addrbook.json</code></pre>
   <button class="copy-btn"><i class="fas fa-copy"></i></button>
 </div>
 

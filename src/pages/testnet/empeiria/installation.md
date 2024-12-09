@@ -46,8 +46,8 @@ emped init "YourName" --chain-id empe-testnet-2</code></pre>
 - Download Genesis & Addrbook
 
 <div class="code-block-wrapper">
-  <pre><code>curl -Ls https://snapshot.sychonix.com/testnet/empeiria/genesis.json > $HOME/.empe-chain/config/genesis.json
-curl -Ls https://snapshot.sychonix.com/testnet/empeiria/addrbook.json > $HOME/.empe-chain/config/addrbook.json</code></pre>
+  <pre><code>curl -L https://snapshot.sychonix.com/testnet/empeiria/genesis.json > $HOME/.empe-chain/config/genesis.json
+curl -L https://snapshot.sychonix.com/testnet/empeiria/addrbook.json > $HOME/.empe-chain/config/addrbook.json</code></pre>
   <button class="copy-btn"><i class="fas fa-copy"></i></button>
 </div>
 

@@ -44,8 +44,8 @@ crossfid init "YourName" --chain-id crossfi-evm-mainnet-1</code></pre>
 - Download Genesis and Addrbook
 
 <div class="code-block-wrapper">
-  <pre><code>curl -Ls https://snapshot.sychonix.com/mainnet/crossfi/genesis.json > $HOME/.crossfid/config/genesis.json
-curl -Ls https://snapshot.sychonix.com/mainnet/crossfi/addrbook.json > $HOME/.crossfid/config/addrbook.json</code></pre>
+  <pre><code>curl -L https://snapshot.sychonix.com/mainnet/crossfi/genesis.json > $HOME/.crossfid/config/genesis.json
+curl -L https://snapshot.sychonix.com/mainnet/crossfi/addrbook.json > $HOME/.crossfid/config/addrbook.json</code></pre>
   <button class="copy-btn"><i class="fas fa-copy"></i></button>
 </div>
 

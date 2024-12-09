@@ -65,13 +65,13 @@ sed -i -e "s|^persistent_peers *=.*|persistent_peers = \"$PEERS\"|" $HOME/.dheal
 
   <label class="block mt-1 mb-1">Genesis File</label>
   <div class="code-block-wrapper">
-    <pre><code>curl -Ls https://snapshot.sychonix.com/mainnet/dhealth/genesis.json > $HOME/.dhealth/config/genesis.json</code></pre>
+    <pre><code>curl -L https://snapshot.sychonix.com/mainnet/dhealth/genesis.json > $HOME/.dhealth/config/genesis.json</code></pre>
     <button class="copy-btn"><i class="fas fa-copy"></i></button>
   </div>
 
   <label class="block mt-1 mb-1">Addrbook File</label>
   <div class="code-block-wrapper">
-    <pre><code>curl -Ls https://snapshot.sychonix.com/mainnet/dhealth/addrbook.json > $HOME/.dhealth/config/addrbook.json</code></pre>
+    <pre><code>curl -L https://snapshot.sychonix.com/mainnet/dhealth/addrbook.json > $HOME/.dhealth/config/addrbook.json</code></pre>
     <button class="copy-btn"><i class="fas fa-copy"></i></button>
   </div>
 </div>

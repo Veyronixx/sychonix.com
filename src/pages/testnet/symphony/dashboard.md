@@ -65,13 +65,13 @@ sed -i -e "s|^persistent_peers *=.*|persistent_peers = \"$PEERS\"|" $HOME/  /con
 
   <label class="block mt-1 mb-1">Genesis File</label>
   <div class="code-block-wrapper">
-    <pre><code>curl -Ls https://snapshot.sychonix.com/testnet/symphony/genesis.json > $HOME/.symphonyd/config/genesis.json</code></pre>
+    <pre><code>curl -L https://snapshot.sychonix.com/testnet/symphony/genesis.json > $HOME/.symphonyd/config/genesis.json</code></pre>
     <button class="copy-btn"><i class="fas fa-copy"></i></button>
   </div>
 
   <label class="block mt-1 mb-1">Addrbook File</label>
   <div class="code-block-wrapper">
-    <pre><code>curl -Ls https://snapshot.sychonix.com/testnet/symphony/addrbook.json > $HOME/.symphonyd/config/addrbook.json</code></pre>
+    <pre><code>curl -L https://snapshot.sychonix.com/testnet/symphony/addrbook.json > $HOME/.symphonyd/config/addrbook.json</code></pre>
     <button class="copy-btn"><i class="fas fa-copy"></i></button>
   </div>
 </div>

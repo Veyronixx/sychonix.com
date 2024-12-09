@@ -45,8 +45,8 @@ firmachaind init "YourName" --chain-id colosseum-1</code></pre>
 - Download Genesis and Addrbook
 
 <div class="code-block-wrapper">
-  <pre><code>curl -Ls https://snapshot.sychonix.com/mainnet/firmachain/genesis.json > $HOME/.firmachain/config/genesis.json
-curl -Ls https://snapshot.sychonix.com/mainnet/firmachain/addrbook.json > $HOME/.firmachain/config/addrbook.json</code></pre>
+  <pre><code>curl -L https://snapshot.sychonix.com/mainnet/firmachain/genesis.json > $HOME/.firmachain/config/genesis.json
+curl -L https://snapshot.sychonix.com/mainnet/firmachain/addrbook.json > $HOME/.firmachain/config/addrbook.json</code></pre>
   <button class="copy-btn"><i class="fas fa-copy"></i></button>
 </div>
 

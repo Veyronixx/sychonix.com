@@ -49,8 +49,8 @@ sed -i -e "s|^keyring-backend *=.*|keyring-backend = \"os\"|" $HOME/.dhealth/con
 - Download Genesis & Addrbook
 
 <div class="code-block-wrapper">
-  <pre><code>curl -Ls https://snapshot.sychonix.com/mainnet/dhealth/genesis.json > $HOME/.dhealth/config/genesis.json
-curl -Ls https://snapshot.sychonix.com/mainnet/dhealth/addrbook.json > $HOME/.dhealth/config/addrbook.json</code></pre>
+  <pre><code>curl -L https://snapshot.sychonix.com/mainnet/dhealth/genesis.json > $HOME/.dhealth/config/genesis.json
+curl -L https://snapshot.sychonix.com/mainnet/dhealth/addrbook.json > $HOME/.dhealth/config/addrbook.json</code></pre>
   <button class="copy-btn"><i class="fas fa-copy"></i></button>
 </div>
 

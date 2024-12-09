@@ -45,8 +45,8 @@ sed -i -e "s|^chain-id *=.*|chain-id = \"fiamma-testnet-1\"|" $HOME/.fiamma/conf
 - Download Genesis & Addrbook
 
 <div class="code-block-wrapper">
-  <pre><code>curl -Ls https://snapshot.sychonix.com/testnet/fiamma/genesis.json > $HOME/.fiamma/config/genesis.json
-curl -Ls https://snapshot.sychonix.com/testnet/fiamma/addrbook.json > $HOME/.fiamma/config/addrbook.json</code></pre>
+  <pre><code>curl -L https://snapshot.sychonix.com/testnet/fiamma/genesis.json > $HOME/.fiamma/config/genesis.json
+curl -L https://snapshot.sychonix.com/testnet/fiamma/addrbook.json > $HOME/.fiamma/config/addrbook.json</code></pre>
   <button class="copy-btn"><i class="fas fa-copy"></i></button>
 </div>
 
