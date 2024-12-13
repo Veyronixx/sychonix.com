@@ -7,7 +7,7 @@ icon: gaianet
 
 - Download Binary
 <div class="code-block-wrapper">
-  <pre><code>curl -L -o executor-linux-v0.21.0.tar.gz https://github.com/t3rn/executor-release/releases/download/v0.21.0/executor-linux-v0.21.0.tar.gz && tar -xzvf executor-linux-v0.21.0.tar.gz && rm -rf executor-linux-v0.21.0.tar.gz && cd executor/executor/bin</code></pre>
+  <pre><code>curl -L -o executor-linux-v0.27.0.tar.gz https://github.com/t3rn/executor-release/releases/download/v0.27.0/executor-linux-v0.27.0.tar.gz && tar -xzvf executor-linux-v0.27.0.tar.gz && rm -rf executor-linux-v0.27.0.tar.gz && cd executor/executor/bin</code></pre>
   <button class="copy-btn"><i class="fas fa-copy"></i></button>
 </div>
 
@@ -22,11 +22,12 @@ ExecStart=$HOME/executor/executor/bin/executor
 Environment="NODE_ENV=testnet"
 Environment="LOG_LEVEL=debug"
 Environment="LOG_PRETTY=false"
-Environment="PRIVATE_KEY_LOCAL=your_private_keys"
-Environment="ENABLED_NETWORKS=arbitrum-sepolia,base-sepolia,blast-sepolia,optimism-sepolia,l1rn"
+Environment="PRIVATE_KEY_LOCAL=0xYour_private_keys"
+Environment="ENABLED_NETWORKS=arbitrum-sepolia,base-sepolia,optimism-sepolia,l1rn"
+Environment="EXECUTOR_PROCESS_PENDING_ORDERS_FROM_API=false"
 Restart=always
 RestartSec=5
-User=$USER
+User=testnet
 [Install]
 WantedBy=multi-user.target
 EOF</code></pre>
