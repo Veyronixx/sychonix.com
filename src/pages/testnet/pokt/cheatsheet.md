@@ -5,10 +5,10 @@ icon : cnho
 <!-- Change it
 cnho
 pocket-beta
-poktrolld
+poktrolld 
 $HOME/.poktroll
 upokt
-poktrolld
+poktrolld 
 gas price : 1upokt
 100000upokt
 -->
@@ -61,7 +61,7 @@ gas price : 1upokt
 
 <label for="iwallet" style="vertical-align: top;"> Check balance</label>
 <div class="pre-container">
-  <pre class="my-pre" id="pre7">poktrolld q bank balances $(poktrolldkeys show <span class="rwallet7"></span> -a)</pre>
+  <pre class="my-pre" id="pre7">poktrolld q bank balances $(poktrolld keys show <span class="rwallet7"></span> -a)</pre>
   <button class="copy-btn" id="copy7" data-clipboard-text="" onclick="copyText(7)"></button>
 </div>
 
@@ -115,9 +115,9 @@ gas price : 1upokt
 <div class="pre-container">
 <label for="ivalidator" style="vertical-align: top;"> Create New Validator</label>
   <pre class="my-pre" id="pre8">
-poktrolldtx staking create-validator \
+poktrolld tx staking create-validator \
 --amount=<span class="ramount1">100000upokt</span> \
---pubkey=$(poktrolldtendermint show-validator) \
+--pubkey=$(poktrolld tendermint show-validator) \
 --moniker="<span class="rmoniker1"></span>" \
 --identity="<span class="ridentity1"></span>" \
 --details="<span class="rdetails1"></span>" \
@@ -158,7 +158,7 @@ poktrolldtx staking create-validator \
 
 <div class="pre-container">
 <pre class="my-pre" id="pre9">
-poktrolldtx staking edit-validator \
+poktrolld tx staking edit-validator \
 --new-moniker="<span class="reditmoniker1"></span>" \
 --identity="<span class="reditidentity1"></span>" \
 --details="<span class="reditdetails1"></span>" \
@@ -174,37 +174,37 @@ poktrolldtx staking edit-validator \
 
 <label for="iwallet" style="vertical-align: top;"> Unjail Validator</label>
 <div class="pre-container">
-  <pre class="my-pre" id="pre10">poktrolldtx slashing unjail --from wallet --chain-id pocket-beta --gas auto --gas-adjustment 1.5  </pre>
+  <pre class="my-pre" id="pre10">poktrolld tx slashing unjail --from wallet --chain-id pocket-beta --gas auto --gas-adjustment 1.5  </pre>
   <button class="copy-btn" id="copy10" data-clipboard-text="" onclick="copyText(10)"></button>
 </div>
 
 <label for="iwallet" style="vertical-align: top;"> Jail Reason</label>
 <div class="pre-container">
-  <pre class="my-pre" id="pre11">poktrolldquery slashing signing-info $(poktrolldtendermint show-validator)</pre>
+  <pre class="my-pre" id="pre11">poktrolld query slashing signing-info $(poktrolld tendermint show-validator)</pre>
   <button class="copy-btn" id="copy11" data-clipboard-text="" onclick="copyText(11)"></button>
 </div>
 
 <label for="iwallet" style="vertical-align: top;"> View validator details</label>
 <div class="pre-container">
-  <pre class="my-pre" id="pre12">poktrolldq staking validator $(poktrolldkeys show wallet --bech val -a)</pre>
+  <pre class="my-pre" id="pre12">poktrolld q staking validator $(poktrolld keys show wallet --bech val -a)</pre>
   <button class="copy-btn" id="copy12" data-clipboard-text="" onclick="copyText(12)"></button>
 </div>
 
 <label> Get Denom Info</label>
 <div class="pre-container">
-  <pre class="my-pre" id="pre23">poktrolldq bank denom-metadata -oj | jq</pre>
+  <pre class="my-pre" id="pre23">poktrolld q bank denom-metadata -oj | jq</pre>
   <button class="copy-btn" id="copy23" data-clipboard-text="" onclick="copyText(23)"></button>
 </div>
 
 <label> Get Sync Status</label>
 <div class="pre-container">
-  <pre class="my-pre" id="pre24">poktrolldstatus 2>&1 | jq -r '.SyncInfo.catching_up // .sync_info.catching_up'</pre>
+  <pre class="my-pre" id="pre24">poktrolld status 2>&1 | jq -r '.SyncInfo.catching_up // .sync_info.catching_up'</pre>
   <button class="copy-btn" id="copy24" data-clipboard-text="" onclick="copyText(24)"></button>
 </div>
 
 <label> Get Latest Height</label>
 <div class="pre-container">
-  <pre class="my-pre" id="pre25">poktrolldstatus 2>&1 | jq -r '.SyncInfo.latest_block_height // .sync_info.latest_block_height'</pre>
+  <pre class="my-pre" id="pre25">poktrolld  status 2>&1 | jq -r '.SyncInfo.latest_block_height // .sync_info.latest_block_height'</pre>
   <button class="copy-btn" id="copy25" data-clipboard-text="" onclick="copyText(25)"></button>
 </div>
 
@@ -212,13 +212,13 @@ poktrolldtx staking edit-validator \
 
 <label for="ivalidator">Withdraw rewards from all validators</label>
 <div class="pre-container">
-  <pre class="my-pre" id="pre13">poktrolldtx distribution withdraw-all-rewards --from wallet --chain-id pocket-beta --gas auto --gas-adjustment 1.5 --gas-prices 1upokt -y </pre>
+  <pre class="my-pre" id="pre13">poktrolld tx distribution withdraw-all-rewards --from wallet --chain-id pocket-beta --gas auto --gas-adjustment 1.5 --gas-prices 1upokt -y </pre>
   <button class="copy-btn" id="copy13" data-clipboard-text="" onclick="copyText(13)"></button>
 </div>
 
 <label for="ivalidator" style="vertical-align: top;"> Withdraw commission and rewards from your validator</label>
 <div class="pre-container">
-  <pre class="my-pre" id="pre14">poktrolldtx distribution withdraw-rewards $(poktrolldkeys show wallet --bech val -a) --commission --from wallet --chain-id pocket-beta --gas auto --gas-adjustment 1.5 --gas-prices 1upokt -y </pre>
+  <pre class="my-pre" id="pre14">poktrolld tx distribution withdraw-rewards $(poktrolld keys show wallet --bech val -a) --commission --from wallet --chain-id pocket-beta --gas auto --gas-adjustment 1.5 --gas-prices 1upokt -y </pre>
   <button class="copy-btn" id="copy14" data-clipboard-text="" onclick="copyText(14)"></button>
 </div>
 
@@ -230,7 +230,7 @@ poktrolldtx staking edit-validator \
   <input id="idelegete" type="text" placeholder="Enter Amount" oninput="updatePre()" />
 </div>
 <div class="pre-container">
-  <pre class="my-pre" id="pre15" style="margin-top: 5px;">poktrolldtx staking delegate $(poktrolldkeys show wallet --bech val -a) <span class="rdelegete1"></span>100000upokt --from wallet --chain-id pocket-beta --gas auto --gas-adjustment 1.5 --gas-prices 1upokt -y </pre>
+  <pre class="my-pre" id="pre15" style="margin-top: 5px;">poktrolld tx staking delegate $(poktrolld keys show wallet --bech val -a) <span class="rdelegete1"></span>100000upokt --from wallet --chain-id pocket-beta --gas auto --gas-adjustment 1.5 --gas-prices 1upokt -y </pre>
   <button class="copy-btn" id="copy15" data-clipboard-text="" onclick="copyText(15)">Copy</button>
 </div>
 
@@ -239,21 +239,21 @@ poktrolldtx staking edit-validator \
   <input id="iredelegete" type="text" placeholder="Enter <TO_VALOPER_ADDRESS>" oninput="updatePre()" />
 </div>
 <div class="pre-container">
-  <pre class="my-pre" id="pre16" style="margin-top: 5px;">poktrolldtx staking redelegate $(poktrolldkeys show wallet --bech val -a) <span class="rredelegete1"></span> <span class="rdelegete2"></span>100000upokt --from wallet --chain-id pocket-beta --gas auto --gas-adjustment 1.5 --gas-prices 1upokt -y</pre>
+  <pre class="my-pre" id="pre16" style="margin-top: 5px;">poktrolld tx staking redelegate $(poktrolld keys show wallet --bech val -a) <span class="rredelegete1"></span> <span class="rdelegete2"></span>100000upokt --from wallet --chain-id pocket-beta --gas auto --gas-adjustment 1.5 --gas-prices 1upokt -y</pre>
   <button class="copy-btn" id="copy16" data-clipboard-text="" onclick="copyText(16)"></button>
 </div>
 
 
 <label for="iredelegete" style="vertical-align: top;"> Delegate tokens to validator</label>
 <div class="pre-container">
-  <pre class="my-pre" id="pre17" style="margin-top: 5px;">poktrolldtx staking delegate <span class="rredelegete2"></span> <span class="rdelegete3"></span>100000upokt --from <span class="rwallet19"></span> --chain-id pocket-beta --gas auto --gas-adjustment 1.5 --gas-prices 1upokt -y </pre>
+  <pre class="my-pre" id="pre17" style="margin-top: 5px;">poktrolld tx staking delegate <span class="rredelegete2"></span> <span class="rdelegete3"></span>100000upokt --from <span class="rwallet19"></span> --chain-id pocket-beta --gas auto --gas-adjustment 1.5 --gas-prices 1upokt -y </pre>
   <button class="copy-btn" id="copy17" data-clipboard-text="" onclick="copyText(17)"></button>
 </div>
 
 
 <label for="iredelegete" style="vertical-align: top;"> Unbond tokens from your validator</label>
 <div class="pre-container">
-  <pre class="my-pre" id="pre18" style="margin-top: 5px;">poktrolldtx staking unbond $(poktrolldkeys show wallet --bech val -a) <span class="rdelegete4"></span>100000upokt --from wallet --chain-id pocket-beta --gas auto --gas-adjustment 1.5 --gas-prices 1upokt -y</pre>
+  <pre class="my-pre" id="pre18" style="margin-top: 5px;">poktrolld tx staking unbond $(poktrolld keys show wallet --bech val -a) <span class="rdelegete4"></span>100000upokt --from wallet --chain-id pocket-beta --gas auto --gas-adjustment 1.5 --gas-prices 1upokt -y</pre>
   <button class="copy-btn" id="copy18" data-clipboard-text="" onclick="copyText(18)"></button>
 </div>
 
@@ -262,7 +262,7 @@ poktrolldtx staking edit-validator \
   <input id="itoken" type="text" placeholder="Enter Address Wallet" oninput="updatePre()" />
 </div>
 <div class="pre-container">
-  <pre class="my-pre" id="pre19" style="margin-top: 5px;">poktrolldtx bank send wallet</span> <span class="rtoken1"></span> <span class="rdelegete5"></span>100000upokt --from wallet --chain-id pocket-beta --gas auto --gas-adjustment 1.5 --gas-prices 1upokt -y</pre>
+  <pre class="my-pre" id="pre19" style="margin-top: 5px;">poktrolld tx bank send wallet</span> <span class="rtoken1"></span> <span class="rdelegete5"></span>100000upokt --from wallet --chain-id pocket-beta --gas auto --gas-adjustment 1.5 --gas-prices 1upokt -y</pre>
   <button class="copy-btn" id="copy19" data-clipboard-text="" onclick="copyText(19)"></button>
 </div>
 
@@ -313,7 +313,7 @@ poktrolldtx staking edit-validator \
 
 <label> Check Service Logs</label>
 <div class="pre-container">
-  <pre class="my-pre" id="pre33">sudo journalctl -u poktrolld-f --no-hostname -o cat</pre>
+  <pre class="my-pre" id="pre33">sudo journalctl -u poktrolld -f --no-hostname -o cat</pre>
   <button class="copy-btn" id="copy33" data-clipboard-text="" onclick="copyText(33)"></button>
 </div>
 
