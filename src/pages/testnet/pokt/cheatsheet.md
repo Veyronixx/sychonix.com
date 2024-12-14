@@ -24,44 +24,44 @@ gas price : 1upokt
 
 <label for="iwallet" style="vertical-align: top;"> Create New Wallet</label>
 <div class="pre-container">
-  <pre class="my-pre" id="pre1" style="margin-top: 5px;">poktrolldkeys add <span class="rwallet1"></span></pre>
+  <pre class="my-pre" id="pre1" style="margin-top: 5px;">poktrolld keys add <span class="rwallet1"></span></pre>
   <button class="copy-btn" id="copy1" data-clipboard-text="" onclick="copyText(1)"></button>
 </div>
 
 <label for="iwallet" style="vertical-align: top;"> Recovery New Wallet</label>
 <div class="pre-container">
-  <pre class="my-pre" id="pre2" style="margin-top: 5px;">poktrolldkeys add <span class="rwallet2"></span> --recover</pre>
+  <pre class="my-pre" id="pre2" style="margin-top: 5px;">poktrolld keys add <span class="rwallet2"></span> --recover</pre>
   <button class="copy-btn" id="copy2" data-clipboard-text="" onclick="copyText(2)"></button>
 </div>
 
 <label for="iwallet" style="vertical-align: top;"> List All Wallet</label>
 <div class="pre-container">
-  <pre class="my-pre" id="pre3" style="margin-top: 5px;">poktrolldkeys list <span class="rwallet3"></span></pre>
+  <pre class="my-pre" id="pre3" style="margin-top: 5px;">poktrolld keys list <span class="rwallet3"></span></pre>
   <button class="copy-btn" id="copy3" data-clipboard-text="" onclick="copyText(3)"></button>
 </div>
 
 <label for="iwallet" style="vertical-align: top;"> Delete Wallet</label>
 <div class="pre-container">
-  <pre class="my-pre" id="pre4">poktrolldkeys delete <span class="rwallet4"></span></pre>
+  <pre class="my-pre" id="pre4">poktrolld keys delete <span class="rwallet4"></span></pre>
   <button class="copy-btn" id="copy4" data-clipboard-text="" onclick="copyText(4)"></button>
 </div>
 
 <label for="iwallet" style="vertical-align: top;"> Export Wallet</label>
 <div class="pre-container">
-  <pre class="my-pre" id="pre5">poktrolldkeys export <span class="rwallet5"></span></pre>
+  <pre class="my-pre" id="pre5">poktrolld keys export <span class="rwallet5"></span></pre>
   <button class="copy-btn" id="copy5" data-clipboard-text="" onclick="copyText(5)"></button>
 </div>
 
 
 <label for="iwallet" style="vertical-align: top;"> Import key</label>
 <div class="pre-container">
-<pre class="my-pre" id="pre6">poktrolldkeys import <span class="rwallet6"></span>.backup</pre>
+<pre class="my-pre" id="pre6">poktrolld keys import <span class="rwallet6"></span>.backup</pre>
   <button class="copy-btn" class="copy-btn" id="copy6" data-clipboard-text="" onclick="copyText(6)"></button>
 </div>
 
 <label for="iwallet" style="vertical-align: top;"> Check balance</label>
 <div class="pre-container">
-  <pre class="my-pre" id="pre7">poktrolldq bank balances $(poktrolldkeys show <span class="rwallet7"></span> -a)</pre>
+  <pre class="my-pre" id="pre7">poktrolld q bank balances $(poktrolldkeys show <span class="rwallet7"></span> -a)</pre>
   <button class="copy-btn" id="copy7" data-clipboard-text="" onclick="copyText(7)"></button>
 </div>
 
