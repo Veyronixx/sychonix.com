@@ -118,3 +118,36 @@ sudo systemctl enable poktrolld.service
 sudo systemctl restart poktrolld.service && sudo journalctl -u poktrolld.service -f --no-hostname -o cat</code></pre>
   <button class="copy-btn"><i class="fas fa-copy"></i></button>
 </div>
+
+- Create Validator
+
+<div class="code-block-wrapper">
+  <pre><code>poktrolld tendermint show-validator</code></pre>
+  <button class="copy-btn"><i class="fas fa-copy"></i></button>
+</div>
+
+- Create validator.json file
+<div class="code-block-wrapper">
+  <pre><code>sudo nano $HOME/.poktroll/validator.json
+{
+  "pubkey": {"#pubkey"},
+  "amount": "", 
+  "moniker": "", 
+  "identity": "",
+  "website": "",
+  "security": "", 
+  "details": "", 
+  "commission-rate": "0.05",
+  "commission-max-rate": "0.2",
+  "commission-max-change-rate": "0.05",
+  "min-self-delegation": "1"
+}</code></pre>
+  <button class="copy-btn"><i class="fas fa-copy"></i></button>
+</div>
+
+<div class="code-block-wrapper">
+  <pre><code>poktrolld tx staking create-validator $HOME/.poktroll/validator.json \
+--from wallet \
+--chain-id pocket-beta</code></pre>
+  <button class="copy-btn"><i class="fas fa-copy"></i></button>
+</div>
