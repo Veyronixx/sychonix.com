@@ -148,6 +148,7 @@ sudo systemctl restart poktrolld.service && sudo journalctl -u poktrolld.service
 <div class="code-block-wrapper">
   <pre><code>poktrolld tx staking create-validator $HOME/.poktroll/validator.json \
 --from wallet \
---chain-id pocket-beta</code></pre>
+--chain-id pocket-beta \
+--fees 200000upokt</code></pre>
   <button class="copy-btn"><i class="fas fa-copy"></i></button>
 </div>
