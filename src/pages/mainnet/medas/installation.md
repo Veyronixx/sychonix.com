@@ -20,54 +20,52 @@ eval $(echo 'export PATH=$PATH:$HOME/go/bin' | tee -a $HOME/.profile)</code></pr
   <button class="copy-btn"><i class="fas fa-copy"></i></button>
 </div>
 
-- Install Binary
-
 <div class="code-block-wrapper">
   <pre><code>cd $HOME
-curl -L https://snapshot.sychonix.com/mainnet/dhealth/dhealthd.tar.gz | tar -xvzf - -C $HOME
-sudo mv dhealthd /usr/local/bin/</code></pre>
+curl -L https://snapshot.sychonix.com/mainnet/medas/medasdigitald.tar.gz | tar -xvzf - -C $HOME
+sudo mv medasdigitald /usr/local/bin/</code></pre>
   <button class="copy-btn"><i class="fas fa-copy"></i></button>
 </div>
 
 - Download CosmWasm Library
 
 <div class="code-block-wrapper">
-  <pre><code>sudo wget -P /usr/lib https://github.com/CosmWasm/wasmvm/releases/download/v1.3.1/libwasmvm.x86_64.so</code></pre>
+  <pre><code>sudo wget -P /usr/lib https://github.com/CosmWasm/wasmvm/releases/download/v2.1.2/libwasmvm.x86_64.so</code></pre>
   <button class="copy-btn"><i class="fas fa-copy"></i></button>
 </div>
 
 - Initialize The Node
 
 <div class="code-block-wrapper"><!-- Change chain id and port -->
-  <pre><code>dhealthd config chain-id dhealth
-dhealthd init $MONIKER --chain-id dhealth
-sed -i -e "s|^node *=.*|node = \"tcp://localhost:12457\"|" $HOME/.dhealth/config/client.toml
-sed -i -e "s|^keyring-backend *=.*|keyring-backend = \"os\"|" $HOME/.dhealth/config/client.toml</code></pre>
+  <pre><code>medasdigitald init $MONIKER --chain-id medasdigital-2
+sed -i -e "s|^node *=.*|node = \"tcp://localhost:12857\"|" $HOME/.medasdigital/config/client.toml
+sed -i -e "s|^keyring-backend *=.*|keyring-backend = \"os\"|" $HOME/.medasdigital/config/client.toml
+sed -i -e "s|^chain-id *=.*|chain-id = \"medasdigital-2\"|" $HOME/.medasdigital/config/client.toml</code></pre>
   <button class="copy-btn"><i class="fas fa-copy"></i></button>
 </div><!-- Change chain id and port -->
 
 - Download Genesis & Addrbook
 
 <div class="code-block-wrapper">
-  <pre><code>curl -L https://snapshot.sychonix.com/mainnet/dhealth/genesis.json > $HOME/.dhealth/config/genesis.json
-curl -L https://snapshot.sychonix.com/mainnet/dhealth/addrbook.json > $HOME/.dhealth/config/addrbook.json</code></pre>
+  <pre><code>curl -L https://snapshot.sychonix.com/mainnet/medas/genesis.json > $HOME/.medasdigital/config/genesis.json
+curl -L https://snapshot.sychonix.com/mainnet/medas/addrbook.json > $HOME/.medasdigital/config/addrbook.json</code></pre>
   <button class="copy-btn"><i class="fas fa-copy"></i></button>
 </div>
 
 - Configure Seeds and Peers
 
 <div class="code-block-wrapper">
-  <pre><code>SEEDS="89661b92afd14d7672c6a37547cab8c746dc58c6@dhealth-mainnet.sychonix.com:12456"
-PEERS="$(curl -sS https://rpc-dhealth.sychonix.com/net_info | jq -r '.result.peers[] | "\(.node_info.id)@\(.remote_ip):\(.node_info.listen_addr)"' | awk -F ':' '{print $1":"$(NF)}' | sed -z 's|\n|,|g;s|.$||')"
-sed -i -e "s|^seeds *=.*|seeds = '"$SEEDS"'|; s|^persistent_peers *=.*|persistent_peers = '"$PEERS"'|" $HOME/.dhealth/config/config.toml</code></pre>
+  <pre><code>SEEDS="cfef0546b0621abba2818874a2935507878dbc80@medas-mainnet.sychonix.com:12856"
+PEERS="$(curl -sS https://rpc-medas.sychonix.com/net_info | jq -r '.result.peers[] | "\(.node_info.id)@\(.remote_ip):\(.node_info.listen_addr)"' | awk -F ':' '{print $1":"$(NF)}' | sed -z 's|\n|,|g;s|.$||')"
+sed -i -e "s|^seeds *=.*|seeds = '"$SEEDS"'|; s|^persistent_peers *=.*|persistent_peers = '"$PEERS"'|" $HOME/.medasdigital/config/config.toml</code></pre>
   <button class="copy-btn"><i class="fas fa-copy"></i></button>
 </div>
 
 - Update Port Configuration
 
 <div class="code-block-wrapper">
-  <pre><code>sed -i -e "s%:1317%:12417%; s%:8080%:12480%; s%:9090%:12490%; s%:9091%:12491%; s%:8545%:12445%; s%:8546%:12446%; s%:6065%:12465%" $HOME/.dhealth/config/app.toml
-sed -i -e "s%:26658%:12458%; s%:26657%:12457%; s%:6060%:12460%; s%:26656%:12456%; s%:26660%:12461%" $HOME/.dhealth/config/config.toml</code></pre>
+  <pre><code>sed -i -e "s%:1317%:12817%; s%:8080%:12880%; s%:9090%:12890%; s%:9091%:12891%; s%:8545%:12845%; s%:8546%:12846%; s%:6065%:12865%" $HOME/.medasdigital/config/app.toml
+sed -i -e "s%:26658%:12858%; s%:26657%:12857%; s%:6060%:12860%; s%:26656%:12856%; s%:26660%:12861%" $HOME/.medasdigital/config/config.toml</code></pre>
   <button class="copy-btn"><i class="fas fa-copy"></i></button>
 </div>
 
@@ -78,29 +76,29 @@ sed -i -e "s%:26658%:12458%; s%:26657%:12457%; s%:6060%:12460%; s%:26656%:12456%
   -e 's|^pruning *=.*|pruning = "custom"|' \
   -e 's|^pruning-keep-recent *=.*|pruning-keep-recent = "100"|' \
   -e 's|^pruning-interval *=.*|pruning-interval = "17"|' \
-  $HOME/.dhealth/config/app.toml</code></pre>
+  $HOME/.medasdigital/config/app.toml</code></pre>
   <button class="copy-btn"><i class="fas fa-copy"></i></button>
 </div>
 
 - Set Minimum Gas Price, Enable Prometheus, and Disable the Indexer
 
 <div class="code-block-wrapper"><!-- Note: Change gas price and denom -->
-  <pre><code>sed -i -e "s|^minimum-gas-prices *=.*|minimum-gas-prices = \"1udhp\"|" $HOME/.dhealth/config/app.toml
-sed -i -e "s/prometheus = false/prometheus = true/" $HOME/.dhealth/config/config.toml
-sed -i -e "s/^indexer *=.*/indexer = \"null\"/" $HOME/.dhealth/config/config.toml</code></pre>
+  <pre><code>sed -i -e "s|^minimum-gas-prices *=.*|minimum-gas-prices = \"0.025umedas\"|" $HOME/.medasdigital/config/app.toml
+sed -i -e "s/prometheus = false/prometheus = true/" $HOME/.medasdigital/config/config.toml
+sed -i -e "s/^indexer *=.*/indexer = \"null\"/" $HOME/.medasdigital/config/config.toml</code></pre>
   <button class="copy-btn"><i class="fas fa-copy"></i></button>
 </div><!-- Note: Change gas price and denom -->
 
 - Create Service File
 
 <div class="code-block-wrapper">
-  <pre><code>sudo tee /etc/systemd/system/dhealthd.service &gt; /dev/null &lt;&lt;EOF
+  <pre><code>sudo tee /etc/systemd/system/medasdigitald.service &gt; /dev/null &lt;&lt;EOF
 [Unit]
-Description=dhealth mainnet node
+Description=medasdigitald node service
 After=network-online.target
 [Service]
 User=$USER
-ExecStart=$(which dhealthd) start
+ExecStart=$(which medasdigitald) start
 Restart=always
 RestartSec=3
 LimitNOFILE=65535
@@ -113,7 +111,7 @@ EOF</code></pre>
 - Download Current Snapshot
 
 <div class="code-block-wrapper">
-  <pre><code>curl "https://snapshot.sychonix.com/mainnet/dhealth/dhealth-snapshot.tar.lz4" | lz4 -dc - | tar -xf - -C "$HOME/.dhealth"</code></pre>
+  <pre><code>curl "https://snapshot.sychonix.com/mainnet/medas/medas-snapshot.tar.lz4" | lz4 -dc - | tar -xf - -C "$HOME/.medasdigital"</code></pre>
   <button class="copy-btn"><i class="fas fa-copy"></i></button>
 </div>
 
@@ -121,8 +119,8 @@ EOF</code></pre>
 
 <div class="code-block-wrapper">
   <pre><code>sudo systemctl daemon-reload
-sudo systemctl enable dhealthd.service
-sudo systemctl restart dhealthd.service && sudo journalctl -u dhealthd.service -f --no-hostname -o cat</code></pre>
+sudo systemctl enable medasdigitald.service
+sudo systemctl restart medasdigitald.service && sudo journalctl -u medasdigitald.service -f --no-hostname -o cat</code></pre>
   <button class="copy-btn"><i class="fas fa-copy"></i></button>
 </div>
 
