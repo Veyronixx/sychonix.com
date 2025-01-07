@@ -6,10 +6,11 @@ title: Dashboard
 <div class="dashboard-overview p-6 bg-gray-900 rounded-lg mb-2"> <!-- Changed mb-6 to mb-2 -->
   <div class="flex flex-col items-center">
     <!-- Update the image source path and add Tailwind classes for resizing and rounding -->
-    <img src="/img/pokt.jpg" alt="Logo" class="dashboard-logo mb-2 w-24 h-24 rounded-full" />
+    <img src="/img/atomone.png" alt="Logo" class="dashboard-logo mb-2 w-24 h-24 rounded-full" />
     <h2 class="text-xl font-bold text-white mb-1"></h2>
     <p class="text-left text-sm	 text-gray-300 mb-1"> <!-- Changed mb-2 to mb-1 -->
-Pocket Network (POKT) is a decentralized protocol that provides Web3 infrastructure through a distributed node network, enabling secure, reliable, and censorship-resistant connections for DApps and blockchains.</p>
+AtomOne emerged in response to concerns raised by the community over Proposal 82 and furthered by Proposal 848 on the Cosmos Hub, which highlighted issues surrounding centralization, security and governance inefficiencies within the network.
+    </p>
   </div>
 </div>
 
@@ -34,13 +35,13 @@ Pocket Network (POKT) is a decentralized protocol that provides Web3 infrastruct
 
   <label class="block mt-1 mb-1">RPC Endpoints</label> <!-- Added mt-1 mb-1 to adjust spacing -->
   <div class="code-block-wrapper">
-    <pre><code>https://rpc-pokt-t.sychonix.com</code></pre>
+    <pre><code>https://rpc-atomone.sychonix.com</code></pre>
     <button class="copy-btn"><i class="fas fa-copy"></i></button>
   </div>
 
   <label>API Endpoints</label>
   <div class="code-block-wrapper">
-    <pre><code>https://api-pokt-t.sychonix.com</code></pre>
+    <pre><code>https://api-atomone.sychonix.com</code></pre>
     <button class="copy-btn"><i class="fas fa-copy"></i></button>
   </div>
 </div>
@@ -51,26 +52,26 @@ Pocket Network (POKT) is a decentralized protocol that provides Web3 infrastruct
   
   <label class="block mt-1 mb-1">Seeds</label>
   <div class="code-block-wrapper">
-    <pre><code>b1a005f718ea1e9453c98513f8fbb49298eadf56@pokt-testnet.sychonix.com:12756</code></pre>
+    <pre><code>a3c7481636f715464af61b5cb26de1cb7fd26f05@atomone-mainnet.sychonix.com:12956</code></pre>
     <button class="copy-btn"><i class="fas fa-copy"></i></button>
   </div>
 
   <label class="block mt-1 mb-1">Live Peers</label>
   <div class="code-block-wrapper">
-    <pre><code>PEERS="$(curl -sS https://rpc-pokt-t.sychonix.com/net_info | jq -r '.result.peers[] | "\(.node_info.id)@\(.remote_ip):\(.node_info.listen_addr)"' | awk -F ':' '{print $1":"$(NF)}' | sed -z 's|\n|,|g;s|.$||')"  
-sed -i -e "s|^persistent_peers *=.*|persistent_peers = \"$PEERS\"|" $HOME/.poktroll/config/config.toml</code></pre>
+    <pre><code>PEERS="$(curl -sS https://rpc-atomone.sychonix.com/net_info | jq -r '.result.peers[] | "\(.node_info.id)@\(.remote_ip):\(.node_info.listen_addr)"' | awk -F ':' '{print $1":"$(NF)}' | sed -z 's|\n|,|g;s|.$||')"  
+sed -i -e "s|^persistent_peers *=.*|persistent_peers = \"$PEERS\"|" $HOME/.atomone/config/config.toml</code></pre>
     <button class="copy-btn"><i class="fas fa-copy"></i></button>
   </div>
 
   <label class="block mt-1 mb-1">Genesis File</label>
   <div class="code-block-wrapper">
-    <pre><code>curl -L https://snapshot.sychonix.com/testnet/pokt/genesis.json > $HOME/.poktroll/config/genesis.json</code></pre>
+    <pre><code>curl -L https://snapshot.sychonix.com/mainnet/atomone/genesis.json > $HOME/.atomone/config/genesis.json</code></pre>
     <button class="copy-btn"><i class="fas fa-copy"></i></button>
   </div>
 
   <label class="block mt-1 mb-1">Addrbook File</label>
   <div class="code-block-wrapper">
-    <pre><code>curl -L https://snapshot.sychonix.com/testnet/pokt/addrbook.json > $HOME/.poktroll/config/addrbook.json</code></pre>
+    <pre><code>curl -L https://snapshot.sychonix.com/mainnet/atomone/addrbook.json > $HOME/.atomone/config/addrbook.json</code></pre>
     <button class="copy-btn"><i class="fas fa-copy"></i></button>
   </div>
 </div>
@@ -80,9 +81,9 @@ sed -i -e "s|^persistent_peers *=.*|persistent_peers = \"$PEERS\"|" $HOME/.poktr
 <div id="chain-explorer" class="hidden bg-slate-950 p-4 rounded-lg shadow-md">
   <!-- Added clickable link -->
   <p class="text-sm text-gray-300">
-    <a href="https://explorer.sychonix.com/pokt-testnet" target="_blank" 
+    <a href="https://explorer.sychonix.com/atomone-mainnet" target="_blank" 
        class="text-blue-500 underline hover:text-blue-700 hover:shadow-lg">
-      https://explorer.sychonix.com/pokt-testnet
+      https://explorer.sychonix.com/atomone-mainnet
     </a>
   </p>
 </div>
