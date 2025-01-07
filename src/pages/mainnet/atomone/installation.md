@@ -120,36 +120,3 @@ sudo systemctl enable atomoned.service
 sudo systemctl restart atomoned.service && sudo journalctl -u atomoned.service -f --no-hostname -o cat</code></pre>
   <button class="copy-btn"><i class="fas fa-copy"></i></button>
 </div>
-
-- Create Validator
-
-<div class="code-block-wrapper">
-  <pre><code>atomoned tendermint show-validator</code></pre>
-  <button class="copy-btn"><i class="fas fa-copy"></i></button>
-</div>
-
-- Create validator.json file
-<div class="code-block-wrapper">
-  <pre><code>sudo nano $HOME/.atomone/validator.json
-{
-  "pubkey": {"#pubkey"},
-  "amount": "", 
-  "moniker": "", 
-  "identity": "",
-  "website": "",
-  "security": "", 
-  "details": "", 
-  "commission-rate": "0.05",
-  "commission-max-rate": "0.2",
-  "commission-max-change-rate": "0.05",
-  "min-self-delegation": "1"
-}</code></pre>
-  <button class="copy-btn"><i class="fas fa-copy"></i></button>
-</div>
-
-<div class="code-block-wrapper">
-  <pre><code>atomoned tx staking create-validator $HOME/.atomone/validator.json \
---from wallet \
---chain-id atomone-1</code></pre>
-  <button class="copy-btn"><i class="fas fa-copy"></i></button>
-</div>
