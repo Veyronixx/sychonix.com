@@ -6,7 +6,7 @@ title: Dashboard
 <div class="dashboard-overview p-6 bg-gray-900 rounded-lg mb-2"> <!-- Changed mb-6 to mb-2 -->
   <div class="flex flex-col items-center">
     <!-- Update the image source path and add Tailwind classes for resizing and rounding -->
-    <img src="/img/atomone1.png" alt="Logo" class="dashboard-logo mb-2 w-24 h-24 rounded-full" />
+    <img src="/img/atomone2.png" alt="Logo" class="dashboard-logo mb-2 w-24 h-24 rounded-full" />
     <h2 class="text-xl font-bold text-white mb-1"></h2>
     <p class="text-left text-sm	 text-gray-300 mb-1"> <!-- Changed mb-2 to mb-1 -->
 AtomOne emerged in response to concerns raised by the community over Proposal 82 and furthered by Proposal 848 on the Cosmos Hub, which highlighted issues surrounding centralization, security and governance inefficiencies within the network.
