@@ -79,7 +79,7 @@ sed -i -e "s%:26658%:13158%; s%:26657%:13157%; s%:6060%:13160%; s%:26656%:13156%
 - Set Minimum Gas Price, Enable Prometheus, and Disable the Indexer
 
 <div class="code-block-wrapper"><!-- Note: Change gas price and denom -->
-  <pre><code>sed -i -e "s|^minimum-gas-prices *=.*|minimum-gas-prices = \"0.025uatone\"|" $HOME/.union/config/app.toml
+  <pre><code>sed -i -e "s|^minimum-gas-prices *=.*|minimum-gas-prices = \"0muno\"|" $HOME/.union/config/app.toml
 sed -i -e "s/prometheus = false/prometheus = true/" $HOME/.union/config/config.toml
 sed -i -e "s/^indexer *=.*/indexer = \"null\"/" $HOME/.union/config/config.toml</code></pre>
   <button class="copy-btn"><i class="fas fa-copy"></i></button>
