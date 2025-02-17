@@ -51,7 +51,7 @@ curl -L https://snapshot.sychonix.com/testnet/union/addrbook.json > $HOME/.union
 - Configure Seeds and Peers
 
 <div class="code-block-wrapper">
-  <pre><code>SEEDS="b16ab773dc794cdd3e0a3f561e8a15e3b3fe0613@union-testnet.sychonix.com:13156"
+  <pre><code>SEEDS="d603ec240859a2d67e87118d0faff5abeb82d263@union-testnet.sychonix.com:13156"
 PEERS="$(curl -sS https://rpc-union-t.sychonix.com/net_info | jq -r '.result.peers[] | "\(.node_info.id)@\(.remote_ip):\(.node_info.listen_addr)"' | awk -F ':' '{print $1":"$(NF)}' | sed -z 's|\n|,|g;s|.$||')"
 sed -i -e "s|^seeds *=.*|seeds = '"$SEEDS"'|; s|^persistent_peers *=.*|persistent_peers = '"$PEERS"'|" $HOME/.union/config/config.toml</code></pre>
   <button class="copy-btn"><i class="fas fa-copy"></i></button>
