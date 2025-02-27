@@ -52,7 +52,7 @@ title: Dashboard
   
   <label class="block mt-1 mb-1">Seeds</label>
   <div class="code-block-wrapper">
-    <pre><code>4a88c4925f887325872451659e554aafebdb026d@prysm-testnet.sychonix.com:19756</code></pre>
+    <pre><code>b410c0c1c4c13c161d2ce9ecdb051470a5e57d61@prysm-testnet.sychonix.com:19756</code></pre>
     <button class="copy-btn"><i class="fas fa-copy"></i></button>
   </div>
 

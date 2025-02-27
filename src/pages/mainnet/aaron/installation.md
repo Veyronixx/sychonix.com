@@ -59,7 +59,7 @@ curl -L https://snapshot.sychonix.com/mainnet/aaronetwork/addrbook.json > $HOME/
 - Configure Seeds and Peers
 
 <div class="code-block-wrapper">
-  <pre><code>SEEDS="d74b63e82c0d6ee7f97da784dd86ec4f8d805bc3@aaronetwork-mainnet.sychonix.com:12656"
+  <pre><code>SEEDS="7c546a0e562da344b302c1f0a77bb66d8ceda525@aaronetwork-mainnet.sychonix.com:12656"
 PEERS="$(curl -sS https://rpc-aaronetwork.sychonix.com/net_info | jq -r '.result.peers[] | "\(.node_info.id)@\(.remote_ip):\(.node_info.listen_addr)"' | awk -F ':' '{print $1":"$(NF)}' | sed -z 's|\n|,|g;s|.$||')"
 sed -i -e "s|^seeds *=.*|seeds = '"$SEEDS"'|; s|^persistent_peers *=.*|persistent_peers = '"$PEERS"'|" $HOME/.aaronetwork/config/config.toml</code></pre>
   <button class="copy-btn"><i class="fas fa-copy"></i></button>

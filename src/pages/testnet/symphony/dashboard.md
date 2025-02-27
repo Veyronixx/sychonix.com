@@ -52,7 +52,7 @@ Symphony is a Cosmos-based blockchain enabling global trading of real-world asse
   
   <label class="block mt-1 mb-1">Seeds</label>
   <div class="code-block-wrapper">
-    <pre><code>de40129d6a823e7dff8edec28a60998373b43ed0@symphony-testnet.sychonix.com:12156</code></pre>
+    <pre><code>354d05a86bb1649f680a1c038f17f7f0ea83b4cc@symphony-testnet.sychonix.com:12156</code></pre>
     <button class="copy-btn"><i class="fas fa-copy"></i></button>
   </div>
 

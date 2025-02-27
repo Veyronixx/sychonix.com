@@ -57,7 +57,7 @@ curl -L https://snapshot.sychonix.com/mainnet/dhealth/addrbook.json > $HOME/.dhe
 - Configure Seeds and Peers
 
 <div class="code-block-wrapper">
-  <pre><code>SEEDS="89661b92afd14d7672c6a37547cab8c746dc58c6@dhealth-mainnet.sychonix.com:12456"
+  <pre><code>SEEDS="d94c5c20307c21b6dd181d2a719185c2b6972ad8@dhealth-mainnet.sychonix.com:12456"
 PEERS="$(curl -sS https://rpc-dhealth.sychonix.com/net_info | jq -r '.result.peers[] | "\(.node_info.id)@\(.remote_ip):\(.node_info.listen_addr)"' | awk -F ':' '{print $1":"$(NF)}' | sed -z 's|\n|,|g;s|.$||')"
 sed -i -e "s|^seeds *=.*|seeds = '"$SEEDS"'|; s|^persistent_peers *=.*|persistent_peers = '"$PEERS"'|" $HOME/.dhealth/config/config.toml</code></pre>
   <button class="copy-btn"><i class="fas fa-copy"></i></button>
@@ -123,38 +123,5 @@ EOF</code></pre>
   <pre><code>sudo systemctl daemon-reload
 sudo systemctl enable dhealthd.service
 sudo systemctl restart dhealthd.service && sudo journalctl -u dhealthd.service -f --no-hostname -o cat</code></pre>
-  <button class="copy-btn"><i class="fas fa-copy"></i></button>
-</div>
-
-- Create Validator
-
-<div class="code-block-wrapper">
-  <pre><code>medasdigitald tendermint show-validator</code></pre>
-  <button class="copy-btn"><i class="fas fa-copy"></i></button>
-</div>
-
-- Create validator.json file
-<div class="code-block-wrapper">
-  <pre><code>sudo nano $HOME/.medasdigital/validator.json
-{
-  "pubkey": {"#pubkey"},
-  "amount": "", 
-  "moniker": "", 
-  "identity": "",
-  "website": "",
-  "security": "", 
-  "details": "", 
-  "commission-rate": "0.05",
-  "commission-max-rate": "0.2",
-  "commission-max-change-rate": "0.05",
-  "min-self-delegation": "1"
-}</code></pre>
-  <button class="copy-btn"><i class="fas fa-copy"></i></button>
-</div>
-
-<div class="code-block-wrapper">
-  <pre><code>medasdigitald tx staking create-validator $HOME/.medasdigital/validator.json \
---from wallet \
---chain-id medasdigital-2</code></pre>
   <button class="copy-btn"><i class="fas fa-copy"></i></button>
 </div>

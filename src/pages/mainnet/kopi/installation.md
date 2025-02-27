@@ -26,7 +26,7 @@ eval $(echo 'export PATH=$PATH:$HOME/go/bin' | tee -a $HOME/.profile)</code></pr
   <pre><code>cd $HOME && mkdir -p go/bin/
 git clone https://github.com/kopi-money/kopi.git
 cd kopi
-git checkout v10
+git checkout v17
 make install</code></pre>
   <button class="copy-btn"><i class="fas fa-copy"></i></button>
 </div>
@@ -52,7 +52,7 @@ curl -L https://snapshot.sychonix.com/mainnet/kopi/addrbook.json > $HOME/.kopid/
 - Configure Seeds and Peers
 
 <div class="code-block-wrapper">
-  <pre><code>SEEDS="cfef0546b0621abba2818874a2935507878dbc80@kopi-mainnet.sychonix.com:11656"
+  <pre><code>SEEDS="9393f89a72c3f5b27f22a286b4494e3c3409c652@kopi-mainnet.sychonix.com:11656"
 PEERS="$(curl -sS https://rpc-kopi.sychonix.com/net_info | jq -r '.result.peers[] | "\(.node_info.id)@\(.remote_ip):\(.node_info.listen_addr)"' | awk -F ':' '{print $1":"$(NF)}' | sed -z 's|\n|,|g;s|.$||')"
 sed -i -e "s|^seeds *=.*|seeds = '"$SEEDS"'|; s|^persistent_peers *=.*|persistent_peers = '"$PEERS"'|" $HOME/.kopid/config/config.toml</code></pre>
   <button class="copy-btn"><i class="fas fa-copy"></i></button>

@@ -52,7 +52,7 @@ dHealth Network is an open blockchain platform specifically designed for the hea
   
   <label class="block mt-1 mb-1">Seeds</label>
   <div class="code-block-wrapper">
-    <pre><code>89661b92afd14d7672c6a37547cab8c746dc58c6@dhealth-mainnet.sychonix.com:12456</code></pre>
+    <pre><code>d94c5c20307c21b6dd181d2a719185c2b6972ad8@dhealth-mainnet.sychonix.com:12456</code></pre>
     <button class="copy-btn"><i class="fas fa-copy"></i></button>
   </div>
 

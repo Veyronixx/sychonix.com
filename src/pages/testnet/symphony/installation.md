@@ -53,7 +53,7 @@ curl -L https://snapshot.sychonix.com/testnet/symphony/addrbook.json > $HOME/.sy
 - Configure Seeds and Peers
 
 <div class="code-block-wrapper">
-  <pre><code>SEEDS="de40129d6a823e7dff8edec28a60998373b43ed0@symphony-testnet.sychonix.com:12156"
+  <pre><code>SEEDS="354d05a86bb1649f680a1c038f17f7f0ea83b4cc@symphony-testnet.sychonix.com:12156"
 PEERS="$(curl -sS https://rpc-symphony-t.sychonix.com/net_info | jq -r '.result.peers[] | "\(.node_info.id)@\(.remote_ip):\(.node_info.listen_addr)"' | awk -F ':' '{print $1":"$(NF)}' | sed -z 's|\n|,|g;s|.$||')"
 sed -i -e "s|^seeds *=.*|seeds = '"$SEEDS"'|; s|^persistent_peers *=.*|persistent_peers = '"$PEERS"'|" $HOME/.symphonyd/config/config.toml</code></pre>
   <button class="copy-btn"><i class="fas fa-copy"></i></button>

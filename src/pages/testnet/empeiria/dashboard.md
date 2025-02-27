@@ -52,7 +52,7 @@ Empeiria is the first End-to-End Verifiable Data Infrastructure (EVDI). It enabl
   
   <label class="block mt-1 mb-1">Seeds</label>
   <div class="code-block-wrapper">
-    <pre><code>a9bf20b696e9485bb539cf506d9852427540046f@empeiria-testnet.sychonix.com:11156</code></pre>
+    <pre><code>5970f49f67d610eaa5003ff98943c1919439a641@empeiria-testnet.sychonix.com:11156</code></pre>
     <button class="copy-btn"><i class="fas fa-copy"></i></button>
   </div>
 

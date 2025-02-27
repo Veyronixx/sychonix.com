@@ -52,7 +52,7 @@ curl -L https://snapshot.sychonix.com/mainnet/atomone/addrbook.json > $HOME/.ato
 - Configure Seeds and Peers
 
 <div class="code-block-wrapper">
-  <pre><code>SEEDS="a3c7481636f715464af61b5cb26de1cb7fd26f05@atomone-mainnet.sychonix.com:12956"
+  <pre><code>SEEDS="79f1e0441a709df992633bde96d75b54e2cfad46@atomone-mainnet.sychonix.com:12956"
 PEERS="$(curl -sS https://rpc-atomone.sychonix.com/net_info | jq -r '.result.peers[] | "\(.node_info.id)@\(.remote_ip):\(.node_info.listen_addr)"' | awk -F ':' '{print $1":"$(NF)}' | sed -z 's|\n|,|g;s|.$||')"
 sed -i -e "s|^seeds *=.*|seeds = '"$SEEDS"'|; s|^persistent_peers *=.*|persistent_peers = '"$PEERS"'|" $HOME/.atomone/config/config.toml</code></pre>
   <button class="copy-btn"><i class="fas fa-copy"></i></button>

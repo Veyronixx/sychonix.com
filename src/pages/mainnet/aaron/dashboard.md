@@ -52,7 +52,7 @@ Aaron Network is a decentralized platform offering secure messaging and address 
   
   <label class="block mt-1 mb-1">Seeds</label>
   <div class="code-block-wrapper">
-    <pre><code>d74b63e82c0d6ee7f97da784dd86ec4f8d805bc3@aaronetwork-mainnet.sychonix.com:12656</code></pre>
+    <pre><code>7c546a0e562da344b302c1f0a77bb66d8ceda525@aaronetwork-mainnet.sychonix.com:12656</code></pre>
     <button class="copy-btn"><i class="fas fa-copy"></i></button>
   </div>
 

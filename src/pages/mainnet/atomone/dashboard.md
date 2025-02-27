@@ -52,7 +52,7 @@ AtomOne emerged in response to concerns raised by the community over Proposal 82
   
   <label class="block mt-1 mb-1">Seeds</label>
   <div class="code-block-wrapper">
-    <pre><code>a3c7481636f715464af61b5cb26de1cb7fd26f05@atomone-mainnet.sychonix.com:12956</code></pre>
+    <pre><code>79f1e0441a709df992633bde96d75b54e2cfad46@atomone-mainnet.sychonix.com:12956</code></pre>
     <button class="copy-btn"><i class="fas fa-copy"></i></button>
   </div>
 

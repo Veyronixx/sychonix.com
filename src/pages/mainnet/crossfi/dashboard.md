@@ -53,13 +53,13 @@ CrossFi Chain is a layer 1 blockchain with a modular architecture. It consists o
   
   <label class="block mt-1 mb-1">Seeds</label>
   <div class="code-block-wrapper">
-    <pre><code>1f8480f21ce7de30c5e8e1ef682a70873d7b5e72@crossfi-mainnet.sychonix.com:48656</code></pre>
+    <pre><code>db5de3d104f26322df7c4fab7ff70686fd378fbb@crossfi-mainnet.sychonix.com:11056</code></pre>
     <button class="copy-btn"><i class="fas fa-copy"></i></button>
   </div>
 
   <label class="block mt-1 mb-1">Peers</label>
   <div class="code-block-wrapper">
-    <pre><code>dbde69a891a1867538f8f9dbd88a2f086d97a245@crossfi-mainnet.sychonix.com:11056</code></pre>
+    <pre><code>db5de3d104f26322df7c4fab7ff70686fd378fbb@crossfi-mainnet.sychonix.com:11056</code></pre>
     <button class="copy-btn"><i class="fas fa-copy"></i></button>
   </div>
 
