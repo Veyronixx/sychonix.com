@@ -55,7 +55,7 @@ curl -L https://snapshot.sychonix.com/mainnet/medas/addrbook.json > $HOME/.medas
 - Configure Seeds and Peers
 
 <div class="code-block-wrapper">
-  <pre><code>SEEDS="cfef0546b0621abba2818874a2935507878dbc80@medas-mainnet.sychonix.com:12856"
+  <pre><code>SEEDS="c8f33bf69e79389c832a9d0f5c5df2737a812cd9@medas-mainnet.sychonix.com:12856"
 PEERS="$(curl -sS https://rpc-medas.sychonix.com/net_info | jq -r '.result.peers[] | "\(.node_info.id)@\(.remote_ip):\(.node_info.listen_addr)"' | awk -F ':' '{print $1":"$(NF)}' | sed -z 's|\n|,|g;s|.$||')"
 sed -i -e "s|^seeds *=.*|seeds = '"$SEEDS"'|; s|^persistent_peers *=.*|persistent_peers = '"$PEERS"'|" $HOME/.medasdigital/config/config.toml</code></pre>
   <button class="copy-btn"><i class="fas fa-copy"></i></button>

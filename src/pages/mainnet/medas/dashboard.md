@@ -52,7 +52,7 @@ Medas Digital Network is a Cosmos™-based blockchain project focused on decentr
   
   <label class="block mt-1 mb-1">Seeds</label>
   <div class="code-block-wrapper">
-    <pre><code>eb23f5ba8ae9504f25d4a7962915a6d21ab0a874@medasdigital.sychonix.com:12856</code></pre>
+    <pre><code>c8f33bf69e79389c832a9d0f5c5df2737a812cd9@medasdigital.sychonix.com:12856</code></pre>
     <button class="copy-btn"><i class="fas fa-copy"></i></button>
   </div>
 
