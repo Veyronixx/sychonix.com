@@ -21,7 +21,7 @@ title: Snapshot
 <script>
   async function fetchSnapshotInfo() {
     try {
-      const response = await fetch('https://snapshot.sychonix.com/mainnet/medas/log.json');
+      const response = await fetch('https://snapshot.sychonix.com/mainnet/medasdigital/log.json');
       const data = await response.json();
       const snapshotInfo = data.snapshot_info;
 

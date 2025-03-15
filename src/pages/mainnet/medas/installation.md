@@ -156,3 +156,4 @@ sudo systemctl restart medasdigitald.service && sudo journalctl -u medasdigitald
 --chain-id medasdigital-2</code></pre>
   <button class="copy-btn"><i class="fas fa-copy"></i></button>
 </div>
+
