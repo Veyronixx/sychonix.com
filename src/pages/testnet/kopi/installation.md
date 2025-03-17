@@ -24,8 +24,9 @@ eval $(echo 'export PATH=$PATH:$HOME/go/bin' | tee -a $HOME/.profile)</code></pr
 
 <div class="code-block-wrapper">
   <pre><code>cd $HOME && mkdir -p go/bin/
-git clone --depth 1 --branch v0.6.5.1 https://github.com/kopi-money/kopi.git ~/kopi
+git clone https://github.com/kopi-money/kopi.git
 cd kopi
+git checkout v19-rc3
 make install</code></pre>
   <button class="copy-btn"><i class="fas fa-copy"></i></button>
 </div>
