@@ -5,11 +5,33 @@ network: Testnet
 icon: gaianet
 ---
 
-- Download Binary
+- Create t3rn directory
 <div class="code-block-wrapper">
-  <pre><code>curl -L -o executor-linux-v0.27.0.tar.gz https://github.com/t3rn/executor-release/releases/download/v0.27.0/executor-linux-v0.27.0.tar.gz && tar -xzvf executor-linux-v0.27.0.tar.gz && rm -rf executor-linux-v0.27.0.tar.gz && cd executor/executor/bin</code></pre>
+  <pre><code>mkdir t3rn
+cd t3rn</code></pre>
   <button class="copy-btn"><i class="fas fa-copy"></i></button>
 </div>
+
+- Download Binary
+<div class="code-block-wrapper">
+  <pre><code>curl -s https://api.github.com/repos/t3rn/executor-release/releases/latest | \
+grep -Po '"tag_name": "\K.*?(?=")' | \
+xargs -I {} wget https://github.com/t3rn/executor-release/releases/download/{}/executor-linux-{}.tar.gz
+</code></pre>
+  <button class="copy-btn"><i class="fas fa-copy"></i></button>
+</div>
+
+- Extract the archive
+<div class="code-block-wrapper">
+  <pre><code>tar -xzf executor-linux-*.tar.gz
+</code></pre>
+  <button class="copy-btn"><i class="fas fa-copy"></i></button>
+</div>
+
+- Configure RPC URL
+```
+echo 'RPC_ENDPOINTS="{\"l2rn\": [\"https://b2n.rpc.caldera.xyz/http\"], \"arbt\": [\"https://arbitrum-sepolia.drpc.org\", \"https://sepolia-rollup.arbitrum.io/rpc\"], \"bast\": [\"https://base-sepolia-rpc.publicnode.com\", \"https://base-sepolia.drpc.org\"], \"opst\": [\"https://sepolia.optimism.io\", \"https://optimism-sepolia.drpc.org\"], \"unit\": [\"https://unichain-sepolia.drpc.org\", \"https://sepolia.unichain.org\"]}"' | sudo tee /etc/t3rn-executor.env > /dev/null
+```
 
 - Create a service
 <div class="code-block-wrapper">
@@ -18,16 +40,22 @@ icon: gaianet
 Description=t3rn Executor Service
 After=network.target
 [Service]
-ExecStart=$HOME/executor/executor/bin/executor
-Environment="NODE_ENV=testnet"
-Environment="LOG_LEVEL=debug"
-Environment="LOG_PRETTY=false"
-Environment="PRIVATE_KEY_LOCAL=0xYour_private_keys"
-Environment="ENABLED_NETWORKS=arbitrum-sepolia,base-sepolia,optimism-sepolia,l1rn"
-Environment="EXECUTOR_PROCESS_PENDING_ORDERS_FROM_API=false"
+User=root
+WorkingDirectory=/root/t3rn/executor/executor/bin
+ExecStart=/root/t3rn/executor/executor/bin/executor
 Restart=always
-RestartSec=5
-User=testnet
+RestartSec=10
+Environment=ENVIRONMENT=testnet
+Environment=LOG_LEVEL=debug
+Environment=LOG_PRETTY=false
+Environment=EXECUTOR_PROCESS_BIDS_ENABLED=true
+Environment=EXECUTOR_PROCESS_ORDERS_ENABLED=true
+Environment=EXECUTOR_PROCESS_CLAIMS_ENABLED=true
+Environment=EXECUTOR_MAX_L3_GAS_PRICE=100
+Environment=PRIVATE_KEY_LOCAL=your_private_key
+Environment=ENABLED_NETWORKS=arbitrum-sepolia,base-sepolia,optimism-sepolia,l2rn
+EnvironmentFile=/etc/t3rn-executor.env
+Environment=EXECUTOR_PROCESS_PENDING_ORDERS_FROM_API=true
 [Install]
 WantedBy=multi-user.target
 EOF</code></pre>
