@@ -34,7 +34,7 @@ sudo mv selfchaind /usr/local/bin/</code></pre>
 
 <div class="code-block-wrapper">
   <pre><code>selfchaind init $MONIKER --chain-id selfchain-testnet
-sed -i -e "s|^node *=.*|node = \"tcp://localhost:12957\"|" $HOME/.selfchain/config/client.toml
+sed -i -e "s|^node *=.*|node = \"tcp://localhost:11557\"|" $HOME/.selfchain/config/client.toml
 sed -i -e "s|^keyring-backend *=.*|keyring-backend = \"os\"|" $HOME/.selfchain/config/client.toml
 sed -i -e "s|^chain-id *=.*|chain-id = \"selfchain-testnet\"|" $HOME/.selfchain/config/client.toml</code></pre>
   <button class="copy-btn"><i class="fas fa-copy"></i></button>
