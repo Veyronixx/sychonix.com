@@ -9,7 +9,7 @@ junctiond
 $HOME/.junctiond
 uamf
 junctiond 
-0.001uuamf
+0.001uamf
 1000000uamf
 -->
 
@@ -127,7 +127,7 @@ junctiond tx staking create-validator \
 --commission-max-rate=0.20 \
 --commission-max-change-rate=0.01 \
 --min-self-delegation=1 \
---gas-prices 0.001uuamf \
+--gas-prices 0.001uamf \
 --gas "auto" \
 --gas-adjustment "1.5" \
 --from <span class="rwallet8">wallet</span> \
@@ -166,7 +166,7 @@ junctiond tx staking edit-validator \
 --commission-rate=0.07 \
 --from <span class="rwallet9">wallet</span> \
 --gas=auto \
---gas-prices 0.001uuamf \
+--gas-prices 0.001uamf \
 -y</pre>
   <button class="copy-btn" id="copy8" data-clipboard-text="" onclick="copyText(8)"></button>
 </div>
@@ -211,13 +211,13 @@ junctiond tx staking edit-validator \
 
 <label for="ivalidator">Withdraw rewards from all validators</label>
 <div class="pre-container">
-  <pre class="my-pre" id="pre13">junctiond tx distribution withdraw-all-rewards --from wallet --chain-id varanasi-1 --gas auto --gas-adjustment 1.5 --gas-prices 0.001uuamf -y </pre>
+  <pre class="my-pre" id="pre13">junctiond tx distribution withdraw-all-rewards --from wallet --chain-id varanasi-1 --gas auto --gas-adjustment 1.5 --gas-prices 0.001uamf -y </pre>
   <button class="copy-btn" id="copy13" data-clipboard-text="" onclick="copyText(13)"></button>
 </div>
 
 <label for="ivalidator" style="vertical-align: top;"> Withdraw commission and rewards from your validator</label>
 <div class="pre-container">
-  <pre class="my-pre" id="pre14">junctiond tx distribution withdraw-rewards $(junctiond keys show wallet --bech val -a) --commission --from wallet --chain-id varanasi-1 --gas auto --gas-adjustment 1.5 --gas-prices 0.001uuamf -y </pre>
+  <pre class="my-pre" id="pre14">junctiond tx distribution withdraw-rewards $(junctiond keys show wallet --bech val -a) --commission --from wallet --chain-id varanasi-1 --gas auto --gas-adjustment 1.5 --gas-prices 0.001uamf -y </pre>
   <button class="copy-btn" id="copy14" data-clipboard-text="" onclick="copyText(14)"></button>
 </div>
 
@@ -229,7 +229,7 @@ junctiond tx staking edit-validator \
   <input id="idelegete" type="text" placeholder="Enter Amount" oninput="updatePre()" />
 </div>
 <div class="pre-container">
-  <pre class="my-pre" id="pre15" style="margin-top: 5px;">junctiond tx staking delegate $(junctiond keys show wallet --bech val -a) <span class="rdelegete1"></span>1000000uamf --from wallet --chain-id varanasi-1 --gas auto --gas-adjustment 1.5 --gas-prices 0.001uuamf -y </pre>
+  <pre class="my-pre" id="pre15" style="margin-top: 5px;">junctiond tx staking delegate $(junctiond keys show wallet --bech val -a) <span class="rdelegete1"></span>1000000uamf --from wallet --chain-id varanasi-1 --gas auto --gas-adjustment 1.5 --gas-prices 0.001uamf -y </pre>
   <button class="copy-btn" id="copy15" data-clipboard-text="" onclick="copyText(15)">Copy</button>
 </div>
 
@@ -238,21 +238,21 @@ junctiond tx staking edit-validator \
   <input id="iredelegete" type="text" placeholder="Enter <TO_VALOPER_ADDRESS>" oninput="updatePre()" />
 </div>
 <div class="pre-container">
-  <pre class="my-pre" id="pre16" style="margin-top: 5px;">junctiond tx staking redelegate $(junctiond keys show wallet --bech val -a) <span class="rredelegete1"></span> <span class="rdelegete2"></span>1000000uamf --from wallet --chain-id varanasi-1 --gas auto --gas-adjustment 1.5 --gas-prices 0.001uuamf -y</pre>
+  <pre class="my-pre" id="pre16" style="margin-top: 5px;">junctiond tx staking redelegate $(junctiond keys show wallet --bech val -a) <span class="rredelegete1"></span> <span class="rdelegete2"></span>1000000uamf --from wallet --chain-id varanasi-1 --gas auto --gas-adjustment 1.5 --gas-prices 0.001uamf -y</pre>
   <button class="copy-btn" id="copy16" data-clipboard-text="" onclick="copyText(16)"></button>
 </div>
 
 
 <label for="iredelegete" style="vertical-align: top;"> Delegate tokens to validator</label>
 <div class="pre-container">
-  <pre class="my-pre" id="pre17" style="margin-top: 5px;">junctiond tx staking delegate <span class="rredelegete2"></span> <span class="rdelegete3"></span>1000000uamf --from <span class="rwallet19"></span> --chain-id varanasi-1 --gas auto --gas-adjustment 1.5 --gas-prices 0.001uuamf -y </pre>
+  <pre class="my-pre" id="pre17" style="margin-top: 5px;">junctiond tx staking delegate <span class="rredelegete2"></span> <span class="rdelegete3"></span>1000000uamf --from <span class="rwallet19"></span> --chain-id varanasi-1 --gas auto --gas-adjustment 1.5 --gas-prices 0.001uamf -y </pre>
   <button class="copy-btn" id="copy17" data-clipboard-text="" onclick="copyText(17)"></button>
 </div>
 
 
 <label for="iredelegete" style="vertical-align: top;"> Unbond tokens from your validator</label>
 <div class="pre-container">
-  <pre class="my-pre" id="pre18" style="margin-top: 5px;">junctiond tx staking unbond $(junctiond keys show wallet --bech val -a) <span class="rdelegete4"></span>1000000uamf --from wallet --chain-id varanasi-1 --gas auto --gas-adjustment 1.5 --gas-prices 0.001uuamf -y</pre>
+  <pre class="my-pre" id="pre18" style="margin-top: 5px;">junctiond tx staking unbond $(junctiond keys show wallet --bech val -a) <span class="rdelegete4"></span>1000000uamf --from wallet --chain-id varanasi-1 --gas auto --gas-adjustment 1.5 --gas-prices 0.001uamf -y</pre>
   <button class="copy-btn" id="copy18" data-clipboard-text="" onclick="copyText(18)"></button>
 </div>
 
@@ -261,7 +261,7 @@ junctiond tx staking edit-validator \
   <input id="itoken" type="text" placeholder="Enter Address Wallet" oninput="updatePre()" />
 </div>
 <div class="pre-container">
-  <pre class="my-pre" id="pre19" style="margin-top: 5px;">junctiond tx bank send wallet</span> <span class="rtoken1"></span> <span class="rdelegete5"></span>1000000uamf --from wallet --chain-id varanasi-1 --gas auto --gas-adjustment 1.5 --gas-prices 0.001uuamf -y</pre>
+  <pre class="my-pre" id="pre19" style="margin-top: 5px;">junctiond tx bank send wallet</span> <span class="rtoken1"></span> <span class="rdelegete5"></span>1000000uamf --from wallet --chain-id varanasi-1 --gas auto --gas-adjustment 1.5 --gas-prices 0.001uamf -y</pre>
   <button class="copy-btn" id="copy19" data-clipboard-text="" onclick="copyText(19)"></button>
 </div>
 
