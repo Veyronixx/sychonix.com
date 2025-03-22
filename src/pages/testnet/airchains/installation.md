@@ -36,10 +36,10 @@ mv junctiond $HOME/go/bin/</code></pre>
 - Initialize The Node
 
 <div class="code-block-wrapper">
-  <pre><code>junctiond init $MONIKER --chain-id atomone-1
+  <pre><code>junctiond init $MONIKER --chain-id varanasi-1
 sed -i -e "s|^node *=.*|node = \"tcp://localhost:12357\"|" $HOME/.junctiond/config/client.toml
 sed -i -e "s|^keyring-backend *=.*|keyring-backend = \"os\"|" $HOME/.junctiond/config/client.toml
-sed -i -e "s|^chain-id *=.*|chain-id = \"atomone-1\"|" $HOME/.junctiond/config/client.toml</code></pre>
+sed -i -e "s|^chain-id *=.*|chain-id = \"varanasi-1\"|" $HOME/.junctiond/config/client.toml</code></pre>
   <button class="copy-btn"><i class="fas fa-copy"></i></button>
 </div>
 
