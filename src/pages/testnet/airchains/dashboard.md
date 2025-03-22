@@ -81,11 +81,11 @@ sed -i -e "s|^persistent_peers *=.*|persistent_peers = \"$PEERS\"|" $HOME/.junct
 <div id="chain-explorer" class="hidden bg-slate-950 p-4 rounded-lg shadow-md">
   <!-- Added clickable link -->
   <p class="text-sm text-gray-300">
-    <a href="https://explorer.sychonix.com/airchains-mainnet" target="_blank" 
+    <a href="https://explorer.sychonix.com/airchains-testnet" target="_blank" 
        class="text-blue-500 underline hover:text-blue-700 hover:shadow-lg">
       https://explorer.sychonix.com/airchains-testnet
     </a>
-  </p>
+  </p>  
 </div>
 
 <script>
