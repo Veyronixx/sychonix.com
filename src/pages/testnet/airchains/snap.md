@@ -21,7 +21,7 @@ title: Snapshot
 <script>
   async function fetchSnapshotInfo() {
     try {
-      const response = await fetch('https://snapshot-2.sychonix.com/testnet/airchains/log.json');
+      const response = await fetch('https://snapshot.sychonix.com/testnet/airchains/log.json');
       const data = await response.json();
       const snapshotInfo = data.snapshot_info;
 
@@ -74,22 +74,22 @@ title: Snapshot
 - Back up priv_validator_state.json
 
 <div class="code-block-wrapper">
-  <pre><code>cp $HOME/.junction/data/priv_validator_state.json $HOME/.junction/priv_validator_state.json.backup</code></pre>
+  <pre><code>cp $HOME/.junctiond/data/priv_validator_state.json $HOME/.junctiond/priv_validator_state.json.backup</code></pre>
   <button class="copy-btn"><i class="fas fa-copy"></i></button>
 </div>
 
 - Reset the data
 
 <div class="code-block-wrapper">
-  <pre><code>junctiond tendermint unsafe-reset-all --home $HOME/.junction --keep-addr-book</code></pre>
+  <pre><code>junctiond tendermint unsafe-reset-all --home $HOME/.junctiond --keep-addr-book</code></pre>
   <button class="copy-btn"><i class="fas fa-copy"></i></button>
 </div>
 
 - Download Snapshot
 
 <div class="code-block-wrapper">
-  <pre><code>aria2c -x 16 -s 16 -o airchains-snapshot.tar.lz4 https://snapshot-2.sychonix.com/testnet/airchains/airchains-snapshot.tar.lz4
-lz4 -dc airchains-snapshot.tar.lz4 | tar -xf - -C $HOME/.junction
+  <pre><code>aria2c -x 16 -s 16 -o airchains-snapshot.tar.lz4 https://snapshot.sychonix.com/testnet/airchains/airchains-snapshot.tar.lz4
+lz4 -dc airchains-snapshot.tar.lz4 | tar -xf - -C $HOME/.junctiond
 rm -v airchains-snapshot.tar.lz4</code></pre>
   <button class="copy-btn"><i class="fas fa-copy"></i></button>
 </div>
@@ -97,7 +97,7 @@ rm -v airchains-snapshot.tar.lz4</code></pre>
 - Restore Backup and Restart Service
 
 <div class="code-block-wrapper">
-  <pre><code>mv $HOME/.junction/priv_validator_state.json.backup $HOME/.junction/data/priv_validator_state.json</code></pre>
+  <pre><code>mv $HOME/.junctiond/priv_validator_state.json.backup $HOME/.junctiond/data/priv_validator_state.json</code></pre>
   <button class="copy-btn"><i class="fas fa-copy"></i></button>
 </div>
 

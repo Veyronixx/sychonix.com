@@ -52,26 +52,26 @@ Airchains is distinct from RaaS providers because we built our own ZK circuit fr
   
   <label class="block mt-1 mb-1">Seeds</label>
   <div class="code-block-wrapper">
-    <pre><code>ffd000dc5a34d052f5f56d83dd1c263d658f9d3d@rpc-airchains-t.sychonix.com:19656</code></pre>
+    <pre><code>bb3560a4e8314317259d9a2c6bd7402111d38a1b@airchains-testnet.sychonix.com:12356</code></pre>
     <button class="copy-btn"><i class="fas fa-copy"></i></button>
   </div>
 
   <label class="block mt-1 mb-1">Live Peers</label>
   <div class="code-block-wrapper">
     <pre><code>PEERS="$(curl -sS https://rpc-airchains-t.sychonix.com/net_info | jq -r '.result.peers[] | "\(.node_info.id)@\(.remote_ip):\(.node_info.listen_addr)"' | awk -F ':' '{print $1":"$(NF)}' | sed -z 's|\n|,|g;s|.$||')"  
-sed -i -e "s|^persistent_peers *=.*|persistent_peers = \"$PEERS\"|" $HOME/.junction/config/config.toml</code></pre>
+sed -i -e "s|^persistent_peers *=.*|persistent_peers = \"$PEERS\"|" $HOME/.junctiond/config/config.toml</code></pre>
     <button class="copy-btn"><i class="fas fa-copy"></i></button>
   </div>
 
   <label class="block mt-1 mb-1">Genesis File</label>
   <div class="code-block-wrapper">
-    <pre><code>curl -Ls https://snapshot-2.sychonix.com/mainnet/airchains/genesis.json > $HOME/.junction/config/genesis.json</code></pre>
+    <pre><code>curl -Ls https://snapshot.sychonix.com/mainnet/airchains/genesis.json > $HOME/.junctiond/config/genesis.json</code></pre>
     <button class="copy-btn"><i class="fas fa-copy"></i></button>
   </div>
 
   <label class="block mt-1 mb-1">Addrbook File</label>
   <div class="code-block-wrapper">
-    <pre><code>curl -Ls https://snapshot-2.sychonix.com/mainnet/airchains/addrbook.json > $HOME/.junction/config/addrbook.json</code></pre>
+    <pre><code>curl -Ls https://snapshot.sychonix.com/mainnet/airchains/addrbook.json > $HOME/.junctiond/config/addrbook.json</code></pre>
     <button class="copy-btn"><i class="fas fa-copy"></i></button>
   </div>
 </div>

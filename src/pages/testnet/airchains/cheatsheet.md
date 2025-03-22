@@ -6,11 +6,11 @@ icon : cnho
 cnho
 junction
 junctiond
-$HOME/.junction
-amf
+$HOME/.junctiond
+uamf
 junctiond 
-0.00025amf
-1000000amf
+0.001uuamf
+1000000uamf
 -->
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
@@ -115,7 +115,7 @@ junctiond
 <label for="ivalidator" style="vertical-align: top;"> Create New Validator</label>
   <pre class="my-pre" id="pre8">
 junctiond tx staking create-validator \
---amount=<span class="ramount1">1000000amf</span> \
+--amount=<span class="ramount1">1000000uamf</span> \
 --pubkey=$(junctiond tendermint show-validator) \
 --moniker="<span class="rmoniker1"></span>" \
 --identity="<span class="ridentity1"></span>" \
@@ -127,7 +127,7 @@ junctiond tx staking create-validator \
 --commission-max-rate=0.20 \
 --commission-max-change-rate=0.01 \
 --min-self-delegation=1 \
---gas-prices 0.00025amf \
+--gas-prices 0.001uuamf \
 --gas "auto" \
 --gas-adjustment "1.5" \
 --from <span class="rwallet8">wallet</span> \
@@ -166,7 +166,7 @@ junctiond tx staking edit-validator \
 --commission-rate=0.07 \
 --from <span class="rwallet9">wallet</span> \
 --gas=auto \
---gas-prices 0.00025amf \
+--gas-prices 0.001uuamf \
 -y</pre>
   <button class="copy-btn" id="copy8" data-clipboard-text="" onclick="copyText(8)"></button>
 </div>
@@ -211,13 +211,13 @@ junctiond tx staking edit-validator \
 
 <label for="ivalidator">Withdraw rewards from all validators</label>
 <div class="pre-container">
-  <pre class="my-pre" id="pre13">junctiond tx distribution withdraw-all-rewards --from wallet --chain-id junction --gas auto --gas-adjustment 1.5 --gas-prices 0.00025amf -y </pre>
+  <pre class="my-pre" id="pre13">junctiond tx distribution withdraw-all-rewards --from wallet --chain-id junction --gas auto --gas-adjustment 1.5 --gas-prices 0.001uuamf -y </pre>
   <button class="copy-btn" id="copy13" data-clipboard-text="" onclick="copyText(13)"></button>
 </div>
 
 <label for="ivalidator" style="vertical-align: top;"> Withdraw commission and rewards from your validator</label>
 <div class="pre-container">
-  <pre class="my-pre" id="pre14">junctiond tx distribution withdraw-rewards $(junctiond keys show wallet --bech val -a) --commission --from wallet --chain-id junction --gas auto --gas-adjustment 1.5 --gas-prices 0.00025amf -y </pre>
+  <pre class="my-pre" id="pre14">junctiond tx distribution withdraw-rewards $(junctiond keys show wallet --bech val -a) --commission --from wallet --chain-id junction --gas auto --gas-adjustment 1.5 --gas-prices 0.001uuamf -y </pre>
   <button class="copy-btn" id="copy14" data-clipboard-text="" onclick="copyText(14)"></button>
 </div>
 
@@ -229,7 +229,7 @@ junctiond tx staking edit-validator \
   <input id="idelegete" type="text" placeholder="Enter Amount" oninput="updatePre()" />
 </div>
 <div class="pre-container">
-  <pre class="my-pre" id="pre15" style="margin-top: 5px;">junctiond tx staking delegate $(junctiond keys show wallet --bech val -a) <span class="rdelegete1"></span>1000000amf --from wallet --chain-id junction --gas auto --gas-adjustment 1.5 --gas-prices 0.00025amf -y </pre>
+  <pre class="my-pre" id="pre15" style="margin-top: 5px;">junctiond tx staking delegate $(junctiond keys show wallet --bech val -a) <span class="rdelegete1"></span>1000000uamf --from wallet --chain-id junction --gas auto --gas-adjustment 1.5 --gas-prices 0.001uuamf -y </pre>
   <button class="copy-btn" id="copy15" data-clipboard-text="" onclick="copyText(15)">Copy</button>
 </div>
 
@@ -238,21 +238,21 @@ junctiond tx staking edit-validator \
   <input id="iredelegete" type="text" placeholder="Enter <TO_VALOPER_ADDRESS>" oninput="updatePre()" />
 </div>
 <div class="pre-container">
-  <pre class="my-pre" id="pre16" style="margin-top: 5px;">junctiond tx staking redelegate $(junctiond keys show wallet --bech val -a) <span class="rredelegete1"></span> <span class="rdelegete2"></span>1000000amf --from wallet --chain-id junction --gas auto --gas-adjustment 1.5 --gas-prices 0.00025amf -y</pre>
+  <pre class="my-pre" id="pre16" style="margin-top: 5px;">junctiond tx staking redelegate $(junctiond keys show wallet --bech val -a) <span class="rredelegete1"></span> <span class="rdelegete2"></span>1000000uamf --from wallet --chain-id junction --gas auto --gas-adjustment 1.5 --gas-prices 0.001uuamf -y</pre>
   <button class="copy-btn" id="copy16" data-clipboard-text="" onclick="copyText(16)"></button>
 </div>
 
 
 <label for="iredelegete" style="vertical-align: top;"> Delegate tokens to validator</label>
 <div class="pre-container">
-  <pre class="my-pre" id="pre17" style="margin-top: 5px;">junctiond tx staking delegate <span class="rredelegete2"></span> <span class="rdelegete3"></span>1000000amf --from <span class="rwallet19"></span> --chain-id junction --gas auto --gas-adjustment 1.5 --gas-prices 0.00025amf -y </pre>
+  <pre class="my-pre" id="pre17" style="margin-top: 5px;">junctiond tx staking delegate <span class="rredelegete2"></span> <span class="rdelegete3"></span>1000000uamf --from <span class="rwallet19"></span> --chain-id junction --gas auto --gas-adjustment 1.5 --gas-prices 0.001uuamf -y </pre>
   <button class="copy-btn" id="copy17" data-clipboard-text="" onclick="copyText(17)"></button>
 </div>
 
 
 <label for="iredelegete" style="vertical-align: top;"> Unbond tokens from your validator</label>
 <div class="pre-container">
-  <pre class="my-pre" id="pre18" style="margin-top: 5px;">junctiond tx staking unbond $(junctiond keys show wallet --bech val -a) <span class="rdelegete4"></span>1000000amf --from wallet --chain-id junction --gas auto --gas-adjustment 1.5 --gas-prices 0.00025amf -y</pre>
+  <pre class="my-pre" id="pre18" style="margin-top: 5px;">junctiond tx staking unbond $(junctiond keys show wallet --bech val -a) <span class="rdelegete4"></span>1000000uamf --from wallet --chain-id junction --gas auto --gas-adjustment 1.5 --gas-prices 0.001uuamf -y</pre>
   <button class="copy-btn" id="copy18" data-clipboard-text="" onclick="copyText(18)"></button>
 </div>
 
@@ -261,7 +261,7 @@ junctiond tx staking edit-validator \
   <input id="itoken" type="text" placeholder="Enter Address Wallet" oninput="updatePre()" />
 </div>
 <div class="pre-container">
-  <pre class="my-pre" id="pre19" style="margin-top: 5px;">junctiond tx bank send wallet</span> <span class="rtoken1"></span> <span class="rdelegete5"></span>1000000amf --from wallet --chain-id junction --gas auto --gas-adjustment 1.5 --gas-prices 0.00025amf -y</pre>
+  <pre class="my-pre" id="pre19" style="margin-top: 5px;">junctiond tx bank send wallet</span> <span class="rtoken1"></span> <span class="rdelegete5"></span>1000000uamf --from wallet --chain-id junction --gas auto --gas-adjustment 1.5 --gas-prices 0.001uuamf -y</pre>
   <button class="copy-btn" id="copy19" data-clipboard-text="" onclick="copyText(19)"></button>
 </div>
 
@@ -322,14 +322,14 @@ junctiond tx staking edit-validator \
 </div>
 <div class="pre-container">
   <pre class="my-pre" id="pre20" style="margin-top: 5px;">CUSTOM_PORT=<span class="rport1"></span>
-sed -i.bak -e "s%^proxy_app = \"tcp://127.0.0.1:26658\"%proxy_app = \"tcp://127.0.0.1:${CUSTOM_PORT}658\"%; s%^laddr = \"tcp://127.0.0.1:26657\"%laddr = \"tcp://127.0.0.1:${CUSTOM_PORT}657\"%; s%^pprof_laddr = \"localhost:6060\"%pprof_laddr = \"localhost:${CUSTOM_PORT}060\"%; s%^laddr = \"tcp://0.0.0.0:26656\"%laddr = \"tcp://0.0.0.0:${CUSTOM_PORT}656\"%; s%^prometheus_listen_addr = \":26660\"%prometheus_listen_addr = \":${CUSTOM_PORT}660\"%" $HOME/.junction/config/config.toml
-sed -i.bak -e "s%^address = \"tcp://0.0.0.0:1317\"%address = \"tcp://0.0.0.0:${CUSTOM_PORT}317\"%; s%^address = \":8080\"%address = \":${CUSTOM_PORT}080\"%; s%^address = \"0.0.0.0:9090\"%address = \"0.0.0.0:${CUSTOM_PORT}090\"%; s%^address = \"0.0.0.0:9091\"%address = \"0.0.0.0:${CUSTOM_PORT}091\"%" $HOME/.junction/config/app.toml</pre>
+sed -i.bak -e "s%^proxy_app = \"tcp://127.0.0.1:26658\"%proxy_app = \"tcp://127.0.0.1:${CUSTOM_PORT}658\"%; s%^laddr = \"tcp://127.0.0.1:26657\"%laddr = \"tcp://127.0.0.1:${CUSTOM_PORT}657\"%; s%^pprof_laddr = \"localhost:6060\"%pprof_laddr = \"localhost:${CUSTOM_PORT}060\"%; s%^laddr = \"tcp://0.0.0.0:26656\"%laddr = \"tcp://0.0.0.0:${CUSTOM_PORT}656\"%; s%^prometheus_listen_addr = \":26660\"%prometheus_listen_addr = \":${CUSTOM_PORT}660\"%" $HOME/.junctiond/config/config.toml
+sed -i.bak -e "s%^address = \"tcp://0.0.0.0:1317\"%address = \"tcp://0.0.0.0:${CUSTOM_PORT}317\"%; s%^address = \":8080\"%address = \":${CUSTOM_PORT}080\"%; s%^address = \"0.0.0.0:9090\"%address = \"0.0.0.0:${CUSTOM_PORT}090\"%; s%^address = \"0.0.0.0:9091\"%address = \"0.0.0.0:${CUSTOM_PORT}091\"%" $HOME/.junctiond/config/app.toml</pre>
   <button class="copy-btn" id="copy20" data-clipboard-text="" onclick="copyText(20)"></button>
 </div>
 
 <label> Remove Node</label>
 <div class="pre-container">
-  <pre class="my-pre" id="pre21">cd $HOME && sudo systemctl stop junctiond && sudo systemctl disable junctiond && sudo rm /etc/systemd/system/junctiond.service && sudo systemctl daemon-reload && sudo rm -rf $(which junctiond) && sudo rm -rf $HOME/.junction && sudo rm -rf $(which junctiond)</pre>
+  <pre class="my-pre" id="pre21">cd $HOME && sudo systemctl stop junctiond && sudo systemctl disable junctiond && sudo rm /etc/systemd/system/junctiond.service && sudo systemctl daemon-reload && sudo rm -rf $(which junctiond) && sudo rm -rf $HOME/.junctiond && sudo rm -rf $(which junctiond)</pre>
   <button class="copy-btn" id="copy21" data-clipboard-text="" onclick="copyText(21)"></button>
 </div>
 
@@ -362,7 +362,7 @@ sed -i.bak -e "s%^address = \"tcp://0.0.0.0:1317\"%address = \"tcp://0.0.0.0:${C
     document.querySelector('.rcontact1').textContent = contactInput;
 
     const amountInput = document.getElementById('iamount').value.trim();
-    document.querySelector('.ramount1').textContent = amountInput + 'amf'; 
+    document.querySelector('.ramount1').textContent = amountInput + 'uamf'; 
     
     const commissionInput = document.getElementById('icommission').value.trim();
     document.querySelector('.rcommission1').textContent = commissionInput;
