@@ -54,7 +54,7 @@ curl -L https://snapshot.sychonix.com/testnet/airchains/addrbook.json > $HOME/.j
 - Configure Seeds and Peers
 
 <div class="code-block-wrapper">
-  <pre><code>SEEDS="79f1e0441a709df992633bde96d75b54e2cfad46@atomone-mainnet.sychonix.com:12956"
+  <pre><code>SEEDS="bb3560a4e8314317259d9a2c6bd7402111d38a1b@airchains-testnet.sychonix.com:12356"
 PEERS="$(curl -sS https://rpc-airchains-t.sychonix.com/net_info | jq -r '.result.peers[] | "\(.node_info.id)@\(.remote_ip):\(.node_info.listen_addr)"' | awk -F ':' '{print $1":"$(NF)}' | sed -z 's|\n|,|g;s|.$||')"
 sed -i -e "s|^seeds *=.*|seeds = '"$SEEDS"'|; s|^persistent_peers *=.*|persistent_peers = '"$PEERS"'|" $HOME/.junctiond/config/config.toml</code></pre>
   <button class="copy-btn"><i class="fas fa-copy"></i></button>
