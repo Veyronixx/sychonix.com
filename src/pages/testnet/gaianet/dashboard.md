@@ -5,10 +5,10 @@ title: Dashboard
 <!-- Overview Section -->
 <div class="dashboard-overview p-6 bg-gray-900 rounded-lg mb-2">
   <div class="flex flex-col items-center">
-    <img src="/img/gaianet.jpeg" alt="Logo" class="dashboard-logo mb-2 w-24 h-24 rounded-full" />
+    <img src="/img/gaianet2.jpg" alt="Logo" class="dashboard-logo mb-2 w-24 h-24 rounded-full" />
     <h2 class="text-xl font-bold text-white mb-1">Gaianet</h2>
     <p class="text-left text-sm text-gray-300 mb-1">
-GaiaNet is a decentralized computing infrastructure that enables everyone to create, deploy, scale, and monetize their own AI agents that reflect their styles, values, knowledge, and expertise. It allows individuals and businesses to create AI agents. Each GaiaNet node provides:</p>
+GaiaNet is a decentralized AI network that enables developers to efficiently build, fine-tune, and deploy open-source AI models. It supports large language models (LLMs), offers OpenAI-compatible API integration, and leverages domain-specific knowledge for smarter, more cost-effective inference.</p>
   </div>
 </div>
 
