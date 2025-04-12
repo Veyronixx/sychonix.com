@@ -3,87 +3,65 @@ import { Icon } from 'astro-icon';
 import { getHomePermalink } from '~/utils/permalinks';
 
 const links = [
-	{
-		title: '',
-		items: [			
-		{ title: 'Networks', href: 'https://sychonix.com/#networks' },
-		{ title: 'Explorer', href: 'https://explorer.sychonix.com/' },
-		],
-	},
+  {
+    title: '',
+    items: [
+      { title: 'Networks', href: 'https://sychonix.com/#networks' },
+      { title: 'Explorer', href: 'https://explorer.sychonix.com/' },
+    ],
+  },
 ];
 
 const social = [
-	{ label: 'Twitter', icon: 'tabler:brand-twitter', href: 'https://twitter.com/sychonixx' },
-	{ label: 'Github', icon: 'tabler:brand-github', href: 'https://github.com/sychonix' },
-	{ label: 'Mail', icon: 'tabler:mail', href: 'mailto: sychonixx@gmail.com' },
+  { label: 'Twitter', icon: 'tabler:brand-twitter', href: 'https://twitter.com/sychonixx' },
+  { label: 'Github', icon: 'tabler:brand-github', href: 'https://github.com/sychonix' },
+  { label: 'Mail', icon: 'tabler:mail', href: 'mailto:sychonixx@gmail.com' },
 ];
 ---
 
-<footer class="border-t border-gray-200 dark:border-slate-800" style="background-image: url('/bg-subtle-2-dark-1440w.jpg'); background-size: cover; background-position: center;">
-	<div class="max-w-6xl mx-auto px-4 sm:px-6">
-		<div class="grid grid-cols-12 gap-4 gap-y-8 sm:gap-8 py-8 md:py-12">
-			<div class="col-span-12 lg:col-span-4">
-				<div class="mb-2">
-					<a class="inline-block font-bold text-xl" href={getHomePermalink()}>Sychonix</a>
-				</div>
-				<div class="text-sm text-white">
-					<a
-						class="text-gray-400 hover:text-red-700 dark:text-gray-400 hover:underline transition duration-150 ease-in-out"
-						href="#">Terms</a
-					> ·
-					<a
-						class="text-gray-400 hover:text-red-700 dark:text-gray-400 hover:underline transition duration-150 ease-in-out"
-						href="#">Privacy Policy</a
-					>
-				</div>
-			</div>
-			{
-				links.map(({ title, items }) => (
-					<div class="col-span-6 md:col-span-3 lg:col-span-2">
-						<div class="text-gray-800 dark:text-gray-300 font-medium mb-2">{title}</div>
-						{items && Array.isArray(items) && items.length > 0 && (
-							<ul class="text-sm">
-								{items.map(({ title, href }) => (
-									<li class="mb-2">
-										<a
-											class="text-gray-400 hover:text-red-700 hover:underline dark:text-gray-400 transition duration-150 ease-in-out"
-											href={href}
-										>
-											{title}
-										</a>
-									</li>
-								))}
-							</ul>
-						)}
-					</div>
-				))
-			}
-		</div>
-		<div class="md:flex md:items-center md:justify-between py-2 md:py-4">
-			<ul class="flex mb-4 md:order-1 -ml-2 md:ml-4 md:mb-0">
-				{
-					social.map(({ label, href, icon }) => (
-						<li>
-							<a
-								class="text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5 inline-flex items-center"
-								aria-label={label}
-								href={href}
-							>
-								<Icon name={icon} class="w-5 h-5" />
-							</a>
-						</li>
-					))
-				}
-			</ul>
+<footer class="border-t border-gray-700/50 bg-[url('/bekgron3.png')] bg-left bg-no-repeat bg-cover pb-10">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6">
+    <div class="grid grid-cols-12 gap-8 py-12">
 
-			<div class="text-sm text-gray-400 mr-4 dark:text-slate-400">
-				<span
-					class="w-5 h-5 md:w-6 md:h-6 md:-mt-0.5 bg-cover mr-1.5 float-left rounded-sm bg-[url()]"
-				>
-				</span>
-				<a class="text-red-700 hover:underline dark:text-gray-600" href="https://sychonix.com/"> sychonix</a> ·
-				Committed to Secure Networks.
-			</div>
-		</div>
-	</div>
+      <!-- Brand -->
+      <div class="col-span-12 lg:col-span-4">
+        <a href={getHomePermalink()} class="inline-block font-bold text-2xl text-white tracking-tight">
+          Sychonix
+        </a>
+        <p class="mt-4 text-sm text-gray-400 leading-relaxed">
+          Decentralized Infrastructure & Validator Operator.<br />
+          Empowering secure, reliable, and scalable blockchain networks.
+        </p>
+      </div>
+
+      <!-- Links -->
+      {links.map(({ title, items }) => (
+        <div class="col-span-6 md:col-span-3 lg:col-span-2">
+          {title && <h4 class="text-sm font-semibold text-gray-300 mb-4">{title}</h4>}
+          <ul class="space-y-2">
+            {items.map(({ title, href }) => (
+              <li>
+                <a href={href} class="text-gray-400 hover:text-blue-500 transition">{title}</a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </div>
+
+    <!-- Bottom -->
+    <div class="border-t border-gray-700/30 pt-6 flex flex-col md:flex-row justify-between items-center text-sm text-gray-500">
+      <div class="flex space-x-4 mb-4 md:mb-0">
+        {social.map(({ label, href, icon }) => (
+          <a href={href} aria-label={label} class="hover:text-blue-500 transition">
+            <Icon name={icon} class="w-5 h-5" />
+          </a>
+        ))}
+      </div>
+
+      <div>
+        © {new Date().getFullYear()} Sychonix — Committed to Secure Networks.
+      </div>
+    </div>
+  </div>
 </footer>

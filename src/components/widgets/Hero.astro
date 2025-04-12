@@ -1,27 +1,37 @@
-<section class="banner h-[90vh] flex items-center justify-center text-center bg-cover bg-center bg-no-repeat" id="home">
-  <div class="container mx-auto px-6">
+<section class="banner relative h-[90vh] flex items-center justify-center text-center bg-cover bg-center bg-no-repeat bg-[#0b0c10]" id="home">
+  <!-- Overlay Gradient -->
+  <div class="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/90 z-10"></div>
+
+  <div class="container mx-auto px-6 relative z-20">
     <div class="w-full text-container" data-aos="fade-in">
-      <h1 class="text-white text-5xl font-bold animate-slide-up">Hi! I'm Sychonix</h1>
-      <h4 class="text-white text-lg mt-4 animate-slide-up">is an Independent node validator.</h4>
-      <br />
-      <i class="text-gray-300 animate-slide-up">
-        <q>As an independent validator, Sychonix is committed to maintaining the stability and security of blockchain networks through reliable and efficient node operations. We support the development of a trusted, transparent, and innovative blockchain ecosystem, with a focus on tangible contributions in maintaining network sustainability.</q>
-      </i>
+      <h1 class="text-white text-5xl md:text-6xl font-extrabold tracking-tight animate-slide-up">
+        Hi! I'm <span class="text-blue-500">Sychonix</span>
+      </h1>
+      <h4 class="text-gray-300 text-lg md:text-xl mt-4 animate-slide-up">
+        Securing networks as a reliable validator.
+      </h4>
+      <p class="text-gray-400 text-base md:text-lg mt-2 animate-slide-up">
+        Sychonix operates as an independent validator, securing blockchain networks and supporting a sustainable decentralized ecosystem.
+      </p>
+
+      <div class="mt-8 animate-slide-up">
+        <a href="#service" class="inline-block px-6 py-3 border border-blue-500 text-blue-500 hover:bg-blue-500 hover:text-black rounded-lg transition duration-300">
+          About Us
+        </a>
+      </div>
     </div>
   </div>
 </section>
 
 <style>
-/* Atur background gambar */
 .banner {
-  background-image: url('/bg-main-dark-1440w.jpg');
+  background-image: url('/bekgron1.png');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  height: 90vh; /* Tinggi untuk desktop */
+  height: 90vh;
 }
 
-/* Animasi slide up */
 @keyframes slideUp {
   from {
     transform: translateY(50px);
@@ -37,37 +47,26 @@
   animation: slideUp 1.5s ease-out forwards;
 }
 
-/* Atur posisi teks di tengah */
 .text-container {
   max-width: 800px;
   margin: 0 auto;
-  transform: translateY(-2rem); /* Mendorong teks lebih ke atas untuk desktop */
 }
 
-/* Responsif untuk layar kecil */
 @media (max-width: 768px) {
   .banner {
-    height: 85vh; /* Kurangi tinggi banner untuk layar kecil */
-  }
-
-  .text-container {
-    transform: translateY(-4rem); /* Geser teks lebih ke atas untuk layar kecil */
+    height: 85vh;
   }
 
   .text-container h1 {
-    font-size: 2rem;
+    font-size: 2.2rem;
   }
 
   .text-container h4 {
     font-size: 1rem;
-    margin-top: 0.5rem;
   }
 
-  .text-container i {
-    font-size: 0.875rem;
-    line-height: 1.4;
-    display: block;
-    margin-top: 1rem;
+  .text-container p {
+    font-size: 0.9rem;
   }
 }
 </style>

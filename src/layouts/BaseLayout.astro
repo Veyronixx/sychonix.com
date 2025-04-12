@@ -22,13 +22,25 @@ const { language = 'en', textDirection = 'ltr' } = SITE;
     <MetaTags {...meta} />
   </head>
 
-  <body class="antialiased text-page bg-dark text-gray-300 tracking-dark">
+  <body class="relative overflow-x-hidden text-gray-300 bg-[#0b0c10]">
+
+    <!-- Background Image Hanya Setengah Tinggi -->
+    <div class="absolute top-0 left-0 w-full h-[60vh] bg-cover bg-center bg-no-repeat z-[-10]" 
+         style="background-image: url('/bekgron1.png');">
+    </div>
+  
+    <!-- Gradasi Halus ke Hitam -->
+    <div class="absolute top-0 left-0 w-full h-[60vh] bg-gradient-to-b from-black/0 to-[#0b0c10] z-[-9]"></div>
+  
     <slot />
+  
     <BasicScripts />
+  
     <style is:global>
       img {
         content-visibility: auto;
       }
     </style>
   </body>
+  
 </html>

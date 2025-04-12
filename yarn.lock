@@ -593,6 +593,20 @@
   resolved "https://registry.npmjs.org/@humanwhocodes/object-schema/-/object-schema-2.0.3.tgz"
   integrity sha512-93zYdMES/c1D69yZiKDBj0V24vqNzB/koF26KPaagAfd3P/4gUlh3Dys5ogAK+Exi9QyzlD8x/08Zt7wIKcDcA==
 
+"@iconify-json/material-symbols@^1.2.19":
+  version "1.2.19"
+  resolved "https://registry.npmjs.org/@iconify-json/material-symbols/-/material-symbols-1.2.19.tgz"
+  integrity sha512-GpAfK2XabulPR6Q8NTMDhuLX/PcBEjOmhgKDA1sK59hrrztqm3rPi5Dq4Md01z+j3lVrOa2l7hxgNX1LWKzHVg==
+  dependencies:
+    "@iconify/types" "*"
+
+"@iconify-json/tabler@^1.2.17":
+  version "1.2.17"
+  resolved "https://registry.npmjs.org/@iconify-json/tabler/-/tabler-1.2.17.tgz"
+  integrity sha512-Jfk20IC/n7UOQQSXM600BUhAwEfg8KU1dNUF+kg4eRhbET5w1Ktyax7CDx8Z8y0H6+J/8//AXpJOEgG8YoP8rw==
+  dependencies:
+    "@iconify/types" "*"
+
 "@iconify/react@^5.0.2":
   version "5.0.2"
   resolved "https://registry.npmjs.org/@iconify/react/-/react-5.0.2.tgz"
@@ -600,7 +614,7 @@
   dependencies:
     "@iconify/types" "^2.0.0"
 
-"@iconify/types@^2.0.0":
+"@iconify/types@*", "@iconify/types@^2.0.0":
   version "2.0.0"
   resolved "https://registry.npmjs.org/@iconify/types/-/types-2.0.0.tgz"
   integrity sha512-+wluvCrRhXrhyOmRDJ3q8mux9JkKy5SJ/v8ol2tu4FVjyYvtEzkc/3pK15ET6RKg4b4w4BmTk1+gsCUhf21Ykg==
@@ -8462,6 +8476,11 @@ synckit@^0.9.0:
   dependencies:
     "@pkgr/core" "^0.1.0"
     tslib "^2.6.2"
+
+tabler-icons@^1.35.0:
+  version "1.35.0"
+  resolved "https://registry.npmjs.org/tabler-icons/-/tabler-icons-1.35.0.tgz"
+  integrity sha512-8ZbCA3oVQAsVYljvA4UiGRdB01hKqjFcbVTViw5y2Hs2SSpZ/iMB2XYbDZkfB8TqWAXvsho272avD5rYe3wXaw==
 
 tailwindcss@^3.2.4:
   version "3.4.11"

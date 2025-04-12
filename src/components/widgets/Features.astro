@@ -4,49 +4,69 @@ import { Icon } from 'astro-icon';
 const items = [
   [
     {
-      title: 'Highly Secured',
-      description: 'Sychonix is highly secured with 24/7 monitoring, ensuring the integrity and safety of transactions and stakeholder assets.',
-      icon: 'tabler:rocket',
+      title: 'Blockchain Infrastructure',
+      description: 'We provide secure, reliable, and high-performance blockchain infrastructure with 24/7 monitoring across multiple networks.',
+      icon: 'tabler:server',
     },
     {
-      title: 'Interchain-Explorer',
-      description: 'Our fast and reliable Interchain Explorer facilitates seamless navigation and interaction between blockchain networks, enhancing accessibility and user experience.',
-      icon: 'tabler:components',
+      title: 'Validator Resources',
+      description: 'Offering technical guides, node installation tutorials, and validator tools to help operators easily join and contribute to networks.',
+      icon: 'tabler:book',
     },
   ],
   [
     {
-      title: 'Service Guide',
-      description: 'We provide comprehensive setup documents and guides for our community, empowering users to navigate and utilize our platform effectively.',
-      icon: 'tabler:book',
+      title: 'Multi-chain Explorer',
+      description: 'Real-time explorer for cross-chain data visibility, helping users monitor, explore, and interact with blockchain networks seamlessly.',
+      icon: 'tabler:world',
     },
     {
-      title: 'Fully Comply',
-      description: 'We fully comply with blockchain governance protocols, actively participating in chain governance, updates, and upgrades to ensure network stability and innovation.',
-      icon: 'tabler:bulb',
+      title: 'Governance & Compliance',
+      description: 'Actively involved in governance, upgrades, and network proposals to maintain decentralization, security, and ecosystem growth.',
+      icon: 'tabler:shield-check',
     },
   ],
 ];
+
 ---
 
-<section id="aboutus" class="scroll-mt-16">
-  <div class="px-4 py-16 mx-auto max-w-6xl lg:px-8 lg:py-20">
-    <div class="mb-10 md:mx-auto sm:text-center md:mb-12 max-w-3xl">
-      <h2 class="text-4xl md:text-5xl font-bold leading-tighter tracking-tighter mb-4 font-heading">
-        What you need to know about <span class="whitespace-nowrap">Us</span>
+<section id="service" class="relative scroll-mt-16 bg-black overflow-hidden">
+
+  <!-- Stars Background -->
+  <div class="absolute inset-0 pointer-events-none">
+    {Array.from({ length: 6 }).map((_, index) => (
+      <div class="star-down" style={`left: ${Math.random() * 100}%; animation-delay: ${Math.random() * 10}s;`}></div>
+    ))}
+  </div>
+
+  <!-- Floating Planets -->
+  <div class="absolute top-[20%] left-[10%] w-32 sm:w-40 h-32 sm:h-40 opacity-20 animate-spin-slow animate-floating pointer-events-none">
+    <img src="/sychonix-planet.png" alt="Planet Sychonix" class="w-full h-full object-cover rounded-full drop-shadow-[0_0_40px_rgba(59,130,246,0.3)]" />
+  </div>
+
+  <div class="absolute top-[15%] right-[20%] w-16 sm:w-20 h-16 sm:h-20 opacity-30 animate-spin-slow animate-floating pointer-events-none">
+    <img src="/planet.jpg" alt="Planet" class="w-full h-full object-cover rounded-full drop-shadow-[0_0_30px_rgba(29,78,216,0.3)]" />
+  </div>
+
+  <!-- Main Content -->
+  <div class="relative z-10 px-4 py-14 sm:py-16 md:py-20 mx-auto max-w-6xl lg:px-8">
+    <div class="mb-8 sm:mb-10 md:mb-12 max-w-3xl mx-auto text-center">
+      <h2 class="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-white leading-tight">
+        What you need to know about <span class="text-blue-500">Us</span>
       </h2>
     </div>
-    <div class="services__container mx-auto grid grid-cols-1 md:grid-cols-2 gap-2">
+
+    <div class="services__container grid grid-cols-1 md:grid-cols-2 gap-4">
       {items.map((subitems) => (
         <div class="space-y-5 sm:px-1">
           {subitems.map(({ title, description, icon }) => (
-            <div class="card service p-4 bg-transparent border border-blue-500 rounded-lg transition-all duration-300 transform hover:scale-105">
-              <div class="flex flex-col items-start text-left gap-2">
-                <div class="service__icon w-10 h-10 bg-fuchsia-700 flex items-center justify-center rounded-full">
-                  {icon && <Icon name={icon} class="w-6 h-6 text-white" />}
+            <div class="card service p-5 bg-black/30 backdrop-blur-sm border border-blue-700/30 rounded-xl transition-all duration-300 hover:scale-105 hover:border-blue-500">
+              <div class="flex flex-col items-start text-left gap-3">
+                <div class="service__icon w-10 h-10 bg-blue-700 flex items-center justify-center rounded-md shadow-md">
+                  {icon && <Icon name={icon} class="w-6 h-6 text-white" aria-label={title} />}
                 </div>
-                <h4 class="text-base font-semibold">{title}</h4>
-                <p class="text-gray-300 text-sm">{description}</p>
+                <h4 class="text-lg font-semibold text-white">{title}</h4>
+                <p class="text-gray-400 text-sm">{description}</p>
               </div>
             </div>
           ))}
@@ -58,85 +78,122 @@ const items = [
 
 
 <style>
-    #services {
-    background-image: url('/bg-subtle-2-dark-1440w.jpg'); /* Ganti dengan path gambar yang sesuai */
-    background-size: cover;
-    background-position: bottom; /* Mengatur posisi gambar latar belakang ke bagian atas */
+  /* Layout dan Konten Layanan */
+  .services__container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
   }
 
-.services__container {
-  display: flex;
-  flex-wrap: wrap; /* Membuat kartu membungkus ke baris berikutnya jika tidak ada ruang yang cukup */
-  justify-content: center; /* Memposisikan kartu di tengah */
-  gap: 0.5rem; /* Mengatur jarak antar kartu */
-}
-
-.card {
-  background-color: rgba(90, 33, 182, 0);
-  padding: 1rem;
-  border: 1px solid rgb(13, 114, 255);
-  border-radius: 0.75rem;
-  border-color: rgb(13, 114, 255);
-  transition: transform 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
-  height: 210px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  max-width: 540px;
-  /* Hapus margin-left dan margin-right */
-}
-
+  .card {
+    padding: 1.25rem;
+    border-radius: 0.75rem;
+    border: 1px solid rgba(29, 78, 216, 0.2);
+    background-color: rgba(13, 17, 23, 0.3);
+    transition: transform 0.3s ease, border-color 0.3s ease, background-color 0.3s ease;
+    box-shadow: 0 0 10px rgba(56,189,248,0.05);
+    height: 210px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    max-width: 540px;
+  }
 
   .card:hover {
-    background-color: rgba(13, 114, 255, 0.219);
-    border-color: rgb(13, 114, 255);
-    transform: translateY(-0.5rem);
+    transform: translateY(-0.5rem) scale(1.02);
+    border-color: rgb(59, 130, 246);
+    background-color: rgba(13, 17, 23, 0.5);
+    box-shadow: 0 0 20px rgba(56,189,248,0.15);
   }
 
-
   .service__icon {
-    background-color: rgb(13, 114, 255);
-    padding: 0.5rem;
-    border-radius: 0.5rem;
-    font-size: 1.25rem;
-    color: var(--color-black);
-    transition: var(--transition);
+    transition: background-color 0.3s ease;
   }
   
   .service:hover .service__icon {
-    background-color: rgb(29 78 216);
-    color: var(--color-white);
+    background-color: rgb(29, 78, 216);
   }
-
+  
   .service h4 {
     font-size: 1rem;
   }
-
+  
   .service p {
     color: rgba(255, 255, 255, 0.7);
     font-size: 0.875rem;
-    line-height: 1.2rem;
-  }
-  
-   /* MEDIA QUERIES (tablets) */
-   @media screen and (max-width: 1024px) {
-    .services__container {
-      gap: 1rem;
-    }
+    line-height: 1.4;
   }
 
-/* MEDIA QUERIES (phones) */
-@media screen and (max-width: 600px) {
-  .services__container {
-    display: flex;
-    flex-direction: column; /* Menumpuk kartu secara vertikal */
-    align-items: center; /* Memastikan kartu berada di tengah */
-    gap: 1.2rem; /* Menghapus gap default, menggunakan margin di .card */
+  @keyframes spin-slow {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
   }
-
-  .card.service p {
-    font-size: 0.875rem; /* Sesuaikan ukuran font untuk ponsel */
+  .animate-spin-slow {
+    animation: spin-slow 120s linear infinite;
   }
+  @keyframes floating {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+.animate-floating {
+  animation: floating 8s ease-in-out infinite;
+}
+@keyframes twinkle {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 1; }
 }
 
+/* Stars Falling Down */
+.star-down {
+  position: absolute;
+  top: -10px;
+  width: 2px;
+  height: 2px;
+  background-color: rgba(255, 255, 255, 0.7);
+  border-radius: 50%;
+  animation: starFall 10s linear infinite;
+}
+
+@keyframes starFall {
+  0% { transform: translateY(0); opacity: 1; }
+  100% { transform: translateY(100vh); opacity: 0; }
+}
+
+/* Planet Animations */
+@keyframes spin-slow {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+.animate-spin-slow {
+  animation: spin-slow 120s linear infinite;
+}
+@keyframes floating {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+.animate-floating {
+  animation: floating 8s ease-in-out infinite;
+}
+/* Responsive */
+@media screen and (max-width: 600px) {
+  .card {
+    height: auto;
+    padding: 1rem;
+  }
+}
+/* Media Query untuk Mobile */
+@media (max-width: 767px) {
+  .grid {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center cards horizontally */
+  }
+
+  .card {
+    width: 100%; /* Set card width to 100% of its container */
+    max-width: 300px; /* Ensure cards do not get too wide */
+    margin: 8px 0; /* Add vertical margin for spacing */
+  }
+}
 </style>
