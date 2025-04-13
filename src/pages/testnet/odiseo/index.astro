@@ -330,7 +330,7 @@ document.addEventListener('DOMContentLoaded', () => {
       return;
     }
 
-    const response = await fetch('https://rpc-odiseo.sychonix.com/status');
+    const response = await fetch('https://rpc-odiseo-t.sychonix.com/status');
     const data = await response.json();
     const latestBlockHeight = data.result.sync_info.latest_block_height;
 
