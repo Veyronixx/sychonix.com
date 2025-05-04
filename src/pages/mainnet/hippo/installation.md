@@ -24,8 +24,10 @@ eval $(echo 'export PATH=$PATH:$HOME/go/bin' | tee -a $HOME/.profile)</code></pr
 
 <div class="code-block-wrapper">
   <pre><code>cd $HOME
-curl -L https://snapshot.sychonix.com/mainnet/hippo/hippod.tar.gz | tar -xvzf - -C $HOME
-sudo mv hippod /usr/local/bin/</code></pre>
+git clone https://github.com/hippocrat-dao/hippo-protocol hippo
+cd hippo
+git checkout main
+make install</code></pre>
   <button class="copy-btn"><i class="fas fa-copy"></i></button>
 </div>
 
