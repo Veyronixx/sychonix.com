@@ -35,7 +35,7 @@ make install</code></pre>
 
 <div class="code-block-wrapper"><!-- Change chain id and port -->
   <pre><code>hippod init $MONIKER --chain-id hippo-protocol-1
-sed -i -e "s|^node *=.*|node = \"tcp://localhost:112557\"|" $HOME/.hippo/config/client.toml
+sed -i -e "s|^node *=.*|node = \"tcp://localhost:12557\"|" $HOME/.hippo/config/client.toml
 sed -i -e "s|^keyring-backend *=.*|keyring-backend = \"os\"|" $HOME/.hippo/config/client.toml
 sed -i -e "s|^chain-id *=.*|chain-id = \"hippo-protocol-1\"|" $HOME/.hippo/config/client.toml</code></pre>
   <button class="copy-btn"><i class="fas fa-copy"></i></button>
@@ -61,8 +61,8 @@ sed -i -e "s|^seeds *=.*|seeds = '"$SEEDS"'|; s|^persistent_peers *=.*|persisten
 - Update Port Configuration
 
 <div class="code-block-wrapper">
-  <pre><code>sed -i -e "s%:1317%:112517%; s%:8080%:112580%; s%:9090%:112590%; s%:9091%:112591%; s%:8545%:112545%; s%:8546%:112546%; s%:6065%:112565%" $HOME/.hippo/config/app.toml
-sed -i -e "s%:26658%:112558%; s%:26657%:112557%; s%:6060%:112560%; s%:26656%:112556%; s%:26660%:112561%" $HOME/.hippo/config/config.toml</code></pre>
+  <pre><code>sed -i -e "s%:1317%:12517%; s%:8080%:12580%; s%:9090%:12590%; s%:9091%:12591%; s%:8545%:12545%; s%:8546%:12546%; s%:6065%:12565%" $HOME/.hippo/config/app.toml
+sed -i -e "s%:26658%:12558%; s%:26657%:12557%; s%:6060%:12560%; s%:26656%:12556%; s%:26660%:12561%" $HOME/.hippo/config/config.toml</code></pre>
   <button class="copy-btn"><i class="fas fa-copy"></i></button>
 </div>
 
