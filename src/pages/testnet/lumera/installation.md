@@ -157,7 +157,7 @@ sudo systemctl restart lumerad.service && sudo journalctl -u lumerad.service -f 
   <pre><code>lumerad tx staking create-validator $HOME/.lumera/validator.json \
 --from wallet \
 --chain-id lumera-testnet-1 \
---gas-prices=0.25ulume \
+--gas-prices=0.025ulume \
 --gas-adjustment=1.5 \
 --gas=auto
 </code></pre>
