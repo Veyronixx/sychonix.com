@@ -2,13 +2,13 @@
 layout: '~/layouts/copybutton.astro'
 ---
 <!-- Change it
-ithaca-1
-achillesd 
-$HOME/.achilles
-uodis
-achillesd 
-gas price= 0.25uodis
-1000000uodis
+lumera-testnet-1
+lumerad 
+$HOME/.lumera
+ulume
+lumerad 
+gas price= 0.025ulume
+1000000ulume
 -->
 
 
@@ -22,44 +22,44 @@ gas price= 0.25uodis
 
 <label for="iwallet" style="vertical-align: top;"> Create New Wallet</label>
 <div class="pre-container">
-  <pre class="my-pre" id="pre1" style="margin-top: 5px;">achillesd keys add <span class="rwallet1"></span></pre>
+  <pre class="my-pre" id="pre1" style="margin-top: 5px;">lumerad keys add <span class="rwallet1"></span></pre>
   <button class="copy-btn" id="copy1" data-clipboard-text="" onclick="copyText(1)"></button>
 </div>
 
 <label for="iwallet" style="vertical-align: top;"> Recovery New Wallet</label>
 <div class="pre-container">
-  <pre class="my-pre" id="pre2" style="margin-top: 5px;">achillesd keys add <span class="rwallet2"></span> --recover</pre>
+  <pre class="my-pre" id="pre2" style="margin-top: 5px;">lumerad keys add <span class="rwallet2"></span> --recover</pre>
   <button class="copy-btn" id="copy2" data-clipboard-text="" onclick="copyText(2)"></button>
 </div>
 
 <label for="iwallet" style="vertical-align: top;"> List All Wallet</label>
 <div class="pre-container">
-  <pre class="my-pre" id="pre3" style="margin-top: 5px;">achillesd keys list <span class="rwallet3"></span></pre>
+  <pre class="my-pre" id="pre3" style="margin-top: 5px;">lumerad keys list <span class="rwallet3"></span></pre>
   <button class="copy-btn" id="copy3" data-clipboard-text="" onclick="copyText(3)"></button>
 </div>
 
 <label for="iwallet" style="vertical-align: top;"> Delete Wallet</label>
 <div class="pre-container">
-  <pre class="my-pre" id="pre4">achillesd keys delete <span class="rwallet4"></span></pre>
+  <pre class="my-pre" id="pre4">lumerad keys delete <span class="rwallet4"></span></pre>
   <button class="copy-btn" id="copy4" data-clipboard-text="" onclick="copyText(4)"></button>
 </div>
 
 <label for="iwallet" style="vertical-align: top;"> Export Wallet</label>
 <div class="pre-container">
-  <pre class="my-pre" id="pre5">achillesd keys export <span class="rwallet5"></span></pre>
+  <pre class="my-pre" id="pre5">lumerad keys export <span class="rwallet5"></span></pre>
   <button class="copy-btn" id="copy5" data-clipboard-text="" onclick="copyText(5)"></button>
 </div>
 
 
 <label for="iwallet" style="vertical-align: top;"> Import key</label>
 <div class="pre-container">
-<pre class="my-pre" id="pre6">achillesd keys import <span class="rwallet6"></span>.backup</pre>
+<pre class="my-pre" id="pre6">lumerad keys import <span class="rwallet6"></span>.backup</pre>
   <button class="copy-btn" class="copy-btn" id="copy6" data-clipboard-text="" onclick="copyText(6)"></button>
 </div>
 
 <label for="iwallet" style="vertical-align: top;"> Check balance</label>
 <div class="pre-container">
-  <pre class="my-pre" id="pre7">achillesd q bank balances $(achillesd keys show <span class="rwallet7"></span> -a)</pre>
+  <pre class="my-pre" id="pre7">lumerad q bank balances $(lumerad keys show <span class="rwallet7"></span> -a)</pre>
   <button class="copy-btn" id="copy7" data-clipboard-text="" onclick="copyText(7)"></button>
 </div>
 
@@ -113,20 +113,20 @@ gas price= 0.25uodis
 <div class="pre-container">
 <label for="ivalidator" style="vertical-align: top;"> Create New Validator</label>
   <pre class="my-pre" id="pre8">
-achillesd tx staking create-validator \
---amount=<span class="ramount1">1000000uodis</span> \
---pubkey=$(achillesd tendermint show-validator) \
+lumerad tx staking create-validator \
+--amount=<span class="ramount1">1000000ulume</span> \
+--pubkey=$(lumerad tendermint show-validator) \
 --moniker="<span class="rmoniker1"></span>" \
 --identity="<span class="ridentity1"></span>" \
 --details="<span class="rdetails1"></span>" \
 --website="<span class="rwebsite1"></span>" \
 --security-contact=<span class="rcontact1"></span> \
---chain-id=ithaca-1 \
+--chain-id=lumera-testnet-1 \
 --commission-rate=<span class="rcommission1">0.05</span> \
 --commission-max-rate=0.20 \
 --commission-max-change-rate=0.01 \
 --min-self-delegation=1 \
---gas-prices 0.25uodis \
+--gas-prices 0.025ulume \
 --gas "auto" \
 --gas-adjustment "1.5" \
 --from <span class="rwallet8">wallet</span> \
@@ -156,53 +156,53 @@ achillesd tx staking create-validator \
 
 <div class="pre-container">
 <pre class="my-pre" id="pre9">
-achillesd tx staking edit-validator \
+lumerad tx staking edit-validator \
 --new-moniker="<span class="reditmoniker1"></span>" \
 --identity="<span class="reditidentity1"></span>" \
 --details="<span class="reditdetails1"></span>" \
 --website="<span class="reditweb1"></span>" \
---chain-id=ithaca-1 \
+--chain-id=lumera-testnet-1 \
 --commission-rate=0.07 \
 --from <span class="rwallet9">wallet</span> \
 --gas=auto \
---gas-prices 0.25uodis \
+--gas-prices 0.025ulume \
 -y</pre>
   <button class="copy-btn" id="copy8" data-clipboard-text="" onclick="copyText(8)"></button>
 </div>
 
 <label for="iwallet" style="vertical-align: top;"> Unjail Validator</label>
 <div class="pre-container">
-  <pre class="my-pre" id="pre10">achillesd tx slashing unjail --from wallet --chain-id ithaca-1 --gas auto --gas-adjustment 1.5  </pre>
+  <pre class="my-pre" id="pre10">lumerad tx slashing unjail --from wallet --chain-id lumera-testnet-1 --gas auto --gas-adjustment 1.5  </pre>
   <button class="copy-btn" id="copy10" data-clipboard-text="" onclick="copyText(10)"></button>
 </div>
 
 <label for="iwallet" style="vertical-align: top;"> Jail Reason</label>
 <div class="pre-container">
-  <pre class="my-pre" id="pre11">achillesd query slashing signing-info $(achillesd tendermint show-validator)</pre>
+  <pre class="my-pre" id="pre11">lumerad query slashing signing-info $(lumerad tendermint show-validator)</pre>
   <button class="copy-btn" id="copy11" data-clipboard-text="" onclick="copyText(11)"></button>
 </div>
 
 <label for="iwallet" style="vertical-align: top;"> View validator details</label>
 <div class="pre-container">
-  <pre class="my-pre" id="pre12">achillesd q staking validator $(achillesd keys show wallet --bech val -a)</pre>
+  <pre class="my-pre" id="pre12">lumerad q staking validator $(lumerad keys show wallet --bech val -a)</pre>
   <button class="copy-btn" id="copy12" data-clipboard-text="" onclick="copyText(12)"></button>
 </div>
 
 <label> Get Denom Info</label>
 <div class="pre-container">
-  <pre class="my-pre" id="pre23">achillesd q bank denom-metadata -oj | jq</pre>
+  <pre class="my-pre" id="pre23">lumerad q bank denom-metadata -oj | jq</pre>
   <button class="copy-btn" id="copy23" data-clipboard-text="" onclick="copyText(23)"></button>
 </div>
 
 <label> Get Sync Status</label>
 <div class="pre-container">
-  <pre class="my-pre" id="pre24">achillesd status 2>&1 | jq -r '.SyncInfo.catching_up // .sync_info.catching_up'</pre>
+  <pre class="my-pre" id="pre24">lumerad status 2>&1 | jq -r '.SyncInfo.catching_up // .sync_info.catching_up'</pre>
   <button class="copy-btn" id="copy24" data-clipboard-text="" onclick="copyText(24)"></button>
 </div>
 
 <label> Get Latest Height</label>
 <div class="pre-container">
-  <pre class="my-pre" id="pre25">achillesd status 2>&1 | jq -r '.SyncInfo.latest_block_height // .sync_info.latest_block_height'</pre>
+  <pre class="my-pre" id="pre25">lumerad status 2>&1 | jq -r '.SyncInfo.latest_block_height // .sync_info.latest_block_height'</pre>
   <button class="copy-btn" id="copy25" data-clipboard-text="" onclick="copyText(25)"></button>
 </div>
 
@@ -210,13 +210,13 @@ achillesd tx staking edit-validator \
 
 <label for="ivalidator">Withdraw rewards from all validators</label>
 <div class="pre-container">
-  <pre class="my-pre" id="pre13">achillesd tx distribution withdraw-all-rewards --from wallet --chain-id ithaca-1 --gas auto --gas-adjustment 1.5 --gas-prices 0.25uodis -y </pre>
+  <pre class="my-pre" id="pre13">lumerad tx distribution withdraw-all-rewards --from wallet --chain-id lumera-testnet-1 --gas auto --gas-adjustment 1.5 --gas-prices 0.025ulume -y </pre>
   <button class="copy-btn" id="copy13" data-clipboard-text="" onclick="copyText(13)"></button>
 </div>
 
 <label for="ivalidator" style="vertical-align: top;"> Withdraw commission and rewards from your validator</label>
 <div class="pre-container">
-  <pre class="my-pre" id="pre14">achillesd tx distribution withdraw-rewards $(achillesd keys show wallet --bech val -a) --commission --from wallet --chain-id ithaca-1 --gas auto --gas-adjustment 1.5 --gas-prices 0.25uodis -y </pre>
+  <pre class="my-pre" id="pre14">lumerad tx distribution withdraw-rewards $(lumerad keys show wallet --bech val -a) --commission --from wallet --chain-id lumera-testnet-1 --gas auto --gas-adjustment 1.5 --gas-prices 0.025ulume -y </pre>
   <button class="copy-btn" id="copy14" data-clipboard-text="" onclick="copyText(14)"></button>
 </div>
 
@@ -228,7 +228,7 @@ achillesd tx staking edit-validator \
   <input id="idelegete" type="text" placeholder="Enter Amount" oninput="updatePre()" />
 </div>
 <div class="pre-container">
-  <pre class="my-pre" id="pre15" style="margin-top: 5px;">achillesd tx staking delegate $(achillesd keys show wallet --bech val -a) <span class="rdelegete1"></span>1000000uodis --from wallet --chain-id ithaca-1 --gas auto --gas-adjustment 1.5 --gas-prices 0.25uodis -y </pre>
+  <pre class="my-pre" id="pre15" style="margin-top: 5px;">lumerad tx staking delegate $(lumerad keys show wallet --bech val -a) <span class="rdelegete1"></span>1000000ulume --from wallet --chain-id lumera-testnet-1 --gas auto --gas-adjustment 1.5 --gas-prices 0.025ulume -y </pre>
   <button class="copy-btn" id="copy15" data-clipboard-text="" onclick="copyText(15)">Copy</button>
 </div>
 
@@ -237,21 +237,21 @@ achillesd tx staking edit-validator \
   <input id="iredelegete" type="text" placeholder="Enter <TO_VALOPER_ADDRESS>" oninput="updatePre()" />
 </div>
 <div class="pre-container">
-  <pre class="my-pre" id="pre16" style="margin-top: 5px;">achillesd tx staking redelegate $(achillesd keys show wallet --bech val -a) <span class="rredelegete1"></span> <span class="rdelegete2"></span>1000000uodis --from wallet --chain-id ithaca-1 --gas auto --gas-adjustment 1.5 --gas-prices 0.25uodis -y</pre>
+  <pre class="my-pre" id="pre16" style="margin-top: 5px;">lumerad tx staking redelegate $(lumerad keys show wallet --bech val -a) <span class="rredelegete1"></span> <span class="rdelegete2"></span>1000000ulume --from wallet --chain-id lumera-testnet-1 --gas auto --gas-adjustment 1.5 --gas-prices 0.025ulume -y</pre>
   <button class="copy-btn" id="copy16" data-clipboard-text="" onclick="copyText(16)"></button>
 </div>
 
 
 <label for="iredelegete" style="vertical-align: top;"> Delegate tokens to validator</label>
 <div class="pre-container">
-  <pre class="my-pre" id="pre17" style="margin-top: 5px;">achillesd tx staking delegate <span class="rredelegete2"></span> <span class="rdelegete3"></span>1000000uodis --from <span class="rwallet19"></span> --chain-id ithaca-1 --gas auto --gas-adjustment 1.5 --gas-prices 0.25uodis -y </pre>
+  <pre class="my-pre" id="pre17" style="margin-top: 5px;">lumerad tx staking delegate <span class="rredelegete2"></span> <span class="rdelegete3"></span>1000000ulume --from <span class="rwallet19"></span> --chain-id lumera-testnet-1 --gas auto --gas-adjustment 1.5 --gas-prices 0.025ulume -y </pre>
   <button class="copy-btn" id="copy17" data-clipboard-text="" onclick="copyText(17)"></button>
 </div>
 
 
 <label for="iredelegete" style="vertical-align: top;"> Unbond tokens from your validator</label>
 <div class="pre-container">
-  <pre class="my-pre" id="pre18" style="margin-top: 5px;">achillesd tx staking unbond $(achillesd keys show wallet --bech val -a) <span class="rdelegete4"></span>1000000uodis --from wallet --chain-id ithaca-1 --gas auto --gas-adjustment 1.5 --gas-prices 0.25uodis -y</pre>
+  <pre class="my-pre" id="pre18" style="margin-top: 5px;">lumerad tx staking unbond $(lumerad keys show wallet --bech val -a) <span class="rdelegete4"></span>1000000ulume --from wallet --chain-id lumera-testnet-1 --gas auto --gas-adjustment 1.5 --gas-prices 0.025ulume -y</pre>
   <button class="copy-btn" id="copy18" data-clipboard-text="" onclick="copyText(18)"></button>
 </div>
 
@@ -260,7 +260,7 @@ achillesd tx staking edit-validator \
   <input id="itoken" type="text" placeholder="Enter Address Wallet" oninput="updatePre()" />
 </div>
 <div class="pre-container">
-  <pre class="my-pre" id="pre19" style="margin-top: 5px;">achillesd tx bank send wallet</span> <span class="rtoken1"></span> <span class="rdelegete5"></span>1000000uodis --from wallet --chain-id ithaca-1 --gas auto --gas-adjustment 1.5 --gas-prices 0.25uodis -y</pre>
+  <pre class="my-pre" id="pre19" style="margin-top: 5px;">lumerad tx bank send wallet</span> <span class="rtoken1"></span> <span class="rdelegete5"></span>1000000ulume --from wallet --chain-id lumera-testnet-1 --gas auto --gas-adjustment 1.5 --gas-prices 0.025ulume -y</pre>
   <button class="copy-btn" id="copy19" data-clipboard-text="" onclick="copyText(19)"></button>
 </div>
 
@@ -275,43 +275,43 @@ achillesd tx staking edit-validator \
 
 <label> Enable Service</label>
 <div class="pre-container">
-  <pre class="my-pre" id="pre27">sudo systemctl enable achillesd </pre>
+  <pre class="my-pre" id="pre27">sudo systemctl enable lumerad </pre>
   <button class="copy-btn" id="copy27" data-clipboard-text="" onclick="copyText(27)"></button>
 </div>
 
 <label> Disable Service</label>
 <div class="pre-container">
-  <pre class="my-pre" id="pre28">sudo systemctl disable achillesd </pre>
+  <pre class="my-pre" id="pre28">sudo systemctl disable lumerad </pre>
   <button class="copy-btn" id="copy28" data-clipboard-text="" onclick="copyText(28)"></button>
 </div>
 
 <label> Run Service</label>
 <div class="pre-container">
-  <pre class="my-pre" id="pre29">sudo systemctl start achillesd </pre>
+  <pre class="my-pre" id="pre29">sudo systemctl start lumerad </pre>
   <button class="copy-btn" id="copy29" data-clipboard-text="" onclick="copyText(29)"></button>
 </div>
 
 <label> Stop Service</label>
 <div class="pre-container">
-  <pre class="my-pre" id="pre30">sudo systemctl stop achillesd </pre>
+  <pre class="my-pre" id="pre30">sudo systemctl stop lumerad </pre>
   <button class="copy-btn" id="copy30" data-clipboard-text="" onclick="copyText(30)"></button>
 </div>
 
 <label> Restart Service</label>
 <div class="pre-container">
-  <pre class="my-pre" id="pre31">sudo systemctl restart achillesd </pre>
+  <pre class="my-pre" id="pre31">sudo systemctl restart lumerad </pre>
   <button class="copy-btn" id="copy31" data-clipboard-text="" onclick="copyText(31)"></button>
 </div>
 
 <label> Check Service Status</label>
 <div class="pre-container">
-  <pre class="my-pre" id="pre32">sudo systemctl status achillesd </pre>
+  <pre class="my-pre" id="pre32">sudo systemctl status lumerad </pre>
   <button class="copy-btn" id="copy32" data-clipboard-text="" onclick="copyText(32)"></button>
 </div>
 
 <label> Check Service Logs</label>
 <div class="pre-container">
-  <pre class="my-pre" id="pre33">sudo journalctl -u achillesd -f --no-hostname -o cat</pre>
+  <pre class="my-pre" id="pre33">sudo journalctl -u lumerad -f --no-hostname -o cat</pre>
   <button class="copy-btn" id="copy33" data-clipboard-text="" onclick="copyText(33)"></button>
 </div>
 
@@ -321,14 +321,14 @@ achillesd tx staking edit-validator \
 </div>
 <div class="pre-container">
   <pre class="my-pre" id="pre20" style="margin-top: 5px;">CUSTOM_PORT=<span class="rport1"></span>
-sed -i.bak -e "s%^proxy_app = \"tcp://127.0.0.1:26658\"%proxy_app = \"tcp://127.0.0.1:${CUSTOM_PORT}658\"%; s%^laddr = \"tcp://127.0.0.1:26657\"%laddr = \"tcp://127.0.0.1:${CUSTOM_PORT}657\"%; s%^pprof_laddr = \"localhost:6060\"%pprof_laddr = \"localhost:${CUSTOM_PORT}060\"%; s%^laddr = \"tcp://0.0.0.0:26656\"%laddr = \"tcp://0.0.0.0:${CUSTOM_PORT}656\"%; s%^prometheus_listen_addr = \":26660\"%prometheus_listen_addr = \":${CUSTOM_PORT}660\"%" $HOME/.achilles/config/config.toml
-sed -i.bak -e "s%^address = \"tcp://0.0.0.0:1317\"%address = \"tcp://0.0.0.0:${CUSTOM_PORT}317\"%; s%^address = \":8080\"%address = \":${CUSTOM_PORT}080\"%; s%^address = \"0.0.0.0:9090\"%address = \"0.0.0.0:${CUSTOM_PORT}090\"%; s%^address = \"0.0.0.0:9091\"%address = \"0.0.0.0:${CUSTOM_PORT}091\"%" $HOME/.achilles/config/app.toml</pre>
+sed -i.bak -e "s%^proxy_app = \"tcp://127.0.0.1:26658\"%proxy_app = \"tcp://127.0.0.1:${CUSTOM_PORT}658\"%; s%^laddr = \"tcp://127.0.0.1:26657\"%laddr = \"tcp://127.0.0.1:${CUSTOM_PORT}657\"%; s%^pprof_laddr = \"localhost:6060\"%pprof_laddr = \"localhost:${CUSTOM_PORT}060\"%; s%^laddr = \"tcp://0.0.0.0:26656\"%laddr = \"tcp://0.0.0.0:${CUSTOM_PORT}656\"%; s%^prometheus_listen_addr = \":26660\"%prometheus_listen_addr = \":${CUSTOM_PORT}660\"%" $HOME/.lumera/config/config.toml
+sed -i.bak -e "s%^address = \"tcp://0.0.0.0:1317\"%address = \"tcp://0.0.0.0:${CUSTOM_PORT}317\"%; s%^address = \":8080\"%address = \":${CUSTOM_PORT}080\"%; s%^address = \"0.0.0.0:9090\"%address = \"0.0.0.0:${CUSTOM_PORT}090\"%; s%^address = \"0.0.0.0:9091\"%address = \"0.0.0.0:${CUSTOM_PORT}091\"%" $HOME/.lumera/config/app.toml</pre>
   <button class="copy-btn" id="copy20" data-clipboard-text="" onclick="copyText(20)"></button>
 </div>
 
 <label> Remove Node</label>
 <div class="pre-container">
-  <pre class="my-pre" id="pre21">cd $HOME && sudo systemctl stop achillesd && sudo systemctl disable achillesd && sudo rm /etc/systemd/system/achillesd .service && sudo systemctl daemon-reload && sudo rm -rf $(which achillesd ) && sudo rm -rf $HOME/.achilles && sudo rm -rf $(which achillesd )</pre>
+  <pre class="my-pre" id="pre21">cd $HOME && sudo systemctl stop lumerad && sudo systemctl disable lumerad && sudo rm /etc/systemd/system/lumerad .service && sudo systemctl daemon-reload && sudo rm -rf $(which lumerad ) && sudo rm -rf $HOME/.lumera && sudo rm -rf $(which lumerad )</pre>
   <button class="copy-btn" id="copy21" data-clipboard-text="" onclick="copyText(21)"></button>
 </div>
 
@@ -361,7 +361,7 @@ sed -i.bak -e "s%^address = \"tcp://0.0.0.0:1317\"%address = \"tcp://0.0.0.0:${C
     document.querySelector('.rcontact1').textContent = contactInput;
 
     const amountInput = document.getElementById('iamount').value.trim();
-    document.querySelector('.ramount1').textContent = amountInput + 'uodis'; 
+    document.querySelector('.ramount1').textContent = amountInput + 'ulume'; 
     
     const commissionInput = document.getElementById('icommission').value.trim();
     document.querySelector('.rcommission1').textContent = commissionInput;
