@@ -88,7 +88,7 @@ title: Snapshot
 - Download Snapshot
 
 <div class="code-block-wrapper">
-  <pre><code>aria2c -x 16 -s 16 -o medas-snapshot.tar.lz4 https://snapshot.sychonix.com/mainnet/medas/medas-snapshot.tar.lz4
+  <pre><code>aria2c -x 16 -s 16 -o medas-snapshot.tar.lz4 https://snapshot.sychonix.com/mainnet/medasdigital/medasdigital-snapshot.tar.lz4
 lz4 -dc medas-snapshot.tar.lz4 | tar -xf - -C $HOME/.medasdigital
 rm -v medas-snapshot.tar.lz4</code></pre>
   <button class="copy-btn"><i class="fas fa-copy"></i></button>
