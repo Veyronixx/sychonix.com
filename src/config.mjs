@@ -1,4 +1,4 @@
-import defaultImage from './assets/images/sychonixx.png';
+import defaultImage from './assets/images/embed.png';
 
 const CONFIG = {
   name: '',
