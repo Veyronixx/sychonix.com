@@ -3,27 +3,18 @@ import { SITE } from '~/config.mjs';
 import { getCanonical, getHomePermalink } from '~/utils/permalinks';
 import Layout from '~/layouts/PageLayout2.astro';
 import { Icon } from 'astro-icon';
-import Installation from './installation.md';
-import Addrbook from './addrbook.md';
-import API from './api.md';
-import CheatSheet from './cheatsheet.md';
-import Genesis from './genesis.md';
-import Peers from './peers.md';
-import RPC from './rpc.md';
 import Dashboard from './dashboard.md';
-import Snapshot from './snapshot.md';
-import Upgrade from './upgrade.md';
 
-const name= 'Selfchain';
-const icon = '/img/selfchain.jpg';
+const name= 'ika';
+const icon = '/img/ika.png';
 const network= 'Testnet';
-const chain= 'selfchain-testnet';
+const chain= 'ika-testnet';
 const version= '';
-const stake= 'https://explorer.sychonix.com/selfchain-testnet/staking/selfvaloper1sfnk4yqsvkpta82lfcfyas9txvv2lafdd5s6nv';
+const stake= 'https://explorer.sychonix.com/ika-testnet/staking/selfvaloper1sfnk4yqsvkpta82lfcfyas9txvv2lafdd5s6nv';
  const social = [
-  { label: 'Twitter', icon: 'tabler:brand-twitter', href: 'https://twitter.com/selfchainxyz' },
-  { label: 'Discord', icon: 'tabler:brand-discord', href: 'https://discord.gg/selfchainxyz' },
-  { label: 'Chrome',  icon: 'tabler:brand-chrome', href: 'https://selfchain.xyz' },
+  { label: 'Twitter', icon: 'tabler:brand-twitter', href: 'https://x.com/ikadotxyz' },
+  { label: 'Discord', icon: 'tabler:brand-discord', href: 'https://discord.com/invite/ikadotxyz' },
+  { label: 'Chrome',  icon: 'tabler:brand-chrome', href: 'https://ika.xyz' },
 ];
 
 
@@ -34,27 +25,6 @@ const meta = {
 };
 const combinedMenu = [
   { title: 'Network Overview', path: 'dashboard', component: Dashboard, type: 'item' },
-  { title: 'Installation', path: 'installation', component: Installation, type: 'item' },
-  { title: 'Upgrade', path: 'upgrade', component: Upgrade, type: 'item' },
-  {
-    title: 'Sync',
-    items: [
-      { title: 'Peers', path: 'peers', component: Peers, icon: 'tabler:users' },
-      { title: 'Snapshot', path: 'snap', component: Snapshot, icon: 'tabler:camera' },
-      { title: 'Addrbook', path: 'addrbook', component: Addrbook, icon: 'tabler:book' },
-      { title: 'Genesis', path: 'genesis', component: Genesis, icon: 'tabler:tree' },
-    ],
-    type: 'submenu',
-  },
-  {
-    title: 'Public API',
-    items: [
-      { title: 'API', path: 'api', component: API, icon: 'tabler:api-app' },
-      { title: 'RPC', path: 'rpc', component: RPC, icon: 'tabler:exchange' },
-    ],
-    type: 'submenu',
-  },
-  { title: 'CLI Cheatsheet', path: 'cheatsheet', component: CheatSheet, type: 'item' },
 ];
 
 ---
@@ -66,11 +36,18 @@ const combinedMenu = [
         
 <!-- Top-Bar layout -->
 <div class="top-bar flex items-center justify-between px-4 py-2">
-  <a href="/testnet/selfchain" class="flex items-center">
+  <a href="/testnet/ika" class="flex items-center">
     <img src={icon} alt={name} class="w-8 h-8 inline-block rounded-full object-cover mr-0" />
     <span class="text-md font-bold">{name} - {network}</span>
   </a>
   <div class="flex flex-col md:flex-row items-start md:items-center space-x-0 md:space-x-2 text-sm"> 
+    <span><strong>Chain ID:</strong> {chain}</span> 
+    <div class="rpc-status flex items-center" style="display: flex; align-items: center; gap: 4px;">
+      <strong style="margin-right: 4px;">RPC Status:</strong>
+      <span class="status-dot" style="width: 0.7rem; height: 0.7rem; background-color: #10b981; border-radius: 50%; animation: pulse 1.5s infinite;"></span>
+    </div>     
+  </div>  
+</div>
 
 
         <!-- Hamburger menu for mobile -->
@@ -209,9 +186,9 @@ document.addEventListener('DOMContentLoaded', () => {
     // Update the URL based on the tab content being shown
     const selectedPath = tabButtons[index].dataset.path;
     if (selectedPath === 'dashboard') {
-      history.pushState(null, '', '/testnet/selfchain'); // Only use base path for Dashboard
+      history.pushState(null, '', '/testnet/ika'); // Only use base path for Dashboard
     } else {
-      history.pushState(null, '', `/testnet/selfchain/${selectedPath}`);
+      history.pushState(null, '', `/testnet/ika/${selectedPath}`);
     }
   }
 
@@ -324,7 +301,7 @@ document.addEventListener('DOMContentLoaded', () => {
       return;
     }
 
-    const response = await fetch('https://rpc-selfchain-t.sychonix.com/status');
+    const response = await fetch('https://rpc-ika-t.sychonix.com/status');
     const data = await response.json();
     const latestBlockHeight = data.result.sync_info.latest_block_height;
 
@@ -347,7 +324,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const dashboardIndex = [...tabButtons].indexOf(dashboardButton);
 
   // Set the default tab to "Dashboard" if no specific tab is selected or path is empty
-  if (!currentPath || currentPath === 'selfchain') {
+  if (!currentPath || currentPath === 'ika') {
     showTabContent(dashboardIndex); // Show "Dashboard" by default
   } else {
     const currentIndex = [...tabButtons].findIndex(button => button.dataset.path === currentPath);
