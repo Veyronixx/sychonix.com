@@ -25,9 +25,9 @@ go version</code></pre>
 
 <div class="code-block-wrapper">
   <pre><code>cd $HOME && mkdir -p go/bin/
-curl -LO https://github.com/empe-io/empe-chain-releases/raw/master/v0.2.2/emped_v0.2.2_linux_amd64.tar.gz
-tar -xvf emped_v0.2.2_linux_amd64.tar.gz
-rm -rf emped_v0.2.2_linux_amd64.tar.gz
+curl -LO https://github.com/empe-io/empe-chain-releases/raw/master/v0.3.0/emped_v0.3.0_linux_amd64.tar.gz
+tar -xvf emped_v0.3.0_linux_amd64.tar.gz
+rm -rf emped_v0.3.0_linux_amd64.tar.gz
 chmod +x emped
 sudo mv emped ~/go/bin</code></pre>
   <button class="copy-btn"><i class="fas fa-copy"></i></button>
