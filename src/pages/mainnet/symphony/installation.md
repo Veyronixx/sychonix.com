@@ -122,3 +122,45 @@ sudo systemctl enable symphonyd.service
 sudo systemctl restart symphonyd.service && sudo journalctl -u symphonyd.service -f --no-hostname -o cat</code></pre>
   <button class="copy-btn"><i class="fas fa-copy"></i></button>
 </div>
+
+- Create Validator
+
+<div class="code-block-wrapper">
+  <pre><code>symphonyd tendermint show-validator</code></pre>
+  <button class="copy-btn"><i class="fas fa-copy"></i></button>
+</div>
+
+<div class="code-block-wrapper">
+  <pre><code>sudo nano $HOME/.symphonyd/validator.json</code></pre>
+  <button class="copy-btn"><i class="fas fa-copy"></i></button>
+</div>
+
+- Create validator.json file
+<div class="code-block-wrapper">
+  <pre><code>
+{
+  "pubkey": {"#pubkey"},
+  "amount": "", 
+  "moniker": "", 
+  "identity": "",
+  "website": "",
+  "security": "", 
+  "details": "", 
+  "commission-rate": "0.05",
+  "commission-max-rate": "0.2",
+  "commission-max-change-rate": "0.05",
+  "min-self-delegation": "1"
+}</code></pre>
+  <button class="copy-btn"><i class="fas fa-copy"></i></button>
+</div>
+
+<div class="code-block-wrapper">
+  <pre><code>symphonyd tx staking create-validator $HOME/.symphonyd/validator.json \
+--from=wallet \
+--chain-id=symphony-1 \
+--gas-adjustment 1.5 \
+--gas-prices 0.025note \
+--gas auto</code></pre>
+  <button class="copy-btn"><i class="fas fa-copy"></i></button>
+</div>
+
